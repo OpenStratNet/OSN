@@ -2,60 +2,18 @@
   <title>Open Strategy Network</title>
 </head>
 
-<body>
-  {{> navBar}}
-  {{> publicationList}}
-  {{> searchBox}}
-</body>
 
-<template name="navBar">
+<template name="applicationLayout">
+	{{> yield "header"}}
+	{{> yield "main"}}
+</template>
+
+<template name="navbar">
 	<div class="container">
     <div class="navbar navbar-default" role="navigation">
     	<ul class="nav navbar-nav navbar-right">
       	{{>loginButtons }}
     	</ul>
 		</div>
-  </div>
-</template>
-
-<template name="publicationList">
-	<!-- {{#each publicationData}}
-		<h3>{{title}}</h3>
-		{{#each authors}}
-			<li>Author(s) complex: {{this.firstName}} {{this.lastName}}</li>
-		{{/each}}
-	{{/each}} -->
-</template>
-
-<template name="searchBox">
-	<div class="container">
-		<div>
-		  	<h3>Search: {{> EasySearch.Input index=publicationsIndex attributes=atts }}</h3>
-		  	{{#EasySearch.IfInputEmpty index=publicationsIndex}}
-	      {{#each publicationData}}
-	    		<h3>{{title}}</h3>
-	    		{{#each authors}}
-	    			<li>Author(s) complex: {{this.firstName}} {{this.lastName}}</li>
-	    		{{/each}}
-	    	{{/each}}
-	  		{{else}}
-	  		{{#if publicationsIndex}}
-		  		<ul>
-			    {{#EasySearch.Each index=publicationsIndex}}
-			      <li><h3>Name of website: <a href="{{url}}">{{title}}</a></h3>
-						<p>{{description}}</p>
-			      </li>
-			    {{/EasySearch.Each}}
-			  	</ul>
-	  		{{/if}}
-		  	{{/EasySearch.IfInputEmpty}}
-
-
-		  {{> EasySearch.LoadMore index=publicationsIndex}}
-
-		  {{#EasySearch.IfNoResults index=publicationsIndex}}
-		    <div class="no-results">No results found!</div>
-		  {{/EasySearch.IfNoResults}}
-	  </div>
   </div>
 </template>

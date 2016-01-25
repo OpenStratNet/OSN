@@ -1,5 +1,5 @@
 Accounts.emailTemplates.siteName = 'Open Strategy Network';
-Accounts.emailTemplates.from = 'OPen Strategy Network <violetta.splitter@business.uzh.ch>';
+Accounts.emailTemplates.from = 'Open Strategy Network <violetta.splitter@business.uzh.ch>';
 
 // verification email
 Accounts.emailTemplates.verifyEmail.subject = function (user) {

@@ -1,0 +1,21 @@
+<template name="newsEvents">
+	<div class="container">
+		<h3>Latest News AND Events </h3>
+
+		<div class="btn-toolbar" role="toolbar" aria-label="...">
+		  <div class="btn-group" role="group" aria-label="...">
+		  	<button type="button" id="js-seeAll" class="btn btn-primary">SEE ALL</button>
+		  	<button type="button" id="js-seeNews" class="btn btn-primary">NEWS</button>
+		  	<button type="button" id="js-seeEvents" class="btn btn-primary">EVENTS</button>
+		  </div>
+		</div>
+
+		<hr>
+
+		{{#each newsEventsData}}
+			<li>{{title}}</li>
+
+			<p>{{shortIt this.description 10}}</p>
+		{{/each}}
+	</div>
+</template>

@@ -21,9 +21,16 @@ insecure                # Allow all DB writes from clients (for prototyping)
 easy:search
 accounts-password
 twbs:bootstrap
-ian:accounts-ui-bootstrap-3
 accounts-facebook
 service-configuration
 accounts-twitter
 accounts-google
 pauli:accounts-linkedin
+iron:router
+kadira:debug
+meteortoys:allthings
+cfs:standard-packages
+cfs:filesystem
+reactive-var
+dburles:collection-helpers
+ian:accounts-ui-bootstrap-3

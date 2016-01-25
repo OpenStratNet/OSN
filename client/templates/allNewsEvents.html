@@ -1,0 +1,30 @@
+<template name="allNewsEvents">
+	<div class="container">
+		<div class="row">
+			{{#each newsEventsData}}
+			<!-- <li><a href="{{pathFor route='news-and-events'}}">read more</a></li> -->
+			<li>{{title}}</li>
+			<a href="/news-and-events/{{_id}}">read more</a>
+
+			<a href ="/news-and-events/{{ _id }}">
+			  <img alt="" src="{{ coverImage.url }}" />
+			</a>
+			
+			<h1>{{ attachment.url }} {{attachmentId}}</h1>
+
+			<li><a href="{{ attachment.url }}">Download</a></li>
+
+			<hr>
+			<!-- {{> allNewsEventItem}} -->
+			{{/each}}
+
+		</div>
+	</div>
+</template>
+
+<template name="newsAndEventsPage">
+	<a href="{{pathFor route='allNewsEvents'}}" class="btn btn-info" role="button">Back</a>
+	<!-- <a href="{{pathFor route='news-and-events'}}">read more</a> -->
+	<hr>
+	{{description}}
+</template>

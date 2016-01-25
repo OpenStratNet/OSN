@@ -1,14 +1,10 @@
-Accounts.ui.config({
-  passwordSignupFields: 'USERNAME_AND_EMAIL'
-});
-
-Template.publicationList.helpers({
+Template.bibliography.helpers({
   publicationData: function () {
     return Publications.find().fetch();
   }
 });
 
-Template.searchBox.helpers({
+Template.bibliography.helpers({
   atts: function() {
     return {placeholder: "Search for authors, title, abstract here ..."};
   },
