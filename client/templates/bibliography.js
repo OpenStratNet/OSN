@@ -25,13 +25,11 @@ Template.bibliography.helpers({
       return Publications.find({}, {
       sort: {year: Session.get("yearSorter")}
     }).fetch();
-  
     } else {
       return Publications.find({}, {
       sort: {"authors.0.lastName": Session.get("abcSorter")}
     }).fetch();
     }
-      
   }
 });
 
@@ -66,14 +64,14 @@ Template.bibliography.helpers({
 Template.bibliography.events({
   'click #yearIcon': function (evt,temp) {
     evt.preventDefault();
-    if ($('#yearIcon').hasClass('fa-sort-asc')) 
-    { 
+    if ($('#yearIcon').hasClass('fa-sort-asc'))
+    {
       $('.fa-sort-asc').removeClass('fa-sort-asc');
       $('#yearIcon').addClass("fa fa-sort-desc");
       Session.set("yearSorter", -1);
       Session.set("abcSorter", false);
-    } 
-    else 
+    }
+    else
     {
       $('#yearIcon').removeClass("fa fa-sort-desc");
       $('#yearIcon').addClass("fa fa-sort-asc");
@@ -83,14 +81,14 @@ Template.bibliography.events({
   },
   'click #abcIcon': function (evt,temp) {
     evt.preventDefault();
-    if ($('#abcIcon').hasClass('fa-sort-alpha-asc')) 
-    { 
+    if ($('#abcIcon').hasClass('fa-sort-alpha-asc'))
+    {
       $('.fa-sort-alpha-asc').removeClass('fa-sort-alpha-asc');
       $('#abcIcon').addClass("fa fa-sort-alpha-desc");
       Session.set("abcSorter", -1);
       Session.set("yearSorter", false);
-    } 
-    else 
+    }
+    else
     {
       $('#abcIcon').removeClass("fa fa-sort-alpha-desc");
       $('#abcIcon').addClass("fa fa-sort-alpha-asc");

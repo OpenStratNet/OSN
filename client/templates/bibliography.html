@@ -3,7 +3,7 @@
 		<div class="row">
 		  	<h3>Search: {{> EasySearch.Input index=publicationsIndex attributes=atts }}</h3>
 		  	{{#EasySearch.IfInputEmpty index=publicationsIndex}}
-	      	
+
 			<div class="col-md-12">
 				<table class="table table-striped">
 				    <thead>
@@ -25,9 +25,16 @@
 				        <td> Outlet </td>
 				        <td>{{year}}</td>
 				      </tr>
-			      	{{/each}}
+						{{/each}}
 				    </tbody>
 			    </table>
+					{{#each publicationData}}
+					<li>
+						{{#each authors}}
+						{{this.firstName}} {{this.lastName}}
+						{{/each}}
+					</li>
+					{{/each}}
 			</div> <!-- end col  -->
 
 	  		{{else}}
@@ -48,7 +55,7 @@
 		  {{#EasySearch.IfNoResults index=publicationsIndex}}
 		    <div class="no-results">No results found!</div>
 		  {{/EasySearch.IfNoResults}}
-		
+
   	</div> <!-- end row -->
   </div> <!-- end container -->
 </template>
