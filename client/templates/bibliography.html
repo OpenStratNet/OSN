@@ -1,14 +1,35 @@
 <template name="bibliography">
 	<div class="container">
-		<div>
+		<div class="row">
 		  	<h3>Search: {{> EasySearch.Input index=publicationsIndex attributes=atts }}</h3>
 		  	{{#EasySearch.IfInputEmpty index=publicationsIndex}}
-	      	{{#each publicationData}}
-	    		<h3>{{title}}</h3>
-	    		{{#each authors}}
-	    			<li>Author(s) complex: {{this.firstName}} {{this.lastName}}</li>
-	    		{{/each}}
-	    	{{/each}}
+	      	
+			<div class="col-md-12">
+				<table class="table table-striped">
+				    <thead>
+				      <tr>
+				        <th>Authors <i id="abcIcon" class="fa fa-sort-alpha-asc"></i> </th>
+				        <th>Title</th>
+				        <th>Outlet</th>
+				        <th>Year <i id="yearIcon" class="fa fa-sort-desc"></i> <!-- <i class="fa fa-sort-desc"></i> --> </th>
+				      </tr>
+				    </thead>
+				    <tbody>
+	    			{{#each publicationData}}
+				      <tr>
+				      	{{#each authors}}
+				        <td>{{this.firstName}} {{this.lastName}}</td>
+				        {{/each}}
+
+				        <td>{{title}}</td>
+				        <td> Outlet </td>
+				        <td>{{year}}</td>
+				      </tr>
+			      	{{/each}}
+				    </tbody>
+			    </table>
+			</div> <!-- end col  -->
+
 	  		{{else}}
 	  		{{#if publicationsIndex}}
 		  		<ul>
@@ -27,6 +48,7 @@
 		  {{#EasySearch.IfNoResults index=publicationsIndex}}
 		    <div class="no-results">No results found!</div>
 		  {{/EasySearch.IfNoResults}}
-	  </div>
-  </div>
+		
+  	</div> <!-- end row -->
+  </div> <!-- end container -->
 </template>

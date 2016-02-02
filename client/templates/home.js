@@ -1,4 +1,4 @@
-Session.setDefault('newsEventsView', 'newsEventsView');
+Session.setDefault('newsEventsView', [ "news", "event" ]);
 
 Template.newsEvents.helpers({
   newsEventsData: function () {

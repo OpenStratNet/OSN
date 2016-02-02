@@ -1,0 +1,17 @@
+<template name="adminNewsEventsList">
+	<div class="container">
+		<div class="col-md-6 col-md-offset-3">
+			{{#each newsEventsData}}
+			<ul class="list-group">
+				<li class="list-group-item">
+				<a title="Edit" id="js-edit-ne" href="{{pathFor route='adminNewsEventsEdit'}}">{{title}}</a>
+				<!-- edit button -->
+				<a title="Edit" id="js-edit-ne" class="btn btn-primary" href="{{pathFor route='adminNewsEventsEdit'}}"><i class="fa fa-pencil-square-o"></i></a>
+				<!-- delete button -->
+				<a title="Edit" id="js-delete-ne" class="btn btn-danger" href="#"><i class="fa fa-trash"></i> </a>
+				</li>
+			</ul>
+			{{/each}}
+		</div>
+	</div>
+</template>

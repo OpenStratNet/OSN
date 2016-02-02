@@ -1,3 +1,6 @@
+imageIdVar = new ReactiveVar(false);
+attachmentIdVar = new ReactiveVar(false);
+
 Template.adminNewsEvents.events({
 	'change #coverImage': function(evt, temp) {
     /* FS.Utility.eachFile(event, function(file) {
@@ -8,7 +11,6 @@ Template.adminNewsEvents.events({
     }); */
 
 		var image = event.target.files[0];
-
 		// Insert the image into the database
 		// getting the image ID for use in the course object
 		var imageObject = Images.insert(image);
@@ -17,8 +19,9 @@ Template.adminNewsEvents.events({
 		var imageId = imageObject._id
 
 		// Create a reactive var to be used when the course is added
-		imageIdVar = new ReactiveVar(imageId);
-	
+		if (imageId) {
+			imageIdVar = new ReactiveVar(imageId);
+		}
 	},
 	'change #attachment': function(evt, temp) {
     /* FS.Utility.eachFile(event, function(file) {
@@ -38,24 +41,27 @@ Template.adminNewsEvents.events({
 		var attachmentId = attachmentObject._id
 
 		// Create a reactive var to be used when the course is added
-		attachmentIdVar = new ReactiveVar(attachmentId);
-	
+		if (attachmentId) {
+			attachmentIdVar = new ReactiveVar(attachmentId);
+		}	
 	},
 	'submit form': function (evt, temp) {
-		evt.preventDefault();
-		NewsEvents.insert({
-			title: $('#title').val(),
-			description: $('#description').val(),
-			type: $('input[name=netype]:checked').val(),
-			coverImageId: imageIdVar.get(),
-			attachmentId: attachmentIdVar.get(),
-			createdAt: new Date ()
-		});
+		//evt.preventDefault();
 
-		$('#title').val('');
-		$('#description').val('');
-		$("input:radio").removeAttr("checked");
+		var temp = {};
+		temp.title = $('#title').val();
+		temp.description = $('#description').val();
+		temp.type = $('input[name=netype]:checked').val();
+		temp.createdAt = new Date ();
 
-		console.log("done");
+		if (imageIdVar.get()) {
+			temp.coverImageId = imageIdVar.get();
+		}
+
+		if (attachmentIdVar.get()) {
+			temp.attachmentId = attachmentIdVar.get();
+		}
+		
+		NewsEvents.insert(temp);
 	}
 });
