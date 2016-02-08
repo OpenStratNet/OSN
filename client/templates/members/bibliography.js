@@ -33,34 +33,6 @@ Template.bibliography.helpers({
   }
 });
 
-// Template.bibliography.events({
-//   'click .fa-sort-asc': function (evt,temp) {
-//     evt.preventDefault();
-//     $('.fa-sort-asc').removeAttr("class id");
-//     $('#yearIcon').addClass("fa fa-sort-desc");
-//     Session.set("yearSorter", 1);
-//     //Session.set("yearSorter", 1);
-//   },
-//   'click .fa-sort-desc': function (evt,temp) {
-//     evt.preventDefault();
-//     $('.fa-sort-desc').removeAttr("class id");
-//     $('#yearIcon').addClass("fa fa-sort-asc");
-//     Session.set("yearSorter", -1);
-//   },
-//   'click .fa-sort-alpha-asc': function (evt,temp) {
-//     evt.preventDefault();
-//     $('.fa-sort-alpha-asc').removeAttr("class id");
-//     $('#abcIcon').addClass("fa fa-sort-alpha-desc");
-//     Session.set("abcSorter", 1);
-//   },
-//   'click .fa-sort-alpha-desc': function (evt,temp) {
-//     evt.preventDefault();
-//     $('.fa-sort-alpha-desc').removeAttr("class id");
-//     $('#abcIcon').addClass("fa fa-sort-alpha-asc");
-//     Session.set("abcSorter", -1);
-//   }
-//});
-
 Template.bibliography.events({
   'click #yearIcon': function (evt,temp) {
     evt.preventDefault();

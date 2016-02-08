@@ -1,0 +1,21 @@
+<template name="test">
+  <button id='add-input'>
+    Add Input
+  </button>
+ 
+ 	<form action="" method="POST" role="form">
+	  	<legend>Form title</legend>
+	  	
+	  	{{#each inputs}}
+	  	  {{> input}}
+	  	{{/each}}  	
+
+	  	<button type="submit" class="btn btn-primary">Submit</button>
+  	</form>
+
+</template>
+
+<template name='input'>
+  <input name='testinput' class='test-input' type='text' uniqid="{{uniqid}}" value="{{value}}" id="{{uniqid}}"> <!-- id for easy selection -->
+  <button class='remove-input'>Remove</button>
+</template>

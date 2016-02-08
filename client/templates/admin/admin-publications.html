@@ -9,18 +9,27 @@
 	            	<input type="text" class="form-control" id="title" name="title" placeholder="Enter Title">
 	            </div>
 	        </div>
+			
+			<div class="input-group">
+				 <div class="form-group">
+			        <label for="authors" class="col-sm-2 control-label">Author(s)</label>
+			        <div class="col-sm-10">
+			            <input type="text" class="form-control" name="authors" id="firstAuthor"  placeholder="Enter Author(s)">
+			            <span class="input-group-btn">
+	                    	<button class="btn btn-default" id='add-input' type="button">ADD AUTHOR</button>
+	                  	</span>
+			        </div>
+			    </div>
+			</div>
 
-	        <div class="form-group">
-	            <label for="authors" class="col-sm-2 control-label">Author(s)</label>
-	            <div class="col-sm-10">
-	                <input type="text" class="form-control" id="authors" name="authors" placeholder="Enter Author(s)">
-	            </div>
-	        </div>
+	        {{#each inputs}}
+	          {{> authorsInput}}
+	        {{/each}}
 
 	        <div class="form-group">
 	            <label for="year" class="col-sm-2 control-label">Year</label>
 	            <div class="col-sm-10">
-	                <input type="text" class="form-control" id="year" name="year" placeholder="Enter Abstract">
+	                <input type="text" class="form-control" id="year" name="year" placeholder="Enter Year of Publication">
 	            </div>
 	        </div>
 
@@ -30,6 +39,38 @@
 					<textarea type="message" rows="6" class="form-control" id="abstract" name="abstract" placeholder="Enter Abstract"></textarea>
 	            </div>
 	        </div>
+			
+			{{#if ppSelected}}	
+	         <div class="form-group">
+	            <label for="journal" class="col-sm-2 control-label">Journal</label>
+	            <div class="col-sm-10">
+	                <input type="text" class="form-control" id="journal" name="journal" placeholder="Enter Name of Journal">
+	            </div>
+	        </div>
+
+	        <div class="form-group">
+	            <label for="pages" class="col-sm-2 control-label">Pages</label>
+	            <div class="col-sm-10">
+	                <input type="text" class="form-control" id="pages" name="pages" placeholder="Enter Pages">
+	            </div>
+	        </div>
+			{{/if}}
+
+			{{#if bkSelected}}	
+	         <div class="form-group">
+	            <label for="publisher" class="col-sm-2 control-label">Publisher</label>
+	            <div class="col-sm-10">
+	                <input type="text" class="form-control" id="publisher" name="publisher" placeholder="Enter Publisher">
+	            </div>
+	        </div>
+
+	        <div class="form-group">
+	            <label for="location" class="col-sm-2 control-label">Location of Publisher</label>
+	            <div class="col-sm-10">
+	                <input type="text" class="form-control" id="location" name="location" placeholder="Enter Location of Publisher">
+	            </div>
+	        </div>
+			{{/if}}
 
 	        <div class="form-group js-radios">
 	            <label for="Outlet" class="col-sm-2 control-label">Outlet</label>
@@ -48,6 +89,14 @@
 	        </div>
 
 	    </form> <!-- end form -->
-
 	</div>
+</template>
+
+<template name="authorsInput">
+	 <div class="form-group">
+        <label for="authors" class="col-sm-2 control-label">Author(s)</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="authors" uniqid="{{uniqid}}" value="{{value}}" id="{{uniqid}}"  placeholder="Enter Author(s)">
+        </div>
+    </div>
 </template>

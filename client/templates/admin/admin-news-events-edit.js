@@ -1,6 +1,23 @@
 imageIdVarEdit = new ReactiveVar(false);
 attachmentIdVarEdit = new ReactiveVar(false);
 
+Template.adminNewsEventsEdit.onRendered(function() {
+  $(document).ready(function() {
+    $('#description').summernote({
+    	height: 200
+    });
+  });
+
+  // whole document of News & Events 
+  var newsEventsEntry = NewsEvents.findOne({_id: this._id}); //, {description: "$('#description').summernote('code')"});
+  var descriptionContent = newsEventsEntry.description;
+  $('#description').summernote('code', descriptionContent);
+
+  console.log("db: " + newsEventsEntry);
+  console.log("description: " + descriptionContent);
+});
+
+
 Template.adminNewsEventsEdit.helpers({
   newsEventsEntry: function () {
     return NewsEvents.findOne({_id: this._id});
@@ -11,6 +28,13 @@ Template.adminNewsEventsEdit.helpers({
   attachmentExists: function () {
   	return NewsEvents.findOne({attachmentId: { $exists: true } });
   }
+  // summernoteText: function() {
+  // 	var newsEventsEntry = NewsEvents.find({_id: this._id}); //, {description: "$('#description').summernote('code')"});
+  // 	var descriptionContent = newsEventsEntry.description;
+  // 	return $('#description').summernote('code', descriptionContent);
+  // 	console.log("db: " + newsEventsEntry);
+  // 	console.log("description: " + descriptionContent);
+  //}
 });
 
 Template.adminNewsEventsEdit.events({
@@ -85,7 +109,7 @@ Template.adminNewsEventsEdit.events({
 
 		var temp = {};
 		temp.title = $('#title').val();
-		temp.description = $('#description').val();
+		temp.description = $('#description').summernote('code');
 		temp.type = $('input[name=netype]:checked').val();
 		temp.createdAt = new Date ();
 

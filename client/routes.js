@@ -32,6 +32,9 @@ Router.route('/admin-news-events-edit/:_id', {
     }
 });
 
+Router.route('/test', {
+	name: 'test'
+});
 
 // members routes
 Router.route('/bibliography', {
