@@ -1,6 +1,27 @@
 imageIdVar = new ReactiveVar(false);
 attachmentIdVar = new ReactiveVar(false);
 
+Template.adminNewsEvents.onRendered(function() {
+  $(document).ready(function() {
+    $('#description').summernote({
+    	height: 200, 
+    	toolbar: [
+    	    // [groupName, [list of button]]
+	    	['style', ['style']],
+	       	['font', ['bold', 'italic', 'underline', 'clear']],
+	       	['fontname', ['fontname']],
+	       	['color', ['color']],
+	       	['para', ['ul', 'ol', 'paragraph']],
+	       	['height', ['height']],
+	       	['table', ['table']],
+	       	['insert', ['link', 'hr']], // 'picture', is tooked out
+	       	['view', ['fullscreen', 'codeview']],
+	       	['help', ['help']]
+		]
+    });
+  });
+});
+
 Template.adminNewsEvents.events({
 	'change #coverImage': function(evt, temp) {
     /* FS.Utility.eachFile(event, function(file) {
@@ -50,7 +71,7 @@ Template.adminNewsEvents.events({
 
 		var temp = {};
 		temp.title = $('#title').val();
-		temp.description = $('#description').val();
+		temp.description = $('#description').summernote('code');
 		temp.type = $('input[name=netype]:checked').val();
 		temp.createdAt = new Date ();
 

@@ -4,17 +4,30 @@ attachmentIdVarEdit = new ReactiveVar(false);
 Template.adminNewsEventsEdit.onRendered(function() {
   $(document).ready(function() {
     $('#description').summernote({
-    	height: 200
+    	height: 200, 
+    	toolbar: [
+    	    // [groupName, [list of button]]
+	    	['style', ['style']],
+	       	['font', ['bold', 'italic', 'underline', 'clear']],
+	       	['fontname', ['fontname']],
+	       	['color', ['color']],
+	       	['para', ['ul', 'ol', 'paragraph']],
+	       	['height', ['height']],
+	       	['table', ['table']],
+	       	['insert', ['link', 'hr']], // 'picture', is tooked out
+	       	['view', ['fullscreen', 'codeview']],
+	       	['help', ['help']]
+		]
     });
   });
 
   // whole document of News & Events 
-  var newsEventsEntry = NewsEvents.findOne({_id: this._id}); //, {description: "$('#description').summernote('code')"});
-  var descriptionContent = newsEventsEntry.description;
-  $('#description').summernote('code', descriptionContent);
+  // var newsEventsEntry = NewsEvents.findOne({_id: this._id}); //, {description: "$('#description').summernote('code')"});
+  // var descriptionContent = newsEventsEntry.description;
+  // $('#description').summernote('code', descriptionContent);
 
-  console.log("db: " + newsEventsEntry);
-  console.log("description: " + descriptionContent);
+  // console.log("db: " + newsEventsEntry);
+  // console.log("description: " + descriptionContent);
 });
 
 

@@ -7,6 +7,28 @@ Template.adminPublications.onCreated(function() {
   Session.setDefault("outletChoice","");
 });
 
+Template.adminPublications.onRendered(function() {
+  $(document).ready(function() {
+    $('#abstract').summernote({
+    	height: 200, 
+    	toolbar: [
+    	    // [groupName, [list of button]]
+	    	['style', ['style']],
+	       	['font', ['bold', 'italic', 'underline', 'clear']],
+	       	['fontname', ['fontname']],
+	       	['color', ['color']],
+	       	['para', ['ul', 'ol', 'paragraph']],
+	       	['height', ['height']],
+	       	['table', ['table']],
+	       	['insert', ['link', 'hr']], // 'picture', is tooked out
+	       	['view', ['fullscreen', 'codeview']],
+	       	['help', ['help']]
+		]
+    });
+  });
+});
+
+
 Template.adminPublications.helpers({
 	ppSelected: function () {
 		if (Session.get("outletChoice") === "pp") {
@@ -60,7 +82,7 @@ Template.adminPublications.events({
 			authors: newAuthors,
 			year: $('#year').val(),
 			type: $('input[name=outlet-type]:checked').val(),
-			abstract: $('#abstract').val(),
+			abstract: $('#abstract').summernote('code'),
 
 			// Published Paper (pp)
 			journal: $('#journal').val(),
@@ -73,11 +95,14 @@ Template.adminPublications.events({
 			createdAt: new Date ()
 		});
 
-		$('#title').val('');
-		$('#authors').val('');
-		$('#year').val('');
-		$('#abstract').val('');
-		$("input:radio").removeAttr("checked");
+		$('#addPub')[0].reset();
+		$('#abstract').summernote('code', '');
+
+		// $('#title').val('');
+		// $('#authors').val('');
+		// $('#year').val('');
+		// $('#abstract').val('');
+		// $("input:radio").removeAttr("checked");
 
 		console.log("done");
 	}

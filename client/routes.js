@@ -13,12 +13,10 @@ Router.route('/', function() {
 });
 
 // admins routes
+
+// admin news
 Router.route('/admin-news-events', {
 	name: 'adminNewsEvents'
-});
-
-Router.route('/admin-publications', {
-	name: 'adminPublications'
 });
 
 Router.route('/admin-news-events-list/', {
@@ -32,8 +30,20 @@ Router.route('/admin-news-events-edit/:_id', {
     }
 });
 
-Router.route('/test', {
-	name: 'test'
+//admin publications
+Router.route('/admin-publications', {
+	name: 'adminPublications'
+});
+
+Router.route('/admin-publications-list/', {
+	name: 'adminPublicationsList'
+});
+
+Router.route('/admin-publications-list/:_id', {
+	name: 'adminPublicationsEdit',
+	data: function(){
+        return Publications.findOne({_id: this.params._id});
+    }
 });
 
 // members routes
