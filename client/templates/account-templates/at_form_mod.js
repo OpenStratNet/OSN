@@ -1,0 +1,1 @@
+Template.myAtForm.replaces("atForm");

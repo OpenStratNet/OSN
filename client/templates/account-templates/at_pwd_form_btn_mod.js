@@ -1,0 +1,1 @@
+Template.atPwdFormBtnMod.replaces("atPwdFormBtn");

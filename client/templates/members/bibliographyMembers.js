@@ -1,21 +1,21 @@
 Session.setDefault("yearSorter", -1);
 Session.setDefault("abcSorter", false);
 
-Tracker.autorun(function () {
-          console.log("The abcSorter is: " +
-            Session.get("abcSorter")
-          );
-});
+// Tracker.autorun(function () {
+//           console.log("The abcSorter is: " +
+//             Session.get("abcSorter")
+//           );
+// });
 
-Tracker.autorun(function () {
-          console.log("The yearSorter is: " +
-            Session.get("yearSorter")
-          );
-});
+// Tracker.autorun(function () {
+//           console.log("The yearSorter is: " +
+//             Session.get("yearSorter")
+//           );
+// });
 
-Template.bibliography.helpers({
+Template.bibliographyMembers.helpers({
   atts: function() {
-    return {placeholder: "Search for authors, title, abstract here ..."};
+    return {'class': 'form-control', 'placeholder': "Search for author, year, outlet or title"};
   },
   publicationsIndex: function() {
     return PublicationsIndex;
@@ -33,7 +33,7 @@ Template.bibliography.helpers({
   }
 });
 
-Template.bibliography.events({
+Template.bibliographyMembers.events({
   'click #yearIcon': function (evt,temp) {
     evt.preventDefault();
     if ($('#yearIcon').hasClass('fa-sort-asc'))

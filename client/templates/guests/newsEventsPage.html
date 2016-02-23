@@ -1,0 +1,50 @@
+<template name="newsAndEventsPage">
+	<!-- Breadcrumb Profile-Settings -->
+			<ol class="breadcrumb-content text-left">
+					<li><a class="breadcrumb-link" href="{{pathFor route = 'home'}}">Home</a></li>
+					<li><a class="breadcrumb-link" href="{{pathFor route = 'allNewsEvents'}}">News &amp; Events</a></li>
+					<li class="active">Article Title</li>
+			</ol><!-- End of Breadcrumb -->
+
+
+	<!-- News or Event -->
+	<section id="services">
+			<div class="container">
+					<div class="row">
+							<!-- Back-Button 1 -->
+							<div class="col-sm-2 col-sm-offset-1 col-xs-12">
+									<div class="btn btn-primary btn-icon">        
+											<span class="glyphicon glyphicon-circle-arrow-left"></span> BACK
+									</div>
+							</div>
+							<!-- Info -->
+							<div class="col-sm-8 col-xs-12">
+									<h3 class="text-left extra-spacing-bottom">{{title}}</h3>
+									<div class="extra-spacing-bottom">{{{description}}} </div> 
+									<div class="btn btn-primary btn-icon">        
+													<span class="glyphicon glyphicon-download"></span> ATTACHMENT
+									</div>  
+							</div> <!-- ./ Info-->
+							<!-- Back-Button 2 -->
+							<div class="col-sm-2 col-sm-offset-1 col-xs-12">
+									<div class="btn btn-primary btn-icon">        
+											<span class="glyphicon glyphicon-circle-arrow-left"></span> BACK
+									</div>
+							</div>
+					</div>
+			</div>
+	</section> <!-- ./News or Event -->
+
+	<script>
+			$(document).ready(function(){
+			$('[data-toggle="tooltip"]').tooltip();
+			 });
+	</script>
+</template>
+
+<template name="later">
+	<a href="{{pathFor route='allNewsEvents'}}" class="btn btn-info" role="button">Back</a>
+	<!-- <a href="{{pathFor route='news-and-events'}}">read more</a> -->
+	<hr>
+	{{{description}}}
+</template>

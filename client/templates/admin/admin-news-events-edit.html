@@ -1,103 +1,104 @@
 <template name="adminNewsEventsEdit">
 	<!-- {{> formNewsEvents}} -->
 	<div class="container">
-	{{#with newsEventsEntry}}
-		<form class="form-horizontal" role="form">
+		<div class="putdown">
+			{{#with newsEventsEntry}}
+			<form class="form-horizontal" role="form">
 
-	        <div class="form-group">
-	            <label for="title" class="col-sm-2 control-label">Title</label>                        
-	        	<div class="col-sm-10">
-	            	<input type="text" class="form-control" value="{{title}}" id="title" name="title" placeholder="Enter Title">
-	            </div>
-	        </div>
+		        <div class="form-group">
+		            <label for="title" class="col-sm-2 control-label">Title</label>                        
+		        	<div class="col-sm-10">
+		            	<input type="text" class="form-control" value="{{title}}" id="title" name="title" placeholder="Enter Title">
+		            </div>
+		        </div>
 
-	        <!-- <div class="form-group">
-	            <label for="description" class="col-sm-2 control-label">Description</label>
-	            <div class="col-sm-10">
-	                <textarea type="message" class="form-control" value="{{description}}" id="description" name="description" placeholder="Enter Description"></textarea>
-	            </div>
-	        </div> {{description}} --> 
+		        <!-- <div class="form-group">
+		            <label for="description" class="col-sm-2 control-label">Description</label>
+		            <div class="col-sm-10">
+		                <textarea type="message" class="form-control" value="{{description}}" id="description" name="description" placeholder="Enter Description"></textarea>
+		            </div>
+		        </div> {{description}} --> 
 
-	        <div class="form-group">
-	            <label for="description" class="col-sm-2 control-label">Description</label>
-	            <div class="col-sm-10">
-	            	<div name="description" id="description">
-	            		{{{description}}}
+		        <div class="form-group">
+		            <label for="description" class="col-sm-2 control-label">Description</label>
+		            <div class="col-sm-10">
+		            	<div name="description" id="description">
+		            		{{{description}}}
+		            	</div>
 	            	</div>
-            	</div>
-	        </div>
+		        </div>
 
-	        <div class="form-group">
-	            <label for="description" class="col-sm-2 control-label">Type</label>
-	            <div class="col-sm-10">
-	                <div class="radio">
-	                  <label><input type="radio" name="netype" value="news">News</label>
-	                </div>
-	                <div class="radio">
-	                  <label><input type="radio" name="netype" value="event">Event</label>
-	                </div>       
-	            </div>
-	        </div>
-		
-			{{#if imageExists}}
-			<div class="thumbnail">
-				<a title="Edit" id="js-delete-image" class="btn btn-danger" href="{{pathFor route='adminNewsEventsEdit'}}"><i class="fa fa-trash"></i> </a>
-				<img src="{{coverImage.url}}" class="img-responsive img-mini" alt="Image">	
+		        <div class="form-group">
+		            <label for="description" class="col-sm-2 control-label">Type</label>
+		            <div class="col-sm-10">
+		                <div class="radio">
+		                  <label><input type="radio" name="netype" value="news">News</label>
+		                </div>
+		                <div class="radio">
+		                  <label><input type="radio" name="netype" value="event">Event</label>
+		                </div>       
+		            </div>
+		        </div>
+			
+				{{#if imageExists}}
+				<div class="thumbnail">
+					<a title="Edit" id="js-delete-image" class="btn btn-danger" href="{{pathFor route='adminNewsEventsEdit'}}"><i class="fa fa-trash"></i> </a>
+					<img src="{{coverImage.url}}" class="img-responsive img-mini" alt="Image">	
+				</div>
+				
+				{{else}}
+				<div class="form-group">
+		            <label for="coverImage" class="col-sm-2 control-label">Image</label>
+		            <div class="col-sm-10">
+	                	<input type="file" id="coverImage">
+		            </div>
+		        </div>	
+				{{/if}}
+
+				{{#if attachmentExists}}
+				<li>
+					<a href="{{ attachment.url }}">{{attachment.original.name}}  </a>
+					<button type="button" id="js-delete-attachment" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+				</li>
+		        {{else}} 
+		         <div class="form-group">
+		            <label for="attachment" class="col-sm-2 control-label">Attachment</label>
+
+				   
+		            <div class="col-sm-10">
+	                	<input type="file" id="attachment">
+		            </div>
+		        </div>	
+		        {{/if}}
+				
+				<hr>
+
+		        <div class="form-group">
+		            <div class="col-sm-offset-2 col-sm-10">
+		                <button type="submit" id="js-updateEntry" class="btn btn-primary">UPDATE</button>
+		            </div>
+		        </div>
+
+		    </form> <!-- end form -->
+		{{/with}}
+
+			<div class="row">
+				{{#each newsEventsData}}
+				<!-- <li><a href="{{pathFor route='news-and-events'}}">read more</a></li> -->
+				<li>{{title}}</li>
+				<a href="{{pathFor route='newsAndEventsPage'}}">read more</a>
+
+				<a href ="/news-and-events/{{ _id }}">
+				  <img alt="" src="{{ coverImage.url }}" />
+				</a>
+
+				<li><a href="{{ attachment.url }}">Download {{attachment.original.name}}</a></li>
+
+				<hr>
+				<!-- {{> allNewsEventItem}} -->
+				{{/each}}
+
 			</div>
-			
-			{{else}}
-			<div class="form-group">
-	            <label for="coverImage" class="col-sm-2 control-label">Image</label>
-	            <div class="col-sm-10">
-                	<input type="file" id="coverImage">
-	            </div>
-	        </div>	
-			{{/if}}
-
-			{{#if attachmentExists}}
-			<li>
-				<a href="{{ attachment.url }}">{{attachment.original.name}}  </a>
-				<button type="button" id="js-delete-attachment" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-			</li>
-	        {{else}} 
-	         <div class="form-group">
-	            <label for="attachment" class="col-sm-2 control-label">Attachment</label>
-
-			   
-	            <div class="col-sm-10">
-                	<input type="file" id="attachment">
-	            </div>
-	        </div>	
-	        {{/if}}
-			
-			<hr>
-
-	        <div class="form-group">
-	            <div class="col-sm-offset-2 col-sm-10">
-	                <button type="submit" id="js-updateEntry" class="btn btn-primary">UPDATE</button>
-	            </div>
-	        </div>
-
-	    </form> <!-- end form -->
-	{{/with}}
-
-	<div class="row">
-			{{#each newsEventsData}}
-			<!-- <li><a href="{{pathFor route='news-and-events'}}">read more</a></li> -->
-			<li>{{title}}</li>
-			<a href="{{pathFor route='newsAndEventsPage'}}">read more</a>
-
-			<a href ="/news-and-events/{{ _id }}">
-			  <img alt="" src="{{ coverImage.url }}" />
-			</a>
-
-			<li><a href="{{ attachment.url }}">Download {{attachment.original.name}}</a></li>
-
-			<hr>
-			<!-- {{> allNewsEventItem}} -->
-			{{/each}}
-
-		</div>
-
+		</div> <!-- putdown -->
 	</div>
 </template>

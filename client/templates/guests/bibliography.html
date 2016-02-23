@@ -1,0 +1,7 @@
+<template name="bibliography">
+	{{#unless currentUser}}
+		{{> bibliographyGuests }}
+	{{else}}
+		{{> bibliographyMembers}}
+	{{/unless}}
+</template>

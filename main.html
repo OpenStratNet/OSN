@@ -4,18 +4,6 @@
 
 
 <template name="applicationLayout">
-	{{> yield "header"}}
+	{{> yield region = "header"}}
 	{{> yield "main"}}
-</template>
-
-<template name="navbar">
-	<div class="container">
-    <div class="navbar navbar-default" role="navigation">
-    	<ul class="nav navbar-nav navbar-right">
-      	<!-- {{>loginButtons }} -->
-        {{> atNavButton}}
-    	</ul>
-		</div> <!-- end navbar -->
-    <!-- {{> atForm}} -->
-  </div>
 </template>

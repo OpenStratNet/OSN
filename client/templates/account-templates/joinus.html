@@ -1,0 +1,169 @@
+<template name="joinUs">
+
+  <!-- Stage -->
+  <header>
+    <div class="header-content">
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb text-left">
+            <li><a class="breadcrumb-link" href="{{pathFor route = 'home'}}">Home</a></li>
+            <li class="active">Join us</li>
+        </ol><!-- End of Breadcrumb -->
+        <div class="header-content-inner">
+            <h1>Join us</h1>
+            <hr>
+            <h2>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores.</h2>
+            <button href="#joinus" class="btn btn-primary btn-xl page-scroll">JOIN US</button>
+        </div>
+    </div>
+  </header> <!-- ./Stage -->
+
+  <!-- Services Section -->
+  <section id="services">
+    <div class="container">
+        <div class="row text-center extra-spacing-top extra-spacing-bottom joinus-icons">
+            <div class="col-sm-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="service-heading">Advantage</h4>
+                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+            </div>
+            <div class="col-sm-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fa fa-file-text-o fa-stack-1x fa-inverse joinus-icons"></i>
+                </span>
+                <h4 class="service-heading">Advantage</h4>
+                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+            </div>
+            <div class="col-sm-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fa fa-users fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="service-heading">Advantage</h4>
+                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <!--     Registration Form -->
+  <section class="bg-light-gray extra-spacing-top">
+  {{> atForm state='signUp'}}
+  </section>
+    
+  <!--     Registration Form -->
+    <section class="bg-light-gray extra-spacing-top">
+        <div class="container">
+            <form class="extra-spacing-bottom extra-spacing-top">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h3>REGISTER by creating a new account:</h3>
+                        <hr class="light-blue-form">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="firstname" class="form-control" id="firstname" placeholder="First Name*">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="lastname" class="form-control" id="lastname" placeholder="Last Name*">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="email" placeholder="Email Address*">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="institution" class="form-control" id="institution" placeholder="Institution/Company*">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <input type="interests" class="form-control" id="interests" placeholder="Interests reg. Open Strategy*">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class='form-group'>
+                            <input type="position" class="form-control" id="position" placeholder="Position">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group fileUpload btn btn-default btn-block btn-icon btn-file-upload">
+                            <span class="glyphicon glyphicon-upload"></span> Upload a profile photo
+                            <input type="file" class="upload" placeholder="Upload a Picture"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="password" placeholder="Password*">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="confirmpassword" class="form-control" id="confirmpassword" placeholder="Confirm Password*">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 text-left">
+                        <p>*Fields are mandatory.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <button type="register" class="extra-spacing-bottom btn btn-block btn-primary pull-right">REGISTER</button>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h3>OR REGISTER with your social account:</h3>
+                        <hr class="light-blue-form">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-3 col-xs-6">
+                        <a class="btn btn-primary btn-block btn-social btn-google">
+                            <span class="fa fa-google"></span> Google
+                        </a>
+                    </div>
+                    <div class="col-sm-3 col-xs-6">
+                        <a class="btn btn-primary btn-block btn-social btn-facebook">
+                            <span class="fa fa-facebook"></span> Facebook
+                        </a>
+                    </div>
+                    <div class="col-sm-3 col-xs-6">
+                        <a class="btn btn-primary btn-block btn-social btn-twitter">
+                            <span class="fa fa-twitter"></span> Twitter
+                        </a>
+                    </div>
+                    <div class="col-sm-3 col-xs-6">
+                        <a class="btn btn-primary btn-block btn-social btn-linkedin">
+                            <span class="fa fa-linkedin"></span> LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section> <!-- ./Registration Form -->
+</template>

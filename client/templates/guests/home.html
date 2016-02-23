@@ -1,0 +1,65 @@
+<!-- <template name="newsEvents">
+	<div class="container">
+		<h3>Latest News AND Events </h3>
+
+		{{> atForm}}
+
+		<div class="btn-toolbar" role="toolbar" aria-label="...">
+		  <div class="btn-group" role="group" aria-label="...">
+		  	<button type="button" id="js-seeAll" class="btn btn-primary">SEE ALL</button>
+		  	<button type="button" id="js-seeNews" class="btn btn-primary">NEWS</button>
+		  	<button type="button" id="js-seeEvents" class="btn btn-primary">EVENTS</button>
+		  </div>
+		</div>
+
+		<hr>
+
+		{{#each newsEventsData}}
+			<li>{{title}}</li>
+
+			<p>{{shortIt this.description 10}}</p>
+		{{/each}}
+	</div>
+</template> -->
+
+<template name="newsEvents">
+	<!-- Stage -->
+	<header class="home">
+	    <div class="header-home">
+	        <div class="header-home-inner">
+	            <h1>Welcome to the <br>Open Strategy Network.</h1>
+	            <hr>
+	            <h2>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est at vero eos et accusam et justo.</h2>
+	            <button href="#joinus" class="btn btn-primary btn-xl page-scroll">JOIN US</button>
+	        </div>
+	    </div>
+	</header> <!-- ./Stage -->
+
+   <!-- News&Events -->
+    <section id="News">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center extra-spacing-top">
+                    <h3>LATEST NEWS</h3>
+                    <hr class="light-blue">
+                </div>
+            </div>
+            <div class="row text-left">
+            	{{#each newsEventsData}}		
+                <div class="col-sm-4">
+                    <div class="caption">
+                        <h4>{{title}}</h4>
+                        <p class="text-muted"> {{shortIt this.description 250}} <a href="{{pathFor route='newsAndEventsPage'}}" class="textlink">read more </a></p>
+                    </div>
+                </div>
+                {{/each}}
+            </div>                
+
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <a href="{{pathFor route='allNewsEvents'}}" class="btn btn-primary page-scroll extra-spacing-bottom">ALL NEWS &amp; EVENTS</a>
+                </div>
+            </div> 
+        </div>       
+    </section> <!-- ./News&Events -->
+</template>

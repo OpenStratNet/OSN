@@ -1,0 +1,88 @@
+<template name="allNewsEvents">
+	<!-- <div class="container">
+		<div class="row">
+			{{#each newsEventsData}}
+			<li>{{title}}</li>
+			<a href="{{pathFor route='newsAndEventsPage'}}">read more</a>
+
+			<a href ="/news-and-events/{{ _id }}">
+				<img alt="" src="{{ coverImage.url }}" />
+			</a>
+
+			<li><a href="{{ attachment.url }}">{{attachment.original.name}}</a></li>
+
+			<hr>
+			{{/each}}
+
+		</div>
+	</div> -->
+
+	<!-- Stage -->
+  <header>
+    <div class="header-content">
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb text-left">
+            <li><a class="breadcrumb-link" href="{{pathFor route = 'home'}}">Home</a></li>
+            <li class="active">News &amp; Events</li>
+        </ol><!-- End of Breadcrumb -->
+        
+        <div class="header-content-inner">
+            <h1>News &amp; Events</h1>
+            <hr>
+            <h2>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</h2>
+        </div>
+    </div>
+  </header> <!-- ./Stage -->
+
+  <!-- FILTER -->
+  <section id="Filter">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-12">
+                <div class="btn-group btn-group-md extra-spacing-top" role="group">
+                  <a type="button" id="js-seeAllMain" class="btn btn-primary active">SEE ALL</a> 
+                  <a type="button" id="js-seeNewsMain" class="btn btn-primary">NEWS</a> 
+                  <a type="button" id="js-seeEventsMain" class="btn btn-primary">EVENTS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section> <!-- ./FILTER -->
+
+	<!-- News&Events -->
+	<section id="News">
+		<div class="container">
+			<!-- ROW -->
+			<div class="row text-left">
+				{{#each newsEventsData}}
+				<div class="col-sm-4">
+					<div class="caption">
+					{{#if imageExists}}		
+						HASS
+						<h4>{{title}}<img alt="news thumbnail" class="news-thumbnail" src="{{ coverImage.url }}" /></h4>
+					{{else}}
+						AUCH HASS
+						<h4>{{title}}</h4>
+					{{/if}}											
+						<p class="text-muted">{{{description}}} <a href="{{pathFor route = 'newsAndEventsPage'}}" class="textlink">read more </a></p>
+					</div>
+				</div>
+				{{/each}}
+			</div> <!-- ROW -->				
+
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<button href="news.html" class="btn btn-primary page-scroll extra-spacing-bottom">SEE MORE</button>
+				</div>
+			</div>
+		</div>
+	</section> <!-- ./News&Events -->
+</template>
+
+<!-- {{#if imageExists}}
+
+<img alt="news thumbnail" class="news-thumbnail" src="{{#if imageExists}}{{ coverImage.url }}{/if}" />{
+
+{{else}}
+<h4>{{title}}</h4> 
+{/if} -->

@@ -1,0 +1,128 @@
+<template name="bibliographyMembers">
+		<!-- Stage -->
+		<header>
+			<div class="header-bibliography">
+				<!-- Breadcrumb -->
+				<ol class="breadcrumb text-left">
+					<li><a class="breadcrumb-link" href="{{pathFor route = 'home'}}">Home</a></li>
+					<li class="active">Bibliography</li>
+				</ol><!-- End of Breadcrumb -->
+				<div class="header-bibliography-inner">
+					<h1>Bibliography</h1>
+					<hr>
+					<h2>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</h2>
+				</div>
+			</div>
+		</header> <!-- ./Stage -->
+
+		<!-- Search -->
+		<section>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6 col-sm-offset-3 extra-spacing-top">
+						<div class="input-group stylish-input-group">
+							{{> EasySearch.Input index=publicationsIndex attributes=atts }}
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-search"></span>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div> 
+		</section><!-- ./Search -->
+	
+	<!-- Bibliography Table Section -->
+    <section id="services">
+     <div class="container">  
+		{{#EasySearch.IfNoResults index=publicationsIndex}}
+			<h3>No results found!</h3>
+		{{/EasySearch.IfNoResults}}
+
+			{{#EasySearch.IfInputEmpty index=publicationsIndex}}
+
+		<div class="table-responsive">
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th class="year">Year <i id="yearIcon" class="fa fa-sort-desc"></i> </th>
+						<th class="authors">Authors <i id="abcIcon" class="fa fa-sort-alpha-asc"></i></th>
+						<th class="title">Title</th>
+						<th class="outlet">Outlet</th>
+						<th> </th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each publicationData}}
+					<tr>
+						<td class="table-text-bold">{{year}}</td>
+						<td>
+								
+							<ul class="list-unstyled">
+								{{#each authors}}
+								<li>{{this.firstName}} {{this.lastName}}</li>
+								{{/each}}
+							</ul>
+								
+						</td>
+						<td><a class="tbody-link" href="#">{{title}}</a></td>
+						<td><a class="tbody-link" href="#">{{outlet}}</a></td>
+						<td><button type="button" class="button-download btn btn-primary btn-sm"><span class="glyphicon glyphicon-download"></span></button></td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<button href="#" class="btn btn-primary page-scroll extra-spacing-bottom">SEE MORE</button>
+				</div>
+			</div>
+		</div>
+
+			{{else}}
+				{{#if publicationsIndex}}				
+				<div class="table-responsive">
+					<table class="table table-striped table-hover">
+						<thead>
+							<tr>
+								<th class="year">Year <i id="yearIcon" class="fa fa-sort-desc"></i> </th>
+								<th class="authors">Authors <i id="abcIcon" class="fa fa-sort-alpha-asc"></i></th>
+								<th class="title">Title</th>
+								<th class="outlet">Outlet</th>
+								<th> </th>
+							</tr>
+						</thead>
+						<tbody>
+						{{#EasySearch.Each index=publicationsIndex}}	
+							<!-- {{#each publicationData}} -->
+							<tr>
+								<td class="table-text-bold">{{year}}</td>
+								<td>
+										
+									<ul class="list-unstyled">
+										{{#each authors}}
+										<li>{{this.firstName}} {{this.lastName}}</li>
+										{{/each}}
+									</ul>
+										
+								</td>
+								<td><a class="tbody-link" href="#">{{title}}</a></td>
+								<td><a class="tbody-link" href="#">{{outlet}}</a></td>
+								<td><button type="button" class="button-download btn btn-primary btn-sm"><span class="glyphicon glyphicon-download"></span></button></td>
+							</tr>
+							<!-- {{/each}} -->
+						{{/EasySearch.Each}}
+						</tbody>
+					</table>
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<button href="#" class="btn btn-primary page-scroll extra-spacing-bottom">SEE MORE</button>
+						</div>
+					</div>
+				</div>    
+				{{/if}}
+			{{/EasySearch.IfInputEmpty}}
+			
+		{{> EasySearch.LoadMore index=publicationsIndex}}
+		</div>
+	</section> <!-- end row -->
+</template>

@@ -1,65 +1,65 @@
 <template name="adminNewsEvents">
 	<!-- {{> formNewsEvents}} -->
 	<div class="container">
-		<form class="form-horizontal" role="form">
+		<div class="putdown">
+			<form class="form-horizontal" role="form">
 
-	        <div class="form-group">
-	            <label for="title" class="col-sm-2 control-label">Title</label>                        
-	        	<div class="col-sm-10">
-	            	<input type="text" class="form-control" id="title" name="title" placeholder="Enter Title">
-	            </div>
-	        </div>
+		        <div class="form-group">
+		            <label for="title" class="col-sm-2 control-label">Title</label>                        
+		        	<div class="col-sm-10">
+		            	<input type="text" class="form-control" id="title" name="title" placeholder="Enter Title">
+		            </div>
+		        </div>
 
-	        <!-- <div class="form-group">
-	            <label for="description" class="col-sm-2 control-label">Description</label>
-	            <div class="col-sm-10">
-	                <textarea type="message" class="form-control" id="description" name="description" placeholder="Enter Description"></textarea>
-	            </div>
-	        </div> -->
+		        <!-- <div class="form-group">
+		            <label for="description" class="col-sm-2 control-label">Description</label>
+		            <div class="col-sm-10">
+		                <textarea type="message" class="form-control" id="description" name="description" placeholder="Enter Description"></textarea>
+		            </div>
+		        </div> -->
 
-			 <div class="form-group">
-	            <label for="description" class="col-sm-2 control-label">Description</label>
-	            <div class="col-sm-10">
-	            	<div name="description" id="description">
-	            		{{{description}}}
+				 <div class="form-group">
+		            <label for="description" class="col-sm-2 control-label">Description</label>
+		            <div class="col-sm-10">
+		            	<div name="description" id="description">
+		            		{{{description}}}
+		            	</div>
 	            	</div>
-            	</div>
-	        </div>
+		        </div>
+				
+		        <div class="form-group">
+		            <label for="description" class="col-sm-2 control-label">Type</label>
+		            <div class="col-sm-10">
+		                <div class="radio">
+		                  <label><input type="radio" name="netype" value="news">News</label>
+		                </div>
+		                <div class="radio">
+		                  <label><input type="radio" name="netype" value="event">Event</label>
+		                </div>       
+		            </div>
+		        </div>
 			
-	        <div class="form-group">
-	            <label for="description" class="col-sm-2 control-label">Type</label>
-	            <div class="col-sm-10">
-	                <div class="radio">
-	                  <label><input type="radio" name="netype" value="news">News</label>
-	                </div>
-	                <div class="radio">
-	                  <label><input type="radio" name="netype" value="event">Event</label>
-	                </div>       
-	            </div>
-	        </div>
-		
-			 <div class="form-group">
-	            <label for="coverImage" class="col-sm-2 control-label">Image</label>
-	            <div class="col-sm-10">
-                	<input type="file" id="coverImage">
-	            </div>
-	        </div>	
+				 <div class="form-group">
+		            <label for="coverImage" class="col-sm-2 control-label">Image</label>
+		            <div class="col-sm-10">
+	                	<input type="file" id="coverImage">
+		            </div>
+		        </div>	
 
-	         <div class="form-group">
-	            <label for="attachment" class="col-sm-2 control-label">Attachment</label>
-	            <div class="col-sm-10">
-                	<input type="file" id="attachment">
-	            </div>
-	        </div>	
+		         <div class="form-group">
+		            <label for="attachment" class="col-sm-2 control-label">Attachment</label>
+		            <div class="col-sm-10">
+	                	<input type="file" id="attachment">
+		            </div>
+		        </div>	
 
-	        <div class="form-group">
-	            <div class="col-sm-offset-2 col-sm-10">
-	                <button type="submit" id="js-addEntry" class="btn btn-primary">ADD ENTRY</button>
-	            </div>
-	        </div>
-
-	    </form> <!-- end form -->
-
+		        <div class="form-group">
+		            <div class="col-sm-offset-2 col-sm-10">
+		                <button type="submit" id="js-addEntry" class="btn btn-primary">ADD ENTRY</button>
+		            </div>
+		        </div>
+		    </form> <!-- end form -->
+		</div>
 	</div>
 </template>
 

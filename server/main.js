@@ -18,8 +18,8 @@ if (ServiceConfiguration.configurations.find({
   }).count() === 0) {
   ServiceConfiguration.configurations.insert({
     service: 'twitter',
-    consumerKey: 'tD8dqHGHovKH5BVN1V2RRetsn',
-    secret: ' NDo8B1CrAnelbniSqfihjMrCzbVJX42804RBZBpcNH7PxKrfZm',
+    consumerKey: 'tJJweEId9awHlUneBpXmahwNY',
+    secret: 'kzHXK8kWrCK7QSBzoAMMlp9mwTjZAJZLofqDKjD2IYvmjSP3S9',
     loginStyle: 'popup'
   });
 }
@@ -74,7 +74,7 @@ Accounts.onCreateUser(function (options, user) {
   }
 
   if (user.services.linkedin) {
-    user.profile.name = user.services.linked.firstName + ' ' + user.services.linked.lastName;
+    user.profile.name = user.services.linkedin.firstName + ' ' + user.services.linkedin.lastName;
   }
 
   return user;

@@ -1,18 +1,20 @@
 Router.configure({
-     layoutTemplate: 'ApplicationLayout'
+     layoutTemplate: 'ApplicationLayout',
+     yieldTemplates: {
+     	navbar: {to: 'header'}
+     }
  });
 
-// specify the top level route, the page users see when they arrive at the site
-Router.route('/', function() {
- this.render("navbar", {
-     to: "header"
- });
- this.render("newsEvents", {
-     to: "main"
- });
+AccountsTemplates.configure({
+    defaultLayout: 'myLayout',
 });
 
-// admins routes
+Router.route('/', {
+  name: 'home',
+  template: 'newsEvents'
+});
+
+// *** admins routes ***
 
 // admin news
 Router.route('/admin-news-events', {
@@ -46,20 +48,41 @@ Router.route('/admin-publications-list/:_id', {
     }
 });
 
-// members routes
+// *** members routes ***
+
+// bibliography
 Router.route('/bibliography', {
 	name: 'bibliography'
 });
 
-
-// guests routes 
-Router.route('/news-and-events/', {
-	name: 'allNewsEvents'
+Router.route('/bibliography1', {
+    name: 'bibliography1'
 });
 
+// *** guests routes ***
+
+ // all news and events
+Router.route('/news-and-events', {
+  name: 'allNewsEvents'
+});
+
+Router.route('/contact', {
+  name: 'contact'
+});
+
+
+// specific news and events
 Router.route('/news-and-events/:_id', {
 	name: 'newsAndEventsPage',
 	data: function(){
         return NewsEvents.findOne({_id: this.params._id});
     }
+});
+
+
+// ---
+Router.map(function() {
+    this.route('joinUs', {
+        path: '/joinus',
+    });
 });

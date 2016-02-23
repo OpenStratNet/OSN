@@ -21,11 +21,13 @@ insecure                # Allow all DB writes from clients (for prototyping)
 easy:search
 accounts-password
 twbs:bootstrap
-accounts-facebook
+
 service-configuration
 accounts-twitter
+accounts-facebook
 accounts-google
 pauli:accounts-linkedin
+
 iron:router
 kadira:debug
 meteortoys:allthings
@@ -33,7 +35,8 @@ cfs:standard-packages
 cfs:filesystem
 reactive-var
 dburles:collection-helpers
-ian:accounts-ui-bootstrap-3
 fortawesome:fontawesome
 useraccounts:bootstrap
 summernote:summernote
+less
+aldeed:template-extension
