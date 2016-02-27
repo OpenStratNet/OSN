@@ -3,7 +3,8 @@ Tracker.autorun(function () {
 });
 
 Template.adminPublications.onCreated(function() {
-  Session.set('inputs', []); // on page load, no inputs
+  Session.set('inputsAuthors', []); // on page load, no inputs
+  Session.set('inputsEditors', []); // on page load, no inputs
   Session.setDefault("outletChoice","");
 });
 
@@ -40,10 +41,17 @@ Template.adminPublications.helpers({
 			return true;
 		};
 	},
-	inputs: function () {
-    return Session.get('inputs');
+	bcSelected: function () {
+		if (Session.get("outletChoice") === "bc") {
+			return true;
+		};
+	},
+	inputsAuthors: function () {
+    return Session.get('inputsAuthors');
+  },
+  inputsEditors: function () {
+    return Session.get('inputsEditors');
   }
-
 });
 
 Template.adminPublications.events({
@@ -55,40 +63,55 @@ Template.adminPublications.events({
 			Session.set("outletChoice", "pp");
 		} else if ($('input[name=outlet-type]:checked').val() === "bk") {
 			Session.set("outletChoice", "bk");
-		} else {
+		} else if ($('input[name=outlet-type]:checked').val() === "bc") {
 			Session.set("outletChoice", "bc");
 		}		
 	},
-	'click #add-input': function () {
-    var inputs = Session.get('inputs');
+	'click #js-addAuthors': function () {
+    var inputsAuthors = Session.get('inputsAuthors');
     var uniqid = Math.floor(Math.random() * 100000); // Give a unique ID so you can pull _this_ input when you click remove
-    inputs.push({uniqid: uniqid, value: ""});
-    Session.set('inputs', inputs);
-  	},
+    inputsAuthors.push({uniqid: uniqid, value: ""});
+    Session.set('inputsAuthors', inputsAuthors);
+	},
+	'click #js-addEditors': function () {
+    var inputsEditors = Session.get('inputsEditors');
+    var uniqid = Math.ceil(Math.random() * 100000); // Give a unique ID so you can pull _this_ input when you click remove
+    inputsEditors.push({uniqid: uniqid, value: ""});
+    Session.set('inputsEditors', inputsEditors);
+	},
 	'submit form': function (evt, temp) {
 		evt.preventDefault();
 		var newAuthors = [];
-		inputs = Session.get('inputs');
-		_.each(inputs, function(input) { 
+		inputsAuthors = Session.get('inputsAuthors');
+		_.each(inputsAuthors, function(input) { 
 		  newAuthors.push($('#' + input.uniqid).val());
+		});
+
+		var newEditors = [];
+		inputsEditors = Session.get('inputsEditors');
+		_.each(inputsEditors, function(input) { 
+		  newEditors.push($('#' + input.uniqid).val());
 		});
 
 		// add the first (i.e, default) author to the array
 		newAuthors.unshift($('#firstAuthor').val()); 
+		newEditors.unshift($('#firstEditor').val()); 
 
 		Publications.insert({
 			title: $('#title').val(),
 			//authors: [$('#authors').val()],
 			authors: newAuthors,
+			editors: newEditors,
 			year: $('#year').val(),
 			type: $('input[name=outlet-type]:checked').val(),
 			abstract: $('#abstract').summernote('code'),
 
 			// Published Paper (pp)
 			journal: $('#journal').val(),
+			// Published Paper (pp) or Book Chapter (bc)
 			pages: $('#pages').val(),
 
-			// Book (bk)
+			// Book (bk) or Book Chapter (bc)
 			publisher: $('#publisher').val(),
 			location: $('#location').val(),
 

@@ -1,0 +1,7 @@
+<template name="members">
+  {{#unless currentUser}}
+    {{> membersGuests }}
+  {{else}}
+    {{> membersMembers}}
+  {{/unless}}
+</template>

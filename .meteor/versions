@@ -4,6 +4,7 @@ accounts-google@1.0.6
 accounts-oauth@1.1.8
 accounts-password@1.1.4
 accounts-twitter@1.0.6
+alanning:roles@1.2.14
 aldeed:template-extension@4.0.0
 autopublish@1.0.4
 autoupdate@1.2.4
@@ -155,3 +156,4 @@ useraccounts:bootstrap@1.13.1
 useraccounts:core@1.13.1
 webapp@1.2.3
 webapp-hashing@1.0.5
+zimme:active-route@2.3.2

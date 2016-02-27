@@ -67,5 +67,9 @@ Template.bibliographyMembers.events({
       Session.set("abcSorter", 1);
       Session.set("yearSorter", false);
     }
+  },
+  'click .js-editPub': function (evt, temp) {
+    evt.preventDefault();
+    Router.go('/admin-publications-edit/', {_id: this._id});
   }
 });

@@ -1,0 +1,39 @@
+<template name="bibliographyPage">
+	<!-- Breadcrumb Profile-Settings -->
+	<ol class="breadcrumb-content text-left">
+		<li><a class="breadcrumb-link" href="{{pathFor route = 'home'}}">Home</a></li>
+		<li><a class="breadcrumb-link" href="{{pathFor route = 'bibliography'}}">Bibliography</a></li>
+		<li class="active">Abstract Title</li>
+	</ol><!-- End of Breadcrumb -->
+
+
+	<!-- Abstract -->
+	<section id="services">
+		<div class="container">
+			<div class="row">
+					<!-- Back-Button 1 -->
+					<div class="col-sm-2 col-sm-offset-1 col-xs-12">
+							<button type="button" class="btn btn-primary btn-icon js-back">
+									<span class="glyphicon glyphicon-circle-arrow-left"></span> BACK
+							</button>
+					</div>
+					<!-- Abstract -->
+					<div class="col-sm-8 col-xs-12">
+							<h3 class="text-left">Citation</h3>
+							<p class="text-muted extra-spacing-bottom"> {{#each authors}} {{this.firstName}} {{this.lastName}}. {{/each}} {{title}}. {{year}}.</p>
+							<h3 class="text-left">Abstract</h3>
+							<p class="extra-spacing-bottom">{{abstract}}</p>
+							<button type="button" class="btn btn-primary btn-icon">
+											<span class="glyphicon glyphicon-download"></span> DOWNLOAD
+							</button>
+					</div> <!-- ./Abstract -->
+					<!-- Back-Button 2 -->
+					<div class="col-sm-2 col-sm-offset-1 col-xs-12">
+							<button type="button" class="btn btn-primary btn-icon js-back">
+									<span class="glyphicon glyphicon-circle-arrow-left"></span> BACK
+							</button>
+					</div>
+			</div>
+		</div>
+	</section> <!-- ./Abstract -->
+</template>

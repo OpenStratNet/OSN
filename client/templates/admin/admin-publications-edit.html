@@ -1,0 +1,122 @@
+<template name="adminPublicationsEdit">
+  <div class="container">
+    <div class="putdown">
+      {{#with pubEntry}}
+      <form class="form-horizontal" id="addPub" role="form">
+        <div class="form-group">
+            <label for="title" class="col-sm-2 control-label">Title</label>
+          <div class="col-sm-10">
+              <input type="text" class="form-control" id="title" name="title" value="{{title}}" placeholder="Enter Title">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="year" class="col-sm-2 control-label">Year</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="year" name="year" value="{{year}}" placeholder="Enter Year of Publication">
+            </div>
+        </div>
+
+       <div class="form-group">
+          <label for="abstract" class="col-sm-2 control-label">Abstract</label>
+          <div class="col-sm-10">
+          <div name="abstract" id="abstract">
+            {{{abstract}}}
+          </div>
+          </div>
+      </div>
+
+            <div class="form-group js-radios">
+                <label for="Outlet" class="col-sm-2 control-label">Outlet</label>
+                <div class="col-sm-10">
+                    <label class="radio-inline"><input type="radio" name="outlet-type" id="wp" value="wp">Working Paper</label>
+                    <label class="radio-inline"><input type="radio" name="outlet-type" id="pp" value="pp">Published Paper</label>
+                    <label class="radio-inline"><input type="radio" name="outlet-type" id="bk" value="bk">Book</label>
+                    <label class="radio-inline"><input type="radio" name="outlet-type" id="bc" value="bc">Book Chapter</label>
+                </div>
+            </div>
+          
+              {{#if ppSelected}}  
+               <div class="form-group">
+                  <label for="journal" class="col-sm-2 control-label">Journal</label>
+                  <div class="col-sm-10">
+                      <input type="text" class="form-control" id="journal" name="journal" placeholder="Enter Name of Journal">
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label for="pages" class="col-sm-2 control-label">Pages</label>
+                  <div class="col-sm-10">
+                      <input type="text" class="form-control" id="pages" name="pages" placeholder="Enter Pages">
+                  </div>
+              </div>
+              {{/if}}
+
+            {{#if bkSelected}}  
+             <div class="form-group">
+                <label for="publisher" class="col-sm-2 control-label">Publisher</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="publisher" name="publisher" placeholder="Enter Publisher">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="location" class="col-sm-2 control-label">Location of Publisher</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="location" name="location" placeholder="Enter Location of Publisher">
+                </div>
+            </div>
+            {{/if}}
+
+            {{#if bcSelected}}  
+             <div class="form-group">
+              <label for="publisher" class="col-sm-2 control-label">Publisher</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="publisher" name="publisher" placeholder="Enter Publisher">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="location" class="col-sm-2 control-label">Location of Publisher</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="location" name="location" placeholder="Enter Location of Publisher">
+              </div>
+            </div>
+
+            <div class="input-group">
+               <div class="form-group">
+                  <label for="editors" class="col-sm-2 control-label">Editor(s)</label>
+                  <div class="col-sm-10">
+                      <input type="text" class="form-control" name="editors" id="firstEditor"  placeholder="Enter Book Editor(s)">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" id="js-addEditors" type="button">ADD EDITORS</button>
+                      </span>
+                  </div>
+                </div>
+            </div>
+
+            {{#each inputsEditors}}
+              {{> editorsInput}}
+            {{/each}}
+
+            <div class="form-group">
+              <label for="pages" class="col-sm-2 control-label">Pages</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="pages" name="pages" value="{{pages}}">
+              </div>
+            </div>
+            {{/if}}
+
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" id="js-addEntry" class="btn btn-primary">UPDATE ENTRY</button>
+              </div>
+            </div>
+
+            </form> <!-- end form -->
+
+      </form>
+      {{/with}}
+    </div> <!-- putdown -->
+  </div> <!-- container -->
+</template>

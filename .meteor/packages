@@ -40,3 +40,5 @@ useraccounts:bootstrap
 summernote:summernote
 less
 aldeed:template-extension
+zimme:active-route
+alanning:roles

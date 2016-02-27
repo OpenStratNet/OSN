@@ -1,6 +1,6 @@
 Template.adminPublicationsList.helpers({
-  newsEventsData: function () {
-    return NewsEvents.find();
+  publicationsData: function () {
+    return Publications.find();
   }
   // images: function () {
   //   return Images.find(); // Where Images is an FS.Collection instance
