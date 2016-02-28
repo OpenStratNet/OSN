@@ -79,17 +79,29 @@ Meteor.startup(function () {
     if (NewsEvents.find().count() === 0) {
     	var protoNE = 
     	[{
-		    "title": "MongoDB: The Definitive Guide",
-		    "description": "Journal  Strategic Management How does MongoDB help you... let's test it and see of Informsation Systems",
-		    "type": "news",
+		    "title": "EGOS 2015 reminder: Open Organizations for an Open Society?",
+		    "description": "Open Organizations for an Open Society? Practicing Openness in Innovation, Strategy and Beyond; Convenors: Leonhard Dobusch, Freie Universität Berlin, Georg von Krogh, ETH Zurich, Switzerland, Richard Whittington, Oxford University, Link to website: : http://bit.ly/EGOS15Open",
+		    "type": "event",
 		    "createdAt": new Date ()   	
 			},
 			{
-		    "title": "Bricolage revisted",
-		    "description": "Journal of dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut Management",
-		    "type": "event",
+		    "title": "A Dummy News",
+		    "description": "Lorem ipsum dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut Management",
+		    "type": "news",
 		   	"createdAt": new Date ()
-	   }]
+	   },
+     {
+        "title": "A Dummy News",
+        "description": "Lorem ipsum dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut Management",
+        "type": "news",
+        "createdAt": new Date ()
+     },
+     {
+        "title": "A Dummy Event",
+        "description": "Lorem ipsum dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut Management",
+        "type": "event",
+        "createdAt": new Date ()
+     }]
 
     	_.each(protoNE, function(doc) {
     	  NewsEvents.insert(doc);

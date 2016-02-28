@@ -19,7 +19,11 @@
 							</div>
 							<!-- Info -->
 							<div class="col-sm-8 col-xs-12">
+									{{#if imageExists}}		
+									<h3 class="text-left extra-spacing-bottom">{{title}}<img alt="news thumbnail" class="news-thumbnail" src="{{ coverImage.url }}" /></h3>
+									{{else}}
 									<h3 class="text-left extra-spacing-bottom">{{title}}</h3>
+									{{/if}}
 									<div class="extra-spacing-bottom">{{{description}}} </div> 
 									<div class="btn btn-primary btn-icon">        
 													<span class="glyphicon glyphicon-download"></span> ATTACHMENT
