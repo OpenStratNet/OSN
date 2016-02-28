@@ -19,5 +19,9 @@ Template.newsEvents.events({
 	'click #js-seeEvents': function (evt, tpl) {
 		//Session.set('newsEventsView', 'type: "event"');
 		Session.set('newsEventsView', ['event']);
-	}
+	},
+  'click .js-join': function (evt, tpl) {
+    evt.preventDefault();
+    Router.go('/joinUs');
+  }
 });

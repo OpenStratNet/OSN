@@ -32,42 +32,29 @@
 										<li class="{{isActiveRoute name='contact'}}">
 												<a href="{{pathFor route='contact'}}">Contact</a>
 										</li>
-										<!-- <form class="navbar-form navbar-right" role="register">
+
+                    {{#unless currentUser}}
+										<form class="navbar-form navbar-right" role="register">
 												<button type="button" class="btn btn-primary btn-login">LOG IN</button>
-										</form> -->
-
-                                        <li class="dropdown">
-                                            <button type="button" href="#" class="dropdown-toggle btn-profile" data-toggle="dropdown">
-                                                <span class="glyphicon glyphicon-user"></span>PROFILE <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li>
-                                                    <p class="profile-username">Max Mustermann</p>
-                                                </li>
-                                                <li >
-                                                    <a class="profile-links" href="#"><i class="fa fa-cog"></i>&nbsp; Settings</a>
-                                                </li>
-                                                <li>
-                                                    <a class="profile-links" href="#" data-action="logout"><i class="fa fa-sign-out"></i>&nbsp; Log out</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-
-
-                                        <!-- <form class="navbar-form navbar-right" role="button">
-                                            <div class="dropdown">
-                                                <button class="btn btn-primary btn-profile dropdown-toggle" data-toggle="dropdown" role="button" id="dropdownMenu1" aria-haspopup="true" aria-expanded="false">PROFILE
-                                                    <span class="glyphicon glyphicon-user"></span><span class="caret"></span></a>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="#">Action</a></li>
-                                                    <li><a href="#">Another action</a></li>
-                                                    <li><a href="#">Something else here</a></li>
-                                                    <li role="separator" class="divider"></li>
-                                                    <li><a href="#">Separated link</a></li>
-                                                </ul>
-                                            </div>
-                                        </form> -->
+										</form>
+                    {{else}}
+                    <li class="dropdown">
+                      <button type="button" href="#" class="dropdown-toggle btn-profile" data-toggle="dropdown">
+                          <span class="glyphicon glyphicon-user"></span>PROFILE <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                          <li>
+                              <p class="profile-username">Hello {{currentUser.profile.firstName}}</p>
+                          </li>
+                          <li >
+                              <a class="profile-links" href="{{pathFor route = 'profileSettings'}}"><i class="fa fa-cog"></i>&nbsp; Settings</a>
+                          </li>
+                          <li>
+                              <a class="profile-links js-logOut" data-action="logout"><i class="fa fa-sign-out"></i>&nbsp; Log out</a>
+                          </li>
+                      </ul>
+                    </li>
+                    {{/unless}}
 								</ul>
 						</div> <!-- /.navbar-collapse -->
 				</div> <!-- /.container-fluid -->
