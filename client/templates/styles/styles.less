@@ -134,6 +134,12 @@ a.breadcrumb-link:link {
 		color: @brand-primary-light;
 }
 
+@media (max-width: 768px) {
+    .breadcrumb {
+        margin-top: -22px;
+    }
+}
+
 // Breadcrumb ohne Header
 
 .breadcrumb-content {
@@ -154,7 +160,12 @@ a.breadcrumb-link:link {
 		}
 }
 
+@media (max-width: 768px) {
+    .breadcrumb-content {
+        margin-top: 55px;
+    }
 
+}
 
 // Fonts
 
@@ -432,6 +443,9 @@ aside {
         }
 }
 
+.navbar {
+    border-bottom: 2px solid #e6e6e6;
+}
 
 .navbar-default .navbar-toggle {
     border-color: transparent;
