@@ -1,24 +1,23 @@
 <template name="profileSettings">
-	<!-- Breadcrumb Profile-Settings -->
-			<ol class="breadcrumb-content text-left">
-					<li><a class="breadcrumb-link" href="{{pathFor route = "home"}}">Home</a></li>
-					<li class="active">Profile Settings</li>
-			</ol><!-- End of Breadcrumb -->
+    <!-- Stage -->
+    <header>
+        <div class="header-content">
+            <!-- Breadcrumb -->
+            <ol class="breadcrumb text-left">
+                <li><a class="breadcrumb-link" href="{{pathFor route = 'home'}}">Home</a></li>
+                <li class="active">Members</li>
+            </ol><!-- End of Breadcrumb -->
+            <div class="header-content-inner">
+              <h1>PROFILE SETTINGS</h1>
+              <hr>
+              <h2>Change your basic account settings.<br>*Please fill out the required fields.</h2>
+            </div>
+        </div>
+  </header> <!-- ./Stage -->
 
 	<!-- Basics -->
 	<section id="Settings">
 			<div class="container">
-					<div class="row">
-						<div class="col-lg-12 text-center">
-								<h1>PROFILE SETTINGS</h1>
-								<hr>
-						</div>
-						<div class="col-lg-12 text-center">
-								<h3>BASICS</h3>
-								<p class="text-muted">Change your basic account settings. *Please fill out the required fields.</p>   
-						</div>
-					</div>
-					
 					{{#with userData}}
 					<form>
 						<div class="row">
@@ -45,7 +44,7 @@
 												<input type="email" class="form-control" value="{{emails.[0].address}}" id="email" placeholder="Email">
 										</div>
 								</div>
-						</div>    
+						</div>
 
 						<div class="row">
 								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
@@ -80,7 +79,7 @@
 										<div class="form-group">
 												<label for="beispielFeldDatei">Profile Photo</label>
 										</div>
-										<div class="form-group fileUpload btn btn-default btn-block btn-icon btn-file-upload">        
+										<div class="form-group fileUpload btn btn-default btn-block btn-icon btn-file-upload">
 												<span class="glyphicon glyphicon-upload"></span> Upload a profile photo
 												<input type="file" class="upload" placeholder="Upload a Picture"/>
 										</div>
@@ -108,12 +107,12 @@
 					<div class="row">
 							<div class="col-lg-12 text-center">
 									<h3>SECURITY</h3>
-									<p class="text-muted">Change your password or recover your current one.</p>   
+									<p class="text-muted">Change your password or recover your current one.</p>
 							</div>
 					</div>
 
 					<form>
-					
+
 						<div class="row">
 								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
 										<div class="form-group">
@@ -155,7 +154,7 @@
 												<button type="submit" class="btn btn-primary extra-spacing-bottom">SAVE CHANGES</button>
 										</div>
 								</div>
-						</div>		
+						</div>
 
 					</form>
 			</div>
