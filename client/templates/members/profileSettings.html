@@ -1,0 +1,164 @@
+<template name="profileSettings">
+	<!-- Breadcrumb Profile-Settings -->
+			<ol class="breadcrumb-content text-left">
+					<li><a class="breadcrumb-link" href="{{pathFor route = "home"}}">Home</a></li>
+					<li class="active">Profile Settings</li>
+			</ol><!-- End of Breadcrumb -->
+
+	<!-- Basics -->
+	<section id="Settings">
+			<div class="container">
+					<div class="row">
+						<div class="col-lg-12 text-center">
+								<h1>PROFILE SETTINGS</h1>
+								<hr>
+						</div>
+						<div class="col-lg-12 text-center">
+								<h3>BASICS</h3>
+								<p class="text-muted">Change your basic account settings. *Please fill out the required fields.</p>   
+						</div>
+					</div>
+					
+					{{#with userData}}
+					<form>
+						<div class="row">
+								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+										<div class="form-group">
+												<label for="membername">Member Name*</label>
+												<input type="firstname" class="form-control" id="firstname" value="{{profile.firstName}}" placeholder="First Name">
+										</div>
+								</div>
+						</div>
+
+						<div class="row">
+								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+										<div class="form-group">
+												<input type="lastname" class="form-control" value="{{profile.lastName}}" id="lastname" placeholder="Last Name">
+										</div>
+								</div>
+						</div>
+
+						<div class="row">
+								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+										<div class="form-group">
+												<label for="email">Email*</label>
+												<input type="email" class="form-control" value="{{emails.[0].address}}" id="email" placeholder="Email">
+										</div>
+								</div>
+						</div>    
+
+						<div class="row">
+								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+										<div class="form-group">
+												<label for="institution">Institution/Company*</label>
+												<input type="institution" class="form-control" value="{{profile.institution}}" id="institution" placeholder="Institution or Company">
+										</div>
+								</div>
+						</div>
+
+						<div class="row">
+								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+										<div class="form-group">
+												<label for="interests">Interests reg. Open Strategy* <span class="badge grey-tooltip" data-toggle="tooltip" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa." data-placement="bottom" href="#">?</span></label>
+												<input type="interests" class="form-control" value="{{profile.interests}}" id="interests" placeholder="Interests reg. Open Strategy">
+										</div>
+								</div>
+						</div>
+
+
+						<div class="row">
+								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+										<div class="form-group">
+												<label for="position">Position</label>
+												<input type="position" value="{{profile.position}}" class="form-control" id="position" placeholder="Position">
+									</div>
+								</div>
+						</div>
+
+						<div class="row">
+								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+										<div class="form-group">
+												<label for="beispielFeldDatei">Profile Photo</label>
+										</div>
+										<div class="form-group fileUpload btn btn-default btn-block btn-icon btn-file-upload">        
+												<span class="glyphicon glyphicon-upload"></span> Upload a profile photo
+												<input type="file" class="upload" placeholder="Upload a Picture"/>
+										</div>
+								</div>
+						</div>
+
+						<div class="row">
+								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+										<div class="form-group">
+												<button type="submit" class="btn btn-primary">SAVE CHANGES</button>
+										</div>
+								</div>
+						</div>
+					</form>
+					{{/with}}
+			</div>
+	</section> <!-- ./Basics -->
+
+
+
+	{{#if currentUser.services.password}}
+	<!-- Security -->
+	<section id="Settings">
+			<div class="container">
+					<div class="row">
+							<div class="col-lg-12 text-center">
+									<h3>SECURITY</h3>
+									<p class="text-muted">Change your password or recover your current one.</p>   
+							</div>
+					</div>
+
+					<form>
+					
+						<div class="row">
+								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+										<div class="form-group">
+												<label for="current-password">Current Password*</label>
+												<input type="current-password" class="form-control" id="current-password" placeholder="Current Password">
+										</div>
+								</div>
+						</div>
+
+						<div class="row">
+								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+										<div class="form-group">
+												<a href="#">Forgot your Password?</a>
+										</div>
+								</div>
+						</div>
+
+						<div class="row">
+								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+										<div class="form-group">
+												<label for="new-password">New Password*</label>
+												<input type="new-password" class="form-control" id="new-password" placeholder="New Password">
+										</div>
+								</div>
+						</div>
+
+						<div class="row">
+								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+										<div class="form-group">
+												<label for="confirm-password">Confirm new Password*</label>
+												<input type="confirm-password" class="form-control" id="confirm-password" placeholder="Confirm new Password">
+										</div>
+								</div>
+						</div>
+
+						<div class="row">
+								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+										<div class="form-group">
+												<button type="submit" class="btn btn-primary extra-spacing-bottom">SAVE CHANGES</button>
+										</div>
+								</div>
+						</div>		
+
+					</form>
+			</div>
+	</section> <!-- ./Security -->
+	{{/if}}
+</template>

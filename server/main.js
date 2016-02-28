@@ -68,9 +68,16 @@ Accounts.onCreateUser(function (options, user) {
   //pass over api-service-values to the profile
 
   if (user.services.facebook) {
-    user.profile.first_name = user.services.facebook.first_name;
-    user.profile.last_name = user.services.facebook.last_name;
+    user.profile.firstName = user.services.facebook.first_name;
+    user.profile.lastName = user.services.facebook.last_name;
     user.profile.gender = user.services.facebook.gender;
+  }
+
+  if (user.services.google) {
+    // user.profile.firstName = user.services.google.given_name;
+    // user.profile.lastName = user.services.google.family_name;
+    // user.profile.gender = user.services.facebook.gender;
+    console.log("google");
   }
 
   if (user.services.linkedin) {

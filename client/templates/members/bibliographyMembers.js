@@ -1,5 +1,6 @@
 Session.setDefault("yearSorter", -1);
 Session.setDefault("abcSorter", false);
+Session.setDefault('bibSeeMore', "no");
 
 // Tracker.autorun(function () {
 //           console.log("The abcSorter is: " +
@@ -22,13 +23,17 @@ Template.bibliographyMembers.helpers({
   },
   publicationData: function () {
     if (Session.get("yearSorter")) {
-      return Publications.find({}, {
-      sort: {year: Session.get("yearSorter")}
-    }).fetch();
+      if (Session.equals("bibSeeMore", "no")) {
+        return Publications.find({}, {sort: {year: Session.get("yearSorter")}, limit: 2}).fetch();
+      } else {
+        return Publications.find({}, {sort: {year: Session.get("yearSorter")}}).fetch();
+      }     
     } else {
-      return Publications.find({}, {
-      sort: {"authors.0.lastName": Session.get("abcSorter")}
-    }).fetch();
+      if (Session.equals("bibSeeMore", "no")) {
+        return Publications.find({}, {sort: {"authors.0.lastName": Session.get("abcSorter")}, limit: 2}).fetch();
+      } else {
+        return Publications.find({}, {sort: {"authors.0.lastName": Session.get("abcSorter")}}).fetch();
+      }
     }
   }
 });
@@ -71,5 +76,9 @@ Template.bibliographyMembers.events({
   'click .js-editPub': function (evt, temp) {
     evt.preventDefault();
     Router.go('/admin-publications-edit/', {_id: this._id});
+  },
+  'click .js-seeMoreBib': function (evt, tpl) {
+    evt.preventDefault();
+    Session.set("bibSeeMore", "yes");
   }
 });

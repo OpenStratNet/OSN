@@ -68,6 +68,10 @@ Router.route('/members', {
   name: 'members'
 });
 
+Router.route('/profile-settings', {
+  name: 'profileSettings'
+});
+
 // *** GUESTS ROUTES ***
 
  // all news and events

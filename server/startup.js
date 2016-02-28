@@ -1,32 +1,73 @@
 Meteor.startup(function () {
     // code to run on server at startup
     if (Publications.find().count() === 0) {
-    	var protopubs = [{
-	    	"authors": [{
-		        "lastName": "Chodorow",
-		        "firstName": "Kristina"
-		    }, {
-		        "lastName": "Dirolf",
-		        "firstName": "Michael"
-		    	}],
-		    "title": "MongoDB: The Definitive Guide",
-		    "outlet": "Journal of Informsation Systems",
-		    "year": "1998",
-		   	"abstract": "How does MongoDB help you... let's test it and see"
-			},
-			{
-			"authors": [{
-		        "lastName": "Seidl",
-		        "firstName": "Dada"
-		    }, {
-		        "lastName": "Rahbaran",
-		        "firstName": "Amir"
-		    }],
-		    "title": "Bricolage revisted",
-		    "outlet": "Journal of Strategic Management",
-		    "year": "2017",
-		   	"abstract": "dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni"
-	   }]
+    	var protopubs = [
+        {
+  	    	"authors": [{
+  		        "lastName": "Chesbrough",
+  		        "firstName": "Henry W."
+  		    }, {
+  		        "lastName": "Appleyard",
+  		        "firstName": "Melissa M."
+  		    	}],
+  		    "title": "Open innovation and strategy",
+  		    "outlet": "California management review, 50 (1)",
+  		    "year": "2007",
+  		   	"abstract": "No Abstract ...",
+          "type": "pp"
+  			},
+  			{
+  			"authors": [{
+  		        "lastName": "Whittington",
+  		        "firstName": "Richard"
+  		    }, {
+  		        "lastName": "Cailluet",
+  		        "firstName": "Ludovic "
+  		    }, {
+              "lastName": "Douglas",
+              "firstName": "Basak Yakis "
+          }],
+  		    "title": "Opening strategy: Evolution of a precarious profession",
+  		    "outlet": "British Journal of Management, 22 (3)",
+  		    "year": "2011",
+  		   	"abstract": "No Abstract ...",
+          "type": "pp"
+  	   },
+       {
+       "authors": [{
+              "lastName": "Stieger",
+              "firstName": "D."
+          }, {
+              "lastName": "Matzler",
+              "firstName": "K."
+          }, {
+              "lastName": "Chatterjee",
+              "firstName": "S."
+          }, {
+              "lastName": "Ladstaetter-Fussenegger",
+              "firstName": "F."
+          }],
+          "title": "Democratizing Strategy",
+          "outlet": "California Management Review, 54 (4)",
+          "year": "2012",
+          "abstract": "No Abstract ...",
+          "type": "pp"
+       },
+       {
+       "authors": [{
+              "lastName": "Dobusch",
+              "firstName": "Leonhard"
+          }, {
+              "lastName": "Kapeller",
+              "firstName": "Jakob"
+          }],
+          "title": "Open Strategy between Crowd and Community: Lessons from Wikimedia and Creative Commons",
+          "outlet": "Working Paper",
+          "year": "2013",
+          "abstract": "No Abstract ...",
+          "type": "wp"
+       }
+     ]
 
     	_.each(protopubs, function(doc) {
     	  Publications.insert(doc);
