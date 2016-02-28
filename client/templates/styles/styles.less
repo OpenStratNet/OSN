@@ -119,23 +119,20 @@ hr.layer-light {
 		padding-left: 0;
 }
 
-
-
 .breadcrumb>.active {
 		color: rgba(255,255,255,.8);
 		text-shadow: 0 0 4px #000;
 }
 
-
 a.breadcrumb-link {
 		font-size: 13px;
 		color: @brand-primary-light;
 }
+
 a.breadcrumb-link:link {
 		font-size: 13px;
 		color: @brand-primary-light;
 }
-
 
 // Breadcrumb ohne Header
 
@@ -585,6 +582,9 @@ p.profile-username {
 	 margin-right: 0.313em;
 }
 
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    background-color: transparent;
+}
 
 // Header Home
 
@@ -1305,10 +1305,13 @@ section.layer-login {
 
 .joinus-icons .fa-stack-1x{
 		font-size: 42px;
+        margin-top: 34px;
 }
 
-.fa-stack.fa-4x {
-		margin-bottom: 11px;
+
+.fa-stack {
+    font-size: 110px;
+    height: 12rem;
 }
 
 .fileUpload {

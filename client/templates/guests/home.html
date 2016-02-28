@@ -29,8 +29,8 @@
 	        <div class="header-home-inner">
 	            <h1>Welcome to the <br>Open Strategy Network.</h1>
 	            <hr>
-	            <h2>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est at vero eos et accusam et justo.</h2>
-	            <button href="#joinus" class="btn btn-primary btn-xl page-scroll">JOIN US</button>
+	            <h2>OSN is an international network of scholars interested in studying open strategy, i.e. more inclusive and participatory forms of strategizing. Coordinated by the University of Zurich, Saïd Business School and the University of Innsbruck, OSN investigates new forms of strategizing such as blogging, jamming and crowd-sourcing. Join the network and contribute to the OSN development!</h2>
+	            <button type="button" href="joinus.html" class="btn btn-primary btn-xl page-scroll">JOIN US</button>
 	        </div>
 	    </div>
 	</header> <!-- ./Stage -->
@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="row text-left">
-            	{{#each newsEventsData}}		
+            	{{#each newsEventsData}}
                 <div class="col-sm-4">
                     <div class="caption">
                         <h4>{{title}}</h4>
@@ -53,13 +53,13 @@
                     </div>
                 </div>
                 {{/each}}
-            </div>                
+            </div>
 
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <a href="{{pathFor route='allNewsEvents'}}" class="btn btn-primary page-scroll extra-spacing-bottom">ALL NEWS &amp; EVENTS</a>
                 </div>
-            </div> 
-        </div>       
+            </div>
+        </div>
     </section> <!-- ./News&Events -->
 </template>
