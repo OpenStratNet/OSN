@@ -112,9 +112,9 @@ hr.layer-light {
 // Breadcrumb-Header
 
 .breadcrumb {
-		margin-top: -33px;
-		margin-bottom: 0;
-		font-size: 13px;
+		margin-top: -30px;
+		margin-bottom: -3px;
+		font-size: 12px;
 		background: none;
 		padding-left: 0;
 }
@@ -125,22 +125,23 @@ hr.layer-light {
 }
 
 a.breadcrumb-link {
-		font-size: 13px;
+		font-size: 12px;
 		color: @brand-primary-light;
 }
 
 a.breadcrumb-link:link {
-		font-size: 13px;
+		font-size: 12px;
 		color: @brand-primary-light;
 }
 
 // Breadcrumb ohne Header
 
 .breadcrumb-content {
-		margin-top: 56px;
+		margin-top: 60px;
 		margin-bottom: 0;
-		font-size: 13px;
-		background: @gray-lighter;
+		font-size: 12px;
+		// background: @gray-lighter;
+        border-top: 1px @brand-primary;
 		padding: 8px 15px;
 		list-style: none;
 }
@@ -159,16 +160,16 @@ a.breadcrumb-link:link {
 
 h1 {
 		font-weight: 300;
-		font-size: 34px;
+		font-size: 32px;
 		line-height: 140%;
 		text-align: center;
 		margin-bottom: 0px;
-		margin-top: 0px;
+		padding-top: 20px;
 }
 
 h2{
 		font-weight: 400;
-		font-size: 18px;
+		font-size: 17px;
 		color: rgba(255,255,255,.8);
 		line-height: 140%;
 		text-align: center;
@@ -589,7 +590,7 @@ p.profile-username {
 // Header Home
 
 header.home {
-		background-image: url('../img/header_01.jpg');
+		background-image: url('img/header_01.jpg');
 		background-attachment: scroll;
 		background-position: center center;
 		.background-cover;
@@ -632,7 +633,7 @@ header .header-home .header-home-inner p {
 		header .header-home .header-home-inner {
 				margin-right: auto;
 				margin-left: auto;
-				max-width: 700px;
+				max-width: 840px;
 		}
 
 		header .header-home .header-home-inner p {
@@ -642,17 +643,17 @@ header .header-home .header-home-inner p {
 		}
 }
 
-@media (max-width: 769px) {
+@media (max-width: 720px) {
 	header.home {
-		height: 400px;
+		height: 410px;
 
 		h1{
-				font-size: 26px;
-                text-shadow: 0 0 4px #000;
+				font-size: 24px;
+                padding-top: 0px;
 		}
 		h2{
 				font-size: 16px;
-                text-shadow: 0 0 4px #000;
+                padding: 0 10px 0 10px;
 		}
 
 		.header-home {
@@ -665,22 +666,44 @@ header .header-home .header-home-inner p {
 }
 
 
-@media (max-width: 390px) {
+@media (max-width: 460px) {
 	header.home {
-		height: 420px;
+		height: 400px;
 
 		h1{
-				font-size: 23px;
+				font-size: 20px;
+                padding-top: 20px;
 		}
 		h2{
 				font-size: 15px;
 		}
 
 		.header-home {
+				padding: 50px 15px;
+		}
+		.header-home .header-home-inner hr {
+				margin: 15px auto;
+		}
+	}
+}
+
+@media (max-width: 370px) {
+	header.home {
+		height: 380px;
+
+		h1{
+				font-size: 18px;
+                padding-top: 15px;
+		}
+		h2{
+				font-size: 14px;
+		}
+
+		.header-home {
 				padding: 60px 15px;
 		}
 		.header-home .header-home-inner hr {
-				margin: 20px auto;
+				margin: 15px auto;
 		}
 	}
 }
@@ -690,7 +713,7 @@ header .header-home .header-home-inner p {
 // Header Bibliography
 
 header .header-bibliography {
-		background-image: url('../img/header-content_03.jpg');
+		background-image: url('../img/header_03.jpg');
 		background-attachment: scroll;
 		background-position: center center;
 		.background-cover;
