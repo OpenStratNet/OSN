@@ -9,10 +9,15 @@ Template.allNewsEvents.helpers({
     else {
       return NewsEvents.find({type: { $in: Session.get('newsEventsViewMain')}}, {sort: {createdAt: -1}});
     }
-   
   },
   imageExists: function () {
-    return NewsEvents.find({}, {coverImageId: { $exists: true } });
+    // return NewsEvents.findOne({_id:this._id},{coverImageId: { $exists: true } });
+    var event = NewsEvents.findOne( {_id:this._id} );
+    if ( event && event.coverImageId ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 });
 

@@ -92,7 +92,6 @@ Router.route('/news-and-events/:_id', {
   }
 });
 
-
 // ---
 Router.map(function() {
     this.route('joinUs', {
@@ -106,6 +105,8 @@ Router.map(function() {
 // AccountsTemplates.configureRoute('enrollAccount');
 // AccountsTemplates.configureRoute('forgotPwd');
 // AccountsTemplates.configureRoute('resetPwd');
-// AccountsTemplates.configureRoute('signIn');
-// AccountsTemplates.configureRoute('signUp');
+AccountsTemplates.configureRoute('signIn');
+AccountsTemplates.configureRoute('signUp', {
+  redirect: '/profile-settings'
+});
 // AccountsTemplates.configureRoute('verifyEmail');

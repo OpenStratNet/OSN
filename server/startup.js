@@ -50,7 +50,7 @@ Meteor.startup(function () {
           "title": "Democratizing Strategy",
           "outlet": "California Management Review, 54 (4)",
           "year": "2012",
-          "abstract": "No Abstract ...",
+          "abstract": "Crowdsourcing is typically associated with the incorporation of company-external stakeholders such as customers in the value creating process. This article proposes a framework for a company-internal application of crowdsourcing methods. It presents a set of five goals companies can pursue employing internal crowdsourcing. The practical approach of an Austrian medium-sized technology company is described in detail, including insights on software design and appropriate procedures.",
           "type": "pp"
        },
        {

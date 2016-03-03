@@ -1,5 +1,7 @@
 Template.profileSettings.onRendered(function() {
-	$('[data-toggle="tooltip"]').tooltip();
+	// if scrolling is necessary $("html, body").animate({ scrollTop: 0 });
+  window.scrollTo(0, 0);
+  $('[data-toggle="tooltip"]').tooltip();
 });
 
 Template.profileSettings.helpers({

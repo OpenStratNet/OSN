@@ -80,6 +80,12 @@ Accounts.onCreateUser(function (options, user) {
     console.log("google");
   }
 
+  if (user.services.twitter) {
+    user.profile.firstName = user.services.twitter.name;
+    user.profile.screenName = user.services.twitter.screenName;
+    console.log("twitter");
+  }
+
   if (user.services.linkedin) {
     user.profile.name = user.services.linkedin.firstName + ' ' + user.services.linkedin.lastName;
   }

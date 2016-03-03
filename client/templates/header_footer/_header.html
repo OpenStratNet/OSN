@@ -26,9 +26,11 @@
 										<li class="{{isActiveRoute name='members'}}">
 											<a class="page-scroll" href="{{pathFor route = 'members'}}">Members</a>
 										</li>
+                    {{#unless currentUser}}
 										<li class="{{isActiveRoute name='joinUs'}}">
 											<a class="page-scroll" href="{{pathFor route = 'joinUs'}}">Join us</a>
 										</li>
+                    {{/unless}}
 										<li class="{{isActiveRoute name='contact'}}">
 												<a href="{{pathFor route='contact'}}">Contact</a>
 										</li>
@@ -49,6 +51,29 @@
                           <li >
                               <a class="profile-links" href="{{pathFor route = 'profileSettings'}}"><i class="fa fa-cog"></i>&nbsp; Settings</a>
                           </li>
+                          
+                          <li>
+                              <a class="profile-links" href="{{pathFor route = 'adminNewsEventsList'}}"><i class="fa fa-lock"></i>&nbsp; News &amp; Events</a>
+                          </li>
+                          <li>
+                              <a class="profile-links" href="{{pathFor route = 'adminPublicationsList'}}"><i class="fa fa-lock"></i>&nbsp; Publications</a>
+                          </li>
+
+                           <li>
+                              <a class="profile-links" href="{{pathFor route = 'adminMembers'}}"><i class="fa fa-lock"></i>&nbsp; Members</a>
+                          </li>
+
+                          {{#if isInRole 'admin'}}                         
+                          <!-- <li>
+                              <a class="profile-links" href="{{pathFor route = 'adminNewsEventsList'}}"><i class="fa fa-lock"></i>&nbsp; News &amp; Events</a>
+                          </li>
+                          <li>
+                              <a class="profile-links" href="{{pathFor route = 'adminPublicationsList'}}"><i class="fa fa-lock"></i>&nbsp; Publications</a>
+                          </li> 
+                           <li>
+                              <a class="profile-links" href="{{pathFor route = 'adminMembers'}}"><i class="fa fa-lock"></i>&nbsp; Members</a>
+                          </li>-->
+                          {{/if}}
                           <li>
                               <a class="profile-links js-logOut" data-action="logout"><i class="fa fa-sign-out"></i>&nbsp; Log out</a>
                           </li>
