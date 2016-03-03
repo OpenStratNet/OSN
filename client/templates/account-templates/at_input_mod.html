@@ -8,12 +8,12 @@
     <div class="col-sm-6">
         <div class="form-group">
 
-          <input type="{{type}}" class="form-control" id="at-field-{{_id}}" name="at-field-{{_id}}" placeholder="{{placeholder}}" autocapitalize="none" autocorrect="off">
+          <input type="{{type}}" class="form-control input-spacing" id="at-field-{{_id}}" name="at-field-{{_id}}" placeholder="{{placeholder}}" autocapitalize="none" autocorrect="off">
           {{#if hasIcon}}
             <span class="{{iconClass}} form-control-feedback"></span>
           {{/if}}
           <span class="help-block {{#unless hasError}}hide{{/unless}}">{{errorText}}</span>
         </div>
-    </div>    
+    </div>
   </div>
 </template>
