@@ -357,7 +357,23 @@ a.active {
 		border-radius: 2px;
 }
 
+.btn-danger {
+    background-color: @gray-light;
+    border: 0;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 0;
+}
 
+.btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active, .open > .dropdown-toggle.btn-danger {
+		background-color: darken(@gray-light, 10%);
+        color: @brand-primary;
+}
+
+.btn-danger.active:hover {
+        background-color: @gray-light;
+        color: @brand-primary;
+}
 
 // Global Section Styles
 
@@ -506,14 +522,14 @@ aside {
 
 
 .navbar-brand {
-	padding: 0em 0em 0em 0em;
-    margin: 10px 0px 15px 15px;
+	padding: 0 0 0 15px;
+    margin: 10px 0px 0px 0px;
 }
 
 .navbar-brand > img {
 	display: block;
 	height: 52px;
-    padding-left: 15px;
+    padding-left: 0px;
     padding-bottom: 5px;
 }
 
@@ -1456,3 +1472,23 @@ section.layer-login {
 	margin-top: 7.5rem;
 }
 /*easy search input styling* nothing, yet*/
+
+.control-label {
+    margin-top: 0px;
+}
+
+.admin-button {
+    margin-left: 8px;
+}
+
+.list-group-item {
+    padding-bottom: 3px;
+}
+
+.list-group-item:last-child {
+    border-radius: 0;
+}
+
+.list-group {
+    margin-bottom: -1px;
+}

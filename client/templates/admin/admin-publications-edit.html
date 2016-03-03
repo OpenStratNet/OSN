@@ -1,6 +1,8 @@
 <template name="adminPublicationsEdit">
-  <div class="container">
-    <div class="putdown">
+    <div class="container extra-spacing-bottom">
+		<div class="putdown extra-spacing-bottom">
+            <h1 class="extra-spacing-bottom">EDIT ENTRY</h1>
+            <hr>
       {{#with pubEntry}}
       <form class="form-horizontal" id="addPub" role="form">
         <div class="form-group">
@@ -35,8 +37,8 @@
                     <label class="radio-inline"><input type="radio" name="outlet-type" id="bc" value="bc">Book Chapter</label>
                 </div>
             </div>
-          
-              {{#if ppSelected}}  
+
+              {{#if ppSelected}}
                <div class="form-group">
                   <label for="journal" class="col-sm-2 control-label">Journal</label>
                   <div class="col-sm-10">
@@ -52,7 +54,7 @@
               </div>
               {{/if}}
 
-            {{#if bkSelected}}  
+            {{#if bkSelected}}
              <div class="form-group">
                 <label for="publisher" class="col-sm-2 control-label">Publisher</label>
                 <div class="col-sm-10">
@@ -68,7 +70,7 @@
             </div>
             {{/if}}
 
-            {{#if bcSelected}}  
+            {{#if bcSelected}}
              <div class="form-group">
               <label for="publisher" class="col-sm-2 control-label">Publisher</label>
               <div class="col-sm-10">
@@ -89,7 +91,7 @@
                   <div class="col-sm-10">
                       <input type="text" class="form-control" name="editors" id="firstEditor"  placeholder="Enter Book Editor(s)">
                       <span class="input-group-btn">
-                        <button class="btn btn-default" id="js-addEditors" type="button">ADD EDITORS</button>
+                        <button class="btn btn-primary" id="js-addEditors" type="button">ADD EDITORS</button>
                       </span>
                   </div>
                 </div>
@@ -110,7 +112,7 @@
 
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" id="js-addEntry" class="btn btn-primary">UPDATE ENTRY</button>
+                <button type="submit" id="js-addEntry" class="btn btn-primary admin-button">UPDATE ENTRY</button>
               </div>
             </div>
 
