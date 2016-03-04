@@ -111,11 +111,11 @@ Meteor.startup(function () {
     }
 
     if (!Meteor.users.findOne()){
-      for (var i=1;i<9;i++){
-        var email = "user"+i+"@test.com";
-        var username = "user"+i;
-        console.log("creating a user with password 'test123' and username/ email: " + email);
-        Meteor.users.insert({profile:{username:username}, emails:[{address:email}],services:{ password:{"bcrypt" : "$2a$10$I3erQ084OiyILTv8ybtQ4ON6wusgPbMZ6.P33zzSDei.BbDL.Q4EO"}}});
-      }
+      // for (var i=1;i<9;i++){
+      var email = "amirrahbaran@hotmail.com";
+      var firstName = "Amir", lastName = "Rahbaran", institution = "OEV", interests = "Crowdsourcing, Strategy", position = "BC", password: "test123";
+      console.log("creating a user with password 'test123' and username/ email: " + email);
+      Meteor.users.insert({profile:{firstName:firstName}, emails:[{address:email}],services:{ password:{"bcrypt" : "$2a$10$I3erQ084OiyILTv8ybtQ4ON6wusgPbMZ6.P33zzSDei.BbDL.Q4EO"}}});
+      // }
     } 
   });
