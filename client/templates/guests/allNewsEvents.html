@@ -25,11 +25,15 @@
             <li><a class="breadcrumb-link" href="{{pathFor route = 'home'}}">Home</a></li>
             <li class="active">News &amp; Events</li>
         </ol><!-- End of Breadcrumb -->
-        
+
         <div class="header-content-inner">
             <h1>News &amp; Events</h1>
             <hr>
-            <h2>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</h2>
+            <h2>News & Events is a repository of upcoming events, workshops or general announcements related to
+
+Open Strategy. News & Events is designed to be dynamic and collaborative, so any Open Strategy
+
+related news are warmly welcome. In order to add news to this section, please send as an email.</h2>
         </div>
     </div>
   </header> <!-- ./Stage -->
@@ -40,8 +44,8 @@
         <div class="row text-center">
             <div class="col-lg-12">
                 <div class="btn-group btn-group-md extra-spacing-top" role="group">
-                  <a type="button" id="js-seeAllMain" class="btn btn-primary active">SEE ALL</a> 
-                  <a type="button" id="js-seeNewsMain" class="btn btn-primary">NEWS</a> 
+                  <a type="button" id="js-seeAllMain" class="btn btn-primary active">SEE ALL</a>
+                  <a type="button" id="js-seeNewsMain" class="btn btn-primary">NEWS</a>
                   <a type="button" id="js-seeEventsMain" class="btn btn-primary">EVENTS</a>
                 </div>
             </div>
@@ -57,16 +61,16 @@
 				{{#each newsEventsData}}
 				<div class="col-sm-4">
 					<div class="caption">
-					{{#if imageExists}}		
+					{{#if imageExists}}
 						<h4>TRUE {{title}}<img alt="news thumbnail" class="news-thumbnail" src="{{ coverImage.url }}" /></h4>
 					{{else}}
 						<h4>FALSE {{title}}</h4>
-					{{/if}}											
+					{{/if}}
 						<p class="text-muted">{{{description}}} <a href="{{pathFor route = 'newsAndEventsPage'}}" class="textlink">read more </a></p>
 					</div>
 				</div>
 				{{/each}}
-			</div> <!-- ROW -->				
+			</div> <!-- ROW -->
 
 			<div class="row">
 				<div class="col-lg-12 text-center">
@@ -82,5 +86,5 @@
 <img alt="news thumbnail" class="news-thumbnail" src="{{#if imageExists}}{{ coverImage.url }}{/if}" />{
 
 {{else}}
-<h4>{{title}}</h4> 
+<h4>{{title}}</h4>
 {/if} -->
