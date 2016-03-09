@@ -484,11 +484,20 @@ aside {
         }
 
         a.profile-links {
-                padding-left: 15px!important;
+                padding-left: 25px!important;
+                color: @brand-primary!important;
+        }
+
+        a:hover.profile-links {
+            padding-left: 25px!important;
+            color: darken(@brand-primary, 10%);
+            background-color: transparent;
+            cursor: pointer;
         }
 
         p.profile-username {
-                padding-left: 15px!important;
+                padding-top: 0 !important;
+                padding-left: 25px!important;
         }
 }
 
@@ -589,15 +598,7 @@ aside {
         cursor: pointer;
 }
 
-.open > .dropdown-toggle.btn-primary:hover {
-        background-color: darken(@brand-primary, 10%);
-        cursor: pointer;
-}
 
-.open > .dropdown-toggle.btn-primary:focus {
-    background-color: darken(@brand-primary, 10%);
-    cursor: pointer;
-}
 
 .dropdown-menu > li > a.profile-links {
     color: @brand-primary;
@@ -605,7 +606,7 @@ aside {
     font-size: 14px;
     font-weight: 400;
     color: @brand-primary;
-    padding-left: 15px;
+    padding-left: 20px;
     cursor: pointer;
 }
 
@@ -616,10 +617,10 @@ aside {
 }
 
 p.profile-username {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
     color: @gray-darkest;
-    padding: 10px 0 10px 15px;
+    padding: 5px 0 0 20px;
 }
 
 .navbar-default {
@@ -1575,4 +1576,9 @@ section.layer-login {
         top: 0;
         right: 15px;
     }
+}
+
+
+.navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
+    max-height: inherit;
 }
