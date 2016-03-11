@@ -6,18 +6,18 @@ Template.adminNewsEvents.onRendered(function() {
     $('#description').summernote({
     	height: 200, 
     	toolbar: [
-    	    // [groupName, [list of button]]
-	    	['style', ['style']],
-	       	['font', ['bold', 'italic', 'underline', 'clear']],
-	       	['fontname', ['fontname']],
-	       	['color', ['color']],
-	       	['para', ['ul', 'ol', 'paragraph']],
-	       	['height', ['height']],
-	       	['table', ['table']],
-	       	['insert', ['link', 'hr']], // 'picture', is tooked out
-	       	['view', ['fullscreen', 'codeview']],
-	       	['help', ['help']]
-		]
+  	   // [groupName, [list of button]]
+    	['style', ['style']],
+       	['font', ['bold', 'italic', 'underline', 'clear']],
+       	['fontname', ['fontname']],
+       	['color', ['color']],
+       	['para', ['ul', 'ol', 'paragraph']],
+       	['height', ['height']],
+       	['table', ['table']],
+       	['insert', ['link', 'hr']], // 'picture', is tooked out
+       	['view', ['fullscreen', 'codeview']],
+       	['help', ['help']]
+	    ]
     });
   });
 });

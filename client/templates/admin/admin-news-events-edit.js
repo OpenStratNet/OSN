@@ -103,8 +103,7 @@ Template.adminNewsEventsEdit.events({
 			NewsEvents.update({_id: this._id}, {$unset: {coverImageId: ""}});
 			Images.remove({_id: this.coverImageId});
 			imageIdVarEdit.set(false);
-		};
-		
+		};		
 	},
 	'click #js-delete-attachment': function (evt, temo) {
 		evt.preventDefault();

@@ -82,25 +82,25 @@ Meteor.startup(function () {
 		    "title": "EGOS 2015 reminder: Open Organizations for an Open Society?",
 		    "description": "Open Organizations for an Open Society? Practicing Openness in Innovation, Strategy and Beyond; Convenors: Leonhard Dobusch, Freie Universität Berlin, Georg von Krogh, ETH Zurich, Switzerland, Richard Whittington, Oxford University, Link to website: : http://bit.ly/EGOS15Open",
 		    "type": "event",
-		    "createdAt": new Date ()   	
+		    "createdAt": new Date()   	
 			},
 			{
 		    "title": "A Dummy News",
 		    "description": "Lorem ipsum dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut Management",
 		    "type": "news",
-		   	"createdAt": new Date ()
+		   	"createdAt": new Date()
 	   },
      {
         "title": "A Dummy News",
         "description": "Lorem ipsum dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut Management",
         "type": "news",
-        "createdAt": new Date ()
+        "createdAt": new Date()
      },
      {
         "title": "A Dummy Event",
         "description": "Lorem ipsum dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut Management",
         "type": "event",
-        "createdAt": new Date ()
+        "createdAt": new Date()
      }]
 
     	_.each(protoNE, function(doc) {
@@ -111,11 +111,34 @@ Meteor.startup(function () {
     }
 
     if (!Meteor.users.findOne()){
-      // for (var i=1;i<9;i++){
-      var email = "amirrahbaran@hotmail.com";
-      var firstName = "Amir", lastName = "Rahbaran", institution = "OEV", interests = "Crowdsourcing, Strategy", position = "BC", password: "test123";
-      console.log("creating a user with password 'test123' and username/ email: " + email);
-      Meteor.users.insert({profile:{firstName:firstName}, emails:[{address:email}],services:{ password:{"bcrypt" : "$2a$10$I3erQ084OiyILTv8ybtQ4ON6wusgPbMZ6.P33zzSDei.BbDL.Q4EO"}}});
-      // }
+      // add a date field
+      Meteor.users.before.insert(function (userId, doc) {
+        doc.createdAt = new Date();
+      });
+      // first User
+      var email1 = "amirrahbaran@hotmail.com";
+      var firstName1 = "Amir", lastName1 = "Rahbaran", institution1 = "OEV", interests1 = "Crowdsourcing, Strategy", position1 = "BC", password1: "test123";
+      console.log("creating " + firstName1 + "  with password 'test123' and  email: " + email1);
+      Meteor.users.insert({profile:{firstName:firstName1, lastName:lastName1, institution: institution1, interests:interests1, position:position1, email: email1}, emails:[{address:email1}],services:{ password:{"bcrypt" : "$2a$10$I3erQ084OiyILTv8ybtQ4ON6wusgPbMZ6.P33zzSDei.BbDL.Q4EO"}}});
+      // second user
+      var email2 = "amirrahbaran@hotmail_cool.com";
+      var firstName2 = "Richard", lastName2 = "Whittington", institution2 = "Saïd Business School", interests2 = "Dimensions and types of openness in strategizing", position2 = "Professor", password2: "test123";
+      console.log("creating " + firstName2 + "  with password 'test123' and  email: " + email2);
+      Meteor.users.insert({profile:{firstName:firstName2, lastName:lastName2, institution: institution2, interests:interests2, position:position2, email: email2}, emails:[{address:email2}],services:{ password:{"bcrypt" : "$2a$10$I3erQ084OiyILTv8ybtQ4ON6wusgPbMZ6.P33zzSDei.BbDL.Q4EO"}}});
+      // third user
+      var email3 = "amirrahbaran@hotmail_cool1.com";
+      var firstName3 = "Julia", lastName3 = "Hautz", institution3 = "University of Innsbruck", interests3 = "Online innovation communities", position3 = "Assistant professor", password3: "test123";
+      console.log("creating " + firstName3 + "  with password 'test123' and  email: " + email3);
+      Meteor.users.insert({profile:{firstName:firstName3, lastName:lastName3, institution: institution3, interests:interests3, position:position3, email: email3}, emails:[{address:email3}],services:{ password:{"bcrypt" : "$2a$10$I3erQ084OiyILTv8ybtQ4ON6wusgPbMZ6.P33zzSDei.BbDL.Q4EO"}}});
+      // forth user
+      var email4 = "amirrahbaran@hotmail__cool2.com";
+      var firstName4 = "Violetta", lastName4 = "Splitter", institution4 = "University of Zurich", interests4 = "Power and knowledge in open strategizing", position4 = "Assistant professor", password4: "test123";
+      console.log("creating " + firstName4 + "  with password 'test123' and  email: " + email4);
+      Meteor.users.insert({profile:{firstName:firstName4, lastName:lastName4, institution: institution4, interests:interests4, position:position4, email: email4}, emails:[{address:email4}],services:{ password:{"bcrypt" : "$2a$10$I3erQ084OiyILTv8ybtQ4ON6wusgPbMZ6.P33zzSDei.BbDL.Q4EO"}}});
+      // fifth user
+      var email5 = "amirrahbaran@hotmail__cool3.com";
+      var firstName5 = "David", lastName5 = "Seidl", institution5 = "University of Zurich", interests5 = "Power and knowledge in open strategizing", position5 = "Professor", password5: "test123";
+      console.log("creating " + firstName5 + "  with password 'test123' and  email: " + email5);
+      Meteor.users.insert({profile:{firstName:firstName5, lastName:lastName5, institution: institution5, interests:interests5, position:position5, email: email5}, emails:[{address:email5}],services:{ password:{"bcrypt" : "$2a$10$I3erQ084OiyILTv8ybtQ4ON6wusgPbMZ6.P33zzSDei.BbDL.Q4EO"}}});
     } 
   });

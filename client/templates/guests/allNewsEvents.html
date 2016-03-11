@@ -29,9 +29,9 @@
         <div class="header-content-inner">
             <h1>News &amp; Events</h1>
             <hr>
-            <h2>News & Events is a repository of upcoming events, workshops or general announcements related to
+            <h2>News &amp; Events is a repository of upcoming events, workshops or general announcements related to
 
-Open Strategy. News & Events is designed to be dynamic and collaborative, so any Open Strategy
+Open Strategy. News &amp; Events is designed to be dynamic and collaborative, so any Open Strategy
 
 related news are warmly welcome. In order to add news to this section, please send as an email.</h2>
         </div>
@@ -62,9 +62,9 @@ related news are warmly welcome. In order to add news to this section, please se
 				<div class="col-sm-4">
 					<div class="caption">
 					{{#if imageExists}}
-						<h4>TRUE {{title}}<img alt="news thumbnail" class="news-thumbnail" src="{{ coverImage.url }}" /></h4>
+						<h4>{{coverImage}} {{title}}<img alt="news thumbnail" class="news-thumbnail" src="{{ coverImage.url }}" /></h4>
 					{{else}}
-						<h4>FALSE {{title}}</h4>
+						<h4>{{title}}</h4>
 					{{/if}}
 						<p class="text-muted">{{{description}}} <a href="{{pathFor route = 'newsAndEventsPage'}}" class="textlink">read more </a></p>
 					</div>

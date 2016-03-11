@@ -41,7 +41,7 @@
 								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
 										<div class="form-group">
 												<label for="email">Email*</label>
-												<input type="email" class="form-control" value="{{emails.[0].address}}" id="email" placeholder="Email">
+												<input type="email" class="form-control" value="{{profile.email}}" id="email" placeholder="Email">
 										</div>
 								</div>
 						</div>
@@ -73,7 +73,24 @@
 									</div>
 								</div>
 						</div>
+						
+						{{#if profilePic}}
+						<div class="row">
+							<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+								<img class="image" src="{{profile.picture}}">
+							</div>
+						</div>
+						{{/if}}
 
+						{{#if pictureID}}
+						<div class="row">
+							<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+								<img class="image" src="{{uploadedPic.url}}">
+							</div>
+						</div>
+						{{/if}}
+						
+						<!-- {{#if noPics}} -->
 						<div class="row">
 								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
 										<div class="form-group">
@@ -81,10 +98,11 @@
 										</div>
 										<div class="form-group fileUpload btn btn-default btn-block btn-icon btn-file-upload">
 												<span class="glyphicon glyphicon-upload"></span> Upload a profile photo
-												<input type="file" class="upload" placeholder="Upload a Picture"/>
+												<input type="file" class="upload js-Profile" placeholder="Upload a Picture"/>
 										</div>
 								</div>
 						</div>
+						<!-- {{/if}} -->
 
 						<div class="row">
 								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">

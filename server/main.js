@@ -53,8 +53,8 @@ if (ServiceConfiguration.configurations.find({
 Accounts.onCreateUser(function (options, user) {
   if (options.profile) {
     user.profile = options.profile;
-    // user.profile.institution = options.institution.profile;
-    // user.institution = options.institution;
+    user.profile.email = options.email
+
   } else {
     user.profile = {};
   }
@@ -68,26 +68,52 @@ Accounts.onCreateUser(function (options, user) {
   //pass over api-service-values to the profile
 
   if (user.services.facebook) {
+    // Meteor.users.before.insert(function (userId, doc) {
+    //   doc.emails[{address: email}] = user.services.facebook.email;
+    //   console.log("createdBefore");
+    // });
     user.profile.firstName = user.services.facebook.first_name;
     user.profile.lastName = user.services.facebook.last_name;
     user.profile.gender = user.services.facebook.gender;
+    user.profile.email = user.services.facebook.email;
+    user.profile.picture = "http://graph.facebook.com/" + user.services.facebook.id + "/picture/?type=large";
+    // Meteor.users.after.insert(function (userId, doc) {
+    //   user.emails[address] = user.services.facebook.email;
+    //   console.log("createdAfter");
+    // });
   }
 
   if (user.services.google) {
-    // user.profile.firstName = user.services.google.given_name;
-    // user.profile.lastName = user.services.google.family_name;
-    // user.profile.gender = user.services.facebook.gender;
-    console.log("google");
+    user.profile.firstName = user.services.google.given_name;
+    user.profile.lastName = user.services.google.family_name;
+    user.profile.gender = user.services.google.gender;
+    user.profile.email = user.services.google.email;
+    user.profile.picture = user.services.google.picture;
   }
 
   if (user.services.twitter) {
-    user.profile.firstName = user.services.twitter.name;
+    // user.profile.firstName = user.services.twitter.name;
     user.profile.screenName = user.services.twitter.screenName;
-    console.log("twitter");
+    user.profile.picture = user.services.twitter.profile_image_url
+
+    // Get the first part of the screen name if screen name consists of at least two parts
+    var fullScreenName = user.services.twitter.screenName;
+
+    if (fullScreenName.indexOf(' ') === -1 && fullScreenName.indexOf('_') === -1) {
+      user.profile.firstName  = fullScreenName;
+    } 
+    else if (fullScreenName.indexOf(' ') >= 0) {
+      user.profile.firstName  = fullScreenName.substring(0, fullScreenName.indexOf(' '));
+    }
+    else if (fullScreenName.indexOf('_') >= 0) {
+      user.profile.firstName  = fullScreenName.substring(0, fullScreenName.indexOf('_'));
+    }
   }
 
   if (user.services.linkedin) {
     user.profile.name = user.services.linkedin.firstName + ' ' + user.services.linkedin.lastName;
+    user.profile.email = user.services.linkedin.emailAddress;
+    user.profile.picture = user.services.linkedin.pictureUrl;
   }
 
   return user;

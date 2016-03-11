@@ -26,7 +26,7 @@
 						<div class="row">
 								<div class="col-sm-6 col-sm-offset-3 extra-spacing-top">
 										<div class="input-group stylish-input-group">
-												<input type="text" class="form-control"  placeholder="Search for a member or institution" >
+												{{> EasySearch.Input index=membersIndex attributes=atts }}
 												<span class="input-group-addon">
 														<span class="glyphicon glyphicon-search"></span>
 														</span>
@@ -40,21 +40,38 @@
 		<!-- Services Section -->
 		<section id="services">
 			<div class="container">
+				{{#EasySearch.IfNoResults index=membersIndex}}
+					<h3>No members found!</h3>
+					<hr class="light">
+				{{/EasySearch.IfNoResults}}
+
+				<!-- Core Search -->
+				{{#EasySearch.IfInputEmpty index=membersIndex}}
+				{{#each membersData}} 
 				<div class="row">
 						<div class="col-sm-6">
 								<div class="media-left">
+										{{#if this.profile.pictureID}}
+										<img class="members-thumbnail" src="{{uploadedPic.url}}" alt="Max Mustermann">
+										{{/if}}
+										{{#if this.profile.picture}}
+										<img class="members-thumbnail" src="{{profile.picture}}" alt="Max Mustermann">
+										{{/if}}
+										{{#if noPicture}}
 										<img class="members-thumbnail" src="img/contact-placeholder.jpg" alt="Max Mustermann">
+										{{/if}}
 								</div>
+								
 								<div class="media-body">
-										<h4 class="media-heading">Max Mustermann</h4>
-										<p class="italic">Musterinstitution Lorem ipsum dolor</p>
-										<p class="text-muted">Musterposition Dolor sit amet</p>
+										<h4 class="media-heading">{{profile.firstName}} {{profile.lastName}}</h4>
+										<p class="italic">{{profile.institution}}</p>
+										<p class="text-muted">{{profile.position}}</p>
 										<ul class="list-inline social-buttons">
 												<li>
-														<a href="max.mustermann@mustermann.ch"><i class="fa fa-envelope"></i></a>
+														<a href="mailto:{{profile.email}}"><i class="fa fa-envelope"></i></a>
 												</li>
 												<li>
-														<a href="max.mustermann@mustermann.ch">max.mustermann@mustermann.ch</a>
+														<a href="mailto:{{profile.email}}">{{profile.email}}</a>
 												</li>
 										</ul>
 								</div>
@@ -62,97 +79,65 @@
 						<div class="col-sm-6">
 								<div class="media-body">
 										<p class="interests">Interests reg. Open Strategy:</p>
-										<p class="text-muted">Interests regarding Open Strategy 1, Interest 2, Interest 3, Interest 4 or a longer text</p>
-								</div>
-						</div>
-				</div>
-
-				<hr class="light">
-
-				<div class="row">
-						<div class="col-sm-6">
-								<div class="media-left">
-										<img class="members-thumbnail" src="img/contact-placeholder.jpg" alt="Max Mustermann">
-								</div>
-								<div class="media-body">
-										<h4 class="media-heading">Max Mustermann</h4>
-										<p class="italic">Musterinstitution Lorem ipsum dolor</p>
-										<p class="text-muted">Musterposition Dolor sit amet</p>
-										<ul class="list-inline social-buttons">
-												<li>
-														<a href="max.mustermann@mustermann.ch"><i class="fa fa-envelope"></i></a>
-												</li>
-												<li>
-														<a href="max.mustermann@mustermann.ch">max.mustermann@mustermann.ch</a>
-												</li>
-										</ul>
-								</div>
-						</div>
-						<div class="col-sm-6">
-								<div class="media-body">
-										<p class="interests">Interests reg. Open Strategy:</p>
-										<p class="text-muted">Interests regarding Open Strategy 1, Interest 2, Interest 3, Interest 4 or a longer text</p>
-								</div>
-						</div>
-				</div>
-
-				<hr class="light">
-
-				<div class="row">
-						<div class="col-sm-6">
-								<div class="media-left">
-										<img class="members-thumbnail" src="img/contact-placeholder.jpg" alt="Max Mustermann">
-								</div>
-								<div class="media-body">
-										<h4 class="media-heading">Max Mustermann</h4>
-										<p class="italic">Musterinstitution Lorem ipsum dolor</p>
-										<p class="text-muted">Musterposition Dolor sit amet</p>
-										<ul class="list-inline social-buttons">
-												<li>
-														<a href="max.mustermann@mustermann.ch"><i class="fa fa-envelope"></i></a>
-												</li>
-												<li>
-														<a href="max.mustermann@mustermann.ch">max.mustermann@mustermann.ch</a>
-												</li>
-										</ul>
-								</div>
-						</div>
-						<div class="col-sm-6">
-								<div class="media-body">
-										<p class="interests">Interests reg. Open Strategy:</p>
-										<p class="text-muted">Interests regarding Open Strategy 1, Interest 2, Interest 3, Interest 4 or a longer text</p>
-								</div>
-						</div>
-				</div>
-
-				<hr class="light">
-
-				<div class="row">
-						<div class="col-sm-6">
-								<div class="media-left">
-										<img class="members-thumbnail" src="img/contact-placeholder.jpg" alt="Max Mustermann">
-								</div>
-								<div class="media-body">
-										<h4 class="media-heading">Max Mustermann</h4>
-										<p class="italic">Musterinstitution Lorem ipsum dolor</p>
-										<p class="text-muted">Musterposition Dolor sit amet</p>
-										<ul class="list-inline social-buttons">
-												<li>
-														<a href="max.mustermann@mustermann.ch"><i class="fa fa-envelope"></i></a>
-												</li>
-												<li>
-														<a href="max.mustermann@mustermann.ch">max.mustermann@mustermann.ch</a>
-												</li>
-										</ul>
-								</div>
-						</div>
-						<div class="col-sm-6">
-								<div class="media-body">
-										<p class="interests">Interests reg. Open Strategy:</p>
-										<p class="text-muted">Interests regarding Open Strategy 1, Interest 2, Interest 3, Interest 4 or a longer text</p>
+										<p class="text-muted">{{profile.interests}}</p>
 								</div>
 						</div>
 				</div> <!-- end row -->
+				
+				<hr class="light">
+				{{/each}}
+
+				{{else}}
+				
+				{{#if membersIndex}}		
+					{{#EasySearch.Each index=membersIndex}}
+
+						<div class="row">
+								<div class="col-sm-6">
+										<div class="media-left">
+												{{#if this.profile.pictureID}}
+												<img class="members-thumbnail" src="{{uploadedPic.url}}" alt="Max Mustermann">
+												{{/if}}
+												{{#if this.profile.picture}}
+												<img class="members-thumbnail" src="{{profile.picture}}" alt="Max Mustermann">
+												{{/if}}
+												{{#if noPicture}}
+												<img class="members-thumbnail" src="img/contact-placeholder.jpg" alt="Max Mustermann">
+												{{/if}}
+										</div>
+										<div class="media-body">
+												<h4 class="media-heading">{{profile.firstName}} {{profile.lastName}}</h4>
+												<p class="italic">{{profile.institution}}</p>
+												<p class="text-muted">{{profile.position}}</p>
+												<ul class="list-inline social-buttons">
+														<li>
+																<a href="mailto:{{profile.email}}"><i class="fa fa-envelope"></i></a>
+														</li>
+														<li>
+																<a href="mailto:{{profile.email}}">{{profile.email}}</a>
+														</li>
+												</ul>
+										</div>
+								</div>
+								<div class="col-sm-6">
+										<div class="media-body">
+												<p class="interests">Interests reg. Open Strategy:</p>
+												<p class="text-muted">{{profile.interests}}</p>
+										</div>
+								</div>
+						</div> <!-- end row -->
+						
+						<hr class="light">
+
+					{{/EasySearch.Each}}
+				{{/if}}
+				{{/EasySearch.IfInputEmpty}}
+			
+				  <div class="row">
+            <div class="col-md-12 text-center">
+                <button class="btn btn-primary page-scroll extra-spacing-bottom js-seeMoreMem">SEE MORE</button>
+            </div>
+          </div>
 			</div> <!-- end container -->
 		</section>
 	</div> <!-- end of overlay -->
