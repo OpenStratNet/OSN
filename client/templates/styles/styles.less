@@ -437,7 +437,9 @@ aside {
 
 // Custom Navigation Bar
 
+
 @media (max-width: 827px) {
+
 		.navbar-header {
 				float: none;
 		}
@@ -501,6 +503,13 @@ aside {
         }
 }
 
+
+.container-fluid {
+        padding-top: 17px;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+}
+
 .navbar {
     border-bottom: 2px solid #e6e6e6;
 }
@@ -511,7 +520,7 @@ aside {
 
 
 .navbar-right {
-    margin-top: 6px;
+    margin-top: 12px;
 }
 
 .navbar-default .navbar-toggle {
@@ -540,15 +549,14 @@ aside {
 
 
 .navbar-brand {
-	padding: 0 0 0 15px;
-    margin: 10px 0px 0px 0px;
+	padding: 0 0 0 0;
+    margin: 0 0 0 0;
 }
 
 .navbar-brand > img {
 	display: block;
-	height: 52px;
-    padding-left: 0px;
-    padding-bottom: 5px;
+	height: 63px;
+    padding-left: 15px;
 }
 
 .navbar-nav > li > a {
@@ -597,7 +605,6 @@ aside {
 		border-right: 1px solid rgba(0,0,0,0.2);
         cursor: pointer;
 }
-
 
 
 .dropdown-menu > li > a.profile-links {
@@ -746,6 +753,11 @@ header .header-home .header-home-inner p {
 				font-size: 24px;
                 padding-top: 0px;
 		}
+
+        h1.a{
+                font-size: 24px;
+        }
+
 		h2{
 				font-size: 16px;
                 padding: 0 10px 0 10px;
@@ -769,6 +781,11 @@ header .header-home .header-home-inner p {
 				font-size: 20px;
                 padding-top: 20px;
 		}
+
+        h1.a{
+                font-size: 20px;
+        }
+
 		h2{
 				font-size: 15px;
 		}
@@ -790,6 +807,11 @@ header .header-home .header-home-inner p {
 				font-size: 18px;
                 padding-top: 15px;
 		}
+
+        h1.a{
+                font-size: 18px;
+        }
+
 		h2{
 				font-size: 14px;
 		}
@@ -1342,11 +1364,12 @@ th.outlet {
 
 .container.blur-me {
 		-webkit-filter: grayscale(1) blur(5px);
-/*    -moz-filter: blur(5px);
-		-o-filter: blur(5px);
-		-ms-filter: blur(5px);*/
+        -webkit-filter: blur(5px);
+        -moz-filter: blur(5px);
+        -o-filter: blur(5px);
+        -ms-filter: blur(5px);
+        filter: blur(5px);
 }
-
 
 
 //Layer Log in
