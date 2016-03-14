@@ -112,8 +112,8 @@ hr.layer-light {
 // Breadcrumb-Header
 
 .breadcrumb {
-		margin-top: -20px;
-		margin-bottom: -8px;
+		margin-top: 5px;
+		margin-bottom: -25px;
 		font-size: 12px;
 		background: none;
 		padding-left: 0;
@@ -121,12 +121,12 @@ hr.layer-light {
 
 .breadcrumb>.active {
 		color: rgba(255,255,255,.8);
-		text-shadow: 0 0 2px #000;
+		text-shadow: 0 0 2px #666666;
 }
 
 a.breadcrumb-link {
 		font-size: 12px;
-		color: @brand-primary-light;
+		color: @brand-primary;
 }
 
 a.breadcrumb-link:link {
@@ -203,7 +203,6 @@ h1 {
 		text-align: center;
 		margin-bottom: 0px;
 		padding-top: 20px;
-        // text-shadow: 0 0 2px #000;
 }
 
 h2{
@@ -214,7 +213,6 @@ h2{
 		text-align: center;
 		margin-bottom: 25px;
 		margin-top: 0px;
-        // text-shadow: 0 0 2px #000;
 }
 
 h3 {
@@ -317,6 +315,7 @@ a:active,
 a.active {
 		color: darken(@brand-primary, 10%);
 }
+
 
 
 /* add an arrow after each textlink */
@@ -559,12 +558,20 @@ aside {
     padding-left: 15px;
 }
 
-.navbar-nav > li > a {
-    padding: 33px 12px 0px 12px;
+@media (max-width: 827px) {
+    .navbar-nav > li > a {
+        padding: 29px 6px 0px 6px;
+    }
+}
+@media (min-width: 828px) {
+    .navbar-nav > li > a {
+        margin: 30px 6px 5px 6px;
+        padding: 4px 6px;
+    }
 }
 
 .btn-login {
-    margin-top: 23px;
+    margin-top: 18px;
     font-size: 13px;
     font-weight: 300;
     padding: 4px 12px 3px 12px;
@@ -645,6 +652,7 @@ p.profile-username {
 		font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
 		font-weight: 400;
 		color: #f05f40;
+        height: inherit;
 }
 
 .navbar-default .navbar-header .navbar-brand:hover,
@@ -684,21 +692,38 @@ p.profile-username {
 	 margin-right: 0.313em;
 }
 
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-    border-color: white;
-    background-color: white;
+
+.navbar-default .navbar-nav > .active{
+    a, a:hover, a:focus{
+        border-color: white;
+        background-color: white;
+    }
 }
 
+@media (min-width: 828px) {
+    // hier noch stylen!!
+    .navbar-default .nav li.dropdown{
+
+        &.open > a{
+            background-color: darken(@brand-primary, 10%);
+        }
+        > a{
+            background-color: @brand-primary;
+            &:hover{
+                background-color: darken(@brand-primary, 10%);
+            }
+        }
+    }
+}
 // Header Home
 
 header.home {
-		background-image: url('img/header_01.jpg');
+		background-image: url('img/header_hell.jpg');
 		background-attachment: scroll;
 		background-position: center center;
 		.background-cover;
 		text-align: center;
-		color: white;
-        text-shadow: 0 0 4px #000;
+		color: #ffffff;
 		width: 100%;
 		min-height: auto;
 		-webkit-background-size: cover;
@@ -706,13 +731,17 @@ header.home {
 		background-size: cover;
 		-o-background-size: cover;
 		padding-bottom: @spacing/2;
-		height: 420px;
+		height: 430px;
+        text-shadow: 0 0 1px #666666;
+        a {
+            text-shadow: none;
+        }
 }
 
 header .header-home {
 		position: relative;
 		width: 100%;
-		padding: 70px 15px;
+		padding: 95px 15px;
 		text-align: center;
 }
 
@@ -720,10 +749,13 @@ header .header-home .header-home-inner h1 {
 		margin-top: 0;
 		margin-bottom: 0;
 		text-transform: uppercase;
+        text-shadow: 0 0 1px #666666;
 }
 
+
 header .header-home .header-home-inner hr {
-		margin: 30px auto;
+		margin: 20px auto;
+        color: @brand-primary;
 }
 
 header .header-home .header-home-inner p {
@@ -747,21 +779,26 @@ header .header-home .header-home-inner p {
 
 @media (max-width: 720px) {
 	header.home {
-		height: 410px;
+		height: 420px;
 
 		h1{
 				font-size: 24px;
-                padding-top: 0px;
+                padding-top: 25px;
+                text-shadow: 0 0 1px #666666;
 		}
 
-        h1.a{
-                font-size: 24px;
+        h2.a{
+                font-size: 16px;
         }
 
 		h2{
 				font-size: 16px;
                 padding: 0 10px 0 10px;
 		}
+
+        a {
+                font-size: 16px;
+        }
 
 		.header-home {
 				padding: 80px 15px;
@@ -773,22 +810,23 @@ header .header-home .header-home-inner p {
 }
 
 
-@media (max-width: 460px) {
+@media (max-width: 522px) {
 	header.home {
-		height: 420px;
+		height: 430px;
 
 		h1{
-				font-size: 20px;
-                padding-top: 20px;
+				font-size: 22px;
+                padding-top: 35px;
 		}
 
-        h1.a{
-                font-size: 20px;
-        }
 
 		h2{
 				font-size: 15px;
 		}
+
+        a {
+                font-size: 15px;
+        }
 
 		.header-home {
 				padding: 70px 15px;
@@ -799,22 +837,23 @@ header .header-home .header-home-inner p {
 	}
 }
 
-@media (max-width: 375px) {
+@media (max-width: 437px) {
 	header.home {
 		height: 420px;
 
 		h1{
-				font-size: 18px;
-                padding-top: 15px;
+				font-size: 20px;
+                padding-top: 35px;
 		}
 
-        h1.a{
-                font-size: 18px;
-        }
 
 		h2{
 				font-size: 14px;
 		}
+
+        a {
+                font-size: 14px;
+        }
 
 		.header-home {
 				padding: 70px 15px;
@@ -844,6 +883,10 @@ header .header-bibliography {
 		-o-background-size: cover;
 		padding-bottom: @spacing/2;
 		height: 350px;
+        text-shadow: 0 0 1px #666666;
+        a {
+            text-shadow: none;
+        }
 }
 
 header .header-bibliography {
@@ -908,7 +951,7 @@ header .header-bibliography .header-bibliography-inner p {
 
 		h1{
 				font-size: 24px;
-                padding-top: 15px;
+                padding-top: 25px;
 		}
 		h2{
 				font-size: 14px;
@@ -926,7 +969,7 @@ header .header-bibliography .header-bibliography-inner p {
 // Header Content
 
 header {
-		background-image: url('../img/header_01.jpg');
+		background-image: url('img/header_hell.jpg');
 		background-attachment: scroll;
 		background-position: center center;
 		.background-cover;
@@ -940,6 +983,10 @@ header {
 		-o-background-size: cover;
 		padding-bottom: @spacing/2;
 		height: 350px;
+        text-shadow: 0 0 1px #666666;
+        a {
+            text-shadow: none;
+        }
 }
 
 header .header-content {
@@ -1004,7 +1051,7 @@ header .header-content .header-content-inner p {
 
 		h1{
 				font-size: 24px;
-                padding-top: 15px;
+                padding-top: 25px;
 		}
 		h2{
 				font-size: 14px;
@@ -1494,15 +1541,21 @@ section.layer-login {
 }
 
 .joinus-icons .fa-stack-1x{
-		font-size: 42px;
-        margin-top: 34px;
+		font-size: 65px;
+        margin-top: 0;
+        color: @brand-primary-light;
 }
 
 
 .fa-stack {
     font-size: 110px;
-    height: 12rem;
+    height: 80px;
 }
+
+.fa-inverse {
+    color: @brand-primary;
+}
+
 
 .fileUpload {
 		position: relative;
