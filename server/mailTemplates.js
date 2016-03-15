@@ -3,7 +3,7 @@ Accounts.emailTemplates.from = 'Open Strategy Network <violetta.splitter@busines
 
 // verification email
 Accounts.emailTemplates.verifyEmail.subject = function (user) {
-  return 'Confirm Your Email Address, ' + user.firstName + ' ' + user.lastName;
+  return 'Confirm Your Email Address, ' + user.profile.firstName + ' ' + user.profile.lastName;
 };
 Accounts.emailTemplates.verifyEmail.text = function (user, url) {
   return 'Welcome to the Open Strategy Network!!\n' + 'To verify your email address go ahead and follow the link below:\n\n' + url;

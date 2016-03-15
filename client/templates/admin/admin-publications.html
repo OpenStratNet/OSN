@@ -10,24 +10,28 @@
             <label for="title" class="col-sm-2 control-label">Title</label>
         	<div class="col-sm-10">
             	<input type="text" class="form-control" id="title" name="title" placeholder="Enter Title">
-            </div>
+          </div>
         </div>
 
-			<div class="input-group">
 				 <div class="form-group">
-			        <label for="authors" class="col-sm-2 control-label">Author(s)</label>
-			        <div class="col-sm-10">
-			            <input type="text" class="form-control" name="authors" id="firstAuthor"  placeholder="Enter Author(s)">
-			            <span class="input-group-btn">
-	                    	<button class="btn btn-primary extra-spacing-top extra-spacing-bottom" id="js-addAuthors" type="button">ADD AUTHOR</button>
-	                  	</span>
-			        </div>
-			    </div>
-			</div>
+	        <label for="authors" class="col-sm-2 control-label">Author(s)</label>
+	        <div class="col-sm-5">
+	            <input type="text" class="form-control" name="authors" id="firstAuName"  placeholder="Enter First Name">
+	        </div>
+           <div class="col-sm-5">
+              <input type="text" class="form-control" name="authors" id="lastAuName"  placeholder="Enter Last Name">
+          </div>
+		    </div>
 
       {{#each inputsAuthors}}
         {{> authorsInput}}
       {{/each}}
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button class="btn btn-primary extra-spacing-top extra-spacing-bottom" id="js-addAuthors" type="button">ADD AUTHOR</button>
+        </div>
+      </div>
 
       <div class="form-group">
           <label for="year" class="col-sm-2 control-label">Year</label>
@@ -35,13 +39,6 @@
               <input type="text" class="form-control" id="year" name="year" placeholder="Enter Year of Publication">
           </div>
       </div>
-
-     <!--  <div class="form-group">
-          <label for="abstract" class="col-sm-2 control-label">Abstract</label>
-          <div class="col-sm-10">
-			<textarea type="message" rows="6" class="form-control" id="abstract" name="abstract" placeholder="Enter Abstract"></textarea>
-          </div>
-      </div> -->
 
        <div class="form-group">
           <label for="abstract" class="col-sm-2 control-label">Abstract</label>
@@ -109,21 +106,25 @@
         </div>
       </div>
 
-      <div class="input-group">
-				 <div class="form-group">
-		        <label for="editors" class="col-sm-2 control-label">Editor(s)</label>
-		        <div class="col-sm-10">
-		            <input type="text" class="form-control" name="editors" id="firstEditor"  placeholder="Enter Book Editor(s)">
-		            <span class="input-group-btn">
-                	<button class="btn btn-primary extra-spacing-bottom" id="js-addEditors" type="button">ADD EDITORS</button>
-              	</span>
-		        </div>
-			    </div>
+      <div class="form-group">
+        <label for="editors" class="col-sm-2 control-label">Editor(s)</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="editors" id="firstEdName"  placeholder="Enter Book Editor(s)">
+        </div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="editors" id="lastEdName"  placeholder="Enter Book Editor(s)">
+        </div>
 			</div>
 
-			{{#each inputsEditors}}
+      {{#each inputsEditors}}
         {{> editorsInput}}
       {{/each}}
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button class="btn btn-primary extra-spacing-bottom" id="js-addEditors" type="button">ADD EDITORS</button>
+        </div>
+      </div>
 
       <div class="form-group">
         <label for="pages" class="col-sm-2 control-label">Pages</label>
@@ -149,8 +150,11 @@
 <template name="authorsInput">
 	 <div class="form-group">
         <label for="authors" class="col-sm-2 control-label">Author(s)</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" name="authors" uniqid="{{uniqid}}" value="{{value}}" id="{{uniqid}}"  placeholder="Enter Author(s)">
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="firstName" value="{{valueFirst}}" id="{{uniqidFirst}}"  placeholder="Enter First Name">
+        </div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="lastName" value="{{valueLast}}" id="{{uniqidLast}}"  placeholder="Enter Last Name">
         </div>
     </div>
 </template>
@@ -158,8 +162,11 @@
 <template name="editorsInput">
 	 <div class="form-group">
         <label for="authors" class="col-sm-2 control-label">Editor(s)</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" name="authors" uniqid="{{uniqid}}" value="{{value}}" id="{{uniqid}}"  placeholder="Enter Book Editor(s)">
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="authors" value="{{valueFirst}}" id="{{uniqidFirst}}"  placeholder="Enter First Name">
+        </div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="authors" value="{{valueLast}}" id="{{uniqidLast}}"  placeholder="Enter Last Name">
         </div>
     </div>
 </template>

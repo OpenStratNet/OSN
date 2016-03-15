@@ -69,14 +69,16 @@ Template.adminPublications.events({
 	},
 	'click #js-addAuthors': function () {
     var inputsAuthors = Session.get('inputsAuthors');
-    var uniqid = Math.floor(Math.random() * 100000); // Give a unique ID so you can pull _this_ input when you click remove
-    inputsAuthors.push({uniqid: uniqid, value: ""});
+    var uniqidFirst = Math.floor(Math.random() * 100000); // Give a unique ID so you can pull _this_ input when you click remove
+    var uniqidLast = Math.floor(Math.random() * 100000); 
+    inputsAuthors.push({uniqidFirst: uniqidFirst, valueFirst: "", uniqidLast: uniqidLast, valueLast: ""});
     Session.set('inputsAuthors', inputsAuthors);
 	},
 	'click #js-addEditors': function () {
     var inputsEditors = Session.get('inputsEditors');
-    var uniqid = Math.ceil(Math.random() * 100000); // Give a unique ID so you can pull _this_ input when you click remove
-    inputsEditors.push({uniqid: uniqid, value: ""});
+    var uniqidFirst = Math.ceil(Math.random() * 100000); // Give a unique ID so you can pull _this_ input when you click remove
+    var uniqidLast = Math.floor(Math.random() * 100000); 
+    inputsEditors.push({uniqidFirst: uniqidFirst, valueFirst: "", uniqidLast: uniqidLast, valueLast: ""});
     Session.set('inputsEditors', inputsEditors);
 	},
 	'submit form': function (evt, temp) {
@@ -84,18 +86,18 @@ Template.adminPublications.events({
 		var newAuthors = [];
 		inputsAuthors = Session.get('inputsAuthors');
 		_.each(inputsAuthors, function(input) { 
-		  newAuthors.push($('#' + input.uniqid).val());
+      newAuthors.push({firstName: $('#' + input.uniqidFirst).val(), lastName: $('#' + input.uniqidLast).val()});
 		});
 
 		var newEditors = [];
 		inputsEditors = Session.get('inputsEditors');
 		_.each(inputsEditors, function(input) { 
-		  newEditors.push($('#' + input.uniqid).val());
+		  newEditors.push({firstName: $('#' + input.uniqidFirst).val(), lastName: $('#' + input.uniqidLast).val()});
 		});
 
 		// add the first (i.e, default) author to the array
-		newAuthors.unshift($('#firstAuthor').val()); 
-		newEditors.unshift($('#firstEditor').val()); 
+		newAuthors.unshift({firstName: $('#firstAuName').val(), lastName: $('#lastAuName').val()}); 
+		newEditors.unshift({firstName: $('#firstEdName').val(), lastName: $('#lastEdName').val()}); 
 
 		Publications.insert({
 			title: $('#title').val(),

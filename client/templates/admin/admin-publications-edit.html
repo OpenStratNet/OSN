@@ -12,6 +12,28 @@
             </div>
         </div>
 
+        {{#each inputsExistingAuthors}}
+         <div class="form-group">
+          <label for="authors" class="col-sm-2 control-label">Author(s)</label>
+          <div class="col-sm-5">
+              <input type="text" class="form-control" name="authors" id="{{uniqidFirst}}" value="{{valueFirst}}"  placeholder="Enter First Name">
+          </div>
+           <div class="col-sm-5">
+              <input type="text" class="form-control" name="authors" id="{{uniqidLast}}" value="{{valueLast}}" placeholder="Enter Last Name">
+          </div>
+        </div>
+        {{/each}}
+
+      {{#each inputsAuthors}}
+        {{> authorsInputEdit}}
+      {{/each}}
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button class="btn btn-primary extra-spacing-top extra-spacing-bottom" id="js-addAuthors" type="button">ADD AUTHOR</button>
+        </div>
+      </div>
+
         <div class="form-group">
             <label for="year" class="col-sm-2 control-label">Year</label>
             <div class="col-sm-10">
@@ -28,97 +50,117 @@
           </div>
       </div>
 
-            <div class="form-group js-radios">
-                <label for="Outlet" class="col-sm-2 control-label">Outlet</label>
-                <div class="col-sm-10">
-                    <label class="radio-inline"><input type="radio" name="outlet-type" id="wp" value="wp">Working Paper</label>
-                    <label class="radio-inline"><input type="radio" name="outlet-type" id="pp" value="pp">Published Paper</label>
-                    <label class="radio-inline"><input type="radio" name="outlet-type" id="bk" value="bk">Book</label>
-                    <label class="radio-inline"><input type="radio" name="outlet-type" id="bc" value="bc">Book Chapter</label>
-                </div>
+        <div class="form-group js-radiosEdit">
+            <label for="Outlet" class="col-sm-2 control-label">Outlet</label>
+            <div class="col-sm-10">
+                <label class="radio-inline"><input type="radio" name="outlet-type" id="wp" value="wp" {{isChecked 'wp'}}>Working Paper</label>
+                <label class="radio-inline"><input type="radio" name="outlet-type" id="pp" value="pp" {{isChecked 'pp'}}>Published Paper</label>
+                <label class="radio-inline"><input type="radio" name="outlet-type" id="bk" value="bk" {{isChecked 'bk'}}>Book</label>
+                <label class="radio-inline"><input type="radio" name="outlet-type" id="bc" value="bc" {{isChecked 'bc'}}>Book Chapter</label>
             </div>
+        </div>
 
-              {{#if ppSelected}}
-               <div class="form-group">
-                  <label for="journal" class="col-sm-2 control-label">Journal</label>
-                  <div class="col-sm-10">
-                      <input type="text" class="form-control" id="journal" name="journal" placeholder="Enter Name of Journal">
-                  </div>
-              </div>
-
-              <div class="form-group">
-                  <label for="pages" class="col-sm-2 control-label">Pages</label>
-                  <div class="col-sm-10">
-                      <input type="text" class="form-control" id="pages" name="pages" placeholder="Enter Pages">
-                  </div>
-              </div>
-              {{/if}}
-
-            {{#if bkSelected}}
-             <div class="form-group">
-                <label for="publisher" class="col-sm-2 control-label">Publisher</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="publisher" name="publisher" placeholder="Enter Publisher">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="location" class="col-sm-2 control-label">Location of Publisher</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="location" name="location" placeholder="Enter Location of Publisher">
-                </div>
-            </div>
-            {{/if}}
-
-            {{#if bcSelected}}
-             <div class="form-group">
-              <label for="publisher" class="col-sm-2 control-label">Publisher</label>
+          {{#if ppSelected}}
+           <div class="form-group">
+              <label for="journal" class="col-sm-2 control-label">Journal</label>
               <div class="col-sm-10">
-                  <input type="text" class="form-control" id="publisher" name="publisher" placeholder="Enter Publisher">
+                  <input type="text" class="form-control" id="journal" name="journal" placeholder="Enter Name of Journal">
               </div>
-            </div>
+          </div>
 
-            <div class="form-group">
-              <label for="location" class="col-sm-2 control-label">Location of Publisher</label>
-              <div class="col-sm-10">
-                  <input type="text" class="form-control" id="location" name="location" placeholder="Enter Location of Publisher">
-              </div>
-            </div>
-
-            <div class="input-group">
-               <div class="form-group">
-                  <label for="editors" class="col-sm-2 control-label">Editor(s)</label>
-                  <div class="col-sm-10">
-                      <input type="text" class="form-control" name="editors" id="firstEditor"  placeholder="Enter Book Editor(s)">
-                      <span class="input-group-btn">
-                        <button class="btn btn-primary" id="js-addEditors" type="button">ADD EDITORS</button>
-                      </span>
-                  </div>
-                </div>
-            </div>
-
-
-            {{#each inputsEditors}}
-              {{> editorsInput}}
-            {{/each}}
-
-            <div class="form-group">
+          <div class="form-group">
               <label for="pages" class="col-sm-2 control-label">Pages</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" id="pages" name="pages" value="{{pages}}">
+                  <input type="text" class="form-control" id="pages" name="pages" placeholder="Enter Pages">
               </div>
-            </div>
-            {{/if}}
+          </div>
+          {{/if}}
 
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" id="js-addEntry" class="btn btn-primary admin-button">UPDATE ENTRY</button>
-              </div>
+        {{#if bkSelected}}
+         <div class="form-group">
+            <label for="publisher" class="col-sm-2 control-label">Publisher</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="publisher" name="publisher" placeholder="Enter Publisher">
             </div>
+        </div>
 
-          </form> <!-- end form -->
+        <div class="form-group">
+            <label for="location" class="col-sm-2 control-label">Location of Publisher</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="location" name="location" placeholder="Enter Location of Publisher">
+            </div>
+        </div>
+        {{/if}}
+
+        {{#if bcSelected}}
+         <div class="form-group">
+          <label for="publisher" class="col-sm-2 control-label">Publisher</label>
+          <div class="col-sm-10">
+              <input type="text" class="form-control" id="publisher" name="publisher" placeholder="Enter Publisher">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="location" class="col-sm-2 control-label">Location of Publisher</label>
+          <div class="col-sm-10">
+              <input type="text" class="form-control" id="location" name="location" placeholder="Enter Location of Publisher">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="editors" class="col-sm-2 control-label">Editor(s)</label>
+          <div class="col-sm-5">
+              <input type="text" class="form-control" name="editors" id="firstEdName"  placeholder="Enter Book Editor(s)">
+          </div>
+          <div class="col-sm-5">
+              <input type="text" class="form-control" name="editors" id="lastEdName"  placeholder="Enter Book Editor(s)">
+          </div>
+        </div>
+
+        {{#each inputsEditors}}
+          {{> editorsInputEdit}}
+        {{/each}}
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary extra-spacing-bottom" id="js-addEditors" type="button">ADD EDITORS</button>
+          </div>
+        </div>
+        {{/if}}
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" id="js-addEntry" class="btn btn-primary">UPDATE ENTRY</button>
+          </div>
+        </div>
+
+      </form> <!-- end form -->
 
       {{/with}}
     </div> <!-- putdown -->
   </div> <!-- container -->
+</template>
+
+<template name="authorsInputEdit">
+   <div class="form-group">
+        <label for="authors" class="col-sm-2 control-label">Author(s)</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="firstName" value="{{valueFirst}}" id="{{uniqidFirst}}"  placeholder="Enter First Name">
+        </div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="lastName" value="{{valueLast}}" id="{{uniqidLast}}"  placeholder="Enter Last Name">
+        </div>
+    </div>
+</template>
+
+<template name="editorsInputEdit">
+   <div class="form-group">
+        <label for="authors" class="col-sm-2 control-label">Editor(s)</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="authors" value="{{valueFirst}}" id="{{uniqidFirst}}"  placeholder="Enter First Name">
+        </div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="authors" value="{{valueLast}}" id="{{uniqidLast}}"  placeholder="Enter Last Name">
+        </div>
+    </div>
 </template>
