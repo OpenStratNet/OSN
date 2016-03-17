@@ -286,6 +286,8 @@ p.interests {
 
 // Links
 
+
+
 a:link {
 		color: @brand-primary;
 		text-decoration: none;
@@ -302,8 +304,12 @@ a:active,
 a.active {
 		color: darken(@brand-primary, 10%);
 		text-decoration: none;
+        outline:0;
 }
 
+input::-moz-focus-inner {
+  border: 0;
+}
 
 a {
 		color: @brand-primary;
