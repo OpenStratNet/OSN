@@ -354,10 +354,12 @@ a.active {
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
 		background-color: darken(@brand-primary, 10%);
+        color: white;
 }
 
 .btn-primary.active:hover {
         background-color: @brand-primary;
+        color: white;
 }
 
 .btn-upload {
@@ -509,6 +511,7 @@ aside {
 }
 
 
+
 .container-fluid {
         padding-top: 17px;
         margin-bottom: 0px;
@@ -526,6 +529,7 @@ aside {
 
 .navbar-right {
     margin-top: 12px;
+    margin-right: -5px;
 }
 
 .navbar-default .navbar-toggle {
@@ -597,13 +601,14 @@ aside {
     text-overflow: ellipsis;
     background-color: @brand-primary;
     border: none;
-    color: white;
+    color: #ffffff!important;
     cursor: pointer;
 }
 
 .btn-profile:hover, .btn-profile:active {
     background-color: darken(@brand-primary, 10%);
     cursor: pointer;
+    color: #ffffff;
 }
 
 .btn-profile>:first-child {
@@ -618,6 +623,10 @@ aside {
 		border-right: 1px solid rgba(0,0,0,0.2);
         cursor: pointer;
 }
+
+// .profile-icons {
+//     align-content: center;
+// }
 
 
 .dropdown-menu > li > a.profile-links {
@@ -634,6 +643,12 @@ aside {
     color: darken(@brand-primary, 10%);
     background-color: transparent;
     cursor: pointer;
+}
+
+@media (min-width: 828px) {
+    #profile-text {
+        color: white;
+    }
 }
 
 p.profile-username {
