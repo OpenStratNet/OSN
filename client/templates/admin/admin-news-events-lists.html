@@ -1,9 +1,10 @@
 <template name="adminNewsEventsList">
-    <div class="container extra-spacing-bottom">
-		<div class="putdown extra-spacing-bottom">
-            <h1 class="extra-spacing-bottom">NEWS &amp; EVENTS LIST</h1>
+    <div class="container extra-spacing-bottom extra-spacing-top">
+		<div class="putdown extra-spacing-bottom extra-spacing-top">
+            <h1 class="extra-spacing-bottom extra-spacing-top">NEWS &amp; EVENTS LIST</h1>
             <hr>
-    		<div class="col-md-6 col-md-offset-3 putdown">
+    		<div class="col-md-6 col-md-offset-3">
+                <button type="button" class="btn btn-primary btn-add"><i class="fa fa-plus-circle">  Add new entry</i></button>
     			{{#each newsEventsData}}
     			<ul class="list-group">
     				<li class="list-group-item">

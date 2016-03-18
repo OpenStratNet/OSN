@@ -1,10 +1,11 @@
 <template name="adminPublicationsList">
-	<div class="container extra-spacing-bottom">
+	<div class="container extra-spacing-bottom extra-spacing-top">
 		<div class="putdown extra-spacing-bottom">
             <h1 class="extra-spacing-bottom">PUBLICATION LIST</h1>
             <hr>
             <div class="row">
     			<div class="col-md-6 col-md-offset-3">
+                    <button type="button" class="btn btn-primary btn-add"><i class="fa fa-plus-circle">  Add new entry</i></button>
     				{{#each publicationsData}}
     				<ul class="list-group">
     					<li class="list-group-item">
