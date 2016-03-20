@@ -4,7 +4,7 @@
             <h1 class="extra-spacing-bottom extra-spacing-top">NEWS &amp; EVENTS LIST</h1>
             <hr>
     		<div class="col-md-6 col-md-offset-3">
-                <button type="button" class="btn btn-primary btn-add"><i class="fa fa-plus-circle">  Add new entry</i></button>
+                <a class="btn btn-primary btn-add" href="{{pathFor route='adminNewsEvents'}}"><i class="fa fa-plus-circle">  Add new entry</i></a>
     			{{#each newsEventsData}}
     			<ul class="list-group">
     				<li class="list-group-item">

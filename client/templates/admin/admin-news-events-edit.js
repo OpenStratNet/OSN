@@ -35,12 +35,7 @@ Template.adminNewsEventsEdit.helpers({
   newsEventsEntry: function () {
     return NewsEvents.findOne({_id: this._id});
   },
-  imageExists: function () {
-  	return NewsEvents.findOne({coverImageId: { $exists: true } });
-  },
-  attachmentExists: function () {
-  	return NewsEvents.findOne({attachmentId: { $exists: true } });
-  }
+  // *** manual approach to retrieve the summernote content
   // summernoteText: function() {
   // 	var newsEventsEntry = NewsEvents.find({_id: this._id}); //, {description: "$('#description').summernote('code')"});
   // 	var descriptionContent = newsEventsEntry.description;

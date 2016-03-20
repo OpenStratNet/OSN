@@ -1,8 +1,11 @@
 outletChoice = new ReactiveVar(false);
+attachmentIdVar = new ReactiveVar(false);
 
 Tracker.autorun(function () {
   console.log("The choice-edit is: " + outletChoice.curValue);
   console.log("The choice Session Edit is: " + Session.get("outletChoiceEdit"));
+  console.log("inputsExistingAuthors: " + Session.get("inputsExistingAuthors"));
+  console.log("inputsAuthors: " + Session.get("inputsAuthors"));
 });
 
 Template.adminPublicationsEdit.onCreated(function() {
@@ -54,9 +57,6 @@ Template.adminPublicationsEdit.helpers({
   },
   attachmentExists: function () {
     return Publications.findOne({attachmentId: { $exists: true } });
-  },
-  isChecked: function(val) {
-    return (this.type === val) ? "checked" : "";
   },
   // ppSelected: function () {
   //   if (outletChoice.curValue === "pp") {
@@ -138,8 +138,24 @@ Template.adminPublicationsEdit.events({
     inputsEditors.push({uniqidFirst: uniqidFirst, valueFirst: "", uniqidLast: uniqidLast, valueLast: ""});
     Session.set('inputsEditors', inputsEditors);
   },
+  'change #attachment': function(evt, temp) {
+    var attachment = event.target.files[0];
+
+    // Insert the image into the database
+    // getting the image ID for use in the course object
+    var attachmentObject = Attachments.insert(attachment);
+
+    // The image id is stored in the image object
+    var attachmentId = attachmentObject._id
+
+    // Create a reactive var to be used when the course is added
+    if (attachmentId) {
+      attachmentIdVar = new ReactiveVar(attachmentId);
+    } 
+  },
   'submit form': function (evt, temp) {
     evt.preventDefault();
+
     var newAuthors = [];
     inputsAuthors = Session.get('inputsAuthors');
     _.each(inputsAuthors, function(input) { 
@@ -155,12 +171,13 @@ Template.adminPublicationsEdit.events({
     // add the existing (i.e, default) authors ro an array
     
     for (var i = 0; i < pubEntryComplete.authors.length; i++) {
-      newAuthors.unshift({firstName: existingAuthors[i]["uniqidFirst"], lastName: existingAuthors[i]["uniqidLast"]}); 
+      newAuthors.unshift({firstName: existingAuthors[i]["valueFirst"], lastName: existingAuthors[i]["valueLast"]}); // 
     };
     // newAuthors.unshift({firstName: $('#firstAuName').val(), lastName: $('#lastAuName').val()}); 
     newEditors.unshift({firstName: $('#firstEdName').val(), lastName: $('#lastEdName').val()}); 
 
     var temp = {};
+
     temp.title = $('#title').val()
     temp.authors = newAuthors,
     temp.editors = newEditors,
@@ -176,8 +193,13 @@ Template.adminPublicationsEdit.events({
     // Book (bk) or Book Chapter (bc)
     temp.publisher = $('#publisher').val(),
     temp.location = $('#location').val(),
+    
     // when last time modified
-    modifiedAt = new Date ()
+    temp.modifiedAt = new Date ()
+
+    if (attachmentIdVar.get()) {
+      temp.attachmentId = attachmentIdVar.get();
+    }
 
     Publications.update({_id: this._id}, {$set: temp});
 

@@ -49,6 +49,11 @@ Router.route('/admin-publications-edit/:_id', {
   }
 });
 
+//admin members
+Router.route('/admin-members', {
+  name: 'adminMembers'
+});
+
 // *** MEMBERS ROUTES ***
 
 // bibliography

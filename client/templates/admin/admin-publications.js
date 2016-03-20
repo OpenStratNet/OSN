@@ -1,5 +1,8 @@
+attachmentIdVar = new ReactiveVar(false);
+
 Tracker.autorun(function () {
   console.log("The choice is: " + Session.get("outletChoice"));
+  console.log("attachmentIdVar: " + attachmentIdVar.get());
 });
 
 Template.adminPublications.onCreated(function() {
@@ -81,8 +84,29 @@ Template.adminPublications.events({
     inputsEditors.push({uniqidFirst: uniqidFirst, valueFirst: "", uniqidLast: uniqidLast, valueLast: ""});
     Session.set('inputsEditors', inputsEditors);
 	},
+  'change #attachment': function(evt, temp) {
+    var attachment = event.target.files[0];
+
+    // Insert the image into the database
+    // getting the image ID for use in the course object
+    var attachmentObject = Attachments.insert(attachment);
+
+    // The image id is stored in the image object
+    var attachmentId = attachmentObject._id
+
+    // Create a reactive var to be used when the course is added
+    if (attachmentId) {
+      attachmentIdVar = new ReactiveVar(attachmentId);
+    } 
+  },
 	'submit form': function (evt, temp) {
 		evt.preventDefault();
+    // temp necessary for attachments
+    var temp = {};
+    if (attachmentIdVar.get()) {
+      temp.attachmentId = attachmentIdVar.get();
+    }
+
 		var newAuthors = [];
 		inputsAuthors = Session.get('inputsAuthors');
 		_.each(inputsAuthors, function(input) { 
@@ -117,6 +141,7 @@ Template.adminPublications.events({
 			publisher: $('#publisher').val(),
 			location: $('#location').val(),
 
+      attachmentId: temp.attachmentId,
 			createdAt: new Date ()
 		});
 
