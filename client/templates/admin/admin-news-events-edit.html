@@ -36,7 +36,7 @@
 
 				{{#if imageExists}}
 				<div class="thumbnail">
-					<a title="Edit" id="js-delete-image" class="btn btn-danger admin-button" href="{{pathFor route='adminNewsEventsEdit'}}"><i class="fa fa-trash"></i> </a>
+					<a title="Edit" class="btn btn-danger admin-button jsNewsDelImage" href="{{pathFor route='adminNewsEventsEdit'}}"><i class="fa fa-trash"></i> </a>
 					<img src="{{coverImage.url}}" class="img-responsive img-mini" alt="Image">
 				</div>
 
@@ -52,7 +52,7 @@
 				{{#if attachmentExists}}
 				<li>
 					<a href="{{ attachment.url }}">{{attachment.original.name}}  </a>
-					<button type="button" id="js-delete-attachment" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+					<button type="button" class="btn btn-danger jsNewsDelAttachment"><i class="fa fa-trash"></i></button>
 				</li>
         {{else}}
          <div class="form-group">

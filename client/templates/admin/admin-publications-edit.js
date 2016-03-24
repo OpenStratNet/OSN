@@ -52,12 +52,6 @@ Template.adminPublicationsEdit.helpers({
     // return whole Publication in general
     return Publications.findOne({_id: this._id});
   },
-  imageExists: function () {
-    return Publications.findOne({coverImageId: { $exists: true } });
-  },
-  attachmentExists: function () {
-    return Publications.findOne({attachmentId: { $exists: true } });
-  },
   // ppSelected: function () {
   //   if (outletChoice.curValue === "pp") {
   //     return true;
@@ -211,8 +205,13 @@ Template.adminPublicationsEdit.events({
 
     Publications.update({_id: this._id}, {$set: temp});
 
+<<<<<<< Updated upstream
     //$('#addPub')[0].reset();
     //$('#abstract').summernote('code', '');
+=======
+    // $('#addPub')[0].reset();
+    // $('#abstract').summernote('code', '');
+>>>>>>> Stashed changes
 
     Session.set("inputsAuthors", []);
     // $('#title').val('');

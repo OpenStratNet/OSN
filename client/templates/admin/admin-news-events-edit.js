@@ -89,28 +89,28 @@ Template.adminNewsEventsEdit.events({
 			attachmentIdVarEdit = new ReactiveVar(attachmentId);
 		}	
 	},
-	'click #js-delete-image': function (evt, temo) {
-		evt.preventDefault();
+	// 'click #js-delete-image': function (evt, temo) {
+	// 	evt.preventDefault();
 
-		var deleteConfirmation = confirm('Really delete this entry?');
+	// 	var deleteConfirmation = confirm('Really delete this entry?');
 		
-		if (deleteConfirmation) {
-			NewsEvents.update({_id: this._id}, {$unset: {coverImageId: ""}});
-			Images.remove({_id: this.coverImageId});
-			imageIdVarEdit.set(false);
-		};		
-	},
-	'click #js-delete-attachment': function (evt, temo) {
-		evt.preventDefault();
+	// 	if (deleteConfirmation) {
+	// 		NewsEvents.update({_id: this._id}, {$unset: {coverImageId: ""}});
+	// 		Images.remove({_id: this.coverImageId});
+	// 		imageIdVarEdit.set(false);
+	// 	};		
+	// },
+	// 'click #js-delete-attachment': function (evt, temo) {
+	// 	evt.preventDefault();
 
-		var deleteConfirmation = confirm('Really delete this entry?');
+	// 	var deleteConfirmation = confirm('Really delete this entry?');
 
-		if (deleteConfirmation) {
-			NewsEvents.update({_id: this._id}, {$unset: {attachmentId: ""}});
-			Attachments.remove({_id: this.attachmentId});
-			attachmentIdVarEdit.set(false);
-		};
-	},	
+	// 	if (deleteConfirmation) {
+	// 		NewsEvents.update({_id: this._id}, {$unset: {attachmentId: ""}});
+	// 		Attachments.remove({_id: this.attachmentId});
+	// 		attachmentIdVarEdit.set(false);
+	// 	};
+	// },	
 	'submit form': function (evt, temp) {
 		//evt.preventDefault();
 
@@ -118,7 +118,8 @@ Template.adminNewsEventsEdit.events({
 		temp.title = $('#title').val();
 		temp.description = $('#description').summernote('code');
 		temp.type = $('input[name=netype]:checked').val();
-		temp.createdAt = new Date ();
+		// when last time modified
+    temp.modifiedAt = new Date ();
 
 		if (imageIdVarEdit.get()) {
 			temp.coverImageId = imageIdVarEdit.get();

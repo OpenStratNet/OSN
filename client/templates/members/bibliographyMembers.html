@@ -65,13 +65,19 @@
 								
 						</td>
 						<td><a class="tbody-link" href="{{pathFor route = 'bibliographyPage'}}">{{title}}</a></td>
+						{{#if outlet}}
 						<td>{{outlet}}</td>
+						{{else}}
+						<td>Working Paper</td>
+						{{/if}}
 						<td>
+						{{#if attachmentExists}}
+							<a  class="button-download btn btn-primary btn-sm" href="{{ attachment.url }}"><span class="glyphicon glyphicon-download"></span> </a>
 							<button type="button" class="button-download btn btn-primary btn-sm"><span class="glyphicon glyphicon-download"></span></button> 
-
-							{{#if isInRole 'admin'}}
-							<button type="button" class="button-download btn btn-primary btn-sm js-editPub"><span class="glyphicon glyphicon-edit"></span></button>
-							{{/if}}
+						{{/if}}
+							<!-- {{#if isInRole 'admin'}} -->
+							<a href="{{pathFor route = 'adminPublicationsEdit'}}" class="button-download btn btn-primary btn-sm js-editPub"><span class="glyphicon glyphicon-edit"></span></a>
+							<!-- {{/if}}   -->
 							</td>
 					</tr>
 					{{/each}}
@@ -112,7 +118,11 @@
 										
 								</td>
 								<td><a class="tbody-link" href="{{pathFor route = 'newsAndEventsPage'}}">{{title}}</a></td>
+								{{#if outlet}}
 								<td>{{outlet}}</td>
+								{{else}}
+								<td>Working Paper</td>
+								{{/if}}
 								<td><button type="button" class="button-download btn btn-primary btn-sm"><span class="glyphicon glyphicon-download"></span></button></td>
 							</tr>
 							<!-- {{/each}} -->

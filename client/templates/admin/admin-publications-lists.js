@@ -13,7 +13,7 @@ Template.adminPublicationsList.events({
 		var deleteConfirmation = confirm('Really delete this entry?');
 		if (deleteConfirmation) {
 			//Images.remove({_id: this.coverImageId});
-			NewsEvents.remove(this._id);
+			Publications.remove(this._id);
 		};
 	}
 });

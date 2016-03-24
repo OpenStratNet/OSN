@@ -73,12 +73,12 @@ Template.bibliographyMembers.events({
       Session.set("yearSorter", false);
     }
   },
-  'click .js-editPub': function (evt, temp) {
-    evt.preventDefault();
-    Router.go('/admin-publications-edit/', {_id: this._id});
-  },
   'click .js-seeMoreBib': function (evt, tpl) {
     evt.preventDefault();
     Session.set("bibSeeMore", "yes");
+  },
+  'click .js-back': function (evt, temp) {
+    evt.preventDefault();
+    Router.go('/bibliography');
   }
 });

@@ -50,8 +50,8 @@ Router.route('/admin-publications-edit/:_id', {
 });
 
 //admin members
-Router.route('/admin-members', {
-  name: 'adminMembers'
+Router.route('/admin-members-list', {
+  name: 'adminMembersList'
 });
 
 // *** MEMBERS ROUTES ***
@@ -106,10 +106,10 @@ Router.map(function() {
 
 
 // User Accounts
-// AccountsTemplates.configureRoute('changePwd');
-// AccountsTemplates.configureRoute('enrollAccount');
-// AccountsTemplates.configureRoute('forgotPwd');
-// AccountsTemplates.configureRoute('resetPwd');
+AccountsTemplates.configureRoute('changePwd');
+AccountsTemplates.configureRoute('enrollAccount');
+AccountsTemplates.configureRoute('forgotPwd');
+AccountsTemplates.configureRoute('resetPwd');
 AccountsTemplates.configureRoute('signIn');
 AccountsTemplates.configureRoute('signUp', {
   redirect: '/profile-settings'

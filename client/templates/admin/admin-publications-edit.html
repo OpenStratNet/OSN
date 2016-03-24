@@ -64,14 +64,14 @@
            <div class="form-group">
               <label for="journal" class="col-sm-2 control-label">Journal</label>
               <div class="col-sm-10">
-                  <input type="text" class="form-control" id="journal" name="journal" placeholder="Enter Name of Journal">
+                  <input type="text" class="form-control" id="journal" name="journal" value="{{journal}}">
               </div>
           </div>
 
           <div class="form-group">
               <label for="pages" class="col-sm-2 control-label">Pages</label>
               <div class="col-sm-10">
-                  <input type="text" class="form-control" id="pages" name="pages" placeholder="Enter Pages">
+                  <input type="text" class="form-control" id="pages" name="pages" value="{{pages}}">
               </div>
           </div>
           {{/if}}
@@ -80,14 +80,14 @@
          <div class="form-group">
             <label for="publisher" class="col-sm-2 control-label">Publisher</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="publisher" name="publisher" placeholder="Enter Publisher">
+                <input type="text" class="form-control" id="publisher" name="publisher" value="{{publisher}}">
             </div>
         </div>
 
         <div class="form-group">
             <label for="location" class="col-sm-2 control-label">Location of Publisher</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="location" name="location" placeholder="Enter Location of Publisher">
+                <input type="text" class="form-control" id="location" name="location" value="{{location}}">
             </div>
         </div>
         {{/if}}
@@ -96,14 +96,14 @@
          <div class="form-group">
           <label for="publisher" class="col-sm-2 control-label">Publisher</label>
           <div class="col-sm-10">
-              <input type="text" class="form-control" id="publisher" name="publisher" placeholder="Enter Publisher">
+              <input type="text" class="form-control" id="publisher" name="publisher" value="{{publisher}}">
           </div>
         </div>
 
         <div class="form-group">
           <label for="location" class="col-sm-2 control-label">Location of Publisher</label>
           <div class="col-sm-10">
-              <input type="text" class="form-control" id="location" name="location" placeholder="Enter Location of Publisher">
+              <input type="text" class="form-control" id="location" name="location" value="{{location}}">
           </div>
         </div>
 
@@ -127,18 +127,14 @@
           </div>
         </div>
         {{/if}}
-
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" id="js-addEntry" class="btn btn-primary">UPDATE ENTRY</button>
-          </div>
-        </div>
         
         {{#if attachmentExists}}
-        <li>
-          <a href="{{ attachment.url }}">{{attachment.original.name}}  </a>
-          <button type="button" id="js-delete-attachment" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+         <div class="form-group">
+          <li>
+            <a href="{{ attachment.url }}">{{attachment.original.name}}  </a>
+            <button type="button" class="btn btn-danger jsPubsDelAttachment"><i class="fa fa-trash"></i></button>
         </li>
+        </div>
         {{else}}
         <div class="form-group">
           <label for="attachment" class="col-sm-2 control-label">Attachment</label>
@@ -147,6 +143,12 @@
           </div>
         </div>
         {{/if}}
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" id="js-addEntry" class="btn btn-primary">UPDATE ENTRY</button>
+          </div>
+        </div>
       </form> <!-- end form -->
 
       {{/with}}

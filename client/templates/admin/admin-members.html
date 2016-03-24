@@ -1,3 +1,20 @@
-<template name="adminMembers">
-  ...
+<template name="adminMembersList">
+  <div class="container extra-spacing-bottom extra-spacing-top">
+    <div class="putdown extra-spacing-bottom extra-spacing-top">
+      <h1 class="extra-spacing-bottom extra-spacing-top">MEMBER LIST</h1>
+      <hr>
+      <div class="col-md-6 col-md-offset-3">
+          <!-- <a class="btn btn-primary btn-add" href="{{pathFor route='adminNewsEvents'}}"><i class="fa fa-plus-circle">  Add new entry</i></a> -->
+        {{#each members}}
+        <ul class="list-group">
+          <li class="list-group-item">
+          <a title="Edit" id="js-edit-ne" href="{{pathFor route='adminNewsEventsEdit'}}">{{profile.lastName}}, {{profile.firstName}}</a>
+          <!-- delete button -->
+          <a title="Edit" class="jsMembersDelUser btn btn-danger admin-button" href="#"><i class="fa fa-trash"></i> </a>
+          </li>
+        </ul>
+        {{/each}}
+      </div>
+    </div>
+  </div>
 </template>
