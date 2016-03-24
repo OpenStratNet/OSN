@@ -18,7 +18,7 @@ Template.adminPublicationsEdit.onCreated(function() {
 Template.adminPublicationsEdit.onRendered(function() {
   $(document).ready(function() {
     $('#abstract').summernote({
-      height: 200, 
+      height: 200,
       toolbar: [
       //[groupName, [list of button]]
       ['style', ['style']],
@@ -40,11 +40,11 @@ Template.adminPublicationsEdit.helpers({
   pubEntry: function () {
     pubEntryComplete = Publications.findOne({_id: this._id});
     existingAuthors = [];
-    for (var i = 0; i < pubEntryComplete.authors.length; i++) { 
+    for (var i = 0; i < pubEntryComplete.authors.length; i++) {
       existingAuthors.push({uniqidFirst: Math.ceil(Math.random() * 100000), valueFirst: pubEntryComplete.authors[i].firstName, uniqidLast: Math.ceil(Math.random() * 100000), valueLast: pubEntryComplete.authors[i].lastName});
     }
 
-    // _.each(existingAuthors, function(input) { 
+    // _.each(existingAuthors, function(input) {
     //   newAuthors.push({firstName: $('#' + input.uniqidFirst).val(), lastName: $('#' + input.uniqidLast).val()});
     // });
     Session.set("inputsExistingAuthors", existingAuthors);
@@ -92,6 +92,7 @@ Template.adminPublicationsEdit.helpers({
     return Session.get('inputsAuthors');
   },
   inputsExistingAuthors: function () {
+    console.log(Session.get('inputsExistingAuthors'));
     return Session.get('inputsExistingAuthors');
   },
   inputsEditors: function () {
@@ -113,7 +114,7 @@ Template.adminPublicationsEdit.events({
       outletChoice.set("bk");
     } else if ($('input[name=outlet-type]:checked').val() === "bc") {
       outletChoice.set("bc");
-    }   
+    }
     if ($('input[name=outlet-type]:checked').val() === "wp") {
       Session.set("outletChoiceEdit", "wp");
     } else if ($('input[name=outlet-type]:checked').val() === "pp") {
@@ -122,19 +123,19 @@ Template.adminPublicationsEdit.events({
       Session.set("outletChoiceEdit", "bk");
     } else if ($('input[name=outlet-type]:checked').val() === "bc") {
       Session.set("outletChoiceEdit", "bc");
-    }   
+    }
   },
   'click #js-addAuthors': function () {
     var inputsAuthors = Session.get('inputsAuthors');
     var uniqidFirst = Math.floor(Math.random() * 100000); // Give a unique ID so you can pull _this_ input when you click remove
-    var uniqidLast = Math.floor(Math.random() * 100000); 
+    var uniqidLast = Math.floor(Math.random() * 100000);
     inputsAuthors.push({uniqidFirst: uniqidFirst, valueFirst: "", uniqidLast: uniqidLast, valueLast: ""});
     Session.set('inputsAuthors', inputsAuthors);
   },
   'click #js-addEditors': function () {
     var inputsEditors = Session.get('inputsEditors');
     var uniqidFirst = Math.ceil(Math.random() * 100000); // Give a unique ID so you can pull _this_ input when you click remove
-    var uniqidLast = Math.floor(Math.random() * 100000); 
+    var uniqidLast = Math.floor(Math.random() * 100000);
     inputsEditors.push({uniqidFirst: uniqidFirst, valueFirst: "", uniqidLast: uniqidLast, valueLast: ""});
     Session.set('inputsEditors', inputsEditors);
   },
@@ -151,35 +152,42 @@ Template.adminPublicationsEdit.events({
     // Create a reactive var to be used when the course is added
     if (attachmentId) {
       attachmentIdVar = new ReactiveVar(attachmentId);
-    } 
+    }
   },
   'submit form': function (evt, temp) {
     evt.preventDefault();
 
     var newAuthors = [];
     inputsAuthors = Session.get('inputsAuthors');
-    _.each(inputsAuthors, function(input) { 
+
+
+    // each input feld mit name=authors
+    // firstName und lastName in allAuthors
+    //temp.authors = allAuthors
+
+    _.each(inputsAuthors, function(input) {
       newAuthors.push({firstName: $('#' + input.uniqidFirst).val(), lastName: $('#' + input.uniqidLast).val()});
     });
 
     var newEditors = [];
     inputsEditors = Session.get('inputsEditors');
-    _.each(inputsEditors, function(input) { 
+    _.each(inputsEditors, function(input) {
       newEditors.push({firstName: $('#' + input.uniqidFirst).val(), lastName: $('#' + input.uniqidLast).val()});
     });
 
     // add the existing (i.e, default) authors ro an array
-    
-    for (var i = 0; i < pubEntryComplete.authors.length; i++) {
-      newAuthors.unshift({firstName: existingAuthors[i]["valueFirst"], lastName: existingAuthors[i]["valueLast"]}); // 
+
+    /*for (var i = 0; i < pubEntryComplete.authors.length; i++) {
+      newAuthors.unshift({firstName: existingAuthors[i]["valueFirst"], lastName: existingAuthors[i]["valueLast"]}); //
     };
-    // newAuthors.unshift({firstName: $('#firstAuName').val(), lastName: $('#lastAuName').val()}); 
-    newEditors.unshift({firstName: $('#firstEdName').val(), lastName: $('#lastEdName').val()}); 
+    */
+    // newAuthors.unshift({firstName: $('#firstAuName').val(), lastName: $('#lastAuName').val()});
+    newEditors.unshift({firstName: $('#firstEdName').val(), lastName: $('#lastEdName').val()});
 
     var temp = {};
 
     temp.title = $('#title').val()
-    temp.authors = newAuthors,
+    temp.authors = pubEntryComplete.authors.concat(newAuthors);
     temp.editors = newEditors,
     temp.year = $('#year').val(),
     temp.type = $('input[name=outlet-type]:checked').val(),
@@ -193,7 +201,7 @@ Template.adminPublicationsEdit.events({
     // Book (bk) or Book Chapter (bc)
     temp.publisher = $('#publisher').val(),
     temp.location = $('#location').val(),
-    
+
     // when last time modified
     temp.modifiedAt = new Date ()
 
@@ -203,9 +211,10 @@ Template.adminPublicationsEdit.events({
 
     Publications.update({_id: this._id}, {$set: temp});
 
-    $('#addPub')[0].reset();
-    $('#abstract').summernote('code', '');
+    //$('#addPub')[0].reset();
+    //$('#abstract').summernote('code', '');
 
+    Session.set("inputsAuthors", []);
     // $('#title').val('');
     // $('#authors').val('');
     // $('#year').val('');
