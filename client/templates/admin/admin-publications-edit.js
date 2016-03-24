@@ -205,13 +205,8 @@ Template.adminPublicationsEdit.events({
 
     Publications.update({_id: this._id}, {$set: temp});
 
-<<<<<<< Updated upstream
-    //$('#addPub')[0].reset();
-    //$('#abstract').summernote('code', '');
-=======
     // $('#addPub')[0].reset();
     // $('#abstract').summernote('code', '');
->>>>>>> Stashed changes
 
     Session.set("inputsAuthors", []);
     // $('#title').val('');
