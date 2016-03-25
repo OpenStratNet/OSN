@@ -88,6 +88,9 @@ Router.route('/contact', {
   name: 'contact'
 });
 
+Router.route('/about-us', {
+  name: 'aboutUs'
+});
 
 // specific news and events
 Router.route('/news-and-events/:_id', {

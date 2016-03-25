@@ -28,7 +28,7 @@
                     <h3>ONLY VISIBLE TO MEMBERS</h3>
                     <hr>
                     <p class="text-muted form">If you want to join the community please register here:</p>
-                    <button type="Join us" class="btn btn-primary btn-block">JOIN US</button>
+                    <a href="{{pathFor route='joinUs'}}" class="btn btn-primary btn-block">JOIN US</a>
                 </div>
 
                 <hr class="layer-light">
@@ -228,16 +228,4 @@
         </section>
     </div><!--  End of Blur -->
   </div><!-- End of Overlay -->
-  {{>foo}}
-  {{>foo2}}
-</template>
-
-<template name="foo">
-  {{bar}}
-  <button type="button">Click</button>
-</template>
-
-<template name="foo2">
-  {{bar}} 2
-  <button type="button">Click 2</button>
 </template>
