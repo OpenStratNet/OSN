@@ -3,9 +3,7 @@ UI.registerHelper('isChecked', function(val){
 });
 
 Template.applicationLayout.events({
-  'click .jsNewsDelImage': function (evt, temo) {
-    evt.preventDefault();
-
+  'click .jsNewsDelImage': function (evt, temp) {
     var deleteConfirmation = confirm('Really delete this entry?');
     
     if (deleteConfirmation) {
@@ -14,9 +12,7 @@ Template.applicationLayout.events({
       imageIdVarEdit.set(false);
     };    
   },
-  'click .jsNewsDelAttachment': function (evt, templ) {
-    evt.preventDefault();
-
+  'click .jsNewsDelAttachment': function (evt, temp) {
     var deleteConfirmation = confirm('Really delete this entry?');
     if (deleteConfirmation) {
      NewsEvents.update({_id: this._id}, {$unset: {attachmentId: ""}});
@@ -24,9 +20,7 @@ Template.applicationLayout.events({
      attachmentIdVarEdit.set(false);
    };
   },
-  'click .jsPubsDelAttachment': function (evt, templ) {
-    evt.preventDefault();
-
+  'click .jsPubsDelAttachment': function (evt, temp) {
     var deleteConfirmation = confirm('Really delete this entry?');
     if (deleteConfirmation) {
      Publications.update({_id: this._id}, {$unset: {attachmentId: ""}});
@@ -34,9 +28,7 @@ Template.applicationLayout.events({
      attachmentIdVarEdit.set(false);
    };
   },
-  'click .jsMembersDelUser': function (evt, templ) {
-    evt.preventDefault();
-
+  'click .jsMembersDelUser': function (evt, temp) {
     var deleteConfirmation = confirm('Really delete this member?');
     if (deleteConfirmation) {
      Meteor.users.remove({_id: this._id});

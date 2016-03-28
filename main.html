@@ -6,6 +6,6 @@
 <template name="applicationLayout">
 	{{> yield region = "header"}}
 	{{> yield "main"}}
-  {{> sAlert}}
+  {{> yield region = "logIn"}}
   {{> yield region = "footer"}}
 </template>

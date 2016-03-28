@@ -21,16 +21,12 @@ Template.profileSettings.helpers({
     if (Meteor.user().profile.pictureID) {
       return true;
     }
-  },
-  noPics: function() {
-    if (Meteor.user().profile.pictureID === false && Meteor.user().profile.picture === false) {
-      return true;
-    }
   }
 });
 
 Template.profileSettings.events({
   'change .js-Profile': function(evt, temp) {
+    console.log("test");
     var image = event.target.files[0];
     // Insert the image into the database
     // getting the image ID for use in the course object
@@ -61,6 +57,15 @@ Template.profileSettings.events({
   },  
   'submit form': function (evt, temp) {
     evt.preventDefault();
-    Meteor.users.update({_id: this._id}, {$set: {'profile.pictureID': profilePicEdit.curValue, 'profile.picture': pictureUrl.curValue}} );
+    var temp = {};
+    var temp.profile = {};
+
+    temp.profile.firstName = $('#fistname').val();
+    temp.profile.lastname = $('#lastname').val();
+
+    // console.log("done");
+    // Bert.alert("Changes saved.");
+    // Meteor.users.update({_id: this._id}, {$set: {'profile.pictureID': profilePicEdit.curValue, 'profile.picture': pictureUrl.curValue}} );
+    Meteor.users.update({_id: this._id}, {$set: temp} );
   }
 });

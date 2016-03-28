@@ -21,15 +21,6 @@ Template.membersMembers.helpers({
       return Meteor.users.find().fetch();
     }
   },
-  noPicture: function () {
-    // return NewsEvents.findOne({_id:this._id},{coverImageId: { $exists: true } });
-    var currUser = Meteor.users.findOne( {_id:this._id} );
-    if (!currUser.profile.picture && !currUser.profile.pictureID)  {
-      return true;
-    } else {
-      return false;
-    }
-  },
   profilePic: function() {
     if (Meteor.user().profile.picture) {
       return true;
@@ -39,10 +30,5 @@ Template.membersMembers.helpers({
     if (Meteor.user().profile.pictureID) {
       return true;
     }
-  },
-  noPics: function() {
-    if (Meteor.user().profile.pictureID === false && Meteor.user().profile.picture === false) {
-      return true;
-    }
-  },
+  }
 });

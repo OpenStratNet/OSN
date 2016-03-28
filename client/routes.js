@@ -1,10 +1,11 @@
 Router.configure({
-     layoutTemplate: 'ApplicationLayout',
-     yieldTemplates: {
-      navbar: {to: 'header'},
-      footer: {to: 'footer'}
-     }
- });
+  layoutTemplate: 'ApplicationLayout',
+  yieldTemplates: {
+  navbar: {to: 'header'},
+  footer: {to: 'footer'},
+  logInWindow: {to: 'logIn'}
+  }
+});
 
 AccountsTemplates.configure({
     defaultLayout: 'myLayout',

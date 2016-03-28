@@ -22,61 +22,61 @@
 
 			<!-- Log in Layer -->
 			<section class="layer-login">
-				<div class="row">
-					<div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 layer-background">
-							<div class="text-center">
-									<h3>ONLY VISIBLE TO MEMBERS</h3>
-									<hr>
-									<p class="text-muted form">If you want to join the community please register here:</p>
-									<button type="Join us" class="btn btn-primary btn-block">JOIN US</button>           
-							</div>
+			    <div class="row">
+			        <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 layer-background">
+			            <div class="text-center">
+			                <h3>ONLY VISIBLE TO MEMBERS</h3>
+			                <hr>
+			                <p class="text-muted form">If you want to join the community please register here:</p>
+			                <a href="{{pathFor route='joinUs'}}" class="btn btn-primary btn-block">JOIN US</a>
+			            </div>
 
-							<hr class="layer-light">
+			            <hr class="layer-light">
 
-							<div class="text-center">
-									<p class="text-muted form">If you are already a member please log in:</p>
-							</div>
-							<form>
-									<div class="form-group">
-											<input type="email" class="extra-spacing-bottom form-control" id="email" placeholder="Email">
-									</div>
-									<div class="form-group">
-											<input type="password" class="extra-spacing-bottom form-control" id="password" placeholder="Password">
-									</div>
-									<button type="submit" class="btn btn-primary btn-block">LOG IN</button>
-							</form>
+			            <div class="text-center">
+			                <p class="text-muted form">If you are already a member please log in:</p>
+			            </div>
+			            <form>
+			                <div class="form-group">
+			                    <input type="email" class="extra-spacing-bottom form-control" id="at-field-email" placeholder="Email">
+			                </div>
+			                <div class="form-group">
+			                    <input type="password" class="extra-spacing-bottom form-control" id="at-field-password" placeholder="Password">
+			                </div>
+			                <button id="logInButton" type="submit" class="btn btn-primary btn-block">LOG IN</button>
+			            </form>
 
-							<hr class="layer-light">
+			            <hr class="layer-light">
 
-							<div class="text-center">
-									<p class="text-muted form">Or log in with your social account:</p>
-							</div>
-							<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-											<a class="btn btn-primary btn-block btn-social btn-google">
-													<span class="fa fa-google"></span> Google
-											</a>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-											<a class="btn btn-primary btn-block btn-social btn-facebook">
-													<span class="fa fa-facebook"></span> Facebook
-											</a>
-									</div>
-							</div>
-							<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-											<a class="btn btn-primary btn-block btn-social btn-twitter">
-													<span class="fa fa-twitter"></span> Twitter
-											</a>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-											<a class="btn btn-primary btn-block btn-social btn-linkedin">
-													<span class="fa fa-linkedin"></span> LinkedIn
-											</a>
-									</div>
-							</div>
-					</div>
-				</div>
+			            <div class="text-center">
+			                <p class="text-muted form">Or log in with your social account:</p>
+			            </div>
+			            <div class="row">
+			                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			                    <a  id="at-google" class="btn btn-primary btn-block btn-social btn-google">
+			                        <span class="fa fa-google"></span> Google
+			                    </a>
+			                </div>
+			                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			                    <a id="at-facebook" class="btn btn-primary btn-block btn-social btn-facebook">
+			                        <span class="fa fa-facebook"></span> Facebook
+			                    </a>
+			                </div>
+			            </div>
+			            <div class="row">
+			                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			                    <a id="at-twitter" class="btn btn-primary btn-block btn-social btn-twitter">
+			                        <span class="fa fa-twitter"></span> Twitter
+			                    </a>
+			                </div>
+			                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			                    <a  id="at-linkedin" class="btn btn-primary btn-block btn-social btn-linkedin">
+			                        <span class="fa fa-linkedin"></span> LinkedIn
+			                    </a>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
 			</section> <!-- ./Log in Layer -->
 
 			<div class="container blur-me">

@@ -1,4 +1,4 @@
-Template.membersGuests.events({
+Template.bibliographyGuests.events({
   'click #at-facebook': function (evt, temp) {
     Meteor.loginWithFacebook();
     showLogin.set(false); 
