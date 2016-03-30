@@ -58,10 +58,10 @@ Template.profileSettings.events({
   'submit form': function (evt, temp) {
     evt.preventDefault();
     var temp = {};
-    var temp.profile = {};
+    // var temp.profile = {};
 
-    temp.profile.firstName = $('#fistname').val();
-    temp.profile.lastname = $('#lastname').val();
+    // temp.profile.firstName = $('#fistname').val();
+    // temp.profile.lastname = $('#lastname').val();
 
     // console.log("done");
     // Bert.alert("Changes saved.");
