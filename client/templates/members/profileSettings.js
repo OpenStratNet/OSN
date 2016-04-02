@@ -40,7 +40,7 @@ Template.profileSettings.events({
 
     // Trying to teceive the url
     var imageUrl = imageObject.url({store: "profilePic"});
-    
+
     // double check with console.log
     Meteor.setTimeout(function () {
         console.log("Url " + imageUrl);
@@ -54,7 +54,7 @@ Template.profileSettings.events({
     if (imageUrl) {
       pictureUrl = new ReactiveVar(imageUrl);
     }
-  },  
+  },
   'submit form': function (evt, temp) {
     evt.preventDefault();
     var temp = {};

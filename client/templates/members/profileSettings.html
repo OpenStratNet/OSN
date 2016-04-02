@@ -73,7 +73,7 @@
 									</div>
 								</div>
 						</div>
-						
+
 						{{#if profilePic}}
 						<div class="row">
 							<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
@@ -89,17 +89,23 @@
 							</div>
 						</div>
 						{{/if}}
-						
+
 						{{#if noPicture}}
 						<div class="row">
 								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
 										<div class="form-group">
 												<label for="beispielFeldDatei">Profile Photo</label>
 										</div>
-										<div class="form-group fileUpload btn btn-default btn-block btn-icon btn-file-upload">
-												<span class="glyphicon glyphicon-upload"></span> Upload a profile photo
+                                        <div class="fileUpload btn btn-default btn-block btn-icon btn-file-upload">
+                                            <span class="glyphicon glyphicon-upload"></span>
+                                            <span>Upload</span>
+                                            <input type="file" class="upload js-Profile" />
+                                        </div>
+										<!--<div class="btn btn-default btn-block btn-icon btn-file-upload">
+												<span class="glyphicon glyphicon-upload"></span>
 												<input type="file" class="upload js-Profile" placeholder="Upload a Picture"/>
 										</div>
+                                    -->
 								</div>
 						</div>
 						{{/if}}

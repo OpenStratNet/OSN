@@ -1,7 +1,7 @@
 Session.setDefault('newsEventsViewMain', [ "news", "event" ]);
 Session.setDefault('newsEventsSeeMore', "no");
 
-Template.allNewsEvents.helpers({
+Template.newsblock.helpers({
   newsEventsData: function () {
     if(Session.equals("newsEventsSeeMore","no")) {
        return NewsEvents.find({type: { $in: Session.get('newsEventsViewMain')}}, {sort: {createdAt: -1}, limit: 3});
@@ -18,6 +18,20 @@ Template.allNewsEvents.helpers({
     } else {
       return false;
     }
+},
+  calcRow: function (index) {
+      console.log(index);
+      if(index % 3 === 0)
+        this.newrow = true;
+        else
+        this.newrow = false;
+      //return false;
+  },
+  beginningTag: function(){
+      return '<div class="row text-left">';
+  },
+  closingTag: function(){
+      return '</div>';
   }
 });
 
