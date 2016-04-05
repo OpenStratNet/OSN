@@ -341,10 +341,6 @@ a.active {
 
 // Restyled Primary Buttons
 
-.btn-add {
-    margin-bottom: 15px;
-}
-
 
 .btn-primary {
 		background-color: @brand-primary;
@@ -1584,6 +1580,28 @@ section.layer-login {
 		margin: 0;
 }
 
+.btn-add>:first-child {
+		position: absolute;
+		left: 0;
+		top: -1px;
+		bottom: 0;
+		width: 32px;
+		line-height: 34px;
+		font-size: 1.6em;
+		text-align: center;
+		border-right: 1px solid rgba(0,0,0,0.2);
+}
+
+.btn-add {
+    position: relative;
+    padding-left: 44px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 15px;
+}
+
 .btn-file-upload {
 		background-color: #fff;
 		border-color: rgba(0,0,0,0.2);
@@ -1685,9 +1703,9 @@ section.layer-login {
     margin-left: 8px;
 }
 
-.list-group-item {
-    padding-bottom: 3px;
-}
+// .list-group-item {
+//     padding-bottom: 3px;
+// }
 
 .list-group-item:last-child {
     border-radius: 0;
