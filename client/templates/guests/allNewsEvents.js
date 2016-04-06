@@ -3,13 +3,24 @@ Session.setDefault('newsEventsSeeMore', "no");
 
 Template.newsblock.helpers({
   newsEventsData: function () {
-    if(Session.equals("newsEventsSeeMore","no")) {
-       return NewsEvents.find({type: { $in: Session.get('newsEventsViewMain')}}, {sort: {createdAt: -1}, limit: 3});
+    all = NewsEvents.find({}).fetch();
+    chunks = [];
+    size = 3
+    while (all.length > 3) {
+        chunks.push({ row: all.slice(0, 3)});
+        all = all.slice(3);
     }
-    else {
-      return NewsEvents.find({type: { $in: Session.get('newsEventsViewMain')}}, {sort: {createdAt: -1}});
-    }
+    chunks.push({row: all});
+    return chunks;
   },
+// newsEventsData: function () {
+  //   if(Session.equals("newsEventsSeeMore","no")) {
+  //      return NewsEvents.find({type: { $in: Session.get('newsEventsViewMain')}}, {sort: {createdAt: -1}, limit: 3});
+  //   }
+  //   else {
+  //     return NewsEvents.find({type: { $in: Session.get('newsEventsViewMain')}}, {sort: {createdAt: -1}});
+  //   }
+  // },
   imageExists: function () {
     // return NewsEvents.findOne({_id:this._id},{coverImageId: { $exists: true } });
     var event = NewsEvents.findOne( {_id:this._id} );
@@ -18,20 +29,6 @@ Template.newsblock.helpers({
     } else {
       return false;
     }
-},
-  calcRow: function (index) {
-      console.log(index);
-      if(index % 3 === 0)
-        this.newrow = true;
-        else
-        this.newrow = false;
-      //return false;
-  },
-  beginningTag: function(){
-      return '<div class="row text-left">';
-  },
-  closingTag: function(){
-      return '</div>';
   }
 });
 

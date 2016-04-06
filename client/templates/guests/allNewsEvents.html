@@ -39,8 +39,11 @@ related news are warmly welcome. In order to add news to this section, please se
 	<section id="News">
 		<div class="container">
 			<!-- ROW -->
-                {{> newsblock}}
-            <!-- ROW -->
+      <div class="container">
+      {{> newsblock}}
+      </div>
+
+      <!-- ROW -->
 
 			<div class="row">
 				<div class="col-lg-12 text-center">
@@ -52,24 +55,31 @@ related news are warmly welcome. In order to add news to this section, please se
 </template>
 
 <template name="newsblock">
-        {{#each newsEventsData}}
-        <!--if -->
-    
+  {{breakTimeReset}}
+  {{#each newsEventsData}}
+    {{> newsrow}}
+  {{/each}}
+</template>
 
-            {{{beginningTag}}}
-                <div class="col-md-4 col-sm-6">
-                <div class="caption">
-                    {{#if imageExists}}
-                        <h4>{{title}}<img alt="news thumbnail" class="news-thumbnail" src="{{ coverImage.url }}" /></h4>
-                    {{else}}
-                        <h4>{{title}}</h4>
-                    {{/if}}
-                        <p class="text-muted">{{{description}}} <a href="{{pathFor route = 'newsAndEventsPage'}}" class="textlink">read more </a></p>
-                </div>
-            </div>
-        {{{closingTag}}}
+<template name="newsrow">
+  <div class="row">
+    {{#each this.row}}
+      {{> newsitem}}
+    {{/each}}
+  </div>
+</template>
 
-            {{/each}}
+<template name="newsitem">
+  <div class="col-md-4 col-sm-6">
+    <div class="caption">
+        {{#if imageExists}}
+        <h4>{{title}}<img alt="news thumbnail" class="news-thumbnail" src="{{ coverImage.url }}" /></h4>
+        {{else}}
+        <h4>{{title}}</h4>
+        {{/if}}
+        <p class="text-muted"> {{shortIt this.description 150}} <a href="{{pathFor route = 'newsAndEventsPage'}}" class="textlink">read more </a></p>
+    </div>
+  </div>
 </template>
 <!-- {{#if imageExists}}
 
