@@ -82,25 +82,29 @@ Meteor.startup(function () {
 		    "title": "EGOS 2015 reminder: Open Organizations for an Open Society?",
 		    "description": "Open Organizations for an Open Society? Practicing Openness in Innovation, Strategy and Beyond; Convenors: Leonhard Dobusch, Freie Universität Berlin, Georg von Krogh, ETH Zurich, Switzerland, Richard Whittington, Oxford University, Link to website: : http://bit.ly/EGOS15Open",
 		    "type": "event",
-		    "createdAt": new Date()   	
+		    "lastmodifiedAt": moment().format('ddd, DD MMM YYYY hh:mm:ss'),
+        "publishedAt": moment().format('ddd, DD MMM YYYY hh:mm:ss')  	
 			},
 			{
 		    "title": "A Dummy News",
 		    "description": "Lorem ipsum dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut Management",
 		    "type": "news",
-		   	"createdAt": new Date()
+		   	"lastmodifiedAt": moment().format('ddd, DD MMM YYYY hh:mm:ss'),
+        "publishedAt": moment().format('ddd, DD MMM YYYY hh:mm:ss')   
 	   },
      {
         "title": "A Dummy News",
         "description": "Lorem ipsum dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut Management",
         "type": "news",
-        "createdAt": new Date()
+        "lastmodifiedAt": moment().format('ddd, DD MMM YYYY hh:mm:ss'),
+        "publishedAt": moment().format('ddd, DD MMM YYYY hh:mm:ss')   
      },
      {
         "title": "A Dummy Event",
         "description": "Lorem ipsum dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut Management",
         "type": "event",
-        "createdAt": new Date()
+        "lastmodifiedAt": moment().format('ddd, DD MMM YYYY hh:mm:ss'),
+        "publishedAt": moment().format('ddd, DD MMM YYYY hh:mm:ss')   
      }]
 
     	_.each(protoNE, function(doc) {

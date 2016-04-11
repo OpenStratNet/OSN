@@ -78,6 +78,10 @@ Router.route('/profile-settings', {
   name: 'profileSettings'
 });
 
+Router.route('/reset-password', {
+  name: 'forgotPW'
+});
+
 // *** GUESTS ROUTES ***
 
  // all news and events
