@@ -38,56 +38,56 @@
 												<a href="{{pathFor route='contact'}}">Contact</a>
 										</li>
                     {{#unless currentUser}}
-                                        <li class="dropdown">
-                                          <a href="#" id="profile-text" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">LOG IN <span class="caret"></span></a>
-                                          <ul class="dropdown-menu dropdown-login">
-                                                <form>
-                                                    <div class="form-group">
-                                                        <input type="email" class="extra-spacing-bottom form-control" id="at-field-email" placeholder="Email">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input type="password" class="extra-spacing-bottom form-control" id="at-field-password" placeholder="Password">
-                                                    </div>
-                                                      <button type="submit" class="btn btn-primary btn-block">LOG IN</button>
-                                                </form>
+                      <li class="dropdown">
+                        <a href="#" id="profile-text" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">LOG IN <span class="caret"></span></a>
+                        <ul class="dropdown-menu dropdown-login">
+                              <form>
+                                  <div class="form-group">
+                                      <input type="email" class="extra-spacing-bottom form-control" id="at-field-email" placeholder="Email">
+                                  </div>
+                                  <div class="form-group">
+                                      <input type="password" class="extra-spacing-bottom form-control" id="at-field-password" placeholder="Password">
+                                  </div>
+                                    <button type="submit" class="btn btn-primary btn-block">LOG IN</button>
+                              </form>
 
-                                                <hr class="layer-light">
+                              <hr class="layer-light">
 
-                                                <div class="text-center">
-                                                    <p class="text-muted form">Or log in with your social account:</p>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                        <a  id="at-google" class="btn btn-primary btn-block btn-social btn-dropdown-google">
-                                                            <span class="fa fa-google"></span> Google
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                        <a id="at-facebook" class="btn btn-primary btn-block btn-social btn-dropdown-facebook">
-                                                            <span class="fa fa-facebook"></span> Facebook
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                        <a id="at-twitter" class="btn btn-primary btn-block btn-social btn-twitter">
-                                                            <span class="fa fa-twitter"></span> Twitter
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                        <a id="at-linkedin" class="btn btn-primary btn-block btn-social btn-linkedin">
-                                                            <span class="fa fa-linkedin"></span> LinkedIn
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                              <!-- <li><p class="profile-username">Hello {{currentUser.profile.firstName}}</p></li>
-                                              <li role="separator" class="divider"></li>
-                                              <li><a class="profile-links" href="{{pathFor route = 'profileSettings'}}"><i class="fa fa-cog profile-icons"></i>&nbsp; Settings</a></li>
-                                              <li><a class="profile-links" href="{{pathFor route = 'adminNewsEventsList'}}"><i class="fa fa-newspaper-o profile-icons"></i>&nbsp; News &amp; Events</a></li>
-                                              <li><a class="profile-links" href="{{pathFor route = 'adminPublicationsList'}}"><i class="fa fa-file-text-o profile-icons"></i>&nbsp; Publications</a></li>
-                                              <li><a class="profile-links" href="{{pathFor route = 'adminMembersList'}}"><i class="fa fa-users profile-icons"></i>&nbsp; Members</a></li> -->
-                                          </ul>
-                                      </li>
+                              <div class="text-center">
+                                  <p class="text-muted form">Or log in with your social account:</p>
+                              </div>
+                              <div class="row">
+                                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                      <a  id="at-google" class="btn btn-primary btn-block btn-social btn-dropdown-google">
+                                          <span class="fa fa-google"></span> Google
+                                      </a>
+                                  </div>
+                                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                      <a id="at-facebook" class="btn btn-primary btn-block btn-social btn-dropdown-facebook">
+                                          <span class="fa fa-facebook"></span> Facebook
+                                      </a>
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                      <a id="at-twitter" class="btn btn-primary btn-block btn-social btn-twitter">
+                                          <span class="fa fa-twitter"></span> Twitter
+                                      </a>
+                                  </div>
+                                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                      <a id="at-linkedin" class="btn btn-primary btn-block btn-social btn-linkedin">
+                                          <span class="fa fa-linkedin"></span> LinkedIn
+                                      </a>
+                                  </div>
+                              </div>
+                            <!-- <li><p class="profile-username">Hello {{currentUser.profile.firstName}}</p></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a class="profile-links" href="{{pathFor route = 'profileSettings'}}"><i class="fa fa-cog profile-icons"></i>&nbsp; Settings</a></li>
+                            <li><a class="profile-links" href="{{pathFor route = 'adminNewsEventsList'}}"><i class="fa fa-newspaper-o profile-icons"></i>&nbsp; News &amp; Events</a></li>
+                            <li><a class="profile-links" href="{{pathFor route = 'adminPublicationsList'}}"><i class="fa fa-file-text-o profile-icons"></i>&nbsp; Publications</a></li>
+                            <li><a class="profile-links" href="{{pathFor route = 'adminMembersList'}}"><i class="fa fa-users profile-icons"></i>&nbsp; Members</a></li> -->
+                        </ul>
+                    </li>
                                         <!-- <form class="navbar-form navbar-right" role="register">
 												<button type="button" class="js-logIn btn btn-primary btn-login">LOG IN</button>
 										</form> -->
@@ -123,10 +123,9 @@
 						</div> <!-- /.navbar-collapse -->
 				</div> <!-- /.container-fluid -->
 		</nav> <!-- ./Navbar Bootstrap -->
-    {{#if showLoginDiv}}
-      {{> logInWindow}}
-    {{/if}}
 </template>
+
+<!-- logInWindow not used anymore -->
 
 <template name="logInWindow">
   <div class="container">

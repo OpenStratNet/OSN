@@ -3,7 +3,7 @@ Router.configure({
   yieldTemplates: {
   navbar: {to: 'header'},
   footer: {to: 'footer'},
-  logInWindow: {to: 'logIn'}
+  // logInWindow: {to: 'logIn'}
   }
 });
 

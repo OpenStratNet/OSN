@@ -26,14 +26,14 @@ Template.profileSettings.helpers({
 
 Template.profileSettings.events({
   'change .js-Profile': function(evt, temp) {
-    console.log("test");
+    console.log("changed pic");
     var image = event.target.files[0];
     // Insert the image into the database
     // getting the image ID for use in the course object
     var imageObject = ProfilePic.insert(image);
-    filesCollection.on('uploaded', function (fileObj) {
-      // do something
-    });
+    // filesCollection.on('uploaded', function (fileObj) {
+    //   // do something
+    // });
 
     // The image id is stored in the image object
     var imageId = imageObject._id;
@@ -65,7 +65,7 @@ Template.profileSettings.events({
 
     // console.log("done");
     // Bert.alert("Changes saved.");
-    // Meteor.users.update({_id: this._id}, {$set: {'profile.pictureID': profilePicEdit.curValue, 'profile.picture': pictureUrl.curValue}} );
-    Meteor.users.update({_id: this._id}, {$set: temp} );
+    Meteor.users.update({_id: this._id}, {$set: {'profile.pictureID': profilePicEdit.curValue, 'profile.picture': pictureUrl.curValue}} );
+    // Meteor.users.update({_id: this._id}, {$set: temp} );
   }
 });
