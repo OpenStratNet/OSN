@@ -3,7 +3,12 @@ Session.setDefault('newsEventsSeeMore', "no");
 
 Template.newsblock.helpers({
   newsEventsData: function () {
-    all = NewsEvents.find({}).fetch();
+    if(Session.equals("newsEventsSeeMore","no")) {
+       all = NewsEvents.find({type: { $in: Session.get('newsEventsViewMain')}}, {sort: {createdAt: -1}, limit: 3}).fetch();
+    }
+    else {
+      all = NewsEvents.find({type: { $in: Session.get('newsEventsViewMain')}}, {sort: {createdAt: -1}}).fetch();
+    }
     chunks = [];
     size = 3
     while (all.length > 3) {
@@ -13,14 +18,6 @@ Template.newsblock.helpers({
     chunks.push({row: all});
     return chunks;
   },
-// newsEventsData: function () {
-  //   if(Session.equals("newsEventsSeeMore","no")) {
-  //      return NewsEvents.find({type: { $in: Session.get('newsEventsViewMain')}}, {sort: {createdAt: -1}, limit: 3});
-  //   }
-  //   else {
-  //     return NewsEvents.find({type: { $in: Session.get('newsEventsViewMain')}}, {sort: {createdAt: -1}});
-  //   }
-  // },
   imageExists: function () {
     // return NewsEvents.findOne({_id:this._id},{coverImageId: { $exists: true } });
     var event = NewsEvents.findOne( {_id:this._id} );
@@ -29,7 +26,12 @@ Template.newsblock.helpers({
     } else {
       return false;
     }
-  }
+  },
+  // clickedAll: function () {
+  //   if(Session.equals("newsEventsSeeMore","no")) {
+  //     return true;
+  //   }
+  // }
 });
 
 Template.allNewsEvents.events({

@@ -1,0 +1,34 @@
+<template name="forgotPW">
+  <div class="container extra-spacing-bottom extra-spacing-top">
+    <div class="putdown extra-spacing-bottom extra-spacing-top">
+    
+    {{#if resetPassword}}
+      <form id="set-new-password">
+        <label for="new-password">New Password</label>
+        <input type="text" id="new-password" placeholder="Try not to forget this one.">
+
+        <input type="submit" value="Set New Password">
+
+        <p id="form-messages"></p>
+      </form>
+    {{else}}
+      <form id="forgot-password">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                <div class="form-group">
+                    <label for="email">Email*</label>
+                    <input type="email" class="form-control" value="{{profile.email}}" id="email" placeholder="Email">
+                </div>
+            </div>
+        </div>
+        <label for="user-email">Email</label>
+        <input type="text" id="user-email" placeholder="Email">
+
+        <input type="submit" value="Get Reset Password Instructions">
+
+        <p id="form-messages"></p>
+      </form>
+    {{/if}}
+    </div> 
+  </div>
+</template>  

@@ -3,7 +3,7 @@ Router.configure({
   yieldTemplates: {
   navbar: {to: 'header'},
   footer: {to: 'footer'},
-  logInWindow: {to: 'logIn'}
+  // logInWindow: {to: 'logIn'}
   }
 });
 
@@ -76,6 +76,10 @@ Router.route('/members', {
 
 Router.route('/profile-settings', {
   name: 'profileSettings'
+});
+
+Router.route('/reset-password', {
+  name: 'forgotPW'
 });
 
 // *** GUESTS ROUTES ***
