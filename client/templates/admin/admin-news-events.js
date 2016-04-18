@@ -73,7 +73,9 @@ Template.adminNewsEvents.events({
 		temp.title = $('#title').val();
 		temp.description = $('#description').summernote('code');
 		temp.type = $('input[name=netype]:checked').val();
-		temp.createdAt = new Date ();
+		temp.createdAt = moment().format('ddd, DD MMM YYYY hh:mm:ss');
+    // currently same as createdAt, this might change in the future
+    temp.publishedAt = moment().format('ddd, DD MMM YYYY hh:mm:ss');
 
 		if (imageIdVar.get()) {
 			temp.coverImageId = imageIdVar.get();
