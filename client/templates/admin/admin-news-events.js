@@ -4,7 +4,7 @@ attachmentIdVar = new ReactiveVar(false);
 Template.adminNewsEvents.onRendered(function() {
   $(document).ready(function() {
     $('#description').summernote({
-    	height: 200, 
+    	height: 200,
     	toolbar: [
   	   // [groupName, [list of button]]
     	['style', ['style']],
@@ -20,6 +20,36 @@ Template.adminNewsEvents.onRendered(function() {
 	    ]
     });
   });
+
+  // testing tag options
+
+  // Get an array of the existing tags
+    var tagOptions = Tags.find().fetch();
+
+    $('#courseKeywords').selectize({
+        delimiter: ',',
+        persist: false,
+        valueField: 'name',
+        labelField: 'name',
+        searchField: 'name',
+        create: true,
+        highlight: true,
+        maxOptions: 5,
+        options: tagOptions,
+        onItemAdd: function (item) {
+            // Check to see if tag exists in Tags collection
+            // by querying the database for the tag name
+            // and checking the length of the result
+            var existingTag = Tags.find({"name": item}).fetch().length;
+            if (!existingTag ) {
+                // Add the tag to the Tags collection
+                // TODO: figure out how to limit duplicate tags
+                // e.g. 'Beans' and 'beans'
+                // unless this is not an issue
+                Tags.insert({"name": item});
+            }
+        }
+    });
 });
 
 Template.adminNewsEvents.events({
@@ -44,7 +74,7 @@ Template.adminNewsEvents.events({
 			imageIdVar = new ReactiveVar(imageId);
 		}
 	},
-	'change #attachment': function(evt, temp) {
+	'change #attachment': function(evt, template) {
     /* FS.Utility.eachFile(event, function(file) {
       Images.insert(file, function (err, fileObj) {
         // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
@@ -64,12 +94,13 @@ Template.adminNewsEvents.events({
 		// Create a reactive var to be used when the course is added
 		if (attachmentId) {
 			attachmentIdVar = new ReactiveVar(attachmentId);
-		}	
+		}
 	},
-	'submit form': function (evt, temp) {
-		//evt.preventDefault();
+	'submit form': function (evt, template) {
+		evt.preventDefault();
 
 		var temp = {};
+    temp.keywords = template.find('#courseKeywords').value.split(',')
 		temp.title = $('#title').val();
 		temp.description = $('#description').summernote('code');
 		temp.type = $('input[name=netype]:checked').val();
@@ -84,7 +115,10 @@ Template.adminNewsEvents.events({
 		if (attachmentIdVar.get()) {
 			temp.attachmentId = attachmentIdVar.get();
 		}
-		
+
+    console.log("event: " + event);
+    console.log("template: " + template);
 		NewsEvents.insert(temp);
+    Bert.alert("Done");
 	}
 });

@@ -51,3 +51,4 @@ cfs:gridfs
 cfs:s3
 raix:rssfeed
 momentjs:moment
+jeremy:selectize
