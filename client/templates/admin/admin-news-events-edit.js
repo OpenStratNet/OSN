@@ -119,7 +119,7 @@ Template.adminNewsEventsEdit.events({
 		temp.description = $('#description').summernote('code');
 		temp.type = $('input[name=netype]:checked').val();
 		// when last time modified
-    temp.modifiedAt = new Date ();
+    temp.modifiedAt = moment().format('ddd, DD MMM YYYY hh:mm:ss');
 
 		if (imageIdVarEdit.get()) {
 			temp.coverImageId = imageIdVarEdit.get();
