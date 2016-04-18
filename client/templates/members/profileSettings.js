@@ -66,6 +66,12 @@ Template.profileSettings.events({
   },
   'click #discard': function(){
    //If the user don't want to keep changes in profile picture, the pic returns to original, this is necessary to give a review of the new pic.
+   //Reset the new picture ID and URL to old picture.
+   _imageId = Session.get('oldPictureID');
+   _imageUrl = Session.get('oldPictureURL')
+	Session.set('newPictureID', _imageId);
+	Session.set('newPictureURL',_imageUrl);
+   //Update the profile picture to the old one.
 	Meteor.users.update({_id: Meteor.userId()}, {$set: {'profile.pictureID': Session.get('oldPictureID'), 'profile.picture': Session.get('oldPictureURL')}});
   },
   'submit form': function (){
