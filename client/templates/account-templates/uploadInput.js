@@ -14,8 +14,7 @@ Template.uploadInput.events({
     var imageId = imageObject._id;
     var imageUrl = Meteor.absoluteUrl() +"cfs/files/profilePic/"+imageId;
 	//Store the new picture ID and url in a session variable
-	Session.set('signUpPicID', imageId);
-	Session.set('signUpPicURL',imageUrl);
+	Session.set('signUpPicID', imageUrl);
 	//Check by console
     Meteor.setTimeout(function () {
         console.log("Url " + imageUrl);

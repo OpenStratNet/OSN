@@ -7,7 +7,7 @@ Template.profileSettings.onRendered(function() {
   window.scrollTo(0, 0);
   $('[data-toggle="tooltip"]').tooltip();
   if(Session.get('signUpPicID')){
-  Meteor.users.update({_id: Meteor.userId()}, {$set: {'profile.pictureID': Session.get('signUpPicID'), 'profile.picture': Session.get('signUpPicURL')}});
+  Meteor.users.update({_id: Meteor.userId()}, {$set: {'profile.pictureID': Session.get('signUpPicID')}});
   }
 });
 
@@ -43,18 +43,16 @@ Template.profileSettings.events({
     // The url of the image
     var imageUrl = Meteor.absoluteUrl() +"cfs/files/profilePic/"+imageId;
 	
-    //Store the old picture ID and url in a session variable, if the changes are discard the profilePic return to the original.
+    //Store the old picture ID in a session variable, if the changes are discard the profilePic return to the original.
 	Session.set('oldPictureID', Meteor.user().profile.pictureID);
-	Session.set('oldPictureURL',Meteor.user().profile.picture);
-	//Store the new picture ID and url in a session variable
-	Session.set('newPictureID', imageId);
-	Session.set('newPictureURL',imageUrl);
+	//Store the new picture ID in a session variable
+	Session.set('newPictureID', imageUrl);
     // double check with console.log
     Meteor.setTimeout(function () {
         console.log(imageUrl);
       }, 3 * 1000);
     //virtual update 
-	Meteor.users.update({_id: Meteor.userId()}, {$set: {'profile.pictureID': Session.get('newPictureID'), 'profile.picture': Session.get('newPictureURL')}});
+	Meteor.users.update({_id: Meteor.userId()}, {$set: {'profile.pictureID': Session.get('newPictureID')}});
     // assign the reactive var to the imageId
     if (imageId) {
       profilePicEdit = new ReactiveVar(imageId);
@@ -68,11 +66,9 @@ Template.profileSettings.events({
    //If the user don't want to keep changes in profile picture, the pic returns to original, this is necessary to give a review of the new pic.
    //Reset the new picture ID and URL to old picture.
    _imageId = Session.get('oldPictureID');
-   _imageUrl = Session.get('oldPictureURL')
 	Session.set('newPictureID', _imageId);
-	Session.set('newPictureURL',_imageUrl);
    //Update the profile picture to the old one.
-	Meteor.users.update({_id: Meteor.userId()}, {$set: {'profile.pictureID': Session.get('oldPictureID'), 'profile.picture': Session.get('oldPictureURL')}});
+	Meteor.users.update({_id: Meteor.userId()}, {$set: {'profile.pictureID': Session.get('oldPictureID')}});
   },
   'submit form': function (){
     //evt.preventDefault();
@@ -85,7 +81,7 @@ Template.profileSettings.events({
     // console.log("done");
     // Bert.alert("Changes saved.");
     //Update the profile pic ID;
-	Meteor.users.update({_id: Meteor.userId()}, {$set: {'profile.pictureID': Session.get('newPictureID'), 'profile.picture': Session.get('newPictureURL')}});
+	Meteor.users.update({_id: Meteor.userId()}, {$set: {'profile.pictureID': Session.get('newPictureID')}});
     // Meteor.users.update({_id: this._id}, {$set: temp} );
   }
 });

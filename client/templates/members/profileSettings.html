@@ -79,7 +79,17 @@
 							<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
 							    <label for="beispielFeldDatei">Profile picture</label>
 								<br>
-								<img class="image" style="width:150px;height:150px;" src="{{uploadedPic.url}}">
+								<img class="image" style="width:150px;height:150px;" src="{{profile.picture}}">
+							</div>
+						</div>
+						{{/if}}
+						
+						{{#if pictureID}}
+						<div class="row">
+							<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+							    <label for="beispielFeldDatei">Profile picture</label>
+								<br>
+								<img class="image" style="width:150px;height:150px;" src="{{profile.pictureID}}">
 							</div>
 						</div>
 						<div class="row">
@@ -92,7 +102,6 @@
 								</div>
 						</div>
 						{{/if}}
-
 						{{#if noPicture}}
 						<div class="row">
 								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
