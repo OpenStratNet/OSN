@@ -8,6 +8,7 @@ Template.profileSettings.onRendered(function() {
   $('[data-toggle="tooltip"]').tooltip();
   if(Session.get('signUpPicID')){
   Meteor.users.update({_id: Meteor.userId()}, {$set: {'profile.pictureID': Session.get('signUpPicID')}});
+  delete Session.keys['signUpPicID']
   }
 });
 
