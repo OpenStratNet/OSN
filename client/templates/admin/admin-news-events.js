@@ -27,6 +27,7 @@ Template.adminNewsEvents.onRendered(function() {
     var tagOptions = Tags.find().fetch();
 
     $('#courseKeywords').selectize({
+        plugins: ['remove_button'],
         delimiter: ',',
         persist: false,
         valueField: 'name',
