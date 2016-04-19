@@ -77,16 +77,19 @@
 						{{#if profilePic}}
 						<div class="row">
 							<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-								<img class="image" src="{{profile.picture}}">
+							    <label for="beispielFeldDatei">Profile picture</label>
+								<br>
+								<img class="image" style="width:150px;height:150px;" src="{{uploadedPic.url}}">
 							</div>
 						</div>
-						{{/if}}
-
-						{{#if pictureID}}
 						<div class="row">
-							<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-								<img class="image" src="{{uploadedPic.url}}">
-							</div>
+								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                                        <div class="fileUpload btn btn-default btn-block btn-icon btn-file-upload">
+                                            <span class="glyphicon glyphicon-upload"></span>
+                                            <span>Change profile picture</span>
+                                            <input type="file" class="upload js-Profile" />
+                                        </div>
+								</div>
 						</div>
 						{{/if}}
 
@@ -98,7 +101,7 @@
 										</div>
                                         <div class="fileUpload btn btn-default btn-block btn-icon btn-file-upload">
                                             <span class="glyphicon glyphicon-upload"></span>
-                                            <span>Upload</span>
+                                            <span>Upload a profile picture</span>
                                             <input type="file" class="upload js-Profile" />
                                         </div>
 										<!--<div class="btn btn-default btn-block btn-icon btn-file-upload">
@@ -113,11 +116,18 @@
 						<div class="row">
 								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
 										<div class="form-group">
-												<button type="submit" class="btn btn-primary">SAVE CHANGES</button>
+												<button style="float:left;" id="submit" type="submit" class="btn btn-primary">SAVE CHANGES</button>	
 										</div>
 								</div>
 						</div>
 					</form>
+					<div class="row">
+								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+										<div class="form-group">
+												<button style="float:left;" id="discard" type="click" class="btn btn-primary">DISCARD</button>	
+										</div>
+								</div>
+					</div>
 					{{/with}}
 			</div>
 	</section> <!-- ./Basics -->

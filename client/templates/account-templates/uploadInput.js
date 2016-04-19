@@ -10,11 +10,13 @@ Template.uploadInput.events({
     // Insert the image into the database
     // getting the image ID for use in the course object
     var imageObject = ProfilePic.insert(image);
-
     // The image id is stored in the image object
     var imageId = imageObject._id;
-
-    var imageUrl = imageObject.url({store: "profilePic"});
+    var imageUrl = Meteor.absoluteUrl() +"cfs/files/profilePic/"+imageId;
+	//Store the new picture ID and url in a session variable
+	Session.set('signUpPicID', imageId);
+	Session.set('signUpPicURL',imageUrl);
+	//Check by console
     Meteor.setTimeout(function () {
         console.log("Url " + imageUrl);
       }, 3 * 1000);
@@ -27,9 +29,9 @@ Template.uploadInput.events({
     //   pictureUrl = new ReactiveVar(imageUrl);
     // }
   },  
-  'submit form': function (evt, temp) {
-    evt.preventDefault();
-
+  'submit form': function () {
+ 
+    console.log('submit');
     // temp.title = $('#title').val();
     // temp.description = $('#description').summernote('code');
     // temp.type = $('input[name=netype]:checked').val();
@@ -38,7 +40,7 @@ Template.uploadInput.events({
     // if (profilePicEdit.get()) {
     //   temp.pictureID = profilePicEdit.get();
     // }
-
-    Meteor.users.update({_id: this._id}, {$set: {'profile.pictureID': profilePicEdit.curValue}} );
+  //Meteor.setTimeout(function(){Meteor.users.update({_id: Meteor.userId()}, {$set: {'profile.pictureID': Session.get('signUpPicID'), 'profile.picture': Session.get('signUpPicURL')}})}, 3000);
+    
   }
 });
