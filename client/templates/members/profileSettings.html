@@ -79,7 +79,7 @@
 							<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
 							    <label for="beispielFeldDatei">Profile picture</label>
 								<br>
-								<img class="image" style="width:150px;height:150px;" src="{{profile.picture}}">
+								<img class="image" style="width:150px;height:150px;" src="{{profile.picture}}"> 
 							</div>
 						</div>
 						{{/if}}
@@ -94,11 +94,13 @@
 						</div>
 						<div class="row">
 								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-                                        <div class="fileUpload btn btn-default btn-block btn-icon btn-file-upload">
+										<div id="uploadInput">
+                                          <div class="fileUpload btn btn-default btn-block btn-icon btn-file-upload">
                                             <span class="glyphicon glyphicon-upload"></span>
-                                            <span>Change profile picture</span>
+                                            <span>Change the profile picture</span>
                                             <input type="file" class="upload js-Profile" />
-                                        </div>
+                                          </div>
+										</div>
 								</div>
 						</div>
 						{{/if}}
@@ -108,11 +110,15 @@
 										<div class="form-group">
 												<label for="beispielFeldDatei">Profile Photo</label>
 										</div>
-                                        <div class="fileUpload btn btn-default btn-block btn-icon btn-file-upload">
+										<br>
+										<div id="hiddenImage" style="display:none;"><img class="image" style="width:150px;height:150px;" src="{{profile.pictureID}}"></div>
+										<div id="uploadInput">
+                                          <div class="fileUpload btn btn-default btn-block btn-icon btn-file-upload">
                                             <span class="glyphicon glyphicon-upload"></span>
                                             <span>Upload a profile picture</span>
                                             <input type="file" class="upload js-Profile" />
-                                        </div>
+                                          </div>
+										</div>
 										<!--<div class="btn btn-default btn-block btn-icon btn-file-upload">
 												<span class="glyphicon glyphicon-upload"></span>
 												<input type="file" class="upload js-Profile" placeholder="Upload a Picture"/>
@@ -135,7 +141,7 @@
 					<div class="row">
 								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
 										<div class="form-group">
-												<button style="float:left;" id="discard" type="click" class="btn btn-primary">DISCARD</button>	
+												<div id="discardButton" style="display:none;"><button style="float:left;" id="discard" type="click" class="btn btn-primary">DISCARD</button></div>	
 										</div>
 								</div>
 					</div>

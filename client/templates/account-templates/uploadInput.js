@@ -5,8 +5,9 @@ Template.uploadInput.events({
     //evt.preventDefault();
     console.log("test");
   },
-  'change .js-Profile': function(evt, temp) {
-    var image = event.target.files[0];
+  "change input[type='file']": function(e, temp) {
+	var image = new FS.File(e.target.files[0]);
+    //var image = event.target.files[0];
     // Insert the image into the database
     // getting the image ID for use in the course object
     var imageObject = ProfilePic.insert(image);
@@ -20,7 +21,18 @@ Template.uploadInput.events({
         console.log("Url " + imageUrl);
       }, 3 * 1000);
 
+	document.getElementById("hiddenImage").style="display:block;"; //The image appears
+	document.getElementById("uploadInput").style="display:none;"; //The file input button disappears
+	document.getElementsByClassName("image")[0].src = Meteor.absoluteUrl()+"img/loading_bar.gif";//Loading
     // Create a reactive var to be used when the course is added
+	var checker = setInterval(function(){
+		$.get(Session.get('signUpPicID')).done(function () {
+         document.getElementsByClassName("image")[0].src = Session.get('signUpPicID');	//Update the image prev
+		 clearInterval(checker);
+         }).fail(function () {
+        })
+	},3000);
+	
     if (imageId) {
       profilePicEdit = new ReactiveVar(imageId);
     }
