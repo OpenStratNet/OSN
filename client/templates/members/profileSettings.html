@@ -89,19 +89,22 @@
 							<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
 							    <label for="beispielFeldDatei">Profile picture</label>
 								<br>
-								<img class="image" style="width:150px;height:150px;" src="{{profile.pictureID}}">
-							</div>
-						</div>
-						<div class="row">
-								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-										<div id="uploadInput">
-                                          <div class="fileUpload btn btn-default btn-block btn-icon btn-file-upload">
-                                            <span class="glyphicon glyphicon-upload"></span>
-                                            <span>Change the profile picture</span>
-                                            <input type="file" class="upload js-Profile" />
+								<!--Upload input as a edit icon-->
+								<div style="margin-left:155px" id="uploadInput">
+                                          <div class="fileUpload">
+                                            <button class="btn btn-primary"><i class="fa fa-pencil-square-o"></i>
+                                            <input type="file" class="upload js-Profile" /></button>
                                           </div>
-										</div>
 								</div>
+								<!--Discard button is a trash icon-->
+								<div id="discardButton" style="display:none;">
+								     <button id="discard" type="click" class="btn btn-primary"><i class="fa fa-trash"></i></button>
+								</div>	
+								<div style="float:left;">
+								<img class="image" style="width:150px;height:150px;" src="{{profile.pictureID}}">
+								</div>
+								<div id="uploadInputFile"></div>	
+							</div>
 						</div>
 						{{/if}}
 						{{#if noPicture}}
@@ -111,19 +114,22 @@
 												<label for="beispielFeldDatei">Profile Photo</label>
 										</div>
 										<br>
+							            	<!--Discard button is a trash icon-->
+							            <div id="discardButton" style="display:none;">
+								              <button id="discard" type="click" class="btn btn-primary"><i class="fa fa-trash"></i></button>
+								        </div>
+										   <!--The image is hidden in the background-->
 										<div id="hiddenImage" style="display:none;"><img class="image" style="width:150px;height:150px;" src="{{profile.pictureID}}"></div>
-										<div id="uploadInput">
+										   <!-- Traditional input manager-->
+										<div id="uploadInputFile">
                                           <div class="fileUpload btn btn-default btn-block btn-icon btn-file-upload">
                                             <span class="glyphicon glyphicon-upload"></span>
                                             <span>Upload a profile picture</span>
                                             <input type="file" class="upload js-Profile" />
                                           </div>
 										</div>
-										<!--<div class="btn btn-default btn-block btn-icon btn-file-upload">
-												<span class="glyphicon glyphicon-upload"></span>
-												<input type="file" class="upload js-Profile" placeholder="Upload a Picture"/>
-										</div>
-                                    -->
+										   <!-- Bug fixer-->
+										<div id="uploadInput"></div>
 								</div>
 						</div>
 						{{/if}}
@@ -136,16 +142,6 @@
 								</div>
 						</div>
 					</form>
-					{{#if profilePic}}
-					{{else}}
-					<div class="row">
-								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-										<div class="form-group">
-												<div id="discardButton" style="display:none;"><button style="float:left;" id="discard" type="click" class="btn btn-primary">DISCARD</button></div>	
-										</div>
-								</div>
-					</div>
-					{{/if}}
 					{{/with}}
 			</div>
 	</section> <!-- ./Basics -->

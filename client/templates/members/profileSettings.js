@@ -54,13 +54,14 @@ Template.profileSettings.events({
 	document.getElementById("hiddenImage").style="display:block;"; //The image appears
 	}
     //Uploading the picture to S3 bucket.
-	document.getElementsByClassName("image")[0].src = Meteor.absoluteUrl()+"img/loading_bar.gif";
+	document.getElementsByClassName("image")[0].src = Meteor.absoluteUrl()+"img/loading_bar.png";
     //Cheking if the picture are ready on the S3 bucket.
 	var checker = setInterval(function(){
 		$.get(Session.get('newPictureID')).done(function () {
          document.getElementsByClassName("image")[0].src = Session.get('newPictureID');	//Update the image in client side
 		 document.getElementById("uploadInput").style="display:none;"; //The file input button disappears
-		 document.getElementById("discardButton").style="display:block;"; //The discard button appears
+	     document.getElementById("uploadInputFile").style="display:none;"; //The file input manager disappears
+		 document.getElementById("discardButton").style="margin-left:155px;"; //The discard button appears
 		 clearInterval(checker);
          }).fail(function () {
         })
@@ -80,7 +81,8 @@ Template.profileSettings.events({
    //Reset the preview to the old one and remove the picture from collection.
 	document.getElementsByClassName("image")[0].src = Session.get('oldPictureID');
 	document.getElementById("discardButton").style="display:none;"; //The discard button disappears
-	document.getElementById("uploadInput").style="display:block;"; //The file input button appears
+	document.getElementById("uploadInput").style="margin-left:155px;"; //The file input button appears
+	document.getElementById("uploadInputFile").style="display:block;"; //The file input manager appears
 	if(!Meteor.user().profile.pictureID){
 	document.getElementById("hiddenImage").style="display:none;"; //The image disappears
 	}
