@@ -7,15 +7,19 @@
     <!-- adding specific cols and form group -->
     <div class="col-sm-6 input-spacing">
         <div class="form-group">
-		<div id="hiddenName" style="display:none;">
-		    <div class="form-group fileUpload btn btn-default btn-block btn-icon btn-file-upload">
+		<div id="upLoading" style="display:none;">
+		    <div style="text-align:left;" class="form-group fileUpload btn btn-default btn-block">
             Uploading... <!-- When the user upload a new profile pic, this text appears -->
             </div>
 		</div>
+		<div style="height:35px;display:none;" id="hiddenName">
+		    <div class="form-group fileUpload btn btn-default btn-block btn-icon btn-file-upload">
+            </div>
+		</div>
          <div id="uploadInput">
-		  <div class="form-group fileUpload btn btn-default btn-block btn-icon btn-file-upload">
-              <span class="glyphicon glyphicon-upload"></span> Upload a profile photo
-              <input type="file" class="upload js-Profile" placeholder="Upload a Picture"/>
+		  <div style="height:35px" class="form-group fileUpload btn btn-default btn-block btn-icon btn-file-upload">
+              <span class="glyphicon glyphicon-upload"></span><div>Upload a profile photo</div>
+              <input type="file" class="upload js-Profile"/>
           </div>
           <span class="help-block {{#unless hasError}}hide{{/unless}}">{{errorText}}</span>
 		 </div>

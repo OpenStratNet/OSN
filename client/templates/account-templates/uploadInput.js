@@ -5,8 +5,8 @@ Template.uploadInput.events({
     //evt.preventDefault();
     console.log("test");
   },
-  "change input[type='file']": function(e, temp) {
-	var image = new FS.File(e.target.files[0]);
+  'change .js-Profile': function(e, temp) {
+    var image = new FS.File(e.target.files[0]);
     //var image = event.target.files[0];
     // Insert the image into the database
     // getting the image ID for use in the course object
@@ -24,18 +24,21 @@ Template.uploadInput.events({
         console.log("Url " + imageUrl);
       }, 3 * 1000);
    
-	document.getElementById("hiddenName").style="display:block;"; //Uploading...
+	document.getElementById("upLoading").style="height:35px;display:block;"; //Uploading...
 	document.getElementById("uploadInput").style="display:none;"; //The file input button disappears
+	document.getElementById("hiddenName").style="display:none;"; //File uploaded
 
 	//function that check if the url of the image is available
 	var checker = setInterval(function(){
 		$.get(Session.get('signUpPicID')).done(function () {
 		 //when the url are "done", the template reacts to this HTML code:
-         document.getElementById("hiddenName").innerHTML='<div class="form-group fileUpload btn btn-default btn-block btn-icon btn-file-upload">'+imageName+'<span><i class="fa fa-pencil-square-o"></i></span><input type="file" class="upload js-Profile" placeholder="Upload a Picture"/></div>';
+         document.getElementById("upLoading").style="display:none;"; //Uploading...
+		 document.getElementById("hiddenName").innerHTML='<div style="height:35px;" class="form-group fileUpload btn btn-default btn-block btn-icon btn-file-upload">'+imageName+'<span><i class="fa fa-pencil-square-o"></i></span><input type="file" class="upload js-Profile" placeholder="Upload a Picture"/></div>';
+		 document.getElementById("hiddenName").style="display:block;"; //File uploaded
 		 clearInterval(checker);
 		 //Bert alert as required
 		 Bert.alert('File uploaded');
-         }).fail(function () {
+         }).fail(function () {console.log('url not available yet');
         })
 	},3000); //Interval of 3 seconds to check the url status, (for slow conections this might take between 3-12 secs)
 	
