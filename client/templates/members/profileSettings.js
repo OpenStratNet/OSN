@@ -52,19 +52,25 @@ Template.profileSettings.events({
 	Session.set('newPictureID', imageUrl);
 	//If the user upload a picture for the first time
 	if(!Meteor.user().profile.pictureID){
-	document.getElementById("hiddenImage").style="display:block;"; //The image appears
+	//The image appears
+	$('#hiddenImage').show();
 	}
     //Uploading the picture to S3 bucket.
-	document.getElementsByClassName("image")[0].src = Meteor.absoluteUrl()+"img/loading_bar.png";
-    document.getElementsByClassName("image")[0].style="width:150px;height:150px;";
-	document.getElementById("uploadInputFile").style="display:none;"; //The file input manager disappears
+    $('.image').attr("src", Meteor.absoluteUrl()+"img/loading_bar.png")
+	$('.image').height('150px');
+	$('.image').width('150px');
+	$('.image').show();
+	//The file input manager disappears
+	$('#uploadInputFile').hide();
 	
     //Cheking if the picture are ready on the S3 bucket.
 	var checker = setInterval(function(){
 		$.get(Session.get('newPictureID')).done(function () {
-         document.getElementsByClassName("image")[0].src = Session.get('newPictureID');	//Update the image in client side
-		 document.getElementById("uploadInput").style="position:absolute;margin-left:70px"; //The file input button disappears
-		 document.getElementById("discardButton").style="position:absolute;margin-left:112px;"; //The discard button appears
+		 $('.image').attr("src", Session.get('newPictureID'));
+		 $('#uploadInput').css({position: 'absolute', marginLeft: "70x"});
+		 $('#uploadInput').show();
+		 $('#discardButton').css({position: 'absolute', marginLeft: "112px"});
+		 $('#discardButton').show();
 		 clearInterval(checker);
          }).fail(function () {
         })
@@ -85,17 +91,23 @@ Template.profileSettings.events({
    //If the user don't want to keep changes in profile picture, the pic returns to original, this is necessary to give a review of the new pic.
    //Reset the preview to the old one and remove the picture from collection.
     if(Session.get('oldPictureID')){
-	document.getElementsByClassName("image")[0].src = Session.get('oldPictureID');
+	$('.image').attr("src", Session.get('oldPictureID'));
+	delete Session.keys['oldPictureID'];
 	}else{
-	document.getElementsByClassName("image")[0].style="display:none";//The image disappears
-	document.getElementById("discardButton").style="display:none;"; //The discard button disappears
-	document.getElementById("uploadInput").style="display:none;"; //The edit input button disappears
-	document.getElementById("uploadInputFile").style="display:block;"; //The file input manager appears
+	//The image disappears
+	$('.image').hide();
+	//The discard button disappears
+	$('#discardButton').hide();
+    //The edit input button disappears
+	$('#uploadInput').hide();
+	//The file input manager appears
+	$('#uploadInputFile').show();
 	Session.set('newPictureID', false);
 	}
 	
 	if(!Meteor.user().profile.pictureID){
-	document.getElementById("hiddenImage").style="display:none;"; //The image disappears
+	//The image disappears
+	$('#hiddenImage').hide();
 	}
 	ProfilePic.remove({_id: Session.get('imageId')});
    //Delete the Session variables.
@@ -133,7 +145,7 @@ Template.profileSettings.events({
 	  delete Session.keys['changes'];
 	  }
 	}
-    //Bert.alert("Changes saved.");
+    Bert.alert("Changes saved.");
     // Meteor.users.update({_id: this._id}, {$set: temp} );
   }
 });

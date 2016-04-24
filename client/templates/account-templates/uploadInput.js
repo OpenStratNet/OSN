@@ -24,22 +24,27 @@ Template.uploadInput.events({
         console.log("Url " + imageUrl);
       }, 3 * 1000);
    
-	document.getElementById("upLoading").style="height:35px;display:block;"; //Uploading...
-	document.getElementById("uploadInput").style="display:none;"; //The file input button disappears
-	document.getElementById("hiddenName").style="display:none;"; //File uploaded
-
+	//document.getElementById("upLoading").style="height:35px;display:block;"; //Uploading...
+	$('#upLoading').height('35px');
+	$('#upLoading').show(); //Uploading
+	//document.getElementById("uploadInput").style="display:none;"; //The file input button disappears
+	$('#uploadInput').hide(); //The file input button disappears
+	//document.getElementById("hiddenName").style="display:none;"; //File uploaded
+    $('#hiddenName').hide();
 	//function that check if the url of the image is available
 	var checker = setInterval(function(){
 		$.get(Session.get('signUpPicID')).done(function () {
 		 //when the url are "done", the template reacts to this HTML code:
-         document.getElementById("upLoading").style="display:none;"; //Uploading...
-		 document.getElementById("hiddenName").innerHTML='<div style="height:35px;" class="form-group fileUpload btn btn-default btn-block btn-icon btn-file-upload">'+imageName+'<span><i class="fa fa-pencil-square-o"></i></span><input type="file" class="upload js-Profile" placeholder="Upload a Picture"/></div>';
-		 document.getElementById("hiddenName").style="display:block;"; //File uploaded
+         //document.getElementById("upLoading").style="display:none;"; //Uploading...
+		 $('#upLoading').hide();                                       //Uploading text dissapears
+		 //document.getElementById("hiddenName").innerHTML='<div style="height:35px;" class="form-group fileUpload btn btn-default btn-block btn-icon btn-file-upload">'+imageName+'<span><i class="fa fa-pencil-square-o"></i></span><input type="file" class="upload js-Profile" placeholder="Upload a Picture"/></div>';
+		 $('#hiddenName').html("<div style='height:35px;' class='form-group fileUpload btn btn-default btn-block btn-icon btn-file-upload'>"+imageName+"<span><i class='fa fa-pencil-square-o'></i></span><input type='file' class='upload js-Profile' placeholder='Upload a Picture'/></div>");
+		 //document.getElementById("hiddenName").style="display:block;"; //File uploaded
+		 $('#hiddenName').show();
 		 clearInterval(checker);
 		 //Bert alert as required
 		 Bert.alert('File uploaded');
-         }).fail(function () {console.log('url not available yet');
-        })
+         })
 	},3000); //Interval of 3 seconds to check the url status, (for slow conections this might take between 3-12 secs)
 	
     if (imageId) {
