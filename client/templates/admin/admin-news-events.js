@@ -26,7 +26,7 @@ Template.adminNewsEvents.onRendered(function() {
   // Get an array of the existing tags
     var tagOptions = Tags.find().fetch();
 
-    $('#courseKeywords').selectize({
+    $('#newsKeywords').selectize({
         plugins: ['remove_button'],
         delimiter: ',',
         persist: false,
@@ -64,13 +64,13 @@ Template.adminNewsEvents.events({
 
 		var image = event.target.files[0];
 		// Insert the image into the database
-		// getting the image ID for use in the course object
+		// getting the image ID for use in the news object
 		var imageObject = Images.insert(image);
 
 		// The image id is stored in the image object
 		var imageId = imageObject._id
 
-		// Create a reactive var to be used when the course is added
+		// Create a reactive var to be used when the news is added
 		if (imageId) {
 			imageIdVar = new ReactiveVar(imageId);
 		}
@@ -86,13 +86,13 @@ Template.adminNewsEvents.events({
 		var attachment = event.target.files[0];
 
 		// Insert the image into the database
-		// getting the image ID for use in the course object
+		// getting the image ID for use in the news object
 		var attachmentObject = Attachments.insert(attachment);
 
 		// The image id is stored in the image object
 		var attachmentId = attachmentObject._id
 
-		// Create a reactive var to be used when the course is added
+		// Create a reactive var to be used when the news is added
 		if (attachmentId) {
 			attachmentIdVar = new ReactiveVar(attachmentId);
 		}
@@ -101,7 +101,7 @@ Template.adminNewsEvents.events({
 		evt.preventDefault();
 
 		var temp = {};
-    temp.keywords = template.find('#courseKeywords').value.split(',')
+    temp.keywords = template.find('#newsKeywords').value.split(',')
 		temp.title = $('#title').val();
 		temp.description = $('#description').summernote('code');
 		temp.type = $('input[name=netype]:checked').val();

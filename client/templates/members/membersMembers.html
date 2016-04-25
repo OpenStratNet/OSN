@@ -47,21 +47,21 @@
 
 				<!-- Core Search -->
 				{{#EasySearch.IfInputEmpty index=membersIndex}}
-				{{#each membersData}} 
+				{{#each membersData}}
 				<div class="row">
 						<div class="col-sm-6">
 								<div class="media-left">
 										{{#if this.profile.pictureID}}
-										<img class="members-thumbnail" src="{{profile.pictureID}}" alt="Max Mustermann">
+										<img class="members-thumbnail" src="{{profile.pictureID}}" alt="{{profile.firstName}} {{profile.lastName}}">
 										{{/if}}
 										{{#if this.profile.picture}}
-										<img class="members-thumbnail" src="{{profile.picture}}" alt="Max Mustermann">
+										<img class="members-thumbnail" src="{{profile.picture}}" alt="{{profile.firstName}} {{profile.lastName}}">
 										{{/if}}
 										{{#if noPicture}}
-										<img class="members-thumbnail" src="img/contact-placeholder.jpg" alt="Max Mustermann">
+										<img class="members-thumbnail" src="img/contact-placeholder.jpg" alt="{{profile.firstName}} {{profile.lastName}}">
 										{{/if}}
 								</div>
-								
+
 								<div class="media-body">
 										<h4 class="media-heading">{{profile.firstName}} {{profile.lastName}}</h4>
 										<p class="italic">{{profile.institution}}</p>
@@ -83,26 +83,26 @@
 								</div>
 						</div>
 				</div> <!-- end row -->
-				
+
 				<hr class="light">
 				{{/each}}
 
 				{{else}}
-				
-				{{#if membersIndex}}		
+
+				{{#if membersIndex}}
 					{{#EasySearch.Each index=membersIndex}}
 
 						<div class="row">
 								<div class="col-sm-6">
 										<div class="media-left">
 												{{#if this.profile.pictureID}}
-												<img class="members-thumbnail" src="{{uploadedPic.url}}" alt="Max Mustermann">
+												<img class="members-thumbnail" src="{{uploadedPic.url}}" alt="{{profile.firstName}} {{profile.lastName}}">
 												{{/if}}
 												{{#if this.profile.picture}}
-												<img class="members-thumbnail" src="{{profile.picture}}" alt="Max Mustermann">
+												<img class="members-thumbnail" src="{{profile.picture}}" alt="{{profile.firstName}} {{profile.lastName}}">
 												{{/if}}
 												{{#if noPicture}}
-												<img class="members-thumbnail" src="img/contact-placeholder.jpg" alt="Max Mustermann">
+												<img class="members-thumbnail" src="img/contact-placeholder.jpg" alt="{{profile.firstName}} {{profile.lastName}}">
 												{{/if}}
 										</div>
 										<div class="media-body">
@@ -126,13 +126,13 @@
 										</div>
 								</div>
 						</div> <!-- end row -->
-						
+
 						<hr class="light">
 
 					{{/EasySearch.Each}}
 				{{/if}}
 				{{/EasySearch.IfInputEmpty}}
-			
+
 				  <div class="row">
             <div class="col-md-12 text-center">
                 <button class="btn btn-primary page-scroll extra-spacing-bottom js-seeMoreMem">SEE MORE</button>
