@@ -77,34 +77,42 @@ Meteor.startup(function () {
     }
 
     if (NewsEvents.find().count() === 0) {
-    	var protoNE = 
+    	var protoNE =
     	[{
 		    "title": "EGOS 2015 reminder: Open Organizations for an Open Society?",
 		    "description": "Open Organizations for an Open Society? Practicing Openness in Innovation, Strategy and Beyond; Convenors: Leonhard Dobusch, Freie Universität Berlin, Georg von Krogh, ETH Zurich, Switzerland, Richard Whittington, Oxford University, Link to website: : http://bit.ly/EGOS15Open",
 		    "type": "event",
+        "keywords": ['organization science', 'call for papers'],
+        "category": "Conference",
 		    "lastmodifiedAt": moment().format('ddd, DD MMM YYYY hh:mm:ss'),
-        "publishedAt": moment().format('ddd, DD MMM YYYY hh:mm:ss')  	
+        "publishedAt": moment().format('ddd, DD MMM YYYY hh:mm:ss'),
+        "publishedRawFormat": new Date()
 			},
 			{
 		    "title": "A Dummy News",
 		    "description": "Lorem ipsum dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut Management",
 		    "type": "news",
+        "keywords": ['strategizing', 'crowdsourcing'],
+        "category": "New Publication",
 		   	"lastmodifiedAt": moment().format('ddd, DD MMM YYYY hh:mm:ss'),
-        "publishedAt": moment().format('ddd, DD MMM YYYY hh:mm:ss')   
+        "publishedAt": moment().format('ddd, DD MMM YYYY hh:mm:ss'),
+        "publishedRawFormat": new Date()
 	   },
      {
         "title": "A Dummy News",
         "description": "Lorem ipsum dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut Management",
         "type": "news",
         "lastmodifiedAt": moment().format('ddd, DD MMM YYYY hh:mm:ss'),
-        "publishedAt": moment().format('ddd, DD MMM YYYY hh:mm:ss')   
+        "publishedAt": moment().format('ddd, DD MMM YYYY hh:mm:ss'),
+        "publishedRawFormat": new Date()
      },
      {
         "title": "A Dummy Event",
         "description": "Lorem ipsum dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut Management",
         "type": "event",
         "lastmodifiedAt": moment().format('ddd, DD MMM YYYY hh:mm:ss'),
-        "publishedAt": moment().format('ddd, DD MMM YYYY hh:mm:ss')   
+        "publishedAt": moment().format('ddd, DD MMM YYYY hh:mm:ss'),
+        "publishedRawFormat": new Date()
      }]
 
     	_.each(protoNE, function(doc) {
@@ -144,5 +152,5 @@ Meteor.startup(function () {
       var firstName5 = "David", lastName5 = "Seidl", institution5 = "University of Zurich", interests5 = "Power and knowledge in open strategizing", position5 = "Professor", password5: "test123";
       console.log("creating " + firstName5 + "  with password 'test123' and  email: " + email5);
       Meteor.users.insert({profile:{firstName:firstName5, lastName:lastName5, institution: institution5, interests:interests5, position:position5, email: email5}, emails:[{address:email5}],services:{ password:{"bcrypt" : "$2a$10$I3erQ084OiyILTv8ybtQ4ON6wusgPbMZ6.P33zzSDei.BbDL.Q4EO"}}});
-    } 
+    }
   });

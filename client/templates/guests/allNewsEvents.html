@@ -72,6 +72,9 @@ related news are warmly welcome. In order to add news to this section, please se
 <template name="newsitem">
   <div class="col-md-4 col-sm-6">
     <div class="caption">
+        {{#if category}}
+        <em>Category: {{category}}</em><br>
+        {{/if}}
         {{#each keywords}}<small>{{this}}, </small>{{/each}}
         {{#if imageExists}}
         <h4>{{title}}<img alt="news thumbnail" class="news-thumbnail" src="{{ coverImage.url }}" /></h4>

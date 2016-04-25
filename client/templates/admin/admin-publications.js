@@ -14,7 +14,7 @@ Template.adminPublications.onCreated(function() {
 Template.adminPublications.onRendered(function() {
   $(document).ready(function() {
     $('#abstract').summernote({
-    	height: 200, 
+    	height: 200,
     	toolbar: [
     	    // [groupName, [list of button]]
 	    	['style', ['style']],
@@ -68,19 +68,19 @@ Template.adminPublications.events({
 			Session.set("outletChoice", "bk");
 		} else if ($('input[name=outlet-type]:checked').val() === "bc") {
 			Session.set("outletChoice", "bc");
-		}		
+		}
 	},
 	'click #js-addAuthors': function () {
     var inputsAuthors = Session.get('inputsAuthors');
     var uniqidFirst = Math.floor(Math.random() * 100000); // Give a unique ID so you can pull _this_ input when you click remove
-    var uniqidLast = Math.floor(Math.random() * 100000); 
+    var uniqidLast = Math.floor(Math.random() * 100000);
     inputsAuthors.push({uniqidFirst: uniqidFirst, valueFirst: "", uniqidLast: uniqidLast, valueLast: ""});
     Session.set('inputsAuthors', inputsAuthors);
 	},
 	'click #js-addEditors': function () {
     var inputsEditors = Session.get('inputsEditors');
     var uniqidFirst = Math.ceil(Math.random() * 100000); // Give a unique ID so you can pull _this_ input when you click remove
-    var uniqidLast = Math.floor(Math.random() * 100000); 
+    var uniqidLast = Math.floor(Math.random() * 100000);
     inputsEditors.push({uniqidFirst: uniqidFirst, valueFirst: "", uniqidLast: uniqidLast, valueLast: ""});
     Session.set('inputsEditors', inputsEditors);
 	},
@@ -97,7 +97,7 @@ Template.adminPublications.events({
     // Create a reactive var to be used when the course is added
     if (attachmentId) {
       attachmentIdVar = new ReactiveVar(attachmentId);
-    } 
+    }
   },
 	'submit form': function (evt, temp) {
 		evt.preventDefault();
@@ -109,19 +109,29 @@ Template.adminPublications.events({
 
 		var newAuthors = [];
 		inputsAuthors = Session.get('inputsAuthors');
-		_.each(inputsAuthors, function(input) { 
+		_.each(inputsAuthors, function(input) {
       newAuthors.push({firstName: $('#' + input.uniqidFirst).val(), lastName: $('#' + input.uniqidLast).val()});
 		});
 
 		var newEditors = [];
 		inputsEditors = Session.get('inputsEditors');
-		_.each(inputsEditors, function(input) { 
+		_.each(inputsEditors, function(input) {
 		  newEditors.push({firstName: $('#' + input.uniqidFirst).val(), lastName: $('#' + input.uniqidLast).val()});
 		});
 
 		// add the first (i.e, default) author to the array
-		newAuthors.unshift({firstName: $('#firstAuName').val(), lastName: $('#lastAuName').val()}); 
-		newEditors.unshift({firstName: $('#firstEdName').val(), lastName: $('#lastEdName').val()}); 
+		newAuthors.unshift({firstName: $('#firstAuName').val(), lastName: $('#lastAuName').val()});
+		newEditors.unshift({firstName: $('#firstEdName').val(), lastName: $('#lastEdName').val()});
+
+    NewsEvents.insert({
+      title: "A New Publication Added to Bibliography",
+      description: "The publication \"" + $('#title').val() + "\" was added to the bibliography. ",
+      type: "news",
+      createdAt: moment().format('ddd, DD MMM YYYY hh:mm:ss'),
+      publishedAt: moment().format('ddd, DD MMM YYYY hh:mm:ss'),
+      publishedRawFormat: new Date(),
+      keywords: ["publication"]
+    });
 
 		Publications.insert({
 			title: $('#title').val(),
@@ -154,6 +164,6 @@ Template.adminPublications.events({
 		// $('#abstract').val('');
 		// $("input:radio").removeAttr("checked");
 
-		console.log("done");
+		Bert.alert("Publication added to bibliography.");
 	}
 });

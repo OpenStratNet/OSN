@@ -4,10 +4,10 @@ Session.setDefault('newsEventsSeeMore', "no");
 Template.newsblock.helpers({
   newsEventsData: function () {
     if(Session.equals("newsEventsSeeMore","no")) {
-       all = NewsEvents.find({type: { $in: Session.get('newsEventsViewMain')}}, {sort: {createdAt: -1}, limit: 3}).fetch();
+       all = NewsEvents.find({type: { $in: Session.get('newsEventsViewMain')}}, {sort: {publishedRawFormat: -1}, limit: 3}).fetch();
     }
     else {
-      all = NewsEvents.find({type: { $in: Session.get('newsEventsViewMain')}}, {sort: {createdAt: -1}}).fetch();
+      all = NewsEvents.find({type: { $in: Session.get('newsEventsViewMain')}}, {sort: {publishedRawFormat: -1}}).fetch();
     }
     chunks = [];
     size = 3

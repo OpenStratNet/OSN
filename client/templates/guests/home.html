@@ -24,6 +24,10 @@
             	{{#each newsEventsData}}
                 <div class="col-sm-4">
                     <div class="caption">
+												{{#if category}}
+												<em>Category: {{category}}</em><br>
+												{{/if}}
+												{{#each keywords}}<small>{{this}}, </small>{{/each}}
                         <h4>{{title}}</h4>
                         <p class="text-muted"> {{shortIt this.description 250}} <a href="{{pathFor route='newsAndEventsPage'}}" class="textlink">read more </a></p>
                     </div>

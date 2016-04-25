@@ -3,7 +3,7 @@ Session.setDefault('newsEventsView', [ "news", "event" ]);
 Template.newsEvents.helpers({
   newsEventsData: function () {
     // return NewsEvents.find({Session.get('newsEventsView')}, {sort: {createdAt: -1}, limit: 3});
-    return NewsEvents.find({type: { $in: Session.get('newsEventsView')}}, {sort: {createdAt: -1}, limit: 3});
+    return NewsEvents.find({type: { $in: Session.get('newsEventsView')}}, {sort: {publishedRawFormat: -1}, limit: 3});
   }
 });
 
