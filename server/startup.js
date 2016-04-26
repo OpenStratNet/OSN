@@ -1,4 +1,19 @@
 Meteor.startup(function () {
+	Meteor.methods({
+    'subscribers':function(){
+		console.log(subscribers.find().count());
+	},
+	'sendEmail': function (to, from, subject, text) {
+    // check([to, from, subject, text], [String]);
+    this.unblock();
+    Email.send({
+      to: to,
+      from: from,
+      subject: subject,
+      html: text
+    });
+    }
+	});
     // code to run on server at startup
     if (Publications.find().count() === 0) {
     	var protopubs = [

@@ -120,6 +120,16 @@ Template.adminNewsEvents.events({
     console.log("event: " + event);
     console.log("template: " + template);
 		NewsEvents.insert(temp);
+	//Fire the email to all subscribers
+	var news = '<header><img src="http://openstrategynetwork.com/img/osn_logoneu.png"></header><body style="background:#0B676E;color:#FFFFFF"><center>' +'<h1>New entry in our platform</h1>'+ '<h2>'+temp.title+'</h2>' + '<h3>'+temp.description+'</h3></center></body>';
+            for (i = 0; i < subscribers.find().count(); i++) { 
+            var email_ = subscribers.find().fetch()[i].email;
+	            Meteor.call('sendEmail',
+	                         email_, //To
+                            'Open Strategy Network <violetta.splitter@business.uzh.ch>', //from
+                            'Open Strategy Network news', //subject
+                             news+'<footer style="background:#CCCCCC;color:black;"><center><h4>To unsubscribe to our notifications go to <a href='+Meteor.absoluteUrl()+'unsubscribe?='+email_+'>http://openstrategynetwork.com/unsubscribe</a></h4><center></footer>');
+            }
     Bert.alert("Done");
 	}
 });

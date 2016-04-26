@@ -1,3 +1,4 @@
+Meteor.subscribe('allSubscribers');
 Template.navbar.onCreated(function(){
   showLogin = new ReactiveVar(false);
 })

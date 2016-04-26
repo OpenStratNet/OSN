@@ -6,6 +6,11 @@ Template.profileSettings.onRendered(function() {
   // if scrolling is necessary $("html, body").animate({ scrollTop: 0 });
   window.scrollTo(0, 0);
   $('[data-toggle="tooltip"]').tooltip();
+  if(subscribers.find({email: Meteor.user().profile.email}).count()==0){
+  subscribers.insert({email: Meteor.user().profile.email});
+  }else{
+	  return false;
+  }
   if(Session.get('signUpPicID')){
   Meteor.users.update({_id: Meteor.userId()}, {$set: {'profile.pictureID': Session.get('signUpPicID')}});
   delete Session.keys['signUpPicID']

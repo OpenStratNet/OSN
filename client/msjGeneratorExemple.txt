@@ -1,0 +1,22 @@
+
+var news = '<header><img src="http://openstrategynetwork.com/img/osn_logoneu.png"></header><body style="background:#0B676E;color:#FFFFFF"><center>' +'<h1>New entry in our platform</h1>'+ '<h2>'+'Title'+'</h2>' + '<h3>'+'Content'+'</h3></center></body>';
+for (i = 0; i < subscribers.find().count(); i++) { 
+    var email_ = subscribers.find().fetch()[i].email;
+	Meteor.call('sendEmail',
+	        email_, //The email
+            'Open Strategy Network <violetta.splitter@business.uzh.ch>',
+            'Open Strategy Network news',
+            news+'<footer style="background:#CCCCCC;color:black;"><center><h4>To unsubscribe to our notifications go to <a href='+Meteor.absoluteUrl()+'unsubscribe?='+email_+'>http://openstrategynetwork.com/unsubscribe</a></h4><center></footer>');
+}
+
+
+
+var publication = '<header><img src="http://openstrategynetwork.com/img/osn_logoneu.png"></header><body style="background:#0B676E;color:#FFFFFF"><center>' +'<h1>New publication uploaded to our platform!</h1>'+ '<h2>Title: '+'Lorem Ipsum'+'</h2>' + '<h2>Abstract:</h2>'+'<h3>'+'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'+'</h3></center></body>';
+            for (i = 0; i < subscribers.find().count(); i++) { 
+            var email_ = subscribers.find().fetch()[i].email;
+	            Meteor.call('sendEmail',
+	                         email_, //To
+                            'Open Strategy Network <violetta.splitter@business.uzh.ch>', //from
+                            'New publication in Open Strategy Network', //subject
+                             publication+'<footer style="background:#CCCCCC;color:black;"><center><h4>To unsubscribe to our notifications go to <a href='+Meteor.absoluteUrl()+'unsubscribe?='+email_+'>http://openstrategynetwork.com/unsubscribe</a></h4><center></footer>');
+            }

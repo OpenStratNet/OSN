@@ -118,3 +118,6 @@ Accounts.onCreateUser(function (options, user) {
 
   return user;
 });
+Meteor.publish('allSubscribers',function(){
+	return subscribers.find();
+});

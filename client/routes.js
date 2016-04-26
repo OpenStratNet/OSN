@@ -82,6 +82,11 @@ Router.route('/reset-password', {
   name: 'forgotPW'
 });
 
+// unsubscribe
+Router.route('/unsubscribe', {
+  name: 'unSubscribe'
+});
+
 // *** GUESTS ROUTES ***
 
  // all news and events
