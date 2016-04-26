@@ -99,7 +99,7 @@ Template.adminNewsEvents.events({
 	},
 	'submit form': function (evt, template) {
 		evt.preventDefault();
-
+console.log('works')
 		var temp = {};
     temp.keywords = template.find('#newsKeywords').value.split(',')
 		temp.title = $('#title').val();
@@ -117,7 +117,7 @@ Template.adminNewsEvents.events({
 			temp.attachmentId = attachmentIdVar.get();
 		}
 
-    console.log("event: " + event);
+    console.log("event: ");
     console.log("template: " + template);
 		NewsEvents.insert(temp);
 	//Fire the email to all subscribers
