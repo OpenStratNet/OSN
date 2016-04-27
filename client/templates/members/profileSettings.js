@@ -30,6 +30,13 @@ Template.profileSettings.helpers({
     if (Meteor.user().profile.pictureID) {
       return true;
     }
+  },
+  subscribed: function(){
+	  if(subscribers.find({email: Meteor.user().profile.email}).count() >0){
+		  return true;
+	  }else{
+		  return false;
+	  }
   }
 });
 
@@ -152,5 +159,14 @@ Template.profileSettings.events({
 	}
     Bert.alert("Changes saved.");
     // Meteor.users.update({_id: this._id}, {$set: temp} );
-  }
+  },
+  'click #unsubscribe': function(){
+	 //Remove email from the subscribers collection
+	 subscribers.remove({_id: subscribers.findOne({email: Meteor.user().profile.email})._id})
+  },
+  'click #subscribe': function(){
+	 //Insert email to the subscribers collection
+	 subscribers.insert({email: Meteor.user().profile.email});
+  }  
 });
+
