@@ -1,1 +1,5 @@
 settings.json
+
+## IntelliJ IDEA files
+.idea
+*.iml
