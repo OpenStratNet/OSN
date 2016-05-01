@@ -96,13 +96,13 @@
                     {{else}}
                     <li class="dropdown">
                       <a href="#" id="profile-text" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PROFILE <span class="caret"></span></a>
-                      <ul class="dropdown-menu">
+                      <ul class="dropdown-menu iconmenu">
                           <li><p class="profile-username">Hello {{currentUser.profile.firstName}}</p></li>
                           <li role="separator" class="divider"></li>
-                          <li><a class="profile-links" href="{{pathFor route = 'profileSettings'}}"><i class="fa fa-cog profile-icons"></i>&nbsp; Settings</a></li>
-                          <li><a class="profile-links" href="{{pathFor route = 'adminNewsEventsList'}}"><i class="fa fa-newspaper-o profile-icons"></i>&nbsp; News &amp; Events</a></li>
-                          <li><a class="profile-links" href="{{pathFor route = 'adminPublicationsList'}}"><i class="fa fa-file-text-o profile-icons"></i>&nbsp; Publications</a></li>
-                          <li><a class="profile-links" href="{{pathFor route = 'adminMembersList'}}"><i class="fa fa-users profile-icons"></i>&nbsp; Members</a></li>
+                          <li><a class="profile-links icon settings" href="{{pathFor route = 'profileSettings'}}">Settings</a></li>
+                          <li><a class="profile-links icon news" href="{{pathFor route = 'adminNewsEventsList'}}">News &amp; Events</a></li>
+                          <li><a class="profile-links icon publications" href="{{pathFor route = 'adminPublicationsList'}}">Publications</a></li>
+                          <li><a class="profile-links icon members" href="{{pathFor route = 'adminMembersList'}}">Members</a></li>
 
                         {{#if isInRole 'admin'}}
                         <!-- <li>
@@ -115,7 +115,7 @@
                             <a class="profile-links" href="{{pathFor route = 'adminMembers'}}"><i class="fa fa-lock"></i>&nbsp; Members</a>
                         </li>-->
                         {{/if}}
-                          <li><a class="profile-links js-logOut" data-action="logout"><i class="fa fa-sign-out"></i>&nbsp; Log out</a></li>
+                          <li><a class="profile-links icon logout js-logOut" data-action="logout">Log out</a></li>
                       </ul>
                     </li>
                     {{/unless}}

@@ -10,22 +10,6 @@ body {
 		font-family: 'Lato',sans-serif, 'Helvetica Neue', Arial,sans-serif;
 }
 
-/*@media (min-width: 640px) {
-	.container {
-		width: 650px;
-	}
-}
-@media (min-width: 1024px) {
-	.container {
-		width: 970px;
-	}
-}
-@media (min-width: 1280px) {
-	.container {
-		width: 1170px;
-	}
-}
-	*/
 
 @media (max-width: 990px) {
 .container {
@@ -525,6 +509,9 @@ aside {
                 padding-left: 25px!important;
                 color: @brand-primary!important;
         }
+
+
+
 
         a:hover.profile-links {
             padding-left: 25px!important;
@@ -1777,4 +1764,81 @@ nav-login {
     width: 300px;
     margin: 0px;
     padding: 15px;
+}
+
+
+/** Icontest */
+ul.iconmenu > li{
+    position: relative;
+}
+
+.dropdown-menu > li > a.profile-links.icon {
+    padding-left: 45px;
+}
+a.profile-links.icon {
+        &:before{
+            position: absolute;
+            left: 20px;
+            font: normal normal normal 14px FontAwesome;
+            line-height: 21px;
+        }
+
+        &.settings:before{
+            content:"\f013";
+            left: 22px;
+        }
+        &.news:before{
+            content: "\f1ea";
+        }
+
+        &.publications:before{
+            content: "\f0f6";
+            left: 22px;
+        }
+
+        &.members:before{
+            content: "\f0c0";
+        }
+
+        &.logout:before{
+            content: "\f08b";
+            left: 22px;
+        }
+}
+
+
+@media (max-width: 827px) {
+    .dropdown-menu > li > a.profile-links.icon {
+        padding-left: 47px!important;
+    }
+    a.profile-links.icon {
+            &:before{
+                position: absolute!important;
+                left: 22px!important;
+                font: normal normal normal 14px FontAwesome!important;
+                line-height: 21px!important;
+            }
+
+            &.settings:before{
+                content:"\f013"!important;
+                left: 24px!important;
+            }
+            &.news:before{
+                content: "\f1ea"!important;
+            }
+
+            &.publications:before{
+                content: "\f0f6"!important;
+                left: 24px!important;
+            }
+
+            &.members:before{
+                content: "\f0c0"!important;
+            }
+
+            &.logout:before{
+                content: "\f08b"!important;
+                left: 24px!important;
+            }
+    }
 }
