@@ -1,4 +1,5 @@
 Template.unSubscribe.onRendered(function() {
+   Meteor.subscribe('allSubscribers') //Manage a subscription to the collection
    console.log('unsubscribing');
 });
 
@@ -7,8 +8,8 @@ Template.unSubscribe.helpers({
   Meteor.setTimeout(function(){
 	  var email = window.location.search.split('=').pop();
       var id_ = subscribers.findOne({email: email})._id;
-      subscribers.remove({_id: id_}); 
-	  console.log('Unsubscribed');
+      Meteor.call('unsubscribe',id_) //Remove the email from the server making a call to a method
+	  console.log(email+' '+'Unsubscribed');
   },3500);
   return false;
   }

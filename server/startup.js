@@ -1,7 +1,7 @@
 Meteor.startup(function () {
 	Meteor.methods({
-    'subscribers':function(){
-		console.log(subscribers.find().count());
+    'unsubscribe':function(e){
+		subscribers.remove({_id: e});
 	},
 	'sendEmail': function (to, from, subject, text) {
     // check([to, from, subject, text], [String]);
