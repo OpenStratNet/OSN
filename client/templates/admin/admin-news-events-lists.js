@@ -14,6 +14,6 @@ Template.adminNewsEventsList.events({
 		if (deleteConfirmation) {
 			Images.remove({_id: this.coverImageId});
 			NewsEvents.remove(this._id);
-		};
+		}
 	}
 });
