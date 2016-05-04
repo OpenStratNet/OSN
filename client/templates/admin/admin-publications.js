@@ -123,7 +123,7 @@ Template.adminPublications.events({
 		newAuthors.unshift({firstName: $('#firstAuName').val(), lastName: $('#lastAuName').val()});
 		newEditors.unshift({firstName: $('#firstEdName').val(), lastName: $('#lastEdName').val()});
 
-    NewsEvents.insert({
+    Meteor.call('NewsEvents.insert', {
       title: "A New Publication Added to Bibliography",
       description: "The publication \"" + $('#title').val() + "\" was added to the bibliography. ",
       type: "news",

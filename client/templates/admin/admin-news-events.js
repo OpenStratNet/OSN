@@ -184,7 +184,7 @@ Template.adminNewsEvents.events({
   			temp.attachmentId = attachmentIdVar.get();
   		}
 
-  		NewsEvents.insert(temp);
+      Meteor.call('NewsEvents.insert', temp);
       Bert.alert("New entry added.");
     }
 
