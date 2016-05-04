@@ -20,7 +20,7 @@ Template.test.events({
     evt.preventDefault();
     var newAuthors = [];
     inputs = Session.get('inputs');
-    _.each(inputs, function(input) { 
+    _.each(inputs, function(input) {
       newAuthors.push($('#' + input.uniqid).val());
     });
 
@@ -28,23 +28,23 @@ Template.test.events({
   }
 });
 
-Template.input.onDestroyed(function() { 
+Template.input.onDestroyed(function() {
   inputs = Session.get('inputs');
-  _.each(inputs, function(input) { 
+  _.each(inputs, function(input) {
     $('#' + input.uniqid).val(input.value);
   });
 });
 
 Template.input.events({
-  'click .remove-input': function() { 
+  'click .remove-input': function() {
     var uniqid = Template.instance().$('.test-input').attr('uniqid');
     var inputs = Session.get('inputs');
-    _.each(inputs, function(input) { 
+    _.each(inputs, function(input) {
       input.value = $('#' + input.uniqid).val()
     });
-    
+
     inputs = _.reject(inputs, function(x) { return x.uniqid == uniqid; });
-    
+
     Session.set('inputs', inputs);
   }
 });
