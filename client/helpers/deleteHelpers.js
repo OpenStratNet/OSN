@@ -18,7 +18,7 @@ Template.applicationLayout.events({
   'click .jsPubsDelAttachment': function (evt, temp) {
     var deleteConfirmation = confirm('Really delete this entry?');
     if (deleteConfirmation) {
-      Publications.update({_id: this._id}, {$unset: {attachmentId: ""}});
+      Meteor.call('Publications.update', {_id: this._id}, {$unset: {attachmentId: ""}});
       Attachments.remove({_id: this.attachmentId});
       attachmentIdVarEdit.set(false);
     }

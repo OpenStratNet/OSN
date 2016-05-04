@@ -203,7 +203,7 @@ Template.adminPublicationsEdit.events({
       temp.attachmentId = attachmentIdVar.get();
     }
 
-    Publications.update({_id: this._id}, {$set: temp});
+    Meteor.call('Publications.update', {_id: this._id}, {$set: temp});
 
     // $('#addPub')[0].reset();
     // $('#abstract').summernote('code', '');
