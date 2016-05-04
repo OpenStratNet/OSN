@@ -70,17 +70,17 @@ Template.adminPublicationsEdit.helpers({
   ppSelected: function () {
     if (Session.get("outletChoiceEdit") === "pp") {
       return true;
-    };
+    }
   },
   bkSelected: function () {
     if (Session.get("outletChoiceEdit") === "bk") {
       return true;
-    };
+    }
   },
   bcSelected: function () {
     if (Session.get("outletChoiceEdit") === "bc") {
       return true;
-    };
+    }
   },
   inputsAuthors: function () {
     return Session.get('inputsAuthors');
