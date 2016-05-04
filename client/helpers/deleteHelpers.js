@@ -2,7 +2,7 @@ Template.applicationLayout.events({
   'click .jsNewsDelImage': function (evt, temp) {
     var deleteConfirmation = confirm('Really delete this entry?');
     if (deleteConfirmation) {
-      NewsEvents.update({_id: this._id}, {$unset: {coverImageId: ""}});
+      Meteor.call('NewsEvents.update', {_id: this._id}, {$unset: {coverImageId: ""}});
       Images.remove({_id: this.coverImageId});
       imageIdVarEdit.set(false);
     }
@@ -10,7 +10,7 @@ Template.applicationLayout.events({
   'click .jsNewsDelAttachment': function (evt, temp) {
     var deleteConfirmation = confirm('Really delete this entry?');
     if (deleteConfirmation) {
-      NewsEvents.update({_id: this._id}, {$unset: {attachmentId: ""}});
+      Meteor.call('NewsEvents.update', {_id: this._id}, {$unset: {attachmentId: ""}});
       Attachments.remove({_id: this.attachmentId});
       attachmentIdVarEdit.set(false);
     }

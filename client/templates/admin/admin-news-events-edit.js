@@ -159,6 +159,6 @@ Template.adminNewsEventsEdit.events({
 			temp.attachmentId = attachmentIdVarEdit.get();
 		}
 
-		NewsEvents.update({_id: this._id}, {$set: temp} );
+		Meteor.call('NewsEvents.update', {_id: this._id}, {$set: temp} );
 	}
 });
