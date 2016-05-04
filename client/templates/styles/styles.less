@@ -10,6 +10,24 @@ body {
 		font-family: 'Lato',sans-serif, 'Helvetica Neue', Arial,sans-serif;
 }
 
+small,
+.small {
+  font-size: 84%;
+  background-color: @gray-light;
+  color: white;
+  padding: 3px 4px;
+  margin: 10px 5px 10px 0;
+  border-radius: 2px;
+}
+
+
+.news-category {
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 10px;
+  color: @gray;
+}
 
 @media (max-width: 990px) {
 .container {
@@ -443,6 +461,10 @@ section {
 
 .minus-spacing {
 		padding-bottom: @extra-spacing-bottom;
+}
+
+.spacing-mini-bottom {
+    padding-bottom: 10px;
 }
 
 aside {
@@ -1345,16 +1367,16 @@ ul.list-inline.social-buttons {
 
 
 .glyphicon-download {
-		font-size: 18px;
+		font-size: 16px;
 }
 
 /*admin edit button*/
 .glyphicon-edit {
-		font-size: 18px;
+		font-size: 16px;
 }
 
 .button-download {
-		padding: 3px 5px 0px 5px;
+		padding: 3px 4px 0px 6px;
 }
 
 
@@ -1421,19 +1443,23 @@ td.table-text-bold {
 }
 
 th.year {
-		width: 10%;
+		width: 8%;
 }
 
 th.authors {
-		width: 25%;
+		width: 22%;
 }
 
 th.title {
-		width: 40%;
+		width: 30%;
 }
 
 th.outlet {
 		width: 30%;
+}
+
+th.table-buttons {
+    width: 15%;
 }
 
 
