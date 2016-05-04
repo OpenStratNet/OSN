@@ -24,7 +24,7 @@ Template.test.events({
       newAuthors.push($('#' + input.uniqid).val());
     });
 
-    Publications.insert({ authors: newAuthors });
+    Meteor.call('Publications.insert', { authors: newAuthors });
   }
 });
 

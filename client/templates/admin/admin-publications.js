@@ -133,7 +133,7 @@ Template.adminPublications.events({
       keywords: ["publication"]
     });
 
-		Publications.insert({
+		Meteor.call('Publications.insert', {
 			title: $('#title').val(),
 			//authors: [$('#authors').val()],
 			authors: newAuthors,
