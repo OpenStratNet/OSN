@@ -82,11 +82,11 @@ Meteor.startup(function () {
           "abstract": "No Abstract ...",
           "type": "wp"
        }
-     ]
+     ];
 
     	_.each(protopubs, function(doc) {
     	  Publications.insert(doc);
-    	})
+    	});
 
     	console.log("Publication edited");
     }
@@ -128,11 +128,11 @@ Meteor.startup(function () {
         "lastmodifiedAt": moment().format('ddd, DD MMM YYYY hh:mm:ss'),
         "publishedAt": moment().format('ddd, DD MMM YYYY hh:mm:ss'),
         "publishedRawFormat": new Date()
-     }]
+     }];
 
     	_.each(protoNE, function(doc) {
     	  NewsEvents.insert(doc);
-    	})
+    	});
 
     	console.log("NewsEvents edited");
     }
