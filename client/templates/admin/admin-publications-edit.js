@@ -180,7 +180,7 @@ Template.adminPublicationsEdit.events({
 
     var temp = {};
 
-    temp.title = $('#title').val()
+    temp.title = $('#title').val();
     temp.authors = pubEntryComplete.authors.concat(newAuthors);
     temp.editors = newEditors,
     temp.year = $('#year').val(),
@@ -197,7 +197,7 @@ Template.adminPublicationsEdit.events({
     temp.location = $('#location').val(),
 
     // when last time modified
-    temp.modifiedAt = new Date ()
+    temp.modifiedAt = new Date ();
 
     if (attachmentIdVar.get()) {
       temp.attachmentId = attachmentIdVar.get();
