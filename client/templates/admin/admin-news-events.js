@@ -1,8 +1,12 @@
 imageIdVar = new ReactiveVar(false);
 attachmentIdVar = new ReactiveVar(false);
 
-Template.adminNewsEvents.onRendered(function() {
-  $(document).ready(function() {
+Template.adminNewsEvents.helpers({
+  allCategories: function () {
+    return Categories.find();
+  },
+  afterLoad: function(){ //Fire the code when the page is full loaded.
+	Meteor.setTimeout(function(){ //Latency compensation 0.5sec
     $('#description').summernote({
     	height: 200,
     	toolbar: [
@@ -19,8 +23,7 @@ Template.adminNewsEvents.onRendered(function() {
        	['help', ['help']]
 	    ]
     });
-  });
-    // Get an array of the existing tags
+	// Get an array of the existing categories
     var categoryOptions = Categories.find().fetch();
     // testing category options
     $('#selectCategory').selectize({
@@ -37,22 +40,15 @@ Template.adminNewsEvents.onRendered(function() {
           // Check to see if tag exists in Tags collection
           // by querying the database for the tag name
           // and checking the length of the result
-          var existingCategory = Categories.find({"name": item}).fetch().length;
+          var existingCategory = Categories.find({"name": item.toLowerCase()}).fetch().length; //Find the category in lower case
           if (!existingCategory ) {
               // Add the tag to the Tags collection
-              // TODO: figure out how to limit duplicate tags
-              // e.g. 'Beans' and 'beans'
-              // unless this is not an issue
-              Categories.insert({"name": item});
+              Categories.insert({"name": item.toLowerCase()}); //Stores the category always in lower case.
           }
       }
     });
-
-    // testing tag options
-
     // Get an array of the existing tags
     var tagOptions = Tags.find().fetch();
-
     $('#newsKeywords').selectize({
         plugins: ['remove_button'],
         delimiter: ',',
@@ -68,22 +64,20 @@ Template.adminNewsEvents.onRendered(function() {
             // Check to see if tag exists in Tags collection
             // by querying the database for the tag name
             // and checking the length of the result
-            var existingTag = Tags.find({"name": item}).fetch().length;
+            var existingTag = Tags.find({"name": item.toLowerCase()}).fetch().length; //Find the tags in lower case.
             if (!existingTag ) {
                 // Add the tag to the Tags collection
                 // TODO: figure out how to limit duplicate tags
                 // e.g. 'Beans' and 'beans'
                 // unless this is not an issue
-                Tags.insert({"name": item});
+                Tags.insert({"name": item.toLowerCase()}); //Tags scored in lower case.
             }
         }
     });
-});
-
-Template.adminNewsEvents.helpers({
-  allCategories: function () {
-    return Categories.find();
-  }
+	$('#preLoad').show(); //Display the html container when the back-end are ready.
+	return false;
+    },500);
+	}
 });
 
 Template.adminNewsEvents.events({

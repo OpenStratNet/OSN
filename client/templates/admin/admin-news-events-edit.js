@@ -1,29 +1,54 @@
 imageIdVarEdit = new ReactiveVar(false);
 attachmentIdVarEdit = new ReactiveVar(false);
 
-Template.adminNewsEventsEdit.onRendered(function() {
-  $(document).ready(function() {
+  // whole document of News & Events
+  // var newsEventsEntry = NewsEvents.findOne({_id: this._id}); //, {description: "$('#description').summernote('code')"});
+  // var descriptionContent = newsEventsEntry.description;
+  // $('#description').summernote('code', descriptionContent);
+
+  // console.log("db: " + newsEventsEntry);
+  // console.log("description: " + descriptionContent);
+
+
+Template.adminNewsEventsEdit.helpers({
+  newsEventsEntry: function () {
+    return NewsEvents.findOne({_id: this._id});
+  },
+  currentTags: function(){ //This helper will find the tags asociated to the current newsEventsEntry.
+	  currentNE = NewsEvents.findOne({_id: this._id}); //Find the newsEventsEntry
+	  currentTag = currentNE.keywords; //Return the array of tags
+	  tagsNumber = currentTag.length; //Return the number of tags asociated to this
+	  if(tagsNumber){
+		stringConstructor = currentTag[0];
+	  for (var i=1; i<tagsNumber; i++){
+	    stringConstructor = stringConstructor + ',' + currentTag[i]; //Construct a string of tags
+	  };
+	  return stringConstructor;  
+	  }else{
+		  return false;
+	  }
+	  
+    },
+  afterLoad: function(){ //Fire the code when the page is full loaded.
+	Meteor.setTimeout(function(){ //Latency compensation 0.8sec
     $('#description').summernote({
     	height: 200,
     	toolbar: [
-    	    // [groupName, [list of button]]
-	    	['style', ['style']],
-	       	['font', ['bold', 'italic', 'underline', 'clear']],
-	       	['fontname', ['fontname']],
-	       	['color', ['color']],
-	       	['para', ['ul', 'ol', 'paragraph']],
-	       	['height', ['height']],
-	       	['table', ['table']],
-	       	['insert', ['link', 'hr']], // 'picture', is tooked out
-	       	['view', ['fullscreen', 'codeview']],
-	       	['help', ['help']]
-		]
+  	   // [groupName, [list of button]]
+    	['style', ['style']],
+       	['font', ['bold', 'italic', 'underline', 'clear']],
+       	['fontname', ['fontname']],
+       	['color', ['color']],
+       	['para', ['ul', 'ol', 'paragraph']],
+       	['height', ['height']],
+       	['table', ['table']],
+       	['insert', ['link', 'hr']], // 'picture', is tooked out
+       	['view', ['fullscreen', 'codeview']],
+       	['help', ['help']]
+	    ]
     });
-  });
-
-  // Get an array of the existing tags
+    // Get an array of the existing tags
     var tagOptions = Tags.find().fetch();
-
     $('#newsKeywords').selectize({
         plugins: ['remove_button'],
         delimiter: ',',
@@ -35,36 +60,21 @@ Template.adminNewsEventsEdit.onRendered(function() {
         highlight: true,
         maxOptions: 5,
         options: tagOptions,
-        items: ["amir", "sandra"],
         onItemAdd: function (item) {
             // Check to see if tag exists in Tags collection
             // by querying the database for the tag name
             // and checking the length of the result
-            var existingTag = Tags.find({"name": item}).fetch().length;
+            var existingTag = Tags.find({"name": item.toLowerCase()}).fetch().length; //Find the tags in lower case.
             if (!existingTag ) {
                 // Add the tag to the Tags collection
-                // TODO: figure out how to limit duplicate tags
-                // e.g. 'Beans' and 'beans'
-                // unless this is not an issue
-                Tags.insert({"name": item});
+                Tags.insert({"name": item.toLowerCase()}); //Tags scored in lower case.
             }
         }
     });
-
-  // whole document of News & Events
-  // var newsEventsEntry = NewsEvents.findOne({_id: this._id}); //, {description: "$('#description').summernote('code')"});
-  // var descriptionContent = newsEventsEntry.description;
-  // $('#description').summernote('code', descriptionContent);
-
-  // console.log("db: " + newsEventsEntry);
-  // console.log("description: " + descriptionContent);
-});
-
-
-Template.adminNewsEventsEdit.helpers({
-  newsEventsEntry: function () {
-    return NewsEvents.findOne({_id: this._id});
-  },
+	$('#preLoad').show(); //Display the html container when the back-end are ready.
+	return false;
+    },800);
+   }
   // *** manual approach to retrieve the summernote content
   // summernoteText: function() {
   // 	var newsEventsEntry = NewsEvents.find({_id: this._id}); //, {description: "$('#description').summernote('code')"});
@@ -148,8 +158,9 @@ Template.adminNewsEventsEdit.events({
 		temp.title = $('#title').val();
 		temp.description = $('#description').summernote('code');
 		temp.type = $('input[name=netype]:checked').val();
+        temp.keywords = $('#newsKeywords')[0].value.toLowerCase().split(','); //new keywords are stored.
 		// when last time modified
-    temp.modifiedAt = moment().format('ddd, DD MMM YYYY hh:mm:ss');
+        temp.modifiedAt = moment().format('ddd, DD MMM YYYY hh:mm:ss');
 
 		if (imageIdVarEdit.get()) {
 			temp.coverImageId = imageIdVarEdit.get();

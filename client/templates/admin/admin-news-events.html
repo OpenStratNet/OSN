@@ -1,6 +1,7 @@
 <template name="adminNewsEvents">
 	<!-- {{> formNewsEvents}} -->
     <div class="container extra-spacing-top">
+	<div id="preLoad" style="display:none;">
     <div class="putdown">
         <h1 class="extra-spacing-bottom">ADD A NEWS &amp; EVENTS POST</h1>
         <hr>
@@ -58,5 +59,7 @@
       	</div>
 	    </form> <!-- end form -->
 		</div>
-	</div>
+		{{afterLoad}}
+    </div> <!-- Preload-->
+	</div> <!-- container -->
 </template>
