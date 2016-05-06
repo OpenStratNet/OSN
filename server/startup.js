@@ -15,6 +15,12 @@ Meteor.startup(function () {
 	'updateUser':function(e,d){
 		Meteor.users.update({_id:e},{$set:{profile:d}});
 	},
+	'insertTag': function(e){
+		Tags.insert({"name": e});
+	},
+	'insertCategory': function(e){
+		Categories.insert({"name": e});
+	},
 	'sendEmail': function (to, from, subject, text) {
     // check([to, from, subject, text], [String]);
     this.unblock();

@@ -1,5 +1,7 @@
 imageIdVarEdit = new ReactiveVar(false);
 attachmentIdVarEdit = new ReactiveVar(false);
+Meteor.subscribe('alltags'); //Subscribe to the tags collection
+Meteor.subscribe('allcategories'); //Subscribe to the categories collection
 
   // whole document of News & Events
   // var newsEventsEntry = NewsEvents.findOne({_id: this._id}); //, {description: "$('#description').summernote('code')"});
@@ -14,6 +16,10 @@ Template.adminNewsEventsEdit.helpers({
   newsEventsEntry: function () {
     return NewsEvents.findOne({_id: this._id});
   },
+  currentCategory: function(){ //This helper will find the category of the entry.
+	  currentNE_ = NewsEvents.findOne({_id: this._id}); //Find the newsEventsEntry
+	  return currentNE_.category; //Return the category
+    },
   currentTags: function(){ //This helper will find the tags asociated to the current newsEventsEntry.
 	  currentNE = NewsEvents.findOne({_id: this._id}); //Find the newsEventsEntry
 	  currentTag = currentNE.keywords; //Return the array of tags
@@ -46,6 +52,30 @@ Template.adminNewsEventsEdit.helpers({
        	['view', ['fullscreen', 'codeview']],
        	['help', ['help']]
 	    ]
+    });
+	// Get an array of the existing categories
+    var categoryOptions = Categories.find().fetch();
+    // testing category options
+    $('#selectCategory').selectize({
+      plugins: ['remove_button'],
+      delimiter: ',',
+      persist: false,
+      valueField: 'name',
+      labelField: 'name',
+      searchField: 'name',
+      create: true,
+      highlight: true,
+      options: categoryOptions,
+      onItemAdd: function (item) {
+          // Check to see if tag exists in Tags collection
+          // by querying the database for the tag name
+          // and checking the length of the result
+          var existingCategory = Categories.find({"name": item.toLowerCase()}).fetch().length; //Find the category in lower case
+          if (!existingCategory ) {
+              // Add the tag to the Tags collection
+              Categories.insert({"name": item.toLowerCase()}); //Stores the category always in lower case.
+          }
+      }
     });
     // Get an array of the existing tags
     var tagOptions = Tags.find().fetch();

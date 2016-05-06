@@ -1,5 +1,7 @@
 imageIdVar = new ReactiveVar(false);
 attachmentIdVar = new ReactiveVar(false);
+Meteor.subscribe('alltags'); //Subscribe to the tags collection
+Meteor.subscribe('allcategories'); //Subscribe to the categories collection
 
 Template.adminNewsEvents.helpers({
   allCategories: function () {
@@ -43,7 +45,7 @@ Template.adminNewsEvents.helpers({
           var existingCategory = Categories.find({"name": item.toLowerCase()}).fetch().length; //Find the category in lower case
           if (!existingCategory ) {
               // Add the tag to the Tags collection
-              Categories.insert({"name": item.toLowerCase()}); //Stores the category always in lower case.
+              Meteor.call('insertCategory',item.toLowerCase()); //Stores the category always in lower case.
           }
       }
     });
@@ -70,7 +72,7 @@ Template.adminNewsEvents.helpers({
                 // TODO: figure out how to limit duplicate tags
                 // e.g. 'Beans' and 'beans'
                 // unless this is not an issue
-                Tags.insert({"name": item.toLowerCase()}); //Tags scored in lower case.
+                Meteor.call('insertTag',item.toLowerCase()); //Tags scored in lower case.
             }
         }
     });
