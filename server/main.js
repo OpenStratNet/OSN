@@ -126,3 +126,7 @@ Accounts.onCreateUser(function (options, user) {
 Meteor.publish('allSubscribers',function(){
 	return subscribers.find();
 });
+
+Meteor.publish('alluserContact',function(){
+	return userContact.find();
+});

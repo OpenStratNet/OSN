@@ -95,7 +95,12 @@ Router.route('/news-and-events', {
 });
 
 Router.route('/contact', {
-  name: 'contact'
+  name: 'contact',
+  data: function(){
+		   return{
+		   toUserContact:userContact.find(),			
+		   }
+	},
 });
 
 Router.route('/about-us', {

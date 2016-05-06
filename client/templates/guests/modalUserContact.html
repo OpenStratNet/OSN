@@ -1,0 +1,54 @@
+<template name="modalUserContact">
+    <div class="modal fade" id="userContactModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Select User to Add</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" id="addContact" role="form">
+					    <div class="form-group">
+                            <div class="col-sm-10">
+            	                <input type="text" class="form-control" id="toUserContact" name="toUserContact" placeholder="Input user name...">
+                            </div>
+                        </div>
+					</form>
+					
+					    {{#each userContactPrev}}
+					        {{#if userContactFilter true}}
+							<div class="row text-center extra-spacing-top">
+					        <div class="col-sm-6">
+						        <div class="team-member">
+							        <img class="contact-thumbnail" src="{{profile.pictureID}}" alt="No profile picture">
+						        </div>
+				            </div>
+							 <div class="col-sm-6">
+						        <div class="team-member">
+							        <h4>{{profile.firstName}}&nbsp;&nbsp;{{profile.lastName}}</h4>
+							        <p class="text-muted">{{profile.position}}</p>
+							        <ul class="list-inline social-buttons">
+								        <li>
+                                            <a href="mailto:{{profile.email}}"><i class="fa fa-envelope"></i></a>
+								        </li>
+								        <li>
+									        <a href="mailto:{{profile.email}}">{{profile.email}}</a>
+								        </li>									</ul>
+										<form id="addUserContact">
+				                            <input name="userAddId" id="userAddId" type="hidden" value="{{_id}}" placeholder=""/>
+	                                        <input type="click" class="btn btn-primary btn-xl page-scroll" id="addUser" value="ADD"/>
+                                        </form>
+						        </div>
+				            </div>
+							</div>
+					       {{/if}}
+					    {{/each}}
+					</div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</template>

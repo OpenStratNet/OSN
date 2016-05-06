@@ -1,0 +1,48 @@
+<template name="modalEditUser">
+    <div class="modal fade" id="editContactModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Edit User Profile</h4>
+                </div>
+                <div class="modal-body">
+							<div class="row text-center extra-spacing-top">
+					        <div class="col-sm-6">
+						        <div class="team-member">
+							        <img class="contact-thumbnail" src="{{edit.profile.pictureID}}" alt="No profile picture">
+						        </div>
+				            </div>
+							<div class="col-sm-6">
+						        <div class="team-member">
+							        
+								    <div class="form-group">
+                                        <div class="col-sm-10">
+            	                            <form id="userEdit">
+	                                            <input type="text" style="width:100%;" class="form-control" id="userNameEdit" name="userNameEdit" value="{{edit.profile.firstName}}" placeholder="">
+												<input type="text" style="width:100%;margin-top:5px;" class="form-control" id="userLastNameEdit" name="userLastNameEdit" value="{{edit.profile.lastName}}" placeholder="">
+												<input type="text" style="width:100%;margin-top:5px;" class="form-control" id="positionEdit" name="positionEdit" value="{{edit.profile.position}}" placeholder="">
+												<input type="email" style="width:100%;margin-top:5px;" class="form-control" id="emailEdit" name="emailEdit" value="{{edit.profile.email}}" placeholder="">
+												<input type="hidden" style="width:100%;" class="form-control" id="interestEdit" name="interestEdit" value="{{edit.profile.interest}}" placeholder="">
+												<input type="hidden" style="width:100%;margin-top:5px;" class="form-control" id="institutionEdit" name="institutionEdit" value="{{edit.profile.institution}}" placeholder="">
+												<input type="hidden" style="width:100%;margin-top:5px;" class="form-control" id="pictureIDEdit" name="pictureIDEdit" value="{{edit.profile.pictureID}}" placeholder="">
+							                </form>
+											
+									    </div>
+                                    </div>	
+                            
+						        </div>
+				            </div>
+							</div>
+
+					</div>
+                
+                <div class="modal-footer">
+				    <form id="submitContact">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">SUBMIT</button>
+					</form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</template>

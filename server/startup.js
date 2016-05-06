@@ -3,6 +3,18 @@ Meteor.startup(function () {
     'unsubscribe':function(e){
 		subscribers.remove({_id: e});
 	},
+	'insertContact':function(e){
+		userContact.insert(e);
+	},
+	'deleteContact':function(e){
+		userContact.remove({_id:e});
+	},
+	'updateUserContact':function(e,d){
+		userContact.update({_id:e},{$set:{profile:d}});
+	},
+	'updateUser':function(e,d){
+		Meteor.users.update({_id:e},{$set:{profile:d}});
+	},
 	'sendEmail': function (to, from, subject, text) {
     // check([to, from, subject, text], [String]);
     this.unblock();
