@@ -134,6 +134,7 @@ peerlibrary:base-component@0.14.0
 peerlibrary:blaze-components@0.15.1
 peerlibrary:computed-field@0.3.1
 peerlibrary:reactive-field@0.1.0
+peppelg:bootstrap-3-modal@1.0.4
 promise@0.5.1
 raix:eventemitter@0.1.3
 raix:rssfeed@0.0.5

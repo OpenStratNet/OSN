@@ -1134,99 +1134,6 @@ header .header-content .header-content-inner p {
 
 
 
-// Footer
-
-footer {
-		padding: 0px 15 15px 0;
-		background-color: @gray-light;
-		color: #eaeaea;
-		font-size: 14px;
-		text-align: center;
-		span.copyright {
-				line-height: 40px;
-				.heading-font;
-				text-transform: none;
-		}
-/*    ul.quicklinks {
-				margin-bottom: 0;
-				line-height: 40px;
-				.heading-font;
-				color: yellow;
-				text-transform: none;
-		}*/
-}
-
-h3.footer-head {
-		font-size: 18px;
-		margin-top: 20px;
-        color: black;
-}
-
-a .footer-link {
-		color: white;
-		text-decoration: none;
-		font-size: 12px;
-		cursor: pointer;
-		padding-bottom: 20px;
-}
-
-.footer-link:hover {
-		color: white;
-		text-decoration: underline;
-}
-
-.copyright {
-		padding: 8px 0 8px 0;
-		// background-color: #000;
-		font-size: 14px;
-		color: #000000;
-}
-
-a.imprint-link {
-		color: @brand-primary;
-		text-decoration: none;
-		font-size: 14px;
-		cursor: pointer;
-		padding-bottom: 0px;
-}
-
-a.imprint-link:hover {
-		color: darken(@brand-primary, 10%);
-		// text-decoration: underline;
-}
-
-ul.list-inline.quicklinks {
-		margin-bottom: 0;
-}
-
-
-.sponsor-thumbnail {
-	height: 7.2rem;
-	padding-bottom: 20px;
-    filter: grayscale();
-}
-
-.sponsor-thumbnail-innsbruck {
-	height: 5.6rem;
-	padding-bottom: 20px;
-    filter: grayscale();
-}
-
-.sponsor-thumbnail:hover {
-	height: 7.2rem;
-	padding-bottom: 20px;
-    color: white;
-    cursor: pointer;
-}
-
-.sponsor-thumbnail-innsbruck:hover {
-	height: 5.6rem;
-	padding-bottom: 20px;
-    filter: sepia();
-    cursor: pointer;
-}
-
-
 .news-thumbnail {
 		border: none;
 		margin-right: 10px;
@@ -1867,4 +1774,109 @@ a.profile-links.icon {
                 left: 24px!important;
             }
     }
+}
+
+
+// Footer
+
+footer {
+		padding: 0px 15 15px 0;
+		background-color: @gray-light;
+		color: #eaeaea;
+		font-size: 14px;
+		text-align: center;
+		span.copyright {
+				line-height: 40px;
+				.heading-font;
+				text-transform: none;
+		}
+/*    ul.quicklinks {
+				margin-bottom: 0;
+				line-height: 40px;
+				.heading-font;
+				color: yellow;
+				text-transform: none;
+		}*/
+}
+
+.fa-heart {
+    font-size: 12px;
+}
+
+h3.footer-head {
+		font-size: 18px;
+		margin-top: 20px;
+        color: black;
+}
+
+
+.copyright {
+		padding: 8px 0 8px 0;
+		// background-color: #000;
+		font-size: 13px;
+		color: #000000;
+}
+
+a.footer-link {
+		color: @brand-primary;
+		text-decoration: none;
+		font-size: 13px!important;
+		cursor: pointer;
+		padding-bottom: 0px;
+}
+
+a.footer-link:hover {
+		color: darken(@brand-primary, 10%);
+		// text-decoration: underline;
+}
+
+ul.list-inline.quicklinks {
+		margin-bottom: 0;
+}
+
+
+// Host Sponsors
+
+.sponsor-thumbnail {
+	height: 7.2rem;
+	padding-bottom: 20px;
+    filter: grayscale();
+}
+
+.sponsor-thumbnail-innsbruck {
+	height: 5.8rem;
+    padding-top: 6px;
+	padding-bottom: 14px;
+    filter: grayscale();
+}
+
+.sponsor-thumbnail:hover {
+	padding-bottom: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.sponsor-thumbnail-innsbruck:hover {
+    filter: sepia();
+    cursor: pointer;
+}
+
+// Social Media Bar
+
+.some {
+    padding-right: 12px;
+    padding-left: 12px;
+    font-size: 20px;
+}
+
+a.follow-facebook:hover {
+	color: #3b5998;
+}
+
+a.follow-twitter:hover {
+	color: #55acee;
+}
+
+a.follow-rss:hover {
+	color: #fa9b39;
 }
