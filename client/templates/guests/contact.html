@@ -10,16 +10,8 @@
 					<div class="header-content-inner">
 							<h1>Contact</h1>
 							<hr>
-							<h2>Open Strategy Network is designed to be dynamic and collaborative, growing with the community to
-
-include new knowledge and resources. To that end, OSN warmly welcomes any contributions. In
-
-order to contribute, please send an email to XXX
-
-We greatly appreciate your support and would like to express our gratitude for your contributions
-
-allowing us to keep our website up-to-date.</h2>
-							<button href="#joinus" class="btn btn-primary btn-xl page-scroll">JOIN US</button>
+							<h2>Open Strategy Network is designed to be dynamic and collaborative, growing with the community to include new knowledge and resources. In order to contribute with news, literature etc. please send an email to <a href="mailto: violetta.splitter@uzh.ch"> Violetta Splitter.</a><br>Thanks for helping to keep our website up-to-date.</h2>
+							<!-- <button href="#joinus" class="btn btn-primary btn-xl page-scroll">JOIN US</button> -->
 					</div>
 			</div>
 	</header> <!-- ./Stage -->
@@ -33,26 +25,26 @@ allowing us to keep our website up-to-date.</h2>
 				<div class="row text-center extra-spacing-top">
 				    <br>
 					<br>
-					
+
 				    {{#each toUserContact}}
 					<center>
 					<div style="margin-top:5px;height:350px;" class="col-sm-6">
 						<div class="team-member">
-						
+
 						    <div class="imgBlock">
 							    <center>
 							        <img  src="{{profile.pictureID}}" alt="No Profile Photo">
 								</center>
 							</div>
-						
+
 							<div style="width:300px">
-							
+
 							    <div class="testing">
 								    <div style="clear:both;" id="hoverForm">
 							            <form id="test">
 								            <input name="userContactId" id="userContactId" type="hidden" value="{{_id}}" placeholder=""/>
 									        <button style="float:right;margin-right:54%;margin-top:-5px;margin-bottom:0px;" class="btn btn-primary" id="edit"><i style="font-size:15px;" class="fa fa-pencil-square-o"></i></button>
-									
+
 							            </form>
 							            <form id="eliminarUsuario">
 				                            <input name="userId" id="userId" type="hidden" value="{{_id}}" placeholder=""/>
@@ -74,15 +66,15 @@ allowing us to keep our website up-to-date.</h2>
 							    </div>
 						    </div>
 						</div>
-						
+
 				    </div>
 					</center>
 					{{/each}}
-                    
-				
+
+
                         <div class="col-sm-6">
 						    <div class="team-member">
-						
+
 						        <center>
 							        <div class="hoverOver">
 							            <a href="#" id="add" class="hoverEffect"><div class="divAddContact">
@@ -93,7 +85,7 @@ allowing us to keep our website up-to-date.</h2>
 						    </div>
 					    </div>
 					</div>
-				
+
 			</div>
 			{{>modalUserContact}}<!-- Modal template addUser -->
 			{{>modalEditUser}}<!-- Modal template EditUser -->
