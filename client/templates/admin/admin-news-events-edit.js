@@ -29,12 +29,11 @@ Template.adminNewsEventsEdit.helpers({
 	  for (var i=1; i<tagsNumber; i++){
 	    stringConstructor = stringConstructor + ',' + currentTag[i]; //Construct a string of tags
 	  };
-	  return stringConstructor;  
+	  return stringConstructor;
 	  }else{
 		  return false;
 	  }
-	  
-    },
+  },
   afterLoad: function(){ //Fire the code when the page is full loaded.
 	Meteor.setTimeout(function(){ //Latency compensation 0.8sec
     $('#description').summernote({
@@ -105,14 +104,6 @@ Template.adminNewsEventsEdit.helpers({
 	return false;
     },800);
    }
-  // *** manual approach to retrieve the summernote content
-  // summernoteText: function() {
-  // 	var newsEventsEntry = NewsEvents.find({_id: this._id}); //, {description: "$('#description').summernote('code')"});
-  // 	var descriptionContent = newsEventsEntry.description;
-  // 	return $('#description').summernote('code', descriptionContent);
-  // 	console.log("db: " + newsEventsEntry);
-  // 	console.log("description: " + descriptionContent);
-  //}
 });
 
 Template.adminNewsEventsEdit.events({

@@ -52,7 +52,7 @@ Template.profileSettings.events({
     var imageUrl = Meteor.absoluteUrl() +"cfs/files/profilePic/"+imageId;
 	//Image uploaded token
 	Session.set('changes',true);
-	
+
     //Store the old picture ID in a session variable, if the changes are discard the profilePic return to the original.
 	Session.set('oldPictureID', Meteor.user().profile.pictureID);
 	//Store the new picture ID in a session variable
@@ -69,7 +69,7 @@ Template.profileSettings.events({
 	$('.image').show();
 	//The file input manager disappears
 	$('#uploadInputFile').hide();
-	
+
     //Cheking if the picture are ready on the S3 bucket.
 	var checker = setInterval(function(){
 		$.get(Session.get('newPictureID')).done(function () {
@@ -90,7 +90,7 @@ Template.profileSettings.events({
     if (imageUrl) {
       pictureUrl = new ReactiveVar(imageUrl);
     }
-		
+
   },
   'click #discard': function(){
    //changes
@@ -111,7 +111,7 @@ Template.profileSettings.events({
 	$('#uploadInputFile').show();
 	Session.set('newPictureID', false);
 	}
-	
+
 	if(!Meteor.user().profile.pictureID){
 	//The image disappears
 	$('#hiddenImage').hide();
@@ -122,11 +122,11 @@ Template.profileSettings.events({
   },
   'submit form': function (){
     //evt.preventDefault();
-    //var temp = {};
+    var temp = {};
     // var temp.profile = {};
 
-    // temp.profile.firstName = $('#fistname').val();
-    // temp.profile.lastname = $('#lastname').val();
+    temp.profile.firstName = $('#fistname').val();
+    temp.profile.lastname = $('#lastname').val();
 
     // console.log("done");
     // if changes
@@ -137,14 +137,14 @@ Template.profileSettings.events({
 	  	Meteor.users.update({_id: Meteor.userId()}, {$set: {'profile.pictureID': Session.get('newPictureID')}});
 	  }else{
 	  	Meteor.users.update({_id: Meteor.userId()}, {$set: {'profile.pictureID': Session.get('oldPictureID')}});
-	  }	
+	  }
 	//Delete the Session variables.
       delete Session.keys['imageId'];
       delete Session.keys['newPictureID'];
 	  delete Session.keys['oldPictureID'];
 	  delete Session.keys['changes'];
 	  }else{
-	  Meteor.users.update({_id: Meteor.userId()}, {$set: {'profile.pictureID': false}});	
+	  Meteor.users.update({_id: Meteor.userId()}, {$set: {'profile.pictureID': false}});
 	//Delete the Session variables.
       delete Session.keys['imageId'];
       delete Session.keys['newPictureID'];
@@ -162,6 +162,5 @@ Template.profileSettings.events({
   'click #subscribe': function(){
 	 //Insert email to the subscribers collection
 	 subscribers.insert({email: Meteor.user().profile.email});
-  }  
+  }
 });
-

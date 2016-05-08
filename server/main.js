@@ -1,3 +1,5 @@
+var basicAuth = new HttpBasicAuth("uzh", "osn");
+basicAuth.protect();
 // Facebook OAuth configuration
 
 if (ServiceConfiguration.configurations.find({
@@ -83,7 +85,7 @@ Accounts.onCreateUser(function (options, user) {
     //   user.emails[address] = user.services.facebook.email;
     //   console.log("createdAfter");
     // });
-	
+
   }
 
   if (user.services.google) {
@@ -105,7 +107,7 @@ Accounts.onCreateUser(function (options, user) {
 
     if (fullScreenName.indexOf(' ') === -1 && fullScreenName.indexOf('_') === -1) {
       user.profile.firstName  = fullScreenName;
-    } 
+    }
     else if (fullScreenName.indexOf(' ') >= 0) {
       user.profile.firstName  = fullScreenName.substring(0, fullScreenName.indexOf(' '));
     }

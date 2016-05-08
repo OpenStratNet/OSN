@@ -79,11 +79,11 @@
 							<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
 							    <label for="beispielFeldDatei">Profile picture</label>
 								<br>
-								<img class="image" style="width:150px;height:150px;" src="{{profile.picture}}"> 
+								<img class="image" style="width:150px;height:150px;" src="{{profile.picture}}">
 							</div>
 						</div>
 						{{/if}}
-						
+
 						{{#if pictureID}}
 						<div class="row">
 							<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
@@ -99,7 +99,7 @@
 								<!--Discard button is a trash  icon-->
 								<div style="position:absolute;margin-left:112px;" id="discardButton">
 								     <button id="discard" type="button" class="btn btn-primary"><i class="fa fa-trash"></i></button>
-								</div>	
+								</div>
 								<div style="float:left;">
 								<img class="image" style="width:150px;height:150px;" src="{{profile.pictureID}}">
 								</div>
@@ -109,7 +109,7 @@
                                             <span>Upload a profile picture</span>
                                             <input type="file" class="upload js-Profile" />
                                           </div>
-								</div>	
+								</div>
 							</div>
 						</div>
 						{{/if}}
@@ -130,7 +130,7 @@
 							            	<!--Discard button is a trash icon-->
 							             <div style="position:absolute;margin-left:112px;display:none;" id="discardButton">
 								            <button id="discard" type="button" class="btn btn-primary"><i class="fa fa-trash"></i></button>
-								         </div>	
+								         </div>
 										   <!--The image is hidden in the background-->
 										<div id="hiddenImage" style="display:none;"><img class="image" style="width:150px;height:150px;" src="{{profile.pictureID}}"></div>
 										   <!-- Traditional input manager-->
@@ -141,7 +141,7 @@
                                             <input type="file" class="upload js-Profile" />
                                           </div>
 										</div>
-	
+
 								</div>
 						</div>
 						{{/if}}
@@ -149,16 +149,24 @@
 						<div class="row">
 								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
 										<div class="form-group">
-												<button style="float:left;" id="submit" type="submit" class="btn btn-primary">SAVE CHANGES</button>	
+												<button style="float:left;" id="submit" type="submit" class="btn btn-primary">SAVE CHANGES</button>
 										</div>
 								</div>
 						</div>
 					</form>
 					{{/with}}
 					<div class="row">
-								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-					                <div style="float:right;">{{#if subscribed true}}You are <b>subscribed</b> to our mail newsletter <button id="unsubscribe" type="click" class="btn btn-primary"><i class="fa fa-envelope-o" aria-hidden="true"></i></button>{{else}}You are <b>not subscribed</b> to our mail newsletter  <button id="subscribe" type="click" class="btn btn-primary"><i class="fa fa-envelope" aria-hidden="true"></i></button>{{/if}}</div>
-			        	        </div>
+						<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+              <div style="float:right;">
+                {{#if subscribed true}}
+                You are <b>subscribed</b> to our mail newsletter
+                <button id="unsubscribe" type="click" class="btn btn-primary"><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
+                {{else}}
+                You are <b>not subscribed</b> to our mail newsletter
+                <button id="subscribe" type="click" class="btn btn-primary"><i class="fa fa-envelope" aria-hidden="true"></i></button>
+                {{/if}}
+              </div>
+  	        </div>
 					</div>
 			</div>
 	</section> <!-- ./Basics -->
