@@ -126,7 +126,7 @@ Template.profileSettings.events({
 
     temp.firstName = $('#firstname').val();
     // temp.profile.lastname = $('#lastname').val();
-
+	currentEmail = Meteor.user().profile.email;
     // console.log("done");
     // if changes
 	if(Session.get('changes')){
@@ -156,6 +156,13 @@ Template.profileSettings.events({
 	  delete Session.keys['changes'];
 	  }
 	}
+	//subscribers collection updates if the email changed.
+	if (subscribers.find({email: currentEmail}).count() > 0
+      && subscribers.findOne({email: currentEmail}).email != $('#email').val()) {
+      subscribers.insert({email: $('#email').val()});
+	  subscribers.remove({_id: subscribers.findOne({email: currentEmail})._id})
+    }
+	
     // merge with above update to mongoDB
     Meteor.users.update({_id: Meteor.userId()}, {$set: {
       "profile.firstName" : $('#firstname').val(),
@@ -173,12 +180,6 @@ Template.profileSettings.events({
     // } else if (!subscribers.find({email: Meteor.user().profile.email}).count() > 0) {
     //   console.log("different");
     // }
-
-    if (subscribers.find({email: Meteor.user().profile.email}).count() > 0
-      && subscribers.findOne({email: Meteor.user().profile.email}).email !== $('#email').val()) {
-      // subscribers.insert({email: $('#email').val()});
-      subscribers.insert({email: Meteor.user().profile.email});
-    }
 
     Bert.alert("Changes saved.");
     // Meteor.users.update({_id: this._id}, {$set: temp} );
