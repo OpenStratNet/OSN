@@ -25,7 +25,7 @@
 		<div class="form-group">
             <label for="selectCategory" class="col-sm-2 control-label">Choose a Category</label>
           <div class="col-sm-10">
-            <select id="selectCategory" value="{{currentCategory}}">
+            <select type="select" id="selectCategory" placeholder="Select a category">
             </select>
           </div>
         </div>		 
@@ -106,7 +106,8 @@
 
 			</div>
 		</div> <!-- putdown -->
-		{{afterLoad}}
+		{{afterLoad}} <!-- Call the helper when the page are loaded.-->
+		{{prefillCategory}} <!-- Custom changes in the selectize category field, delay of 0.6 sec after the dom are ready-->
 		</div> <!-- Preload-->
 	</div> <!-- container -->
 </template>

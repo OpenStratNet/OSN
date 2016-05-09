@@ -16,10 +16,6 @@ Template.adminNewsEventsEdit.helpers({
   newsEventsEntry: function () {
     return NewsEvents.findOne({_id: this._id});
   },
-  currentCategory: function(){ //This helper will find the category of the entry.
-	  currentNE_ = NewsEvents.findOne({_id: this._id}); //Find the newsEventsEntry
-	  return currentNE_.category; //Return the category
-    },
   currentTags: function(){ //This helper will find the tags asociated to the current newsEventsEntry.
 	  currentNE = NewsEvents.findOne({_id: this._id}); //Find the newsEventsEntry
 	  currentTag = currentNE.keywords; //Return the array of tags
@@ -103,7 +99,15 @@ Template.adminNewsEventsEdit.helpers({
 	$('#preLoad').show(); //Display the html container when the back-end are ready.
 	return false;
     },800);
-   }
+   },
+    prefillCategory: function(){ //This helper will find the category of the current News Events and prefill it in selectize.
+	  currentNE_ = NewsEvents.findOne({_id: this._id}); //Find the current News Events entry.
+	  currentCat = currentNE_.category; //Find the category.
+	  Meteor.setTimeout(function(){ //this function will delay the changes in the <select> input until the DOM are ready.
+	  $('#selectCategory')[0].selectize.setValue(currentCat); //Make changes in the <select> tag via selectize functions.
+	  },1200);
+	  return false;
+    },
 });
 
 Template.adminNewsEventsEdit.events({
