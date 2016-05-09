@@ -73,9 +73,11 @@ related news are warmly welcome. In order to add news to this section, please se
   <div class="col-md-4 col-sm-6">
     <div class="caption">
         {{#if category}}
-        <em class="news-category spacing-mini-bottom">{{category}}</em><br>
+        <div class="category">
+            <em>{{category}}</em><br>
+        </div>
         {{/if}}
-        {{#each keywords}}<small>{{this}} </small>{{/each}}
+        {{#each keywords}}<small class="tags">{{this}} </small>{{/each}}
         {{#if imageExists}}
         <h4>{{title}}<img alt="news thumbnail" class="news-thumbnail" src="{{ coverImage.url }}" /></h4>
         {{else}}
