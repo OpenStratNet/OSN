@@ -41,6 +41,9 @@
                       <li class="dropdown">
                         <a href="#" id="profile-text" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">LOG IN <span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-login">
+                            <div class="text-center">
+                                <p class="text-muted form">Have an account?</p>
+                            </div>
                               <form>
                                   <div class="form-group">
                                       <input type="email" class="extra-spacing-bottom form-control" id="at-field-email" placeholder="Email">
@@ -50,6 +53,10 @@
                                   </div>
                                     <button type="submit" class="btn btn-primary btn-block">LOG IN</button>
                               </form>
+
+                              <div class="text-left">
+                                    <a class="forgot" href="/account/begin_password_reset">Forgot password?</a>
+                              </div>
 
                               <hr class="layer-light">
 
@@ -80,6 +87,16 @@
                                       </a>
                                   </div>
                               </div>
+
+                              <hr class="layer-light">
+
+                              <div class="text-center">
+                                  <p class="text-muted form">New to OSN?</p>
+                              </div>
+
+                              <form>
+                                    <button type="submit" class="btn btn-primary btn-block">LOG IN</button>
+                              </form>
                             <!-- <li><p class="profile-username">Hello {{currentUser.profile.firstName}}</p></li>
                             <li role="separator" class="divider"></li>
                             <li><a class="profile-links" href="{{pathFor route = 'profileSettings'}}"><i class="fa fa-cog profile-icons"></i>&nbsp; Settings</a></li>

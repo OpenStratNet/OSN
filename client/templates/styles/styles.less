@@ -19,14 +19,15 @@ small,
   margin: 10px 5px 10px 0;
   border-radius: 2px;
 }
-
-
-.news-category {
-  font-style: normal;
-  font-size: 16px;
-  font-weight: 300;
-  margin-bottom: 10px;
-  color: @gray;
+@media (min-width: 1024px) {
+	.container {
+		width: 970px;
+	}
+}
+@media (min-width: 1280px) {
+	.container {
+		width: 1170px;
+	}
 }
 
 @media (max-width: 990px) {
@@ -1399,6 +1400,26 @@ th.table-buttons {
         filter: blur(5px);
 }
 
+// News Events
+
+.category {
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 300;
+    margin-bottom: 9px;
+    color: @gray;
+}
+
+.tags {
+    margin-bottom: 10px;
+    font-size: 84%;
+    background-color: @gray-light;
+    color: white;
+    padding: 3px 5px;
+    margin: 0px 5px 10px 0;
+    border-radius: 2px;
+    display: inline-block;
+}
 
 //Layer Log in
 
@@ -1890,7 +1911,7 @@ a.follow-rss:hover {
 }
 .testing #hoverForm{
 	display:none;
-	
+
 }
 
 .testing:hover #hoverForm{
@@ -1907,7 +1928,7 @@ a.follow-rss:hover {
 	display: block;
     max-width: none;
 	min-height:200px;
-	
+
 }
 
 .col-sm-6 img {
@@ -1928,4 +1949,3 @@ a.follow-rss:hover {
 }
 
 //end
-
