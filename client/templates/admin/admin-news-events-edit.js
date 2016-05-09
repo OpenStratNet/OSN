@@ -179,6 +179,7 @@ Template.adminNewsEventsEdit.events({
 		temp.title = $('#title').val();
 		temp.description = $('#description').summernote('code');
 		temp.type = $('input[name=netype]:checked').val();
+		temp.category = $('#selectCategory')[0].value.toLowerCase(); // category are stored
         temp.keywords = $('#newsKeywords')[0].value.toLowerCase().split(','); //new keywords are stored.
 		// when last time modified
         temp.modifiedAt = moment().format('ddd, DD MMM YYYY hh:mm:ss');
@@ -191,6 +192,9 @@ Template.adminNewsEventsEdit.events({
 			temp.attachmentId = attachmentIdVarEdit.get();
 		}
 
-		Meteor.call('NewsEvents.update', {_id: this._id}, {$set: temp} );
+		Meteor.call('NewsEvents.update', this._id,temp);
+		//Just for testing.
+		NewsEvents.update({_id: this._id}, {$set: temp});
+		
 	}
 });
