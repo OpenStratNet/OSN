@@ -120,13 +120,12 @@ Template.profileSettings.events({
    //Delete the Session variables.
     delete Session.keys['imageId'];
   },
-  'submit form': function (){
-    //evt.preventDefault();
+  'submit form': function (evt){
+    evt.preventDefault();
     var temp = {};
-    // var temp.profile = {};
 
-    temp.profile.firstName = $('#fistname').val();
-    temp.profile.lastname = $('#lastname').val();
+    temp.firstName = $('#firstname').val();
+    // temp.profile.lastname = $('#lastname').val();
 
     // console.log("done");
     // if changes
@@ -136,8 +135,13 @@ Template.profileSettings.events({
 	  if(Session.get('imageId')){
 	  	Meteor.users.update({_id: Meteor.userId()}, {$set: {'profile.pictureID': Session.get('newPictureID')}});
 	  }else{
-	  	Meteor.users.update({_id: Meteor.userId()}, {$set: {'profile.pictureID': Session.get('oldPictureID')}});
+	  	Meteor.users.update({_id: Meteor.userId()}, {$set: {
+        'profile.pictureID': Session.get('oldPictureID'),
+        'profile.firstName': $('#firstname').val()
+      }
+      });
 	  }
+
 	//Delete the Session variables.
       delete Session.keys['imageId'];
       delete Session.keys['newPictureID'];
@@ -152,6 +156,30 @@ Template.profileSettings.events({
 	  delete Session.keys['changes'];
 	  }
 	}
+    // merge with above update to mongoDB
+    Meteor.users.update({_id: Meteor.userId()}, {$set: {
+      "profile.firstName" : $('#firstname').val(),
+      "profile.lastName" : $('#lastname').val(),
+      "profile.institution" : $('#institution').val(),
+      "profile.interests" : $('#interests').val(),
+      "profile.position" : $('#position').val(),
+      "profile.email" : $('#email').val(),
+      }
+    });
+
+    // if the user changed his email his new email should be in the subscribers collection
+    // if (subscribers.findOne({email: Meteor.user().profile.email}).email === $('#email').val()) {
+    //   console.log("same");
+    // } else if (!subscribers.find({email: Meteor.user().profile.email}).count() > 0) {
+    //   console.log("different");
+    // }
+
+    if (subscribers.find({email: Meteor.user().profile.email}).count() > 0
+      && subscribers.findOne({email: Meteor.user().profile.email}).email !== $('#email').val()) {
+      // subscribers.insert({email: $('#email').val()});
+      subscribers.insert({email: Meteor.user().profile.email});
+    }
+
     Bert.alert("Changes saved.");
     // Meteor.users.update({_id: this._id}, {$set: temp} );
   },
