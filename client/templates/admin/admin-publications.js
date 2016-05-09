@@ -143,7 +143,7 @@ Template.adminPublications.events({
 			abstract: $('#abstract').summernote('code'),
 
 			// Published Paper (pp)
-			journal: $('#journal').val(),
+			outlet: $('#journal').val(),
 			// Published Paper (pp) or Book Chapter (bc)
 			pages: $('#pages').val(),
 

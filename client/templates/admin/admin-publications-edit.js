@@ -188,7 +188,7 @@ Template.adminPublicationsEdit.events({
     abstract = $('#abstract').summernote('code'),
 
     // Published Paper (pp)
-    temp.journal = $('#journal').val(),
+    temp.outlet = $('#journal').val(),
     // Published Paper (pp) or Book Chapter (bc)
     temp.pages = $('#pages').val(),
 
