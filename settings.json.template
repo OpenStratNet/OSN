@@ -2,6 +2,7 @@
   "development": false,
   "Twit": {
     "test": false,
+    "url": "http://openstrategynetwork.com",
     "options": {
       "consumer_key": "",
       "consumer_secret": "",
