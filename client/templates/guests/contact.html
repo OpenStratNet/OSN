@@ -32,8 +32,18 @@
 						<div class="team-member">
 
 						    <div class="imgBlock">
+							    
 							    <center>
-							        <img  src="{{profile.pictureID}}" alt="No Profile Photo">
+								    {{#if noPic true}}
+									    <img  src="img/contact-placeholder.jpg" alt="No Profile Photo">
+								        
+									{{else}}
+									    {{#if normalPic true}}
+							                <img  src="{{profile.pictureID}}" alt="No Profile Photo">
+									    {{else}}
+									        <img  src="{{profile.picture}}" alt="No Profile Photo">
+									    {{/if}}
+									{{/if}}
 								</center>
 							</div>
 

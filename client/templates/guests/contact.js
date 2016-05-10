@@ -1,6 +1,25 @@
-Template.contact.onRendered(function() {
-   Meteor.subscribe('alluserContact') //Manage a userContact list
-});
+Template.contact.helpers ({
+	normalPic:function(){
+		id=this._id;
+		testPic=userContact.findOne({_id:id}).profile.picture;
+		    if(testPic==undefined){
+				return true;
+			}else{
+				return false;
+			}
+	},
+	noPic:function(){
+		id=this._id;
+		findPics=userContact.findOne({_id:id}).profile.picture;
+		findPicn=userContact.findOne({_id:id}).profile.pictureID;
+		if(findPics==undefined && findPicn==undefined || findPics==undefined && findPicn==false){
+			return true;
+		}else{
+			return false;
+		}
+		
+	}
+})
 
 
 // the code work using modals to manage the search and add the user 
@@ -22,7 +41,7 @@ Template.contact.events({
   'submit #eliminarUsuario':function(e){
 		 e.preventDefault();
     userId1 = $(e.target).find('[name=userId]').val();
-	var msj = confirm('¿Are you shure that you want to delete this contact from the list?');
+	var msj = confirm('¿Are you sure that you want to delete this contact from the list?');
 	    if(msj==true){
 	    //Meteor.users.remove({_id: userId1});
 		Meteor.call('deleteContact',userId1);

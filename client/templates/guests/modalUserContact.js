@@ -1,7 +1,14 @@
+Template.modalUserContact.onRendered (function(){
+	searcher="";
+	Session.set('searcher',searcher);
+});
+
+
+
 Template.modalUserContact.events ({
-	'keyup #toUserContact':function(e){
+	'keyup #emptyInput':function(e){
 		e.preventDefault();
-		searcher=$('#toUserContact').val();
+		searcher=$('#emptyInput').val();
 		Session.set('searcher',searcher);
 	},
 	'click #addUserContact':function(e){
@@ -10,39 +17,51 @@ Template.modalUserContact.events ({
 		addUser=Meteor.users.findOne({_id:userAddId});
 		Meteor.call('insertContact', addUser);
 		Session.set('searcher',0);
-		
+		$('#addContact')[0].reset();
 	}
 });
 
 Template.modalUserContact.helpers ({
+	atts: function() {
+    return {'id':'emptyInput','class': 'form-control', 'placeholder': "Search for a member",};
+    },
 	userContactPrev:function(){
 		return Meteor.users.find();
 	},
 	//searcher filter who work filter by word
 	//you can find the user introducing the name and the lastname
 	//or just introducing the name or the lastName
-	userContactFilter:function(){
-		name_=""+Session.get('searcher');
-		name=name_.split(" ");
-		kill=name.split(",");
-		userName=Meteor.users.findOne({_id:this._id}).profile.firstName;
-		userLast=Meteor.users.findOne({_id:this._id}).profile.lastName;
-		if (kill[0]==userName && kill[1]==userLast || kill[1]==userName && kill[0]==userLast){
-			
-			return true;
-		}else if (kill[0]==userName || kill[0]==userLast){
-			
-			if (kill[1]==""){
-				
+	
+	socialPic:function(){
+		id=this._id;
+		sPic=Meteor.users.findOne({_id:id}).profile.picture;
+		    if(sPic){
 				return true;
-			}else if (kill[1]!=userLast || kill[1]!=userName){
-				
-				return false;
 			}
-			
-		}else{
-			
-			return false;
+	},
+	normalPic:function(){
+		id=this._id;
+		nPic=Meteor.users.findOne({_id:id}).profile.pictureID;
+		    if(nPic){
+				return true;
+			}
+	},
+	noPic:function(){
+		id=this._id;
+		findPics=Meteor.users.findOne({_id:id}).profile.picture;
+		findPicn=Meteor.users.findOne({_id:id}).profile.pictureID;
+		if(findPics==undefined && findPicn==undefined || findPics==undefined && findPicn==false){
+			return true;
 		}
+		
+	},
+	 membersIndex: function() {
+    return MembersIndex;
+  },
+  noSearch:function(){
+	testing=Session.get('searcher');
+	if (testing!=""){
+		return true;
 	}
+  }
 })

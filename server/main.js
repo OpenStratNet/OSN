@@ -134,6 +134,10 @@ Meteor.publish('alluserContact',function(){
 	return userContact.find();
 });
 
+Meteor.publish('allusers',function(){
+	return Meteor.users.find();
+});
+
 Meteor.publish('alltags',function(){
 	return Tags.find();
 });

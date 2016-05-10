@@ -7,42 +7,112 @@
                     <h4 class="modal-title">Select User to Add</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" id="addContact" role="form">
-					    <div class="form-group">
-                            <div class="col-sm-10">
-            	                <input type="text" class="form-control" id="toUserContact" name="toUserContact" placeholder="Input user name...">
-                            </div>
-                        </div>
-					</form>
-					
-					    {{#each userContactPrev}}
-					        {{#if userContactFilter true}}
-							<div class="row text-center extra-spacing-top">
-					        <div class="col-sm-6">
-						        <div class="team-member">
-							        <img class="contact-thumbnail" src="{{profile.pictureID}}" alt="No profile picture">
-						        </div>
-				            </div>
-							 <div class="col-sm-6">
-						        <div class="team-member">
-							        <h4>{{profile.firstName}}&nbsp;&nbsp;{{profile.lastName}}</h4>
-							        <p class="text-muted">{{profile.position}}</p>
-							        <ul class="list-inline social-buttons">
-								        <li>
-                                            <a href="mailto:{{profile.email}}"><i class="fa fa-envelope"></i></a>
-								        </li>
-								        <li>
-									        <a href="mailto:{{profile.email}}">{{profile.email}}</a>
-								        </li>									</ul>
-										<form id="addUserContact">
-				                            <input name="userAddId" id="userAddId" type="hidden" value="{{_id}}" placeholder=""/>
-	                                        <input type="click" class="btn btn-primary btn-xl page-scroll" id="addUser" value="ADD"/>
-                                        </form>
-						        </div>
-				            </div>
-							</div>
-					       {{/if}}
-					    {{/each}}
+						<div class="row">
+								<div class="col-sm-6 col-sm-offset-3 extra-spacing-top">
+										<div class="input-group stylish-input-group">
+												{{> EasySearch.Input index=membersIndex attributes=atts }}
+												<span class="input-group-addon">
+												    <span class="glyphicon glyphicon-search"></span>
+												</span>
+										</div>
+								</div>
+						</div>
+			       
+					{{#if noSearch true}}
+					    {{#EasySearch.IfNoResults index=membersIndex}}
+					            <h3>No members found!</h3>
+					            <hr class="light">
+				        {{/EasySearch.IfNoResults}}
+						    {{#EasySearch.IfInputEmpty index=membersIndex}}
+							{{#each userContactPrev}}
+							    
+							    <div class="row text-center extra-spacing-top">
+					                <div class="col-sm-6">
+						                <div class="team-member">
+							                <div class="imgBlock">
+							                 
+							                    <center>
+								                    {{#if noPic true}}
+									                    <img  src="img/contact-placeholder.jpg" alt="{{profile.firstName}}  {{profile.lastName}}">
+								                    {{/if}}
+									              
+									                {{#if normalPic true}}
+							                            <img  src="{{profile.pictureID}}" alt="{{profile.firstName}}  {{profile.lastName}}">
+									                {{/if}}
+													{{#if socialPic}}
+									                    <img  src="{{profile.picture}}" alt="{{profile.firstName}}  {{profile.lastName}}">
+									                {{/if}}
+									                
+								                </center>
+							                </div>
+						                </div>
+				                    </div>
+							        <div class="col-sm-6">
+						                <div class="team-member">
+							                <h4>{{profile.firstName}}&nbsp;&nbsp;{{profile.lastName}}</h4>
+							                <p class="text-muted">{{profile.position}}</p>
+							                <ul class="list-inline social-buttons">
+								                <li>
+                                                    <a href="mailto:{{profile.email}}"><i class="fa fa-envelope"></i></a>
+								                </li>
+								                <li>
+									                <a href="mailto:{{profile.email}}">{{profile.email}}</a>
+								                </li>									</ul>
+										            <form id="addUserContact">
+				                                        <input name="userAddId" id="userAddId" type="hidden" value="{{_id}}" placeholder=""/>
+	                                                    <input type="click" class="btn btn-primary btn-xl page-scroll" id="addUser" value="ADD"/>
+                                                    </form>
+						                </div>
+				                    </div>
+							    </div>
+					       {{/each}}
+					       {{else}}
+
+				               {{#if membersIndex}}
+					               {{#EasySearch.Each index=membersIndex}}
+								        <div class="row text-center extra-spacing-top">
+					                        <div class="col-sm-6">
+						                        <div class="team-member">
+							                        <div class="imgBlock">
+							    
+							                            <center>
+								                            {{#if noPic true}}
+									                            <img  src="img/contact-placeholder.jpg" alt="{{profile.firstName}}  {{profile.lastName}}">
+								                            {{/if}}
+									              
+									                        {{#if normalPic true}}
+							                                    <img  src="{{profile.pictureID}}" alt="{{profile.firstName}}  {{profile.lastName}}">
+									                        {{/if}}
+													        {{#if socialPic}}
+									                            <img  src="{{profile.picture}}" alt="{{profile.firstName}}  {{profile.lastName}}">
+									                        {{/if}}
+								                        </center>
+							                        </div>
+						                        </div>
+				                            </div>
+							                <div class="col-sm-6">
+						                        <div class="team-member">
+							                        <h4>{{profile.firstName}}&nbsp;&nbsp;{{profile.lastName}}</h4>
+							                        <p class="text-muted">{{profile.position}}</p>
+							                        <ul class="list-inline social-buttons">
+								                        <li>
+                                                            <a href="mailto:{{profile.email}}"><i class="fa fa-envelope"></i></a>
+								                        </li>
+								                        <li>
+									                        <a href="mailto:{{profile.email}}">{{profile.email}}</a>
+								                        </li>									</ul>
+										            <form id="addUserContact">
+				                                        <input name="userAddId" id="userAddId" type="hidden" value="{{_id}}" placeholder=""/>
+	                                                    <input type="click" class="btn btn-primary btn-xl page-scroll" id="addUser" value="ADD"/>
+                                                    </form>
+						                        </div>
+				                            </div>
+							            </div>
+									
+					                {{/EasySearch.Each}}
+				                {{/if}}
+				            {{/EasySearch.IfInputEmpty}}
+						{{/if}}
 					</div>
                 
                 <div class="modal-footer">

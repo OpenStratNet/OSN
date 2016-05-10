@@ -94,9 +94,15 @@ Router.route('/news-and-events', {
   name: 'allNewsEvents'
 });
 
-Router.route('/contact', {
-  name: 'contact',
-  data: function(){
+Router.route('/contact', {name: 'contact',
+    waitOn: function(){
+		console.log('Iron router start');
+        return [        
+            Meteor.subscribe('allusers'),
+            Meteor.subscribe('alluserContact'),
+        ]
+	},
+    data: function(){
 		   return{
 		   toUserContact:userContact.find(),			
 		   }

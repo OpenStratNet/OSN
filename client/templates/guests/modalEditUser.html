@@ -10,7 +10,21 @@
 							<div class="row text-center extra-spacing-top">
 					        <div class="col-sm-6">
 						        <div class="team-member">
-							        <img class="contact-thumbnail" src="{{edit.profile.pictureID}}" alt="No profile picture">
+							        <div class="imgBlock">
+							    
+							            <center>
+								            {{#if noPic true}}
+									            <img  src="img/contact-placeholder.jpg" alt="No Profile Photo">
+								        
+									        {{else}}
+									            {{#if normalPic true}}
+							                        <img  src="{{profile.pictureID}}" alt="No Profile Photo">
+									            {{else}}
+									                <img  src="{{profile.picture}}" alt="No Profile Photo">
+									            {{/if}}
+									        {{/if}}
+								        </center>
+							        </div>
 						        </div>
 				            </div>
 							<div class="col-sm-6">
