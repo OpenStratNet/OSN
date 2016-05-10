@@ -17,3 +17,7 @@ Meteor.publish('categories', function () {
 Meteor.publish('images', function () {
   return Images.find();
 });
+
+Meteor.publish('attachments', function () {
+  return Attachments.find();
+});
