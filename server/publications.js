@@ -13,3 +13,7 @@ Meteor.publish('tags', function () {
 Meteor.publish('categories', function () {
   return Categories.find();
 });
+
+Meteor.publish('images', function () {
+  return Images.find();
+});
