@@ -21,3 +21,7 @@ Meteor.publish('images', function () {
 Meteor.publish('attachments', function () {
   return Attachments.find();
 });
+
+Meteor.publish('profilePic', function () {
+  return ProfilePic.find();
+});
