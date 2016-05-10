@@ -5,3 +5,7 @@ Meteor.publish('publications', function () {
 Meteor.publish('newsevents', function () {
   return NewsEvents.find();
 });
+
+Meteor.publish('tags', function () {
+  return Tags.find();
+});
