@@ -9,3 +9,7 @@ Meteor.publish('newsevents', function () {
 Meteor.publish('tags', function () {
   return Tags.find();
 });
+
+Meteor.publish('categories', function () {
+  return Categories.find();
+});
