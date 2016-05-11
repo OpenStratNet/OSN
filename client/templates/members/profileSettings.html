@@ -16,6 +16,21 @@
   </header> <!-- ./Stage -->
 
 	<!-- Basics -->
+
+    <!-- FILTER -->
+    <section id="Filter">
+      <div class="container">
+          <div class="row text-center">
+              <div class="col-lg-12">
+                  <div class="btn-group btn-group-md extra-spacing-top" role="group">
+                    <a type="button" id="js-seeAllMain" class="btn btn-primary active">PERSONAL</a>
+                    <a type="button" id="js-seeNewsMain" class="btn btn-primary">SOCIAL</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </section> <!-- ./FILTER -->
+
 	<section id="Settings">
 			<div class="container">
 					{{#with userData}}
@@ -160,10 +175,10 @@
               <div style="float:right;">
                 {{#if subscribed true}}
                 You are <b>subscribed</b> to our mail newsletter
-                <button id="unsubscribe" type="click" class="btn btn-primary"><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
+                <button id="unsubscribe" type="click" class="btn btn-primary btn-sm"><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
                 {{else}}
                 You are <b>not subscribed</b> to our mail newsletter
-                <button id="subscribe" type="click" class="btn btn-primary"><i class="fa fa-envelope" aria-hidden="true"></i></button>
+                <button id="subscribe" type="click" class="btn btn-primary btn-sm"><i class="fa fa-envelope" aria-hidden="true"></i></button>
                 {{/if}}
               </div>
   	        </div>
@@ -232,4 +247,68 @@
 			</div>
 	</section> <!-- ./Security -->
 	{{/if}}
+
+
+    <!-- Social -->
+	<section id="Settings">
+			<div class="container">
+
+					<form>
+
+						<div class="row">
+								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+										<div class="form-group">
+												<label for="text">Twitter <a class="button-download btn btn-primary btn-sm btn-external-link" href="www.twitter.com"><i class="fa fa-external-link"></i> </a></label>
+												<input type="text" class="form-control" placeholder="Twitter">
+										</div>
+								</div>
+						</div>
+
+                        <div class="row">
+                                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                                        <div class="form-group">
+                                                <label for="text">LinkedIn <a class="button-download btn btn-primary btn-sm btn-external-link" href="www.linkedin.com"><i class="fa fa-external-link"></i> </a></label>
+                                                <input type="text" class="form-control" placeholder="LinkedIn">
+                                        </div>
+                                </div>
+                        </div>
+
+                        <div class="row">
+                                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                                        <div class="form-group">
+                                                <label for="text">Facebook <a class="button-download btn btn-primary btn-sm btn-external-link" href="www.facebook.com"><i class="fa fa-external-link"></i> </a></label>
+                                                <input type="text" class="form-control" placeholder="Facebook">
+                                        </div>
+                                </div>
+                        </div>
+
+                        <div class="row">
+								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+										<div class="form-group">
+												<label for="text">Website</label>
+												<input type="text" class="form-control" placeholder="Website/Blog">
+										</div>
+								</div>
+						</div>
+
+                        <div class="row">
+                                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                                        <div class="form-group">
+                                                <label for="text">Blog</label>
+                                                <input type="text" class="form-control" placeholder="Google">
+                                        </div>
+                                </div>
+                        </div>
+
+						<div class="row">
+								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+										<div class="form-group">
+												<button type="submit" class="btn btn-primary extra-spacing-bottom">SAVE CHANGES</button>
+										</div>
+								</div>
+						</div>
+					</form>
+			</div>
+	</section> <!-- ./Social -->
+
 </template>
