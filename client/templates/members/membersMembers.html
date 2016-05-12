@@ -66,14 +66,35 @@
 										<h4 class="media-heading">{{profile.firstName}} {{profile.lastName}}</h4>
 										<p class="italic">{{profile.institution}}</p>
 										<p class="text-muted">{{profile.position}}</p>
-										<ul class="list-inline social-buttons">
+                                        <ul class="list-inline social-buttons">
 												<li>
-														<a href="mailto:{{profile.email}}"><i class="fa fa-envelope"></i></a>
+														<a href="mailto:{{profile.email}}" alt="{{profile.email}}"><i class="fa fa-envelope"></i></a>
 												</li>
+
 												<li>
 														<a href="mailto:{{profile.email}}">{{profile.email}}</a>
 												</li>
 										</ul>
+                                        <!-- Social Media Bar -->
+                                        <div class="share-button sharer">
+                                            <div class="social top networks-5 ">
+                                                <!-- Website Share Button -->
+                                                <a class="follow-website" href="#"><i class="fa some-members fa-globe"></i></a>
+
+                                                <!-- Blog Share Button -->
+                                                <a class="follow-blog" href="#"><i class="fa some-members fa-book"></i></a>
+
+                                                <!-- LinkedIn-->
+                                                <a class="fbtn follow-linkedin" href="#"><i class="fa some-members fa-linkedin"></i></a>
+
+                                                <!-- Twitter Share Button -->
+                                                <a class="follow-twitter" href="#"><i class="fa some-members fa-twitter"></i></a>
+
+                                                <!-- Facebook Share Button -->
+                                                <a class="follow-facebook" href="#"><i class="fa some-members fa-facebook-official"></i></a>
+                                            </div>
+                                        </div>
+
 								</div>
 						</div>
 						<div class="col-sm-6">
