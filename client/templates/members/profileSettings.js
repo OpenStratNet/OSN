@@ -2,6 +2,8 @@ profilePicEdit = new ReactiveVar(false);
 
 pictureUrl = new ReactiveVar(false);
 
+settingsTab = new ReactiveVar("personal");
+
 Template.profileSettings.onRendered(function() {
   // if scrolling is necessary $("html, body").animate({ scrollTop: 0 });
   window.scrollTo(0, 0);
@@ -12,10 +14,10 @@ Template.profileSettings.onRendered(function() {
   }
 });
 
-Template.profileSettings.helpers({
-	userData: function () {
-		return Meteor.user();
-	},
+Template.personal.helpers({
+  userData: function () {
+    return Meteor.user();
+  },
   profilePic: function() {
     if (Meteor.user().profile.picture) {
       return true;
@@ -25,17 +27,41 @@ Template.profileSettings.helpers({
     if (Meteor.user().profile.pictureID) {
       return true;
     }
-  },
+  }
+});
+
+Template.social.helpers({
+  userData: function () {
+    return Meteor.user();
+  }
+});
+
+Template.profileSettings.helpers({
   subscribed: function(){
 	  if(subscribers.find({email: Meteor.user().profile.email}).count() >0){
 		  return true;
 	  }else{
 		  return false;
 	  }
+  },
+  setPersonal: function () {
+    if (settingsTab.get() === "personal") {
+      return true;
+    };
   }
 });
 
 Template.profileSettings.events({
+  'click #js-seePersonal': function () {
+    settingsTab.set("personal");
+    $('#js-seePersonal').addClass("active");
+    $('#js-seeSocial').removeClass("active");
+  },
+  'click #js-seeSocial': function () {
+    settingsTab.set("social");
+    $('#js-seeSocial').addClass("active");
+    $('#js-seePersonal').removeClass("active");
+  },
   'change .js-Profile': function(e, temp) {
     var image = new FS.File(e.target.files[0]);
     // Insert the image into the database
@@ -165,12 +191,20 @@ Template.profileSettings.events({
 	
     // merge with above update to mongoDB
     Meteor.users.update({_id: Meteor.userId()}, {$set: {
+      // from personal settings
       "profile.firstName" : $('#firstname').val(),
       "profile.lastName" : $('#lastname').val(),
       "profile.institution" : $('#institution').val(),
       "profile.interests" : $('#interests').val(),
       "profile.position" : $('#position').val(),
       "profile.email" : $('#email').val(),
+
+      //from social settings
+      "profile.website" : $('#website').val(),
+      "profile.blog" : $('#blog').val(),
+      "profile.twitter" : $('#twitter').val(),
+      "profile.linkedin" : $('#linkedin').val(),
+      "profile.facebook" : $('#facebook').val()
       }
     });
 

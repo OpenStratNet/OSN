@@ -23,170 +23,19 @@
           <div class="row text-center">
               <div class="col-lg-12">
                   <div class="btn-group btn-group-md extra-spacing-top" role="group">
-                    <a type="button" id="js-seeAllMain" class="btn btn-primary active">PERSONAL</a>
-                    <a type="button" id="js-seeNewsMain" class="btn btn-primary">SOCIAL</a>
+                    <a type="button" id="js-seePersonal" class="btn btn-primary active">PERSONAL</a>
+                    <a type="button" id="js-seeSocial" class="btn btn-primary">SOCIAL</a>
                   </div>
               </div>
           </div>
       </div>
     </section> <!-- ./FILTER -->
 
-	<section id="Settings">
-			<div class="container">
-					{{#with userData}}
-					<form>
-						<div class="row">
-								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-										<div class="form-group">
-												<label for="membername">Member Name*</label>
-												<input type="firstname" class="form-control" id="firstname" value="{{profile.firstName}}" placeholder="First Name">
-										</div>
-								</div>
-						</div>
-
-						<div class="row">
-								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-										<div class="form-group">
-												<input type="lastname" class="form-control" value="{{profile.lastName}}" id="lastname" placeholder="Last Name">
-										</div>
-								</div>
-						</div>
-
-						<div class="row">
-								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-										<div class="form-group">
-												<label for="email">Email*</label>
-												<input type="email" class="form-control" value="{{profile.email}}" id="email" placeholder="Email">
-										</div>
-								</div>
-						</div>
-
-						<div class="row">
-								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-										<div class="form-group">
-												<label for="institution">Institution/Company*</label>
-												<input type="institution" class="form-control" value="{{profile.institution}}" id="institution" placeholder="Institution or Company">
-										</div>
-								</div>
-						</div>
-
-						<div class="row">
-								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-										<div class="form-group">
-												<label for="interests">Interests regarding Open Strategy* <span class="badge grey-tooltip" data-toggle="tooltip" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa." data-placement="bottom" href="#">?</span></label>
-												<input type="interests" class="form-control" value="{{profile.interests}}" id="interests" placeholder="Interests regarding Open Strategy">
-										</div>
-								</div>
-						</div>
-
-
-						<div class="row">
-								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-										<div class="form-group">
-												<label for="position">Position</label>
-												<input type="position" value="{{profile.position}}" class="form-control" id="position" placeholder="Position">
-									</div>
-								</div>
-						</div>
-
-						{{#if profilePic}}
-						<div class="row">
-							<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-							    <label for="beispielFeldDatei">Profile picture</label>
-								<br>
-								<img class="image" style="width:150px;height:150px;" src="{{profile.picture}}">
-							</div>
-						</div>
-						{{/if}}
-
-						{{#if pictureID}}
-						<div class="row">
-							<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-							    <label for="beispielFeldDatei">Profile picture</label>
-								<br>
-								<!--Upload input as a edit icon-->
-								<div style="position:absolute;margin-left:70px" id="uploadInput">
-                                          <div class="fileUpload">
-                                            <button type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i></button>
-                                            <input type="file" class="upload js-Profile" />
-                                          </div>
-								</div>
-								<!--Discard button is a trash  icon-->
-								<div style="position:absolute;margin-left:112px;" id="discardButton">
-								     <button id="discard" type="button" class="btn btn-primary"><i class="fa fa-trash"></i></button>
-								</div>
-								<div style="float:left;">
-								<img class="image" style="width:150px;height:150px;" src="{{profile.pictureID}}">
-								</div>
-								<div style="display:none;" id="uploadInputFile">
-                                          <div class="fileUpload btn btn-default btn-block btn-icon btn-file-upload">
-                                            <span class="glyphicon glyphicon-upload"></span>
-                                            <span>Upload a profile picture</span>
-                                            <input type="file" class="upload js-Profile" />
-                                          </div>
-								</div>
-							</div>
-						</div>
-						{{/if}}
-						{{#if noPicture}}
-						<div class="row">
-								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-										<div class="form-group">
-												<label for="beispielFeldDatei">Profile Photo</label>
-										</div>
-										<br>
-										 <!--Upload input as a edit icon-->
-										<div style="position:absolute;margin-left:70px;display:none;" id="uploadInput">
-                                          <div class="fileUpload">
-                                            <button type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i></button>
-                                            <input type="file" class="upload js-Profile" />
-                                          </div>
-								        </div>
-							            	<!--Discard button is a trash icon-->
-							             <div style="position:absolute;margin-left:112px;display:none;" id="discardButton">
-								            <button id="discard" type="button" class="btn btn-primary"><i class="fa fa-trash"></i></button>
-								         </div>
-										   <!--The image is hidden in the background-->
-										<div id="hiddenImage" style="display:none;"><img class="image" style="width:150px;height:150px;" src="{{profile.pictureID}}"></div>
-										   <!-- Traditional input manager-->
-										<div id="uploadInputFile">
-                                          <div class="fileUpload btn btn-default btn-block btn-icon btn-file-upload">
-                                            <span class="glyphicon glyphicon-upload"></span>
-                                            <span>Upload a profile picture</span>
-                                            <input type="file" class="upload js-Profile" />
-                                          </div>
-										</div>
-
-								</div>
-						</div>
-						{{/if}}
-
-						<div class="row">
-								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-										<div class="form-group">
-												<button style="float:left;" id="submit" type="submit" class="btn btn-primary">SAVE CHANGES</button>
-										</div>
-								</div>
-						</div>
-					</form>
-					{{/with}}
-					<div class="row">
-						<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-              <div style="float:right;">
-                {{#if subscribed true}}
-                You are <b>subscribed</b> to our mail newsletter
-                <button id="unsubscribe" type="click" class="btn btn-primary btn-sm"><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
-                {{else}}
-                You are <b>not subscribed</b> to our mail newsletter
-                <button id="subscribe" type="click" class="btn btn-primary btn-sm"><i class="fa fa-envelope" aria-hidden="true"></i></button>
-                {{/if}}
-              </div>
-  	        </div>
-					</div>
-			</div>
-	</section> <!-- ./Basics -->
-
-
+  {{#if setPersonal}}
+	{{ > personal }}
+  {{else}}
+  {{ > social }}
+  {{/if}}
 
 	{{#if currentUser.services.password}}
 	<!-- Security -->
@@ -247,68 +96,228 @@
 			</div>
 	</section> <!-- ./Security -->
 	{{/if}}
-
-
-    <!-- Social -->
-	<section id="Settings">
-			<div class="container">
-
-					<form>
-
-						<div class="row">
-								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-										<div class="form-group">
-												<label for="text">Twitter <a class="button-download btn btn-primary btn-sm btn-external-link" href="www.twitter.com"><i class="fa fa-external-link"></i> </a></label>
-												<input type="text" class="form-control" placeholder="Twitter">
-										</div>
-								</div>
-						</div>
-
-                        <div class="row">
-                                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-                                        <div class="form-group">
-                                                <label for="text">LinkedIn <a class="button-download btn btn-primary btn-sm btn-external-link" href="www.linkedin.com"><i class="fa fa-external-link"></i> </a></label>
-                                                <input type="text" class="form-control" placeholder="LinkedIn">
-                                        </div>
-                                </div>
-                        </div>
-
-                        <div class="row">
-                                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-                                        <div class="form-group">
-                                                <label for="text">Facebook <a class="button-download btn btn-primary btn-sm btn-external-link" href="www.facebook.com"><i class="fa fa-external-link"></i> </a></label>
-                                                <input type="text" class="form-control" placeholder="Facebook">
-                                        </div>
-                                </div>
-                        </div>
-
-                        <div class="row">
-								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-										<div class="form-group">
-												<label for="text">Website</label>
-												<input type="text" class="form-control" placeholder="Website/Blog">
-										</div>
-								</div>
-						</div>
-
-                        <div class="row">
-                                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-                                        <div class="form-group">
-                                                <label for="text">Blog</label>
-                                                <input type="text" class="form-control" placeholder="Google">
-                                        </div>
-                                </div>
-                        </div>
-
-						<div class="row">
-								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-										<div class="form-group">
-												<button type="submit" class="btn btn-primary extra-spacing-bottom">SAVE CHANGES</button>
-										</div>
-								</div>
-						</div>
-					</form>
-			</div>
-	</section> <!-- ./Social -->
-
 </template>
+
+
+<template name="personal">
+  <section id="Settings">
+      <div class="container">
+          {{#with userData}}
+          <form>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <div class="form-group">
+                        <label for="membername">Member Name*</label>
+                        <input type="firstname" class="form-control" id="firstname" value="{{profile.firstName}}" placeholder="First Name">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <div class="form-group">
+                        <input type="lastname" class="form-control" value="{{profile.lastName}}" id="lastname" placeholder="Last Name">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <div class="form-group">
+                        <label for="email">Email*</label>
+                        <input type="email" class="form-control" value="{{profile.email}}" id="email" placeholder="Email">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <div class="form-group">
+                        <label for="institution">Institution/Company*</label>
+                        <input type="institution" class="form-control" value="{{profile.institution}}" id="institution" placeholder="Institution or Company">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <div class="form-group">
+                        <label for="interests">Interests regarding Open Strategy* <span class="badge grey-tooltip" data-toggle="tooltip" title="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa." data-placement="bottom" href="#">?</span></label>
+                        <input type="interests" class="form-control" value="{{profile.interests}}" id="interests" placeholder="Interests regarding Open Strategy">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <div class="form-group">
+                        <label for="position">Position</label>
+                        <input type="position" value="{{profile.position}}" class="form-control" id="position" placeholder="Position">
+                  </div>
+                </div>
+            </div>
+
+            {{#if profilePic}}
+            <div class="row">
+              <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                  <label for="beispielFeldDatei">Profile picture</label>
+                <br>
+                <img class="image" style="width:150px;height:150px;" src="{{profile.picture}}">
+              </div>
+            </div>
+            {{/if}}
+
+            {{#if pictureID}}
+            <div class="row">
+              <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                  <label for="beispielFeldDatei">Profile picture</label>
+                <br>
+                <!--Upload input as a edit icon-->
+                <div style="position:absolute;margin-left:70px" id="uploadInput">
+                    <div class="fileUpload">
+                      <button type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i></button>
+                      <input type="file" class="upload js-Profile" />
+                    </div>
+                </div>
+                <!--Discard button is a trash  icon-->
+                <div style="position:absolute;margin-left:112px;" id="discardButton">
+                     <button id="discard" type="button" class="btn btn-primary"><i class="fa fa-trash"></i></button>
+                </div>
+                <div style="float:left;">
+                <img class="image" style="width:150px;height:150px;" src="{{profile.pictureID}}">
+                </div>
+                <div style="display:none;" id="uploadInputFile">
+                  <div class="fileUpload btn btn-default btn-block btn-icon btn-file-upload">
+                    <span class="glyphicon glyphicon-upload"></span>
+                    <span>Upload a profile picture</span>
+                    <input type="file" class="upload js-Profile" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{/if}}
+            {{#if noPicture}}
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <div class="form-group">
+                        <label for="beispielFeldDatei">Profile Photo</label>
+                    </div>
+                    <br>
+                     <!--Upload input as a edit icon-->
+                    <div style="position:absolute;margin-left:70px;display:none;" id="uploadInput">
+                      <div class="fileUpload">
+                        <button type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i></button>
+                        <input type="file" class="upload js-Profile" />
+                      </div>
+                    </div>
+                        <!--Discard button is a trash icon-->
+                     <div style="position:absolute;margin-left:112px;display:none;" id="discardButton">
+                      <button id="discard" type="button" class="btn btn-primary"><i class="fa fa-trash"></i></button>
+                     </div>
+                       <!--The image is hidden in the background-->
+                    <div id="hiddenImage" style="display:none;"><img class="image" style="width:150px;height:150px;" src="{{profile.pictureID}}"></div>
+                       <!-- Traditional input manager-->
+                    <div id="uploadInputFile">
+                      <div class="fileUpload btn btn-default btn-block btn-icon btn-file-upload">
+                        <span class="glyphicon glyphicon-upload"></span>
+                        <span>Upload a profile picture</span>
+                        <input type="file" class="upload js-Profile" />
+                      </div>
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <div class="form-group">
+                        <button style="float:left;" id="submit" type="submit" class="btn btn-primary">SAVE CHANGES</button>
+                    </div>
+                </div>
+            </div>
+          </form>
+          {{/with}}
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+              <div style="float:right;">
+                {{#if subscribed}}
+                You are <b>subscribed</b> to our mail newsletter
+                <button id="unsubscribe" type="click" class="btn btn-primary btn-sm"><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
+                {{else}}
+                You are <b>not subscribed</b> to our mail newsletter
+                <button id="subscribe" type="click" class="btn btn-primary btn-sm"><i class="fa fa-envelope" aria-hidden="true"></i></button>
+                {{/if}}
+              </div>
+            </div>
+          </div>
+      </div>
+  </section> <!-- ./Basics -->
+</template>
+
+
+<template name="social">
+    <!-- Social -->
+  <section id="Settings">
+      <div class="container">
+          {{#with userData}}
+          <form>
+            
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <div class="form-group">
+                        <label for="text">Website</label>
+                        <input type="text" id="website" class="form-control" placeholder="Website/Blog" value="{{profile.website}}" >
+                    </div>
+                </div>
+              </div>
+
+            <div class="row">
+              <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                  <div class="form-group">
+                    <label for="text">Blog</label>
+                    <input type="text" id="blog" class="form-control" placeholder="Google" value="{{profile.blog}}">
+                  </div>
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <div class="form-group">
+                        <label for="text">Twitter <a class="button-download btn btn-primary btn-sm btn-external-link" href="http://www.twitter.com"><i class="fa fa-external-link"></i> </a></label>
+                        <input type="text"  id="twitter" class="form-control" value="{{profile.twitter}}" placeholder="https://twitter.com/YOURTWITTERHANDLER">
+                    </div>
+                </div>
+            </div>
+
+              <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <div class="form-group">
+                      <label for="text">LinkedIn <a class="button-download btn btn-primary btn-sm btn-external-link" href="http://www.linkedin.com"><i class="fa fa-external-link"></i> </a></label>
+                      <input type="text" id="linkedin" class="form-control"  value="{{profile.linkedin}}" placeholder="Address to your LinkedIn account">
+                    </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <div class="form-group">
+                      <label for="text">Facebook <a class="button-download btn btn-primary btn-sm btn-external-link" href="http://www.facebook.com"><i class="fa fa-external-link"></i> </a></label>
+                      <input type="text" id="facebook" class="form-control" value="{{profile.facebook}}" placeholder="https://www.facebook.com/YOURTWITTERUSERNAME">
+                  </div>
+                </div>
+              </div>
+
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary extra-spacing-bottom">SAVE CHANGES</button>
+                    </div>
+                </div>
+            </div>
+          </form>
+          {{/with}}
+      </div>
+  </section> <!-- ./Social -->
+</template>
+

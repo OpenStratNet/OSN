@@ -75,26 +75,31 @@
 														<a href="mailto:{{profile.email}}">{{profile.email}}</a>
 												</li>
 										</ul>
-                                        <!-- Social Media Bar -->
-                                        <div class="share-button sharer">
-                                            <div class="social top networks-5 ">
-                                                <!-- Website Share Button -->
-                                                <a class="follow-website" href="#"><i class="fa some-members fa-globe"></i></a>
-
-                                                <!-- Blog Share Button -->
-                                                <a class="follow-blog" href="#"><i class="fa some-members fa-book"></i></a>
-
-                                                <!-- LinkedIn-->
-                                                <a class="fbtn follow-linkedin" href="#"><i class="fa some-members fa-linkedin"></i></a>
-
-                                                <!-- Twitter Share Button -->
-                                                <a class="follow-twitter" href="#"><i class="fa some-members fa-twitter"></i></a>
-
-                                                <!-- Facebook Share Button -->
-                                                <a class="follow-facebook" href="#"><i class="fa some-members fa-facebook-official"></i></a>
-                                            </div>
-                                        </div>
-
+                    <!-- Social Media Bar -->
+                    <div class="share-button sharer">
+                        <div class="social top networks-5 ">
+                            <!-- Website Share Button -->
+                            {{#if profile.website}}
+                            <a class="follow-website" href="{{profile.website}}"><i class="fa some-members fa-globe"></i></a>
+														{{/if}}
+                            <!-- Blog Share Button -->
+                            {{#if profile.blog}}
+                            <a class="follow-blog" href="{{profile.blog}}"><i class="fa some-members fa-book"></i></a>
+														{{/if}}
+                            <!-- LinkedIn-->
+                            {{#if profile.linkedin}}
+                            <a class="fbtn follow-linkedin" href="{{profile.linkedin}}"><i class="fa some-members fa-linkedin"></i></a>
+														{{/if}}
+                            <!-- Twitter Share Button -->
+                            {{#if profile.twitter}}
+                            <a class="follow-twitter" href="{{profile.twitter}}"><i class="fa some-members fa-twitter"></i></a>
+														{{/if}}
+                            <!-- Facebook Share Button -->
+                            {{#if profile.facebook}}
+                            <a class="follow-facebook" href="{{profile.facebook}}"><i class="fa some-members fa-facebook-official"></i></a>
+														{{/if}}
+                        </div>
+                    </div>
 								</div>
 						</div>
 						<div class="col-sm-6">
