@@ -68,7 +68,7 @@ Template.adminNewsEventsEdit.helpers({
         var existingCategory = Categories.find({"name": item.toLowerCase()}).fetch().length; //Find the category in lower case
         if (!existingCategory ) {
           // Add the tag to the Tags collection
-          Categories.insert({"name": item.toLowerCase()}); //Stores the category always in lower case.
+          Meteor.call('Categories.insert', {"name": item.toLowerCase()}); //Stores the category always in lower case.
         }
       }
     });
