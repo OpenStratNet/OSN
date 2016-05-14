@@ -62,14 +62,14 @@ Template.adminNewsEventsEdit.helpers({
       highlight: true,
       options: categoryOptions,
       onItemAdd: function (item) {
-          // Check to see if tag exists in Tags collection
-          // by querying the database for the tag name
-          // and checking the length of the result
-          var existingCategory = Categories.find({"name": item.toLowerCase()}).fetch().length; //Find the category in lower case
-          if (!existingCategory ) {
-              // Add the tag to the Tags collection
-              Categories.insert({"name": item.toLowerCase()}); //Stores the category always in lower case.
-          }
+        // Check to see if tag exists in Tags collection
+        // by querying the database for the tag name
+        // and checking the length of the result
+        var existingCategory = Categories.find({"name": item.toLowerCase()}).fetch().length; //Find the category in lower case
+        if (!existingCategory ) {
+          // Add the tag to the Tags collection
+          Categories.insert({"name": item.toLowerCase()}); //Stores the category always in lower case.
+        }
       }
     });
     // Get an array of the existing tags
@@ -199,6 +199,6 @@ Template.adminNewsEventsEdit.events({
 		Meteor.call('NewsEvents.update', this._id,temp);
 		//Just for testing.
 		NewsEvents.update({_id: this._id}, {$set: temp});
-		
+
 	}
 });
