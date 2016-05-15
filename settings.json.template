@@ -10,13 +10,15 @@
       "access_token_secret": ""
     }
   },
-  "users": {
-    "roles": {
-      "admin": "admin",
-      "default": ""
-    }
-  },
   "AWSAccessKeyId" : "<AWS KEY>",
   "AWSSecretAccessKey" : "<AWS SECRET>",
-  "AWSBucket" : "<AWS BUCKET>"
+  "AWSBucket" : "<AWS BUCKET>",
+  "public": {
+    "users": {
+      "roles": {
+        "admin": "admin",
+        "default": ""
+      }
+    }
+  }
 }
