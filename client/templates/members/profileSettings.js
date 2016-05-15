@@ -188,7 +188,7 @@ Template.profileSettings.events({
     if (subscribers.find({email: currentEmail}).count() > 0
       && subscribers.findOne({email: currentEmail}).email != $('#email').val()) {
       Meteor.call('subscribers.insert', {email: $('#email').val()});
-      subscribers.remove({_id: subscribers.findOne({email: currentEmail})._id})
+      Meteor.call('subscribers.remove', {_id: subscribers.findOne({email: currentEmail})._id})
     }
 
     // merge with above update to mongoDB
@@ -223,7 +223,7 @@ Template.profileSettings.events({
   },
   'click #unsubscribe': function () {
     //Remove email from the subscribers collection
-    subscribers.remove({_id: subscribers.findOne({email: Meteor.user().profile.email})._id})
+    Meteor.call('subscribers.remove', {_id: subscribers.findOne({email: Meteor.user().profile.email})._id})
   },
   'click #subscribe': function () {
     //Insert email to the subscribers collection
