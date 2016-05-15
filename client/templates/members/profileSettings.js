@@ -187,7 +187,7 @@ Template.profileSettings.events({
     //subscribers collection updates if the email changed.
     if (subscribers.find({email: currentEmail}).count() > 0
       && subscribers.findOne({email: currentEmail}).email != $('#email').val()) {
-      subscribers.insert({email: $('#email').val()});
+      Meteor.call('subscribers.insert', {email: $('#email').val()});
       subscribers.remove({_id: subscribers.findOne({email: currentEmail})._id})
     }
 
@@ -227,6 +227,6 @@ Template.profileSettings.events({
   },
   'click #subscribe': function () {
     //Insert email to the subscribers collection
-    subscribers.insert({email: Meteor.user().profile.email});
+    Meteor.call('subscribers.insert', {email: Meteor.user().profile.email});
   }
 });
