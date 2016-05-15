@@ -92,7 +92,7 @@ Template.adminNewsEventsEdit.helpers({
             var existingTag = Tags.find({"name": item.toLowerCase()}).fetch().length; //Find the tags in lower case.
             if (!existingTag ) {
                 // Add the tag to the Tags collection
-                Tags.insert({"name": item.toLowerCase()}); //Tags scored in lower case.
+                Meteor.call('Tags.insert', {"name": item.toLowerCase()}); //Tags scored in lower case.
             }
         }
     });
