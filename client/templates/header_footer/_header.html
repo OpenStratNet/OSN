@@ -119,9 +119,11 @@
                           <li><p class="profile-username">Hello {{currentUser.profile.firstName}}</p></li>
                           <li role="separator" class="divider"></li>
                           <li><a class="profile-links icon settings" href="{{pathFor route = 'profileSettings'}}">Settings</a></li>
+                          {{#if isInRole adminUserRole}}
                           <li><a class="profile-links icon news" href="{{pathFor route = 'adminNewsEventsList'}}">News &amp; Events</a></li>
                           <li><a class="profile-links icon publications" href="{{pathFor route = 'adminPublicationsList'}}">Publications</a></li>
                           <li><a class="profile-links icon members" href="{{pathFor route = 'adminMembersList'}}">Members</a></li>
+                          {{/if}}
 
                         {{#if isInRole 'admin'}}
                         <!-- <li>
