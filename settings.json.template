@@ -12,6 +12,7 @@
   },
   "users": {
     "roles": {
+      "admin": "admin"
     }
   },
   "AWSAccessKeyId" : "<AWS KEY>",
