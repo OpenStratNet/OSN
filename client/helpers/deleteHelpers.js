@@ -11,7 +11,7 @@ Template.applicationLayout.events({
     var deleteConfirmation = confirm('Really delete this entry?');
     if (deleteConfirmation) {
       Meteor.call('NewsEvents.update', {_id: this._id}, {$unset: {attachmentId: ""}});
-      Attachments.remove({_id: this.attachmentId});
+      Meteor.call('Attachments.remove', {_id: this.attachmentId});
       attachmentIdVarEdit.set(false);
     }
   },
@@ -19,7 +19,7 @@ Template.applicationLayout.events({
     var deleteConfirmation = confirm('Really delete this entry?');
     if (deleteConfirmation) {
       Meteor.call('Publications.update', {_id: this._id}, {$unset: {attachmentId: ""}});
-      Attachments.remove({_id: this.attachmentId});
+      Meteor.call('Attachments.remove', {_id: this.attachmentId});
       attachmentIdVarEdit.set(false);
     }
   },
