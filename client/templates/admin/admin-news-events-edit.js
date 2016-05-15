@@ -111,7 +111,7 @@ Template.adminNewsEventsEdit.helpers({
 });
 
 Template.adminNewsEventsEdit.events({
-	'change #coverImage': function(evt, temp) {
+	'change #coverImage': function(event, temp) {
     /* FS.Utility.eachFile(event, function(file) {
       Images.insert(file, function (err, fileObj) {
         // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
@@ -132,7 +132,7 @@ Template.adminNewsEventsEdit.events({
 			imageIdVarEdit = new ReactiveVar(imageId);
 		}
 	},
-	'change #attachment': function(evt, temp) {
+	'change #attachment': function(event, temp) {
     /* FS.Utility.eachFile(event, function(file) {
       Images.insert(file, function (err, fileObj) {
         // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP

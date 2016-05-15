@@ -83,7 +83,7 @@ Template.adminNewsEvents.helpers({
 });
 
 Template.adminNewsEvents.events({
-	'change #coverImage': function(evt, temp) {
+	'change #coverImage': function(event, temp) {
     /* FS.Utility.eachFile(event, function(file) {
       Images.insert(file, function (err, fileObj) {
         // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
@@ -104,7 +104,7 @@ Template.adminNewsEvents.events({
 			imageIdVar = new ReactiveVar(imageId);
 		}
 	},
-  'change #coverImage': function(evt, temp) {
+  'change #coverImage': function(event, temp) {
     /* FS.Utility.eachFile(event, function(file) {
       Images.insert(file, function (err, fileObj) {
         // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
@@ -125,7 +125,7 @@ Template.adminNewsEvents.events({
       imageIdVar = new ReactiveVar(imageId);
     }
   },
-	'change #attachment': function(evt, template) {
+	'change #attachment': function(event, template) {
     /* FS.Utility.eachFile(event, function(file) {
       Images.insert(file, function (err, fileObj) {
         // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP

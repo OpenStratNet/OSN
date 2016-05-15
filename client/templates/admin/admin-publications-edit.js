@@ -133,7 +133,7 @@ Template.adminPublicationsEdit.events({
     inputsEditors.push({uniqidFirst: uniqidFirst, valueFirst: "", uniqidLast: uniqidLast, valueLast: ""});
     Session.set('inputsEditors', inputsEditors);
   },
-  'change #attachment': function(evt, temp) {
+  'change #attachment': function(event, temp) {
     var attachment = event.target.files[0];
 
     // Insert the image into the database
