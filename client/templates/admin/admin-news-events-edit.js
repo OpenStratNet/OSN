@@ -107,7 +107,7 @@ Template.adminNewsEventsEdit.helpers({
 	  $('#selectCategory')[0].selectize.setValue(currentCat); //Make changes in the <select> tag via selectize functions.
 	  },1200);
 	  return false;
-    },
+    }
 });
 
 Template.adminNewsEventsEdit.events({
