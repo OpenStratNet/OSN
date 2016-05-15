@@ -198,7 +198,7 @@ Template.adminNewsEventsEdit.events({
 
 		Meteor.call('NewsEvents.update', this._id,temp);
 		//Just for testing.
-		NewsEvents.update({_id: this._id}, {$set: temp});
+		Meteor.call('NewsEvents.update', {_id: this._id}, {$set: temp});
 
 	}
 });
