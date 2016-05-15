@@ -23,7 +23,7 @@ Template.uploadInput.events({
     Meteor.setTimeout(function () {
         console.log("Url " + imageUrl);
       }, 3 * 1000);
-   
+
 	//document.getElementById("upLoading").style="height:35px;display:block;"; //Uploading...
 	$('#upLoading').height('35px');
 	$('#upLoading').show(); //Uploading
@@ -46,16 +46,16 @@ Template.uploadInput.events({
 		 Bert.alert('File uploaded');
          })
 	},3000); //Interval of 3 seconds to check the url status, (for slow conections this might take between 3-12 secs)
-	
+
     if (imageId) {
       profilePicEdit = new ReactiveVar(imageId);
     }
     // if (imageUrl) {
     //   pictureUrl = new ReactiveVar(imageUrl);
     // }
-  },  
+  },
   'submit form': function () {
- 
+
     console.log('submit');
     // temp.title = $('#title').val();
     // temp.description = $('#description').summernote('code');
@@ -66,6 +66,6 @@ Template.uploadInput.events({
     //   temp.pictureID = profilePicEdit.get();
     // }
   //Meteor.setTimeout(function(){Meteor.users.update({_id: Meteor.userId()}, {$set: {'profile.pictureID': Session.get('signUpPicID'), 'profile.picture': Session.get('signUpPicURL')}})}, 3000);
-    
+
   }
 });

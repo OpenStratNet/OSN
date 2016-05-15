@@ -190,7 +190,7 @@ Template.profileSettings.events({
       subscribers.insert({email: $('#email').val()});
       subscribers.remove({_id: subscribers.findOne({email: currentEmail})._id})
     }
-	
+
     // merge with above update to mongoDB
     Meteor.users.update({_id: Meteor.userId()}, {
       $set: {
