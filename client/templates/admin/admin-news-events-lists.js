@@ -12,7 +12,7 @@ Template.adminNewsEventsList.events({
     evt.preventDefault();
     var deleteConfirmation = confirm('Really delete this entry?');
     if (deleteConfirmation) {
-      Images.remove({_id: this.coverImageId});
+      Meteor.call('Images.remove', {_id: this.coverImageId});
       Meteor.call('NewsEvents.remove', this._id)
     }
   }

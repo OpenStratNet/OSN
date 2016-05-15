@@ -3,7 +3,7 @@ Template.applicationLayout.events({
     var deleteConfirmation = confirm('Really delete this entry?');
     if (deleteConfirmation) {
       Meteor.call('NewsEvents.update', {_id: this._id}, {$unset: {coverImageId: ""}});
-      Images.remove({_id: this.coverImageId});
+      Meteor.call('Images.remove', {_id: this.coverImageId});
       imageIdVarEdit.set(false);
     }
   },
