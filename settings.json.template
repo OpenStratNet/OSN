@@ -11,6 +11,8 @@
     }
   },
   "users": {
+    "roles": {
+    }
   },
   "AWSAccessKeyId" : "<AWS KEY>",
   "AWSSecretAccessKey" : "<AWS SECRET>",
