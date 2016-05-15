@@ -55,7 +55,7 @@ if (ServiceConfiguration.configurations.find({
 Accounts.onCreateUser(function (options, user) {
   if (options.profile) {
     user.profile = options.profile;
-    user.profile.email = options.email
+    user.profile.email = options.email;
 	subscribers.insert({email: user.profile.email}); //Insert the email on the subscribers collection for the first time.
 
   } else {
