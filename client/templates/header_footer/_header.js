@@ -1,7 +1,7 @@
 Meteor.subscribe('allSubscribers');
 Template.navbar.onCreated(function () {
   showLogin = new ReactiveVar(false);
-})
+});
 
 Template.navbar.helpers({
   showLoginDiv: function () {
