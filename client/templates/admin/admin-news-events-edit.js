@@ -24,7 +24,7 @@ Template.adminNewsEventsEdit.helpers({
 		stringConstructor = currentTag[0];
 	  for (var i=1; i<tagsNumber; i++){
 	    stringConstructor = stringConstructor + ',' + currentTag[i]; //Construct a string of tags
-	  };
+	  }
 	  return stringConstructor;
 	  }else{
 		  return false;
