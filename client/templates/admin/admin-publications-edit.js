@@ -141,7 +141,7 @@ Template.adminPublicationsEdit.events({
     var attachmentObject = Attachments.insert(attachment);
 
     // The image id is stored in the image object
-    var attachmentId = attachmentObject._id
+    var attachmentId = attachmentObject._id;
 
     // Create a reactive var to be used when the course is added
     if (attachmentId) {

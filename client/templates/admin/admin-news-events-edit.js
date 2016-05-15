@@ -125,7 +125,7 @@ Template.adminNewsEventsEdit.events({
 		var imageObject = Images.insert(image);
 
 		// The image id is stored in the image object
-		var imageId = imageObject._id
+		var imageId = imageObject._id;
 
 		// Create a reactive var to be used when the course is added
 		if (imageId) {
@@ -147,7 +147,7 @@ Template.adminNewsEventsEdit.events({
 		var attachmentObject = Attachments.insert(attachment);
 
 		// The image id is stored in the image object
-		var attachmentId = attachmentObject._id
+		var attachmentId = attachmentObject._id;
 
 		// Create a reactive var to be used when the course is added
 		if (attachmentId) {
