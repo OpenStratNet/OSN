@@ -10,6 +10,94 @@
       "access_token_secret": ""
     }
   },
+  "allow": {
+    "Publications": {
+      "insert": [
+        "admin"
+      ],
+      "remove": [
+        "admin"
+      ],
+      "update": [
+        "admin"
+      ]
+    },
+    "NewsEvents": {
+      "insert": [
+        "admin"
+      ],
+      "remove": [
+        "admin"
+      ],
+      "update": [
+        "admin"
+      ]
+    },
+    "Tags": {
+      "insert": [
+        "admin"
+      ],
+      "remove": [
+        "admin"
+      ],
+      "update": [
+        "admin"
+      ]
+    },
+    "Categories": {
+      "insert": [
+        "admin"
+      ],
+      "remove": [
+        "admin"
+      ],
+      "update": [
+        "admin"
+      ]
+    },
+    "Images": {
+      "insert": [
+        "admin"
+      ],
+      "remove": [
+        "admin"
+      ],
+      "update": [
+        "admin"
+      ],
+      "download": [
+        "admin"
+      ]
+    },
+    "ProfilePic": {
+      "insert": [
+        "admin"
+      ],
+      "remove": [
+        "admin"
+      ],
+      "update": [
+        "admin"
+      ],
+      "download": [
+        "admin"
+      ]
+    },
+    "Attachments": {
+      "insert": [
+        "admin"
+      ],
+      "remove": [
+        "admin"
+      ],
+      "update": [
+        "admin"
+      ],
+      "download": [
+        "admin"
+      ]
+    }
+  },
   "AWSAccessKeyId" : "<AWS KEY>",
   "AWSSecretAccessKey" : "<AWS SECRET>",
   "AWSBucket" : "<AWS BUCKET>",
