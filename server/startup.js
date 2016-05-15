@@ -155,6 +155,20 @@ Meteor.startup(function () {
     console.log("NewsEvents edited");
   }
 
+// Roles
+  var defaultRole
+    = Meteor.settings
+    && Meteor.settings.public
+    && Meteor.settings.public.users
+    && Meteor.settings.public.users.roles
+    && Meteor.settings.public.users.roles.default
+    || null;
+  if (defaultRole) {
+    Meteor.users.after.insert(function (notUsedId, user) {
+      Roles.addUsersToRoles(user._id, defaultRole);
+    });
+  }
+
   if (!Meteor.users.findOne()) {
     // add a date field
     Meteor.users.before.insert(function (userId, doc) {
