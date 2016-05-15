@@ -143,7 +143,7 @@ Template.profileSettings.events({
       //The image disappears
       $('#hiddenImage').hide();
     }
-    ProfilePic.remove({_id: Session.get('imageId')});
+    Meteor.call('ProfilePic.remove', {_id: Session.get('imageId')});
     //Delete the Session variables.
     delete Session.keys['imageId'];
   },
