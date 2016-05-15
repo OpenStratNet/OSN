@@ -10,6 +10,8 @@
       "access_token_secret": ""
     }
   },
+  "users": {
+  },
   "AWSAccessKeyId" : "<AWS KEY>",
   "AWSSecretAccessKey" : "<AWS SECRET>",
   "AWSBucket" : "<AWS BUCKET>"
