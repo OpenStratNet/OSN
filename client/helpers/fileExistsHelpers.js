@@ -9,9 +9,9 @@ UI.registerHelper('imageExists', function(){
 // necessary as entries without keywords, are still stored in the DB as [""]
 UI.registerHelper('keywordsExist', function(){
   var eventKeywords = NewsEvents.findOne( {_id:this._id} );
-  if( eventKeywords && eventKeywords.keywords[0] === "" ) {
-   return false;
- } else {
+  if( eventKeywords && eventKeywords.keywords && eventKeywords.keywords[0] !== "" ) {
    return true;
+ } else {
+   return false;
  }
 });
