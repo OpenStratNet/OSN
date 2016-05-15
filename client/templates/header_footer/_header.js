@@ -28,7 +28,7 @@ Template.navbar.events({
     Meteor.loginWithTwitter();
     showLogin.set(false);
   },
-  'submit form': function (evt, temp) {
+  'submit form': function (event, temp) {
     event.preventDefault();
 
     var emailVar = $('#at-field-email').val(); //event.target.loginEmail.value;
