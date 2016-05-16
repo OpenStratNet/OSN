@@ -6,4 +6,5 @@ Template.body.onCreated(function () {
   Meteor.subscribe('images');
   Meteor.subscribe('attachments');
   Meteor.subscribe('profilePic');
+  Meteor.subscribe('users');
 });
