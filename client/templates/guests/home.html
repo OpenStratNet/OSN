@@ -11,11 +11,11 @@
                         <button type="button" class="btn btn-primary btn-xl page-scroll js-join btn-joinus">JOIN US</button>                 <!-- Social Media Bar -->
                         FOLLOW US:
                         <!-- Facebook Share Button -->
-                        <a class="follow-facebook" href="https://www.facebook.com/sharer/sharer.php?u=url"><i class="fa some-header fa-facebook-official"></i></a>
+                        <a class="follow-facebook" href="https://www.facebook.com/sharer/sharer.php?u=url"><i class="fa some fa-facebook-official"></i></a>
                         <!-- Twitter Share Button -->
-                        <a class="follow-twitter" href="https://twitter.com/OpenStrategyNet"><i class="fa some-header fa-twitter"></i></a>
+                        <a class="follow-twitter" href="https://twitter.com/OpenStrategyNet"><i class="fa some fa-twitter"></i></a>
                         <!-- RSS Share Button -->
-                        <a class="follow-rss" href="#"><i class="fa some-header fa-rss"></i></a>
+                        <a class="follow-rss" href="#"><i class="fa some fa-rss"></i></a>
                     </div>
                 </div>
             </div>
@@ -35,17 +35,17 @@
             	{{#each newsEventsData}}
                 <div class="col-sm-4">
                     <div class="caption">
-											{{#if category}}
-											<div class="category">
-			                  <em>Category: {{category}}</em><br>
-			                </div>
-											{{/if}}
-											{{#if keywordsExist}}
-											{{#each keywords}}<small class="tags">{{this}}</small>{{/each}}
-											{{/if}}
-	                    <h4>{{title}}</h4>
-	                    <p class="text-muted"> {{{shortIt this.description 150}}} <a href="{{pathFor route='newsAndEventsPage'}}" class="textlink">read more </a></p>
-	                </div>
+                        {{#if category}}
+                        <div class="category">
+                            <em>{{category}}</em><br>
+                        </div>
+                    <h4>{{title}}</h4>
+                    {{/if}}
+                    {{#if keywordsExist}}
+                    {{#each keywords}}<small class="tags">{{this}}</small>{{/each}}
+                    {{/if}}
+                    <p class="text-muted"> {{{shortIt this.description 150}}} <a href="{{pathFor route='newsAndEventsPage'}}" class="textlink">read more </a></p>
+                </div>
                 </div>
                 {{/each}}
             </div>
