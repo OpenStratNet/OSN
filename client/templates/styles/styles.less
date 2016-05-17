@@ -1843,12 +1843,20 @@ h3.footer-head {
         color: black;
 }
 
+.footer-hosts {
+    display: block;
+}
 
 .copyright {
-		padding: 8px 0 8px 0;
-		// background-color: #000;
 		font-size: 13px;
 		color: #000000;
+}
+
+@media(max-width:767px) {
+    .copyright {
+        padding-top: 20px;
+        text-align: center;
+    }
 }
 
 a.footer-link {
@@ -1871,26 +1879,53 @@ ul.list-inline.quicklinks {
 
 // Host Sponsors
 
-.sponsor-thumbnail {
+.hosts-thumbnail {
 	height: 7.2rem;
 	padding-bottom: 20px;
-    filter: grayscale();
+    padding-right: 30px;
 }
 
-.sponsor-thumbnail-innsbruck {
-	height: 5.8rem;
-    padding-top: 6px;
-	padding-bottom: 14px;
-    filter: grayscale();
+.hosts-thumbnail-innsbruck {
+    height: 6.2rem;
+    padding-bottom: 19px;
+    padding-right: 30px;
 }
 
-.sponsor-thumbnail:hover {
+@media(max-width:865px) {
+    .hosts-thumbnail {
+        height: 6.2rem;
+        padding-right: 30px;
+    }
+
+    .hosts-thumbnail-innsbruck {
+        height: 5.2rem;
+        padding-right: 30px;
+    }
+}
+
+@media(max-width:478px) {
+    .hosts-thumbnail {
+        height: 7.2rem;
+        padding-right: 50px;
+        padding-left: 50px;
+        margin-bottom: 20px;
+    }
+
+    .hosts-thumbnail-innsbruck {
+        height: 6.2rem;
+        padding-right: 50px;
+        padding-left: 50px;
+        margin-bottom: 20px;
+    }
+}
+
+.hosts-thumbnail:hover {
 	padding-bottom: 20px;
     color: white;
     cursor: pointer;
 }
 
-.sponsor-thumbnail-innsbruck:hover {
+.hosts-thumbnail-innsbruck:hover {
     filter: sepia();
     cursor: pointer;
 }
@@ -1995,5 +2030,9 @@ a.follow-linkedin:hover {
 
 .at-form {
     margin: -20px 0 0 0;
+}
+
+.btn-newsletter {
+    margin-left: 8px;
 }
 //end
