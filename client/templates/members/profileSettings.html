@@ -239,14 +239,14 @@
           </form>
           {{/with}}
           <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-              <div style="float:right;">
+            <div class="col-lg-8 col-lg-offset-2 extra-spacing-bottom">
+              <div style="float:left;">
                 {{#if subscribed}}
                 You are <b>subscribed</b> to our mail newsletter
-                <button id="unsubscribe" type="click" class="btn btn-primary btn-sm"><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
+                <button id="unsubscribe" type="click" class="btn btn-primary btn-newsletter">UNSUBSCRIBE</button>
                 {{else}}
                 You are <b>not subscribed</b> to our mail newsletter
-                <button id="subscribe" type="click" class="btn btn-primary btn-sm"><i class="fa fa-envelope" aria-hidden="true"></i></button>
+                <button id="subscribe" type="click" class="btn btn-primary btn-newsletter">SUBSCRIBE</button>
                 {{/if}}
               </div>
             </div>
@@ -262,7 +262,7 @@
       <div class="container">
           {{#with userData}}
           <form>
-            
+
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
                     <div class="form-group">
@@ -320,4 +320,3 @@
       </div>
   </section> <!-- ./Social -->
 </template>
-
