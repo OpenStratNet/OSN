@@ -185,7 +185,7 @@ Template.adminPublicationsEdit.events({
     temp.editors = newEditors,
     temp.year = $('#year').val(),
     temp.type = $('input[name=outlet-type]:checked').val(),
-    abstract = $('#abstract').summernote('code'),
+    temp.abstract = $('#abstract').summernote('code'),
 
     // Published Paper (pp)
     temp.outlet = $('#journal').val(),
