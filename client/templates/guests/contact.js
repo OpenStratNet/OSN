@@ -18,6 +18,13 @@ Template.contact.helpers ({
 			return false;
 		}
 		
+	},
+	noAdmin:function(){
+		if(Meteor.user().roles.admin=='admin'){
+			return true;
+		}else{
+			return false;
+		}
 	}
 })
 
@@ -45,6 +52,7 @@ Template.contact.events({
 	    if(msj==true){
 	    //Meteor.users.remove({_id: userId1});
 		Meteor.call('deleteContact',userId1);
+		Meteor.call('toRoleAdmin',userId1,false);
 	    };
     console.log(userId1);
 	   

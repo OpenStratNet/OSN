@@ -30,26 +30,22 @@
 					<center>
 					<div style="margin-top:5px;height:350px;" class="col-sm-6">
 						<div class="team-member">
-
-						    <div class="imgBlock">
+						    <div class="contact-thumbnail">
+                                <div class="testing">
+						            <div class="imgBlock">
 							    
-							    <center>
-								    {{#if noPic true}}
-									    <img  src="img/contact-placeholder.jpg" alt="No Profile Photo">
-								        
-									{{else}}
-									    {{#if normalPic true}}
-							                <img  src="{{profile.pictureID}}" alt="No Profile Photo">
-									    {{else}}
-									        <img  src="{{profile.picture}}" alt="No Profile Photo">
-									    {{/if}}
-									{{/if}}
-								</center>
-							</div>
-
-							<div style="width:300px">
-
-							    <div class="testing">
+							            <center>
+								           {{#if noPic true}}
+									            <img   src="img/contact-placeholder.jpg" alt="No Profile Photo">
+									        {{else}}
+									            {{#if normalPic true}}
+							                        <img  src="{{profile.pictureID}}" alt="No Profile Photo">
+									            {{else}}
+									                <img  src="{{profile.picture}}" alt="No Profile Photo">
+									            {{/if}}
+									        {{/if}}	
+								        </center>
+							        </div>
 								    <div style="clear:both;" id="hoverForm">
 							            <form id="test">
 								            <input name="userContactId" id="userContactId" type="hidden" value="{{_id}}" placeholder=""/>
@@ -61,6 +57,13 @@
 	                                        <button style="float:left;margin-left:54%;margin-top:-32px;margin-bottom:0px;" class="btn btn-primary" id="delete"><i style="font-size:15px;" class="fa fa-trash"></i></button>
                                         </form>
 							        </div>
+							    </div>
+                            </div>							
+
+							<div style="width:300px">
+
+						
+								
 									<div style="margin-top:1px">
 							        <h4>{{profile.firstName}}&nbsp;&nbsp;{{profile.lastName}}</h4>
 							        <p class="text-muted">{{profile.position}}</p>
@@ -73,7 +76,7 @@
 								        </li>
 							        </ul>
 							        </div>
-							    </div>
+							   
 						    </div>
 						</div>
 
@@ -81,7 +84,7 @@
 					</center>
 					{{/each}}
 
-
+                    {{#if noAdmin true}}
                         <div class="col-sm-6">
 						    <div class="team-member">
 
@@ -94,6 +97,7 @@
 						        </center>
 						    </div>
 					    </div>
+				    {{/if}}
 					</div>
 
 			</div>

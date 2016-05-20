@@ -16,6 +16,7 @@ Template.modalUserContact.events ({
 		userAddId=$('#userAddId').val();
 		addUser=Meteor.users.findOne({_id:userAddId});
 		Meteor.call('insertContact', addUser);
+		Meteor.call('toRoleAdmin',userAddId,'admin');
 		Session.set('searcher',0);
 		$('#addContact')[0].reset();
 	}
