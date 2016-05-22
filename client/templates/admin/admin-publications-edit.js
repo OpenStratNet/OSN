@@ -151,9 +151,24 @@ Template.adminPublicationsEdit.events({
   'submit form': function (evt, temp) {
     evt.preventDefault();
 
+    // store outlet option for adding into the DB
+    var selectedOutlet = "";
+
+    if (Session.get("outletChoiceEdit") === "pp") {
+      selectedOutlet = "Published Paper";
+    }
+    else if (Session.get("outletChoiceEdit") === "bk") {
+      selectedOutlet = "Published Book";
+    }
+    else if (Session.get("outletChoiceEdit") === "bc") {
+      selectedOutlet = "Book Chapter";
+    } 
+    else {
+      selectedOutlet = "Working Paper";
+    }
+
     var newAuthors = [];
     inputsAuthors = Session.get('inputsAuthors');
-
 
     // each input feld mit name=authors
     // firstName und lastName in allAuthors
@@ -186,9 +201,10 @@ Template.adminPublicationsEdit.events({
     temp.year = $('#year').val(),
     temp.type = $('input[name=outlet-type]:checked').val(),
     temp.abstract = $('#abstract').summernote('code'),
+    temp.outlet = selectedOutlet,
 
     // Published Paper (pp)
-    temp.outlet = $('#journal').val(),
+    temp.journal = $('#journal').val(),
     // Published Paper (pp) or Book Chapter (bc)
     temp.pages = $('#pages').val(),
 
@@ -215,6 +231,6 @@ Template.adminPublicationsEdit.events({
     // $('#abstract').val('');
     // $("input:radio").removeAttr("checked");
 
-    console.log("done");
+    Bert.alert("outletChoice: " + Session.get("outletChoice") + " selectedOutlet: " + selectedOutlet);
   }
 });

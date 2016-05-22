@@ -101,6 +101,22 @@ Template.adminPublications.events({
   },
 	'submit form': function (evt, temp) {
 		evt.preventDefault();
+    // store outlet option for adding into the DB
+    var selectedOutlet = "";
+
+    if (Session.get("outletChoice") === "pp") {
+      selectedOutlet = "Published Paper";
+    }
+    else if (Session.get("outletChoice") === "bk") {
+      selectedOutlet = "Published Book";
+    }
+    else if (Session.get("outletChoice") === "bc") {
+      selectedOutlet = "Book Chapter";
+    } 
+    else {
+      selectedOutlet = "Working Paper";
+    }
+
     // temp necessary for attachments
     var temp = {};
     if (attachmentIdVar.get()) {
@@ -141,9 +157,10 @@ Template.adminPublications.events({
 			year: $('#year').val(),
 			type: $('input[name=outlet-type]:checked').val(),
 			abstract: $('#abstract').summernote('code'),
+      outlet: selectedOutlet,
 
 			// Published Paper (pp)
-			outlet: $('#journal').val(),
+			journal: $('#journal').val(),
 			// Published Paper (pp) or Book Chapter (bc)
 			pages: $('#pages').val(),
 
