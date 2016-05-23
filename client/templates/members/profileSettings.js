@@ -228,5 +228,35 @@ Template.profileSettings.events({
   'click #subscribe': function () {
     //Insert email to the subscribers collection
     Meteor.call('subscribers.insert', {email: Meteor.user().profile.email});
+  },
+  'click #security': function (event) {
+    event.preventDefault();
+
+    var currPassword = $('#current-password').val(); //event.target.loginEmail.value;
+    var newPassword = $('#new-password').val();
+    var newPasswordConfirmed = $('#confirm-password').val(); //event.target.loginPassword.value;
+
+    if (currPassword === "") {
+      Bert.alert('Please enter your current password to save changes');
+    }
+
+    if (newPassword === "" || newPasswordConfirmed === "") {
+      Bert.alert('Please enter your new password and confirm it');
+    }
+
+    if (newPassword !== newPasswordConfirmed) {
+      Bert.alert("Password confirmation doesn't match new password.");
+    }
+
+    if (newPassword === newPasswordConfirmed) {
+      Accounts.changePassword(currPassword, newPassword, function(error) {
+        if (error) {
+          Bert.alert(error);
+        } else {
+          Bert.alert("Password changed.");
+        }
+      })
+      
+    }
   }
 });
