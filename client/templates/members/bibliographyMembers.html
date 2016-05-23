@@ -74,6 +74,9 @@
 						{{#if attachmentExists}}
 							<a  class="button-download btn btn-primary btn-sm" href="{{ attachment.url }}"><span class="glyphicon glyphicon-download"></span> </a>
 						{{/if}}
+						{{#if linkExists}}
+							<a  class="button-download btn btn-primary btn-sm" href="{{ this.link }}"><span class="glyphicon glyphicon-link"></span> </a>
+						{{/if}}
 							<!-- {{#if isInRole 'admin'}} -->
 							<a href="{{pathFor route = 'adminPublicationsEdit'}}" class="button-download btn btn-primary btn-sm js-editPub"><span class="glyphicon glyphicon-edit"></span></a>
 							<!-- {{/if}}   -->
