@@ -44,7 +44,7 @@
                     {{#if keywordsExist}}
                     {{#each keywords}}<small class="tags">{{this}}</small>{{/each}}
                     {{/if}}
-                    <p class="text-muted"> {{{shortIt this.description 150}}} <a href="{{pathFor route='newsAndEventsPage'}}" class="textlink">read more </a></p>
+                    <p class="text-muted"> {{shortIt this.description 150}} <a href="{{pathFor route='newsAndEventsPage'}}" class="textlink">read more </a></p>
                 </div>
                 </div>
                 {{/each}}
