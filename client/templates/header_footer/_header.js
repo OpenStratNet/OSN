@@ -12,20 +12,28 @@ Template.navbar.helpers({
 });
 
 Template.navbar.events({
+  'click #loginButton': function (evt, temp) {
+    evt.preventDefault();
+    $('#loginModal').modal('show');
+  },
   'click #at-facebook': function (evt, temp) {
     Meteor.loginWithFacebook();
+    $('#loginModal').modal('hide');
     showLogin.set(false);
   },
   'click #at-google': function (evt, temp) {
     Meteor.loginWithGoogle();
+    $('#loginModal').modal('hide');
     showLogin.set(false);
   },
   'click #at-linkedin': function (evt, temp) {
     Meteor.loginWithLinkedin();
+    $('#loginModal').modal('hide');
     showLogin.set(false);
   },
   'click #at-twitter': function (evt, temp) {
     Meteor.loginWithTwitter();
+    $('#loginModal').modal('hide');
     showLogin.set(false);
   },
   'submit form': function (event, temp) {
@@ -42,6 +50,7 @@ Template.navbar.events({
       if (error) {
         Bert.alert('Password and email do not match');
       }
+    $('#loginModal').modal('hide');
     });
 
     // Delete later: idea was to show the login-div via CSS z-index

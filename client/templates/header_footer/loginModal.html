@@ -1,0 +1,75 @@
+<!-- Login Modal -->
+<template name="loginModalTemplate">
+    <div class="modal fade login" id="loginModal">
+        <div class="modal-dialog login animated">
+            <div class="modal-content">
+                <div class="modal-header">
+                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                   <h4 class="modal-title text-center">Log In</h4>
+               </div>
+               <div class="modal-body">
+                   <div class="box">
+                        <div class="content">
+                            <form>
+                                <div class="form-group">
+                                    <input type="email" class="extra-spacing-bottom form-control" id="at-field-email" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="extra-spacing-bottom form-control" id="at-field-password" placeholder="Password">
+                                </div>
+                                  <button type="submit" class="btn btn-primary btn-block">LOG IN</button>
+                            </form>
+
+                            <div class="text-left">
+                                  <a class="forgot" href="/account/begin_password_reset">Forgot password?</a>
+                            </div>
+
+                            <div class="divisionSocial">
+                                <div class="line l"></div>
+                                <p class="text-muted form">Or log in with your social account</p>
+                                <div class="line r"></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <a  id="at-google" class="btn btn-primary btn-block btn-social btn-dropdown-google">
+                                        <span class="fa fa-google"></span> Google
+                                    </a>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <a id="at-facebook" class="btn btn-primary btn-block btn-social btn-dropdown-facebook">
+                                        <span class="fa fa-facebook"></span> Facebook
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <a id="at-twitter" class="btn btn-primary btn-block btn-social btn-twitter">
+                                        <span class="fa fa-twitter"></span> Twitter
+                                    </a>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <a id="at-linkedin" class="btn btn-primary btn-block btn-social btn-linkedin">
+                                        <span class="fa fa-linkedin"></span> LinkedIn
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="divisionRegister">
+                        <div class="line l"></div>
+                        <p class="text-muted form">You are new to OSN?</p>
+                        <div class="line r"></div>
+                    </div>
+
+                    <form>
+                          <a href="{{pathFor route='joinUs'}}" class="btn btn-primary btn-block">REGISTER</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of loginModal -->
+</template>

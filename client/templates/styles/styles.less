@@ -477,6 +477,10 @@ section {
     padding-bottom: 10px;
 }
 
+.spacing-mini-top {
+    margin-top: 10px;
+}
+
 aside {
 		padding: 3.125em 0;
 }
@@ -1429,6 +1433,79 @@ th.table-buttons {
     margin: 0px 5px 10px 0;
     border-radius: 2px;
     display: inline-block;
+}
+
+
+//Modal Log in
+.login .divisionSocial {
+    float: none;
+    margin: 20px auto 10px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+.login .divisionSocial .line {
+    border-top: 1px solid #DFDFDF;
+    position: absolute;
+    top: 13px;
+    width: 12%;
+}
+
+.login .divisionRegister {
+    float: none;
+    margin: 10px auto 10px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+
+.login .divisionRegister .line {
+    border-top: 1px solid #DFDFDF;
+    position: absolute;
+    top: 13px;
+    width: 24%;
+}
+
+.login .divisionRegister .line.l {
+    left: 0;
+}
+.login .divisionRegister .line.r {
+    right: 0;
+}
+
+.login .divisionSocial .line.l {
+    left: 0;
+}
+.login .divisionSocial .line.r {
+    right: 0;
+}
+
+.modal-footer {
+    background: @gray-lighter;
+    margin-top: 10px;
+}
+
+.text-muted-white {
+		color: white;
+		margin-bottom: 15px;
+		line-height: 160%;
+}
+
+
+@media (min-width: 828px){
+.btn-login-modal {
+    margin: 30px 6px 5px 15px;
+    padding: 5px 12px;
+    font-size: 13px;
+}
+}
+
+@media (max-width: 768px) {
+.btn-login-modal {
+    margin: 10px 6px 10px 15px;
+}
 }
 
 //Layer Log in
