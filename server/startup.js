@@ -47,7 +47,8 @@ Meteor.startup(function () {
           "firstName": "Melissa M."
         }],
         "title": "Open innovation and strategy",
-        "outlet": "California management review, 50 (1)",
+        "journal": "California management review, 50 (1)",
+        "outlet": "Published Paper",
         "year": "2007",
         "abstract": "No Abstract ...",
         "type": "pp"
@@ -64,7 +65,8 @@ Meteor.startup(function () {
           "firstName": "Basak Yakis "
         }],
         "title": "Opening strategy: Evolution of a precarious profession",
-        "outlet": "British Journal of Management, 22 (3)",
+        "outlet": "Published Paper",
+        "journal": "British Journal of Management, 22 (3)",
         "year": "2011",
         "abstract": "No Abstract ...",
         "type": "pp"
@@ -84,7 +86,8 @@ Meteor.startup(function () {
           "firstName": "F."
         }],
         "title": "Democratizing Strategy",
-        "outlet": "California Management Review, 54 (4)",
+        "outlet": "Published Paper",
+        "journal": "California Management Review, 54 (4)",
         "year": "2012",
         "abstract": "Crowdsourcing is typically associated with the incorporation of company-external stakeholders such as customers in the value creating process. This article proposes a framework for a company-internal application of crowdsourcing methods. It presents a set of five goals companies can pursue employing internal crowdsourcing. The practical approach of an Austrian medium-sized technology company is described in detail, including insights on software design and appropriate procedures.",
         "type": "pp"

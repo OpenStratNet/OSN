@@ -108,7 +108,7 @@ Template.adminPublications.events({
       selectedOutlet = "Published Paper";
     }
     else if (Session.get("outletChoice") === "bk") {
-      selectedOutlet = "Published Book";
+      selectedOutlet = "Book";
     }
     else if (Session.get("outletChoice") === "bc") {
       selectedOutlet = "Book Chapter";
