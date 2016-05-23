@@ -155,6 +155,7 @@ Template.adminPublications.events({
 			authors: newAuthors,
 			editors: newEditors,
 			year: $('#year').val(),
+      link: $('#link').val(),
 			type: $('input[name=outlet-type]:checked').val(),
 			abstract: $('#abstract').summernote('code'),
       outlet: selectedOutlet,

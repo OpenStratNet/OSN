@@ -1,3 +1,7 @@
+UI.registerHelper('linkExists', function(){
+  return (this.link) ? true : false;
+});
+
 UI.registerHelper('attachmentExists', function(){
   return (this.attachmentId) ? true : false;
 });

@@ -200,6 +200,7 @@ Template.adminPublicationsEdit.events({
     temp.editors = newEditors,
     temp.year = $('#year').val(),
     temp.type = $('input[name=outlet-type]:checked').val(),
+    temp.link = $('#link').val(),
     temp.abstract = $('#abstract').summernote('code'),
     temp.outlet = selectedOutlet,
 
