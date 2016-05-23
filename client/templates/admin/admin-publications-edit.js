@@ -232,6 +232,6 @@ Template.adminPublicationsEdit.events({
     // $('#abstract').val('');
     // $("input:radio").removeAttr("checked");
 
-    Bert.alert("outletChoice: " + Session.get("outletChoice") + " selectedOutlet: " + selectedOutlet);
+    Bert.alert("Changes saved");
   }
 });

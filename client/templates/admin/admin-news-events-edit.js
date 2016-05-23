@@ -177,16 +177,16 @@ Template.adminNewsEventsEdit.events({
 	// 	};
 	// },
 	'submit form': function (evt, temp) {
-		//evt.preventDefault();
+		evt.preventDefault();
 
 		var temp = {};
 		temp.title = $('#title').val();
 		temp.description = $('#description').summernote('code');
 		temp.type = $('input[name=netype]:checked').val();
 		temp.category = $('#selectCategory')[0].value.toLowerCase(); // category are stored
-        temp.keywords = $('#newsKeywords')[0].value.toLowerCase().split(','); //new keywords are stored.
+    temp.keywords = $('#newsKeywords')[0].value.toLowerCase().split(','); //new keywords are stored.
 		// when last time modified
-        temp.modifiedAt = moment().format('ddd, DD MMM YYYY hh:mm:ss');
+    temp.modifiedAt = moment().format('ddd, DD MMM YYYY hh:mm:ss');
 
 		if (imageIdVarEdit.get()) {
 			temp.coverImageId = imageIdVarEdit.get();
@@ -199,6 +199,6 @@ Template.adminNewsEventsEdit.events({
 		Meteor.call('NewsEvents.update', this._id,temp);
 		//Just for testing.
 		Meteor.call('NewsEvents.update', {_id: this._id}, {$set: temp});
-
+    Bert.alert("Changes saved");
 	}
 });
