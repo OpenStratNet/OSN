@@ -7,7 +7,12 @@
 
 
 <template name="applicationLayout">
+    <div class="sticky-wrapper">
 	{{> yield region = "header"}}
 	{{> yield "main"}}
-  {{> yield region = "footer"}}
+    <div class="push"></div>
+    </div>
+    <div class="footer">
+    {{> yield region = "footer"}}
+    </div>
 </template>
