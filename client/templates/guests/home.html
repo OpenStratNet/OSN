@@ -35,12 +35,12 @@
             	{{#each newsEventsData}}
                 <div class="col-sm-4">
                     <div class="caption">
-                        {{#if category}}
-                        <div class="category">
-                            <em>{{category}}</em><br>
-                        </div>
-                    <h4>{{title}}</h4>
+                    {{#if category}}
+                    <div class="category">
+                        <em>{{category}}</em><br>
+                    </div>
                     {{/if}}
+                    <h4>{{title}}</h4>
                     {{#if keywordsExist}}
                     {{#each keywords}}<small class="tags">{{this}}</small>{{/each}}
                     {{/if}}
