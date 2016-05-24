@@ -4,6 +4,9 @@ Router.configure({
   navbar: {to: 'header'},
   footer: {to: 'footer'},
   // logInWindow: {to: 'logIn'}
+  },
+  onAfterAction: function(){
+    $('.navbar-toggle').click();
   }
 });
 
@@ -97,14 +100,14 @@ Router.route('/news-and-events', {
 Router.route('/contact', {name: 'contact',
     waitOn: function(){
 		console.log('Iron router start');
-        return [        
+        return [
             Meteor.subscribe('allusers'),
             Meteor.subscribe('alluserContact'),
         ]
 	},
     data: function(){
 		   return{
-		   toUserContact:userContact.find(),			
+		   toUserContact:userContact.find(),
 		   }
 	},
 });
@@ -126,7 +129,7 @@ Router.map(function() {
     this.route('joinUs', {
         path: '/joinus',
     });
-}); 
+});
 
 
 // User Accounts
