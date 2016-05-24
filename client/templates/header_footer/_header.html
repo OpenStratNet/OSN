@@ -51,18 +51,6 @@
                           <li><a class="profile-links icon publications" href="{{pathFor route = 'adminPublicationsList'}}">Publications</a></li>
                           <li><a class="profile-links icon members" href="{{pathFor route = 'adminMembersList'}}">Members</a></li>
                           {{/if}}
-
-                        {{#if isInRole 'admin'}}
-                        <!-- <li>
-                            <a class="profile-links" href="{{pathFor route = 'adminNewsEventsList'}}"><i class="fa fa-lock"></i>&nbsp; News &amp; Events</a>
-                        </li>
-                        <li>
-                            <a class="profile-links" href="{{pathFor route = 'adminPublicationsList'}}"><i class="fa fa-lock"></i>&nbsp; Publications</a>
-                        </li>
-                         <li>
-                            <a class="profile-links" href="{{pathFor route = 'adminMembers'}}"><i class="fa fa-lock"></i>&nbsp; Members</a>
-                        </li>-->
-                        {{/if}}
                           <li><a class="profile-links icon logout js-logOut" data-action="logout">Log out</a></li>
                       </ul>
                     </li>
