@@ -77,10 +77,10 @@
 						{{#if linkExists}}
 							<a  class="button-download btn btn-primary btn-sm" href="{{ this.link }}"><span class="glyphicon glyphicon-link"></span> </a>
 						{{/if}}
-							<!-- {{#if isInRole 'admin'}} -->
+						{{#if isInRole adminUserRole}}
 							<a href="{{pathFor route = 'adminPublicationsEdit'}}" class="button-download btn btn-primary btn-sm js-editPub"><span class="glyphicon glyphicon-edit"></span></a>
-							<!-- {{/if}}   -->
-							</td>
+						{{/if}}  
+						</td>
 					</tr>
 					{{/each}}
 				</tbody>
@@ -125,7 +125,17 @@
 								{{else}}
 								<td>Working Paper</td>
 								{{/if}}
-								<td><button type="button" class="button-download btn btn-primary btn-sm"><span class="glyphicon glyphicon-download"></span></button></td>
+								<td>
+								{{#if attachmentExists}}
+									<a  class="button-download btn btn-primary btn-sm" href="{{ attachment.url }}"><span class="glyphicon glyphicon-download"></span> </a>
+								{{/if}}
+								{{#if linkExists}}
+									<a  class="button-download btn btn-primary btn-sm" href="{{ this.link }}"><span class="glyphicon glyphicon-link"></span> </a>
+								{{/if}}
+								{{#if isInRole adminUserRole}}
+									<a href="{{pathFor route = 'adminPublicationsEdit'}}" class="button-download btn btn-primary btn-sm js-editPub"><span class="glyphicon glyphicon-edit"></span></a>
+								{{/if}}  
+								</td>
 							</tr>
 							<!-- {{/each}} -->
 						{{/EasySearch.Each}}
