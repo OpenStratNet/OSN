@@ -12,8 +12,14 @@ Meteor.startup(function () {
     'updateUserContact': function (e, d) {
       userContact.update({_id: e}, {$set: {profile: d}});
     },
-	'toRoleAdmin': function(e,h){
-		Meteor.users.update({_id:e},{$set:{roles:{admin:h}}});
+	'toRoleAdmin':function(e){
+		Roles.addUsersToRoles( e, 'admin');
+	},
+	'removeAdminRole':function(e){
+		Roles.removeUsersFromRoles(e, 'admin');
+	},
+	'updateEmail':function(e,d){
+		Meteor.users.update({_id:e},{$set:{'emails.0.address':d}})
 	},
     'updateUser': function (e, d) {
       Meteor.users.update({_id: e}, {$set: {profile: d}});

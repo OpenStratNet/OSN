@@ -27,27 +27,31 @@
 							{{#each userContactPrev}}
 							    
 							    <div class="row text-center extra-spacing-top">
-					                <div class="col-sm-6 col-md-6">
+					                <div class="cols-xs-6 col-sm-6 col-md-6 contact-edit-hd">
 						                <div class="team-member">
-							                <div class="imgBlock">
+										<center>
+										    <div class="contact-thumbnail">
+							                    <div class="imgBlock wasabi-content">
 							                 
-							                    <center>
-								                    {{#if noPic true}}
-									                    <img  src="img/contact-placeholder.jpg" alt="{{profile.firstName}}  {{profile.lastName}}">
-								                    {{/if}}
+							                      
+								                        {{#if noPic true}}
+									                        <img  src="img/contact-placeholder.jpg" alt="{{profile.firstName}}  {{profile.lastName}}">
+								                        {{/if}}
 									              
-									                {{#if normalPic true}}
-							                            <img  src="{{profile.pictureID}}" alt="{{profile.firstName}}  {{profile.lastName}}">
-									                {{/if}}
-													{{#if socialPic}}
-									                    <img  src="{{profile.picture}}" alt="{{profile.firstName}}  {{profile.lastName}}">
-									                {{/if}}
+									                    {{#if normalPic true}}
+							                                <img  src="{{profile.pictureID}}" alt="{{profile.firstName}}  {{profile.lastName}}">
+									                    {{/if}}
+													    {{#if socialPic}}
+									                        <img  src="{{profile.picture}}" alt="{{profile.firstName}}  {{profile.lastName}}">
+									                    {{/if}}
 									                
-								                </center>
-							                </div>
+								                   
+							                    </div>
+										    </div>
+										</center>
 						                </div>
 				                    </div>
-							        <div class="col-sm-6 col-md-6">
+							        <div class="cols-xs-6 col-sm-6 col-md-6">
 						                <div class="team-member">
 							                <h4>{{profile.firstName}}&nbsp;&nbsp;{{profile.lastName}}</h4>
 							                <p class="text-muted">{{profile.position}}</p>
@@ -71,26 +75,30 @@
 				               {{#if membersIndex}}
 					               {{#EasySearch.Each index=membersIndex}}
 								        <div class="row text-center extra-spacing-top">
-					                        <div class="col-sm-6">
+					                        <div class="cols-xs-6 col-sm-6 col-md-6 contact-edit-hd">
 						                        <div class="team-member">
-							                        <div class="imgBlock">
+												<center>
+												    <div class="contact-thumbnail">
+							                            <div class="imgBlock wasabi-content">
 							    
-							                            <center>
-								                            {{#if noPic true}}
-									                            <img  src="img/contact-placeholder.jpg" alt="{{profile.firstName}}  {{profile.lastName}}">
-								                            {{/if}}
+							                                <center>
+								                                {{#if noPic true}}
+									                                <img  src="img/contact-placeholder.jpg" alt="{{profile.firstName}}  {{profile.lastName}}">
+								                                {{/if}}
 									              
-									                        {{#if normalPic true}}
-							                                    <img  src="{{profile.pictureID}}" alt="{{profile.firstName}}  {{profile.lastName}}">
-									                        {{/if}}
-													        {{#if socialPic}}
-									                            <img  src="{{profile.picture}}" alt="{{profile.firstName}}  {{profile.lastName}}">
-									                        {{/if}}
-								                        </center>
-							                        </div>
-						                        </div>
+									                            {{#if normalPic true}}
+							                                        <img  src="{{profile.pictureID}}" alt="{{profile.firstName}}  {{profile.lastName}}">
+									                            {{/if}}
+													            {{#if socialPic}}
+									                                <img  src="{{profile.picture}}" alt="{{profile.firstName}}  {{profile.lastName}}">
+									                            {{/if}}
+								                            </center>
+							                            </div>
+						                            </div>
+												</center>
+												</div>
 				                            </div>
-							                <div class="col-sm-6">
+							                <div class="cols-xs-6 col-sm-6 col-md-6">
 						                        <div class="team-member">
 							                        <h4>{{profile.firstName}}&nbsp;&nbsp;{{profile.lastName}}</h4>
 							                        <p class="text-muted">{{profile.position}}</p>

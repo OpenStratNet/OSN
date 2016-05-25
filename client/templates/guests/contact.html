@@ -28,11 +28,12 @@
 
 				    {{#each toUserContact}}
 					<center>
-					<div style="margin-top:5px;height:350px;" class="col-sm-6 contact-edit">
-						<div class="team-member">
-						    <div class="contact-thumbnail">
-                                <div class="testing">
-						            <div class="imgBlock">
+					<div class="col-sm-6 contact-edit-hd wasabi-edit-hd">
+					    <div class="hover-wasabi-content">
+						    <div class="team-member wasabi-hover">
+						        <div class="contact-thumbnail">
+                                
+						            <div class="imgBlock wasabi-content">
 							    
 							            <center>
 								           {{#if noPic true}}
@@ -46,6 +47,7 @@
 									        {{/if}}	
 								        </center>
 							        </div>
+									{{#if noAdmin true}}
 								    <div style="clear:both;" id="hoverForm">
 							            <form id="test">
 								            <input name="userContactId" id="userContactId" type="hidden" value="{{_id}}" placeholder=""/>
@@ -57,29 +59,25 @@
 	                                        <button style="float:left;margin-left:54%;margin-top:-32px;margin-bottom:0px;" class="btn btn-primary" id="delete"><i style="font-size:15px;" class="fa fa-trash"></i></button>
                                         </form>
 							        </div>
-							    </div>
-                            </div>							
+									{{/if}}  
+							    
+                                </div>							
 
-							<div style="width:300px">
-
-						
-								
+							    <div style="width:300px">
+                               
+						            
 									<div style="margin-top:1px">
-							        <h4>{{profile.firstName}}&nbsp;&nbsp;{{profile.lastName}}</h4>
-							        <p class="text-muted">{{profile.position}}</p>
-							        <ul class="list-inline social-buttons">
-								        <li>
-                                            <a href="mailto:{{profile.email}}"><i class="fa fa-envelope"></i></a>
-								        </li>
-								        <li>
-									        <a href="mailto:{{profile.email}}">{{profile.email}}</a>
-								        </li>
-							        </ul>
+							            <h4>{{profile.firstName}}&nbsp;&nbsp;{{profile.lastName}}</h4>
+							            <p class="text-muted">{{profile.position}}</p>
+							            <ul class="list-inline social-buttons">
+								            <li><a href="mailto:{{profile.email}}"><i class="fa fa-envelope"></i></a></li>
+								            <li><a href="mailto:{{profile.email}}">{{profile.email}}</a></li>
+							            </ul>
 							        </div>
-							   
-						    </div>
-						</div>
 
+						        </div>
+						    </div>
+                        </div>
 				    </div>
 					</center>
 					{{/each}}

@@ -20,7 +20,14 @@ Template.contact.helpers ({
 		
 	},
 	noAdmin:function(){
-		if(Meteor.user().roles.admin=='admin'){
+		hd=Roles.getRolesForUser(Meteor.userId()).length;
+		adminRole=0;
+		for (var i=0; i<hd; i++){
+			if(Roles.getRolesForUser(Meteor.userId())[i]=='admin'){
+			adminRole=1;
+		    }
+		}
+		if (adminRole=1){
 			return true;
 		}else{
 			return false;
@@ -52,7 +59,8 @@ Template.contact.events({
 	    if(msj==true){
 	    //Meteor.users.remove({_id: userId1});
 		Meteor.call('deleteContact',userId1);
-		Meteor.call('toRoleAdmin',userId1,false);
+		Meteor.call('removeAdminRole',userId1);
+		//Meteor.call('toRoleAdmin',userId1,false);
 	    };
     console.log(userId1);
 	   

@@ -2083,36 +2083,38 @@ a.follow-linkedin:hover {
 	border: 4px solid @brand-primary-light;
 	color:@brand-primary-light;
 }
-.testing #hoverForm{
+.wasabi-hover #hoverForm{
 	display:none;
 
 }
 
-.testing:hover #hoverForm{
+.wasabi-hover:hover #hoverForm{
     display:block;
 }
-.imgBlock{
+
+.wasabi-content{
 	position:relative;
 	height:200px;
 	width:170px;
 	overflow:hidden;
 	margin:0 auto;
 }
-.imgBlock img{
+.wasabi-content img{
 	display: block;
     max-width: none;
 
 }
 
-.col-sm-6 img {
-	display:block;
-	position:relative;
-	height:auto;
-	width:110%;
-	margin:0 -5%;
+hover-wasabi-content{
+	width:300px;
 }
 
-.col-sm-6 contact-edit img {
+.wasabi-edit-hd{
+	margin-top:5px;
+	height:350px;
+}
+
+.contact-edit-hd img {
 	display:block;
 	position:absolute;
 	width:auto;
@@ -2122,6 +2124,7 @@ a.follow-linkedin:hover {
 	top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
 }
 
 .hoverOver{
@@ -2142,6 +2145,4 @@ a.follow-linkedin:hover {
 .at-form {
     margin: -20px 0 0 0;
 }
-
-
 //end
