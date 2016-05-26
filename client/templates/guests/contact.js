@@ -22,16 +22,21 @@ Template.contact.helpers ({
 	noAdmin:function(){
 		hd=Roles.getRolesForUser(Meteor.userId()).length;
 		adminRole=0;
-		for (var i=0; i<hd; i++){
-			if(Roles.getRolesForUser(Meteor.userId())[i]=='admin'){
+		if(hd!=0){
+			for (var i=0; i<hd; i++){
+			if(Roles.getRolesForUser(Meteor.userId())=='admin'){
 			adminRole=1;
 		    }
-		}
+		};
 		if (adminRole=1){
 			return true;
 		}else{
 			return false;
 		}
+		}else{
+			return false;
+		}
+		
 	}
 })
 
