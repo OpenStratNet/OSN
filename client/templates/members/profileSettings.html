@@ -163,7 +163,7 @@
               <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
                   <label for="beispielFeldDatei">Profile picture</label>
                 <br>
-                <img class="image" style="width:150px;height:150px;" src="{{profile.picture}}">
+                <img class="image profile-thumbnail" src="{{profile.picture}}">
               </div>
             </div>
             {{/if}}
@@ -174,20 +174,20 @@
                   <label for="beispielFeldDatei">Profile picture</label>
                 <br>
                 <!--Upload input as a edit icon-->
-                <div style="position:absolute;margin-left:70px" id="uploadInput">
+                <div class="btn-editpic" id="uploadInput">
                     <div class="fileUpload">
                       <button type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i></button>
                       <input type="file" class="upload js-Profile" />
                     </div>
                 </div>
                 <!--Discard button is a trash  icon-->
-                <div style="position:absolute;margin-left:112px;" id="discardButton">
+                <div class="btn-discardpic" id="discardButton">
                      <button id="discard" type="button" class="btn btn-primary"><i class="fa fa-trash"></i></button>
                 </div>
-                <div style="float:left;">
-                <img class="image" style="width:150px;height:150px;" src="{{profile.pictureID}}">
-                </div>
-                <div style="display:none;" id="uploadInputFile">
+				<!--Profile picture-->
+                <img class="image profile-thumbnail" src="{{profile.pictureID}}">
+				<!--Upload input-->
+                <div class="hidden" id="uploadInputFile">
                   <div class="fileUpload btn btn-default btn-block btn-icon btn-file-upload">
                     <span class="glyphicon glyphicon-upload"></span>
                     <span>Upload a profile picture</span>
@@ -205,18 +205,18 @@
                     </div>
                     <br>
                      <!--Upload input as a edit icon-->
-                    <div style="position:absolute;margin-left:70px;display:none;" id="uploadInput">
+                    <div class="btn-editpic hidden" id="uploadInput">
                       <div class="fileUpload">
                         <button type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i></button>
                         <input type="file" class="upload js-Profile" />
                       </div>
                     </div>
                         <!--Discard button is a trash icon-->
-                     <div style="position:absolute;margin-left:112px;display:none;" id="discardButton">
+                     <div class="btn-editpic hidden" id="discardButton">
                       <button id="discard" type="button" class="btn btn-primary"><i class="fa fa-trash"></i></button>
                      </div>
                        <!--The image is hidden in the background-->
-                    <div id="hiddenImage" style="display:none;"><img class="image" style="width:150px;height:150px;" src="{{profile.pictureID}}"></div>
+                    <div id="hiddenImage" class="hidden"><img class="image profile-thumbnail" src="{{profile.pictureID}}"></div>
                        <!-- Traditional input manager-->
                     <div id="uploadInputFile">
                       <div class="fileUpload btn btn-default btn-block btn-icon btn-file-upload">
