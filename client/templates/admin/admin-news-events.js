@@ -1,7 +1,7 @@
 imageIdVar = new ReactiveVar(false);
 attachmentIdVar = new ReactiveVar(false);
-Meteor.subscribe('alltags'); //Subscribe to the tags collection
-Meteor.subscribe('allcategories'); //Subscribe to the categories collection
+Meteor.subscribe('tags'); //Subscribe to the tags collection
+Meteor.subscribe('categories'); //Subscribe to the categories collection
 
 Template.adminNewsEvents.helpers({
   allCategories: function () {
