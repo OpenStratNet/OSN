@@ -167,37 +167,82 @@ Template.adminPublicationsEdit.events({
       selectedOutlet = "Working Paper";
     }
 
-    var newAuthors = [];
-    inputsAuthors = Session.get('inputsAuthors');
+    //var newAuthors = [];
+    //inputsAuthors = Session.get('inputsAuthors');
 
     // each input feld mit name=authors
     // firstName und lastName in allAuthors
     //temp.authors = allAuthors
 
-    _.each(inputsAuthors, function(input) {
-      newAuthors.push({firstName: $('#' + input.uniqidFirst).val(), lastName: $('#' + input.uniqidLast).val()});
-    });
+    //_.each(inputsAuthors, function(input) {
+    //  newAuthors.push({firstName: $('#' + input.uniqidFirst).val(), lastName: $('#' + input.uniqidLast).val()});
+    //});
 
-    var newEditors = [];
-    inputsEditors = Session.get('inputsEditors');
-    _.each(inputsEditors, function(input) {
-      newEditors.push({firstName: $('#' + input.uniqidFirst).val(), lastName: $('#' + input.uniqidLast).val()});
-    });
+    //var newEditors = [];
+   // inputsEditors = Session.get('inputsEditors');
+    //_.each(inputsEditors, function(input) {
+    //  newEditors.push({firstName: $('#' + input.uniqidFirst).val(), lastName: $('#' + input.uniqidLast).val()});
+    //});
 
     // add the existing (i.e, default) authors ro an array
 
-    /*for (var i = 0; i < pubEntryComplete.authors.length; i++) {
-      newAuthors.unshift({firstName: existingAuthors[i]["valueFirst"], lastName: existingAuthors[i]["valueLast"]}); //
-    };
-    */
+    //*for (var i = 0; i < pubEntryComplete.authors.length; i++) {
+    //  newAuthors.unshift({firstName: existingAuthors[i]["valueFirst"], lastName: existingAuthors[i]["valueLast"]}); //
+    //};
+    
     // newAuthors.unshift({firstName: $('#firstAuName').val(), lastName: $('#lastAuName').val()});
-    newEditors.unshift({firstName: $('#firstEdName').val(), lastName: $('#lastEdName').val()});
-
-    var temp = {};
+    //newEditors.unshift({firstName: $('#firstEdName').val(), lastName: $('#lastEdName').val()});
+	
+	//Implemented solution for the AUTHORS field
+	//Create empty array for the update.
+	updatedAuthors = [];
+	//Create empty array for the first name.
+	authorFN = [];
+	//Create empty array for the last name.
+	authorLN = [];
+	//Lenght of the css class author-first-n.
+	numberOfAuthors =$('.author-first-n').length;
+	//function that construct the updatedAuthors array
+	    for (i = 0; i < numberOfAuthors; i++) { 
+            var author_firstName = $('.author-first-n')[i]; //Get the input info for the DOM
+			var author_lastName = $('.author-last-n')[i]    //Get the input info for the DOM
+			    authorFN[i] =author_firstName.value;        //Get the value of the input, prefilled, modified or created
+				authorLN[i] =author_lastName.value;         //Get the value of the input, prefilled, modified or created
+				updatedAuthors[i] = {"lastName" : authorLN[i], //.lastName
+				                     "firstName" : authorFN[i] //.firstName
+                                    };
+        }
+        console.log('authors');
+		console.log(updatedAuthors);                        //Check the authors to add
+	
+	//Implemented solution for the EDITORS field
+	//Create empty array for the update.
+	updatedEditors = [];
+	//Create empty array for the first name.
+	editorFN = [];
+	//Create empty array for the last name.
+	editorLN = [];
+	//Lenght of the css class editor-first-n.
+	numberOfEditors =$('.editors-first-n').length;
+	//function that construct the numberOfEditors array
+	    for (i = 0; i < numberOfEditors; i++) { 
+            var editor_firstName = $('.editors-first-n')[i]; //Get the input info for the DOM
+			var editor_lastName = $('.editors-last-n')[i]    //Get the input info for the DOM
+			    editorFN[i] =editor_firstName.value;        //Get the value of the input, prefilled, modified or created
+				editorLN[i] =editor_lastName.value;         //Get the value of the input, prefilled, modified or created
+				updatedEditors[i] = {"lastName" : editorLN[i], //.lastName
+				                     "firstName" : editorFN[i] //.firstName
+                                    };
+        }
+        console.log('editors');
+		console.log(updatedEditors);                        //Check the editors to add
+    
+	
+	var temp = {};
 
     temp.title = $('#title').val();
-    temp.authors = pubEntryComplete.authors.concat(newAuthors);
-    temp.editors = newEditors,
+    temp.authors = updatedAuthors,
+    temp.editors = updatedEditors,
     temp.year = $('#year').val(),
     temp.type = $('input[name=outlet-type]:checked').val(),
     temp.link = $('#link').val(),
@@ -219,7 +264,6 @@ Template.adminPublicationsEdit.events({
     if (attachmentIdVar.get()) {
       temp.attachmentId = attachmentIdVar.get();
     }
-
     Meteor.call('Publications.update', {_id: this._id}, {$set: temp});
 
     // $('#addPub')[0].reset();
