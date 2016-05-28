@@ -56,7 +56,7 @@ Accounts.onCreateUser(function (options, user) {
   if (options.profile) {
     user.profile = options.profile;
     user.profile.email = options.email;
-	subscribers.insert({email: user.profile.email}); //Insert the email on the subscribers collection for the first time.
+	Subscribers.insert({email: user.profile.email}); //Insert the email on the subscribers collection for the first time.
 
   } else {
     user.profile = {};
@@ -80,7 +80,7 @@ Accounts.onCreateUser(function (options, user) {
     user.profile.gender = user.services.facebook.gender;
     user.profile.email = user.services.facebook.email;
     user.profile.picture = "http://graph.facebook.com/" + user.services.facebook.id + "/picture/?type=large";
-	subscribers.insert({email: user.profile.email}); //Insert the email on the subscribers collection for the first time.
+	Subscribers.insert({email: user.profile.email}); //Insert the email on the subscribers collection for the first time.
     // Meteor.users.after.insert(function (userId, doc) {
     //   user.emails[address] = user.services.facebook.email;
     //   console.log("createdAfter");
@@ -94,7 +94,7 @@ Accounts.onCreateUser(function (options, user) {
     user.profile.gender = user.services.google.gender;
     user.profile.email = user.services.google.email;
     user.profile.picture = user.services.google.picture;
-	subscribers.insert({email: user.profile.email}); //Insert the email on the subscribers collection for the first time.
+	Subscribers.insert({email: user.profile.email}); //Insert the email on the subscribers collection for the first time.
   }
 
   if (user.services.twitter) {
@@ -120,7 +120,7 @@ Accounts.onCreateUser(function (options, user) {
     user.profile.name = user.services.linkedin.firstName + ' ' + user.services.linkedin.lastName;
     user.profile.email = user.services.linkedin.emailAddress;
     user.profile.picture = user.services.linkedin.pictureUrl;
-	subscribers.insert({email: user.profile.email}); //Insert the email on the subscribers collection for the first time.
+	Subscribers.insert({email: user.profile.email}); //Insert the email on the subscribers collection for the first time.
   }
 
   return user;
