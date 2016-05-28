@@ -125,23 +125,3 @@ Accounts.onCreateUser(function (options, user) {
 
   return user;
 });
-//Some publications for the implemented solutions.
-Meteor.publish('allSubscribers',function(){
-	return subscribers.find();
-});
-
-Meteor.publish('alluserContact',function(){
-	return userContact.find();
-});
-
-Meteor.publish('allusers',function(){
-	return Meteor.users.find();
-});
-
-Meteor.publish('alltags',function(){
-	return Tags.find();
-});
-
-Meteor.publish('allcategories',function(){
-	return Categories.find();
-});
