@@ -52,13 +52,13 @@
 						<div class="col-sm-6">
 								<div class="media-left">
 										{{#if this.profile.pictureID}}
-										<img style="width:150px;height:150px;display:block" class="members-thumbnail" src="{{profile.pictureID}}" alt="{{profile.firstName}} {{profile.lastName}}">
+										<img class="members-thumbnail" src="{{profile.pictureID}}" alt="{{profile.firstName}} {{profile.lastName}}">
 										{{/if}}
 										{{#if this.profile.picture}}
-										<img style="width:150px;height:150px;display:block" class="members-thumbnail" src="{{profile.picture}}" alt="{{profile.firstName}} {{profile.lastName}}">
+										<img class="members-thumbnail" src="{{profile.picture}}" alt="{{profile.firstName}} {{profile.lastName}}">
 										{{/if}}
 										{{#if noPicture}}
-										<img style="width:150px;height:150px;display:block" class="members-thumbnail" src="img/contact-placeholder.jpg" alt="{{profile.firstName}} {{profile.lastName}}">
+										<img class="members-thumbnail" src="img/contact-placeholder.jpg" alt="{{profile.firstName}} {{profile.lastName}}">
 										{{/if}}
 								</div>
 
