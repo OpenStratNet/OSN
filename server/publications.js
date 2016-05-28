@@ -29,3 +29,25 @@ Meteor.publish('profilePic', function () {
 Meteor.publish('users', function () {
   return Meteor.users.find();
 });
+
+//Some publications for the implemented solutions.
+Meteor.publish('allSubscribers',function(){
+	return Subscribers.find();
+});
+
+Meteor.publish('alluserContact',function(){
+	return userContact.find();
+});
+
+Meteor.publish('allusers',function(){
+	return Meteor.users.find();
+});
+
+Meteor.publish('alltags',function(){
+	return Tags.find();
+});
+
+Meteor.publish('allcategories',function(){
+	return Categories.find();
+});
+
