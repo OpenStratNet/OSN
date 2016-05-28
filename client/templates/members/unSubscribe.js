@@ -1,6 +1,5 @@
 Template.unSubscribe.onRendered(function() {
    Meteor.subscribe('allSubscribers') //Manage a subscription to the collection
-   console.log('unsubscribing');
 });
 
 Template.unSubscribe.helpers({
