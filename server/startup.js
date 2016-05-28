@@ -1,46 +1,4 @@
 Meteor.startup(function () {
-  Meteor.methods({
-    'unsubscribe': function (e) {
-      subscribers.remove({_id: e});
-    },
-    'insertContact': function (e) {
-      userContact.insert(e);
-    },
-    'deleteContact': function (e) {
-      userContact.remove({_id: e});
-    },
-    'updateUserContact': function (e, d) {
-      userContact.update({_id: e}, {$set: {profile: d}});
-    },
-	'toRoleAdmin':function(e){
-		Roles.addUsersToRoles( e, 'admin');
-	},
-	'removeAdminRole':function(e){
-		Roles.removeUsersFromRoles(e, 'admin');
-	},
-	'updateEmail':function(e,d){
-		Meteor.users.update({_id:e},{$set:{'emails.0.address':d}})
-	},
-    'updateUser': function (e, d) {
-      Meteor.users.update({_id: e}, {$set: {profile: d}});
-    },
-    'insertTag': function (e) {
-      Tags.insert({"name": e});
-    },
-    'insertCategory': function (e) {
-      Categories.insert({"name": e});
-    },
-    'sendEmail': function (to, from, subject, text) {
-      // check([to, from, subject, text], [String]);
-      this.unblock();
-      Email.send({
-        to: to,
-        from: from,
-        subject: subject,
-        html: text
-      });
-    }
-  });
   // code to run on server at startup
   if (Publications.find().count() === 0) {
     var protopubs = [
