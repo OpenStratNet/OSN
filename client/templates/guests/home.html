@@ -8,8 +8,10 @@
 	            <h2>OSN is an international network of scholars interested in studying open strategy, i.e. more inclusive and transparent forms of strategizing. Coordinated by the University of Zurich, Saïd Business School and the University of Innsbruck, OSN investigates new forms of strategizing such as blogging, jamming and crowd-sourcing. Join the network and contribute to the OSN development!<a class="textlink" href="{{pathFor route='aboutUs'}}">Read more</a></h2>
                 <div class="share-button sharer" style="display: block;">
                     <div class="social top center networks-5 ">
-                        <button type="button" class="btn btn-primary btn-xl page-scroll js-join btn-joinus">JOIN US</button>                 <!-- Social Media Bar -->
-                        <span>FOLLOW US:</span>
+												{{#unless currentUser}}
+                        <button type="button" class="btn btn-primary btn-xl page-scroll js-join btn-joinus">JOIN US</button> <!-- Social Media Bar -->
+												{{/unless}}	
+												<span>FOLLOW US:</span>
                         <!-- Facebook Share Button -->
                         <a class="follow-facebook" href="https://www.facebook.com/openstrategynetwork/"><i class="fa some-header fa-facebook-official"></i></a>
                         <!-- Twitter Share Button -->
