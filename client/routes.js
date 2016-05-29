@@ -135,7 +135,12 @@ Router.map(function() {
 // User Accounts
 AccountsTemplates.configureRoute('changePwd');
 AccountsTemplates.configureRoute('enrollAccount');
-AccountsTemplates.configureRoute('forgotPwd');
+AccountsTemplates.configureRoute('forgotPwd', {
+  name: 'forgotPW',
+  path: '/forgot-password',
+  template: 'forgotPW',
+  layoutTemplate: 'ApplicationLayout',
+});
 AccountsTemplates.configureRoute('resetPwd');
 AccountsTemplates.configureRoute('signIn');
 AccountsTemplates.configureRoute('signUp', {
