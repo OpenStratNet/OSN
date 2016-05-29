@@ -8,7 +8,7 @@ Template.joinUs.onRendered(function () {
             var pswValL = pswVal.length;
             var pswAVal = $("[name='at-field-password_again']")[0].value;
 	        var pswAValL = pswAVal.length;
-            if(pswVal==pswAVal && pswValL==6 && pswAValL==6){
+            if(pswVal==pswAVal && pswValL>5 && pswAValL>5){
 	            $('.form-group:eq(15) .glyphicon.glyphicon-remove.form-control-feedback').removeClass('glyphicon-remove').addClass('glyphicon-ok').css("color","green");
 	            $('.form-group:eq(15) .help-block').addClass('hide');
 	            $("[name='at-field-password_again']").css({"border-style":"solid", "border-color":"green"})
