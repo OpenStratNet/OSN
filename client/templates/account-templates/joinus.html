@@ -59,30 +59,4 @@
         </form>
     </div>
   </section>
-<script>
-setInterval(function(){
-if(window.location.href.split('/').pop()=='joinus'){
-	var password_value = $("[name='at-field-password']")[0].value;
-    var password_value_length = password_value.length;
-    var password_again_value = $("[name='at-field-password_again']")[0].value;
-	var password_again_value_length = password_again_value.length;
-    //Selecting classes
-    var icon_position = $('.glyphicon.glyphicon-remove.form-control-feedback').length-1;
-    var message_position = $('.help-block').length-1;
-    var icon_class_constructor = '.glyphicon.glyphicon-remove.form-control-feedback:eq('+icon_position+')';
-    var message_class_constructor = '.help-block:eq('+message_position+')';
-    //
-    if(password_value==password_again_value && password_value_length==6 && password_value_length==6){
-	    $(icon_class_constructor).removeClass('glyphicon-remove').addClass('glyphicon-ok').css("color","green");
-	    $(message_class_constructor).addClass('hide');
-	    $("[name='at-field-password_again']").css({"border-style":"solid", "border-color":"green"})
-	return false;
-    }else{
-	    if(password_value_length!=0 || password_value_length!=0){
-		    $("[name='at-field-password_again']").css({"border-style":"solid", "border-color":"#a94442"})
-		}
-	}
-}	
-}, 10);
-</script>
 </template>
