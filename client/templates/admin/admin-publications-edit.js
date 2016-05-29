@@ -12,6 +12,7 @@ Template.adminPublicationsEdit.onCreated(function() {
   Session.set('inputsAuthors', []); // on page load, no inputs
   Session.set('inputsEditors', []); // on page load, no inputs
   Session.set('inputsExistingAuthors', []);
+  Session.set('inputsExistingEditors', []);
   Session.setDefault("outletChoiceEdit","");
 });
 
@@ -44,29 +45,19 @@ Template.adminPublicationsEdit.helpers({
       existingAuthors.push({uniqidFirst: Math.ceil(Math.random() * 100000), valueFirst: pubEntryComplete.authors[i].firstName, uniqidLast: Math.ceil(Math.random() * 100000), valueLast: pubEntryComplete.authors[i].lastName});
     }
 
-    // _.each(existingAuthors, function(input) {
-    //   newAuthors.push({firstName: $('#' + input.uniqidFirst).val(), lastName: $('#' + input.uniqidLast).val()});
-    // });
+    //editors are only relevant for book chapters
+    if (pubEntryComplete.editors.length > 0) {
+      existingEditors = []
+      for (var i = 0; i < pubEntryComplete.editors.length; i++) {
+        existingEditors.push({uniqidFirst: Math.ceil(Math.random() * 100000), valueFirst: pubEntryComplete.editors[i].firstName, uniqidLast: Math.ceil(Math.random() * 100000), valueLast: pubEntryComplete.editors[i].lastName});
+      }
+    }
+    
     Session.set("inputsExistingAuthors", existingAuthors);
-
+    Session.set("inputsExistingEditors", existingEditors);
     // return whole Publication in general
     return Publications.findOne({_id: this._id});
   },
-  // ppSelected: function () {
-  //   if (outletChoice.curValue === "pp") {
-  //     return true;
-  //   };
-  // },
-  // bkSelected: function () {
-  //   if (outletChoice.curValue  === "bk") {
-  //     return true;
-  //   };
-  // },
-  // bcSelected: function () {
-  //   if (outletChoice.curValue  === "bc") {
-  //     return true;
-  //   };
-  // },
   ppSelected: function () {
     if (Session.get("outletChoiceEdit") === "pp") {
       return true;
@@ -91,6 +82,10 @@ Template.adminPublicationsEdit.helpers({
   },
   inputsEditors: function () {
     return Session.get('inputsEditors');
+  },
+  inputsExistingEditors: function () {
+    console.log(Session.get('inputsExistingEditors'));
+    return Session.get('inputsExistingEditors');
   },
   randomizer: function() {
     //uniqidFirstEdit = Math.floor(Math.random() * 100000); // Give a unique ID so you can pull _this_ input when you click remove
@@ -162,7 +157,7 @@ Template.adminPublicationsEdit.events({
     }
     else if (Session.get("outletChoiceEdit") === "bc") {
       selectedOutlet = "Book Chapter";
-    } 
+    }
     else {
       selectedOutlet = "Working Paper";
     }
@@ -189,10 +184,10 @@ Template.adminPublicationsEdit.events({
     //*for (var i = 0; i < pubEntryComplete.authors.length; i++) {
     //  newAuthors.unshift({firstName: existingAuthors[i]["valueFirst"], lastName: existingAuthors[i]["valueLast"]}); //
     //};
-    
+
     // newAuthors.unshift({firstName: $('#firstAuName').val(), lastName: $('#lastAuName').val()});
     //newEditors.unshift({firstName: $('#firstEdName').val(), lastName: $('#lastEdName').val()});
-	
+
 	//Implemented solution for the AUTHORS field
 	//Create empty array for the update.
 	updatedAuthors = [];
@@ -203,7 +198,7 @@ Template.adminPublicationsEdit.events({
 	//Lenght of the css class author-first-n.
 	numberOfAuthors =$('.author-first-n').length;
 	//function that construct the updatedAuthors array
-	    for (i = 0; i < numberOfAuthors; i++) { 
+	    for (i = 0; i < numberOfAuthors; i++) {
             var author_firstName = $('.author-first-n')[i]; //Get the input info for the DOM
 			var author_lastName = $('.author-last-n')[i]    //Get the input info for the DOM
 			    authorFN[i] =author_firstName.value;        //Get the value of the input, prefilled, modified or created
@@ -214,7 +209,7 @@ Template.adminPublicationsEdit.events({
         }
         console.log('authors');
 		console.log(updatedAuthors);                        //Check the authors to add
-	
+
 	//Implemented solution for the EDITORS field
 	//Create empty array for the update.
 	updatedEditors = [];
@@ -225,7 +220,7 @@ Template.adminPublicationsEdit.events({
 	//Lenght of the css class editor-first-n.
 	numberOfEditors =$('.editors-first-n').length;
 	//function that construct the numberOfEditors array
-	    for (i = 0; i < numberOfEditors; i++) { 
+	    for (i = 0; i < numberOfEditors; i++) {
             var editor_firstName = $('.editors-first-n')[i]; //Get the input info for the DOM
 			var editor_lastName = $('.editors-last-n')[i]    //Get the input info for the DOM
 			    editorFN[i] =editor_firstName.value;        //Get the value of the input, prefilled, modified or created
@@ -236,8 +231,8 @@ Template.adminPublicationsEdit.events({
         }
         console.log('editors');
 		console.log(updatedEditors);                        //Check the editors to add
-    
-	
+
+
 	var temp = {};
 
     temp.title = $('#title').val();

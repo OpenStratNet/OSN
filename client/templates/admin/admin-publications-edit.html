@@ -107,15 +107,17 @@
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="editors" class="col-sm-2 control-label">Editor(s)</label>
+        {{#each inputsExistingEditors}}
+         <div class="form-group">
+          <label for="authors" class="col-sm-2 control-label">Editors(s)</label>
           <div class="col-sm-5">
-              <input type="text" class="form-control editors-first-n" name="editors" id="firstEdName"  placeholder="Enter Book Editor(s)">
+                <input type="text" class="form-control editors-first-n" name="authors" id="{{uniqidFirst}}" value="{{valueFirst}}"  placeholder="Enter First Name">
           </div>
-          <div class="col-sm-5">
-              <input type="text" class="form-control editors-last-n" name="editors" id="lastEdName"  placeholder="Enter Book Editor(s)">
+           <div class="col-sm-5">
+              <input type="text" class="form-control editors-last-n" name="authors" id="{{uniqidLast}}" value="{{valueLast}}" placeholder="Enter Last Name">
           </div>
         </div>
+        {{/each}}
 
         {{#each inputsEditors}}
           {{> editorsInputEdit}}
@@ -134,7 +136,7 @@
             <input type="text" class="form-control" id="link" value="{{link}}" name="pages" placeholder="Enter an external URL for more information">
           </div>
         </div>
-        
+
         {{#if attachmentExists}}
          <div class="form-group">
           <li>
