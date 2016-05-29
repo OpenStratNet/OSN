@@ -184,10 +184,10 @@ Template.adminNewsEvents.events({
       Bert.alert("New entry added.");
     }
 
-  	//Fire the email to all subscribers
+  	//Fire the email to all Subscribers
   	var news = '<header><img src="http://openstrategynetwork.com/img/osn_logoneu.png"></header><body style="background:#0B676E;color:#FFFFFF"><center>' +'<h1>New entry in our platform</h1>'+ '<h2>'+temp.title+'</h2>' + '<h3>'+temp.description+'</h3></center></body>';
-    for (i = 0; i < subscribers.find().count(); i++) {
-    var email_ = subscribers.find().fetch()[i].email;
+    for (i = 0; i < Subscribers.find().count(); i++) {
+    var email_ = Subscribers.find().fetch()[i].email;
       Meteor.call('sendEmail',
       email_, //To
       'Open Strategy Network <violetta.splitter@business.uzh.ch>', //from

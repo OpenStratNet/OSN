@@ -184,11 +184,11 @@ Template.profileSettings.events({
         delete Session.keys['changes'];
       }
     }
-    //subscribers collection updates if the email changed.
+    //Subscribers collection updates if the email changed.
     if (Subscribers.find({email: currentEmail}).count() > 0
       && Subscribers.findOne({email: currentEmail}).email != $('#email').val()) {
-      Meteor.call('subscribers.insert', {email: $('#email').val()});
-      Meteor.call('subscribers.remove', {_id: Subscribers.findOne({email: currentEmail})._id})
+      Meteor.call('Subscribers.insert', {email: $('#email').val()});
+      Meteor.call('Subscribers.remove', {_id: Subscribers.findOne({email: currentEmail})._id})
     }
 
     // merge with above update to mongoDB
@@ -211,10 +211,10 @@ Template.profileSettings.events({
       }
     });
 
-    // if the user changed his email his new email should be in the subscribers collection
-    // if (subscribers.findOne({email: Meteor.user().profile.email}).email === $('#email').val()) {
+    // if the user changed his email his new email should be in the Subscribers collection
+    // if (Subscribers.findOne({email: Meteor.user().profile.email}).email === $('#email').val()) {
     //   console.log("same");
-    // } else if (!subscribers.find({email: Meteor.user().profile.email}).count() > 0) {
+    // } else if (!Subscribers.find({email: Meteor.user().profile.email}).count() > 0) {
     //   console.log("different");
     // }
 
@@ -222,12 +222,12 @@ Template.profileSettings.events({
     // Meteor.users.update({_id: this._id}, {$set: temp} );
   },
   'click #unsubscribe': function () {
-    //Remove email from the subscribers collection
-    Meteor.call('subscribers.remove', {_id: Subscribers.findOne({email: Meteor.user().profile.email})._id})
+    //Remove email from the Subscribers collection
+    Meteor.call('Subscribers.remove', {_id: Subscribers.findOne({email: Meteor.user().profile.email})._id})
   },
   'click #subscribe': function () {
-    //Insert email to the subscribers collection
-    Meteor.call('subscribers.insert', {email: Meteor.user().profile.email});
+    //Insert email to the Subscribers collection
+    Meteor.call('Subscribers.insert', {email: Meteor.user().profile.email});
   },
   'click #security': function (event) {
     event.preventDefault();

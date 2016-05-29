@@ -40,17 +40,17 @@ Meteor.methods({
       });
     },
 	//Manage subscriptions
-	'subscribers.insert': function (email) {
+	'Subscribers.insert': function (email) {
         if (this.userId) {
             Subscribers.insert(email);
         }
     },
-    'subscribers.remove': function (id) {
+    'Subscribers.remove': function (id) {
         if (this.userId) {
             Subscribers.remove(id);
         }
     },
-    'subscribers.update': function (id, email) {
+    'Subscribers.update': function (id, email) {
         if (this.userId) {
             Subscribers.update(id, email);
         }
