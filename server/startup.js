@@ -18,7 +18,6 @@ Meteor.startup(function () {
           "fullName": "Melissa M. Appleyard",
         }
         ],
-        "fullNameAuthors": ["Henry W. Chesbrough", "Melissa M. Appleyard"],
         "title": "Open innovation and strategy",
         "journal": "California management review, 50 (1)",
         "outlet": "Published Paper",
@@ -30,14 +29,24 @@ Meteor.startup(function () {
         "authors": [{
           "lastName": "Whittington",
           "firstName": "Richard"
-        }, {
+        },
+        {
+          "fullName": "Richard Whittington",
+        },
+        {
           "lastName": "Cailluet",
           "firstName": "Ludovic "
-        }, {
+        },
+        {
+          "fullName": "Ludovic Cailluet",
+        },
+        {
           "lastName": "Douglas",
           "firstName": "Basak Yakis"
+        },
+        {
+          "fullName": "Basak Yakis Douglas",
         }],
-        "fullNameAuthors": ["Richard Whittington", "Ludovic Cailluet", "Basak Yakis Douglas"],
         "title": "Opening strategy: Evolution of a precarious profession",
         "outlet": "Published Paper",
         "journal": "British Journal of Management, 22 (3)",
@@ -49,17 +58,31 @@ Meteor.startup(function () {
         "authors": [{
           "lastName": "Stieger",
           "firstName": "D."
-        }, {
+        },
+        {
+          "fullName": "D. Stieger",
+        },
+        {
           "lastName": "Matzler",
           "firstName": "K."
-        }, {
+        },
+        {
+          "fullName": "K. Matzler",
+        },
+        {
           "lastName": "Chatterjee",
           "firstName": "S."
-        }, {
+        },
+        {
+          "fullName": "S. Chatterjee",
+        },
+        {
           "lastName": "Ladstaetter-Fussenegger",
           "firstName": "F."
+        },
+        {
+          "fullName": "F. Ladstaetter-Fussenegger",
         }],
-        "fullNameAuthors": ["D. Stieger", "K. Matzler", "S. Chatterjee", "F. Ladstaetter-Fussenegger"],
         "title": "Democratizing Strategy",
         "outlet": "Published Paper",
         "journal": "California Management Review, 54 (4)",
@@ -71,11 +94,17 @@ Meteor.startup(function () {
         "authors": [{
           "lastName": "Dobusch",
           "firstName": "Leonhard"
-        }, {
+        },
+        {
+          "fullName": "Leonhard Dobusch",
+        },
+        {
           "lastName": "Kapeller",
           "firstName": "Jakob"
+        },
+        {
+          "fullName": "Jakob Kapeller",
         }],
-        "fullNameAuthors": ["Leonhard Dobusch", "Jakob Kapeller"],
         "title": "Open Strategy between Crowd and Community: Lessons from Wikimedia and Creative Commons",
         "outlet": "Working Paper",
         "year": "2013",
