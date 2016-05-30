@@ -124,20 +124,28 @@ Template.adminPublications.events({
     }
 
 		var newAuthors = [];
+    // make a field full name field for the easysearch package
+    var newAuthorsFullName = [];
 		inputsAuthors = Session.get('inputsAuthors');
 		_.each(inputsAuthors, function(input) {
       newAuthors.push({firstName: $('#' + input.uniqidFirst).val(), lastName: $('#' + input.uniqidLast).val()});
+      newAuthorsFullName.push($('#' + input.uniqidFirst).val() + ' ' + $('#' + input.uniqidLast).val());
 		});
 
 		var newEditors = [];
+    // make a field full name field for the easysearch package
+    var newEditorsFullName = [];
 		inputsEditors = Session.get('inputsEditors');
 		_.each(inputsEditors, function(input) {
 		  newEditors.push({firstName: $('#' + input.uniqidFirst).val(), lastName: $('#' + input.uniqidLast).val()});
+      newEditorsFullName.push($('#' + input.uniqidFirst).val() + ' ' + $('#' + input.uniqidLast).val());
 		});
 
 		// add the first (i.e, default) author to the array
 		newAuthors.unshift({firstName: $('#firstAuName').val(), lastName: $('#lastAuName').val()});
+    newAuthorsFullName.unshift($('#firstAuName').val() + ' ' + $('#lastAuName').val());
 		newEditors.unshift({firstName: $('#firstEdName').val(), lastName: $('#lastEdName').val()});
+    newEditorsFullName.unshift($('#firstAuName').val() + ' ' + $('#lastAuName').val());
 
     Meteor.call('NewsEvents.insert', {
       title: "A New Publication Added to Bibliography",
@@ -152,7 +160,9 @@ Template.adminPublications.events({
 		Meteor.call('Publications.insert', {
 			title: $('#title').val(),
 			//authors: [$('#authors').val()],
+      fullNameAuthors: newAuthorsFullName,
 			authors: newAuthors,
+      fullNameEditors: newEditorsFullName,
 			editors: newEditors,
 			year: $('#year').val(),
       link: $('#link').val(),
