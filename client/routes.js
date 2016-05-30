@@ -81,8 +81,8 @@ Router.route('/profile-settings', {
   name: 'profileSettings'
 });
 
-Router.route('/reset-password', {
-  name: 'forgotPW'
+Router.route('/password-forgot', {
+  name: 'PWforgot'
 });
 
 // unsubscribe
