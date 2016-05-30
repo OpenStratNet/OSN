@@ -3,5 +3,10 @@ Template.loginModalTemplate.events({
     evt.preventDefault();
     Router.go('/joinus');
     $('#loginModal').modal('hide');
+  },
+  'click .forgot': function(evt) {
+	evt.preventDefault();
+    Router.go('/password-forgot');
+	$('#loginModal').modal('hide');
   }
 })
