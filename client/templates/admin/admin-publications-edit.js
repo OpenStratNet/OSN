@@ -205,9 +205,8 @@ Template.adminPublicationsEdit.events({
 			    authorFN[i] =author_firstName.value;        //Get the value of the input, prefilled, modified or created
 				authorLN[i] =author_lastName.value;         //Get the value of the input, prefilled, modified or created
 				updatedAuthors[i] = {"lastName" : authorLN[i], //.lastName
-				                     "firstName" : authorFN[i] //.firstName
-                                    };
-        updatedAuthorsFullName = authorFN[i] + ' ' + authorLN[i];
+				                     "firstName" : authorFN[i], //.firstName
+                              "fullName" : authorFN[i] + ' ' + authorLN[i]};
         }
         console.log('authors');
 		console.log(updatedAuthors);                        //Check the authors to add
@@ -229,9 +228,8 @@ Template.adminPublicationsEdit.events({
 			    editorFN[i] =editor_firstName.value;        //Get the value of the input, prefilled, modified or created
 				editorLN[i] =editor_lastName.value;         //Get the value of the input, prefilled, modified or created
 				updatedEditors[i] = {"lastName" : editorLN[i], //.lastName
-				                     "firstName" : editorFN[i] //.firstName
-                                    };
-        updatedEditorsFullName = editorFN[i] + ' ' + editorLN[i];
+				                     "firstName" : editorFN[i], //.firstName
+                             "fullName" : editorFN[i] + ' ' + editorLN[i]        };
         }
         console.log('editors');
 		console.log(updatedEditors);                        //Check the editors to add

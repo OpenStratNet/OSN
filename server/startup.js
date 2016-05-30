@@ -6,10 +6,18 @@ Meteor.startup(function () {
         "authors": [{
           "lastName": "Chesbrough",
           "firstName": "Henry W."
-        }, {
+        },
+        {
+          "fullName": "Henry W. Chesbrough",
+        },
+        {
           "lastName": "Appleyard",
           "firstName": "Melissa M."
-        }],
+        },
+        {
+          "fullName": "Melissa M. Appleyard",
+        }
+        ],
         "fullNameAuthors": ["Henry W. Chesbrough", "Melissa M. Appleyard"],
         "title": "Open innovation and strategy",
         "journal": "California management review, 50 (1)",

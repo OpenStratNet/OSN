@@ -79,7 +79,7 @@
 						{{/if}}
 						{{#if isInRole adminUserRole}}
 							<a href="{{pathFor route = 'adminPublicationsEdit'}}" class="button-download btn btn-primary btn-sm js-editPub"><span class="glyphicon glyphicon-edit"></span></a>
-						{{/if}}  
+						{{/if}}
 						</td>
 					</tr>
 					{{/each}}
@@ -134,7 +134,7 @@
 								{{/if}}
 								{{#if isInRole adminUserRole}}
 									<a href="{{pathFor route = 'adminPublicationsEdit'}}" class="button-download btn btn-primary btn-sm js-editPub"><span class="glyphicon glyphicon-edit"></span></a>
-								{{/if}}  
+								{{/if}}
 								</td>
 							</tr>
 							<!-- {{/each}} -->
@@ -149,8 +149,6 @@
 				</div>
 				{{/if}}
 			{{/EasySearch.IfInputEmpty}}
-
-		{{> EasySearch.LoadMore index=publicationsIndex}}
 		</div>
 	</section> <!-- end row -->
 </template>

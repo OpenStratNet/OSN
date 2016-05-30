@@ -128,8 +128,10 @@ Template.adminPublications.events({
     var newAuthorsFullName = [];
 		inputsAuthors = Session.get('inputsAuthors');
 		_.each(inputsAuthors, function(input) {
-      newAuthors.push({firstName: $('#' + input.uniqidFirst).val(), lastName: $('#' + input.uniqidLast).val()});
-      newAuthorsFullName.push($('#' + input.uniqidFirst).val() + ' ' + $('#' + input.uniqidLast).val());
+      newAuthors.push({firstName: $('#' + input.uniqidFirst).val(),
+                      lastName: $('#' + input.uniqidLast).val()},
+                      {fullName: $('#' + input.uniqidFirst).val() + ' ' + $('#' + input.uniqidLast).val()});
+      //newAuthorsFullName.push($('#' + input.uniqidFirst).val() + ' ' + $('#' + input.uniqidLast).val());
 		});
 
 		var newEditors = [];
@@ -137,15 +139,20 @@ Template.adminPublications.events({
     var newEditorsFullName = [];
 		inputsEditors = Session.get('inputsEditors');
 		_.each(inputsEditors, function(input) {
-		  newEditors.push({firstName: $('#' + input.uniqidFirst).val(), lastName: $('#' + input.uniqidLast).val()});
+		  newEditors.push({firstName: $('#' + input.uniqidFirst).val(),
+                      lastName: $('#' + input.uniqidLast).val()},
+                      {fullName: $('#' + input.uniqidFirst).val() + ' ' + $('#' + input.uniqidLast).val()});
       newEditorsFullName.push($('#' + input.uniqidFirst).val() + ' ' + $('#' + input.uniqidLast).val());
 		});
 
 		// add the first (i.e, default) author to the array
-		newAuthors.unshift({firstName: $('#firstAuName').val(), lastName: $('#lastAuName').val()});
+		newAuthors.unshift({firstName: $('#firstAuName').val(), lastName: $('#lastAuName').val()},
+                {fullName: $('#firstAuName').val() + ' ' + $('#lastAuName').val()});
     newAuthorsFullName.unshift($('#firstAuName').val() + ' ' + $('#lastAuName').val());
-		newEditors.unshift({firstName: $('#firstEdName').val(), lastName: $('#lastEdName').val()});
-    newEditorsFullName.unshift($('#firstAuName').val() + ' ' + $('#lastAuName').val());
+
+		newEditors.unshift({firstName: $('#firstEdName').val(), lastName: $('#lastEdName').val()},
+                {fullName: $('#firstEdName').val() + ' ' + $('#lastEdName').val()});
+    newEditorsFullName.unshift($('#firstEdName').val() + ' ' + $('#lastEdName').val());
 
     Meteor.call('NewsEvents.insert', {
       title: "A New Publication Added to Bibliography",
