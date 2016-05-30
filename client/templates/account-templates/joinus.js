@@ -13,7 +13,9 @@ Template.joinUs.onRendered(function () {
 	            $('.form-group:eq(15) .help-block').addClass('hide');
 	            $("[name='at-field-password_again']").css({"border-style":"solid", "border-color":"green"})
             }else{
-				$("[name='at-field-password_again']").css({"border-style":"", "border-color":""})
+				$("[name='at-field-password_again']").css({"border-style":"", "border-color":""});
+				$('.form-group:eq(15) .glyphicon.glyphicon-remove.form-control-feedback').removeClass('glyphicon-ok').css("color","");
+	            $('.form-group:eq(15) .help-block').removeClass('hide');
 			}
         }	
     }, 10);
