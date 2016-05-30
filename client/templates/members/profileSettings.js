@@ -15,6 +15,13 @@ Template.profileSettings.onRendered(function () {
 });
 
 Template.personal.helpers({
+  subscribed: function () {
+    if (Subscribers.find({email: Meteor.user().profile.email}).count() > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  },
   userData: function () {
     return Meteor.user();
   },
@@ -37,13 +44,6 @@ Template.social.helpers({
 });
 
 Template.profileSettings.helpers({
-  subscribed: function () {
-    if (Subscribers.find({email: Meteor.user().profile.email}).count() > 0) {
-      return true;
-    } else {
-      return false;
-    }
-  },
   setPersonal: function () {
     if (settingsTab.get() === "personal") {
       return true;
