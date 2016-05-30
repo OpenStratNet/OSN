@@ -1,0 +1,35 @@
+<template name="PWforgot">
+  <header>
+    <div class="header-content">
+      <!-- Breadcrumb -->
+      <ol class="breadcrumb text-left">
+        <li><a class="breadcrumb-link" href="{{pathFor route = 'home'}}">Home</a></li>
+        <li class="active">forgot-password</li>
+      </ol><!-- End of Breadcrumb -->
+
+      <div class="header-content-inner">
+        <h1>DO YOU FORGOT YOUR PASSWORD?</h1>
+        <hr>
+        <h2>Get a new one by email</h2>
+      </div>
+    </div>
+  </header> <!-- ./Stage -->
+
+
+  <div class="container extra-spacing-bottom extra-spacing-top">
+    <div class="putdown extra-spacing-bottom extra-spacing-top">
+      <form id="forgotPassword">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Registered email">
+                </div>
+            </div>
+        </div>
+       <center><button id="sendPassword" type="submit" class="btn btn-primary btn-newsletter">GET PASSWORD RESET INSTRUCTIONS</button></center>
+      </form>
+    </div> 
+  </div> <!-- ./Form -->
+  
+</template>  
