@@ -197,6 +197,7 @@ Template.profileSettings.events({
         // from personal settings
         "profile.firstName": $('#firstname').val(),
         "profile.lastName": $('#lastname').val(),
+        "profile.name": $('#firstname').val() + ' ' + $('#lastname').val(),
         "profile.institution": $('#institution').val(),
         "profile.interests": $('#interests').val(),
         "profile.position": $('#position').val(),
