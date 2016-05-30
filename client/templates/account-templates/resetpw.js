@@ -18,8 +18,11 @@ Template.PWforgot.events({
                  'Open Strategy Network Password Updated',
                  news+'<footer style="background:#CCCCCC;color:black;"><center><h4>Now you can access to our website <a href='+Meteor.absoluteUrl()+'>http://openstrategynetwork.com</a></h4></center></footer>'
 			 );
+       $('#email').val("");
+       Bert.alert("New password was sent to your email address.");
+
 			 }else{
 		     Bert.alert("Invalid email");
 			 }
 	 }
-})
+});
