@@ -191,7 +191,7 @@ Template.profileSettings.events({
       Meteor.call('Subscribers.remove', {_id: Subscribers.findOne({email: currentEmail})._id})
     }
 
-    // merge with above update to mongoDB
+    // TODO: merge with above update to mongoDB
     Meteor.users.update({_id: Meteor.userId()}, {
       $set: {
         // from personal settings
@@ -210,13 +210,6 @@ Template.profileSettings.events({
         "profile.facebook": $('#facebook').val()
       }
     });
-
-    // if the user changed his email his new email should be in the Subscribers collection
-    // if (Subscribers.findOne({email: Meteor.user().profile.email}).email === $('#email').val()) {
-    //   console.log("same");
-    // } else if (!Subscribers.find({email: Meteor.user().profile.email}).count() > 0) {
-    //   console.log("different");
-    // }
 
     Bert.alert("Changes saved.");
     // Meteor.users.update({_id: this._id}, {$set: temp} );
@@ -256,7 +249,7 @@ Template.profileSettings.events({
           Bert.alert("Password changed.");
         }
       })
-      
+
     }
   }
 });
