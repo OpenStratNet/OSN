@@ -1,5 +1,6 @@
 //Meteor Methods.
 Meteor.methods({
+	//Contacts
     'insertContact': function (contact) {
       userContact.insert(contact);
     },
@@ -9,18 +10,23 @@ Meteor.methods({
     'updateUserContact': function (id, contact) {
       userContact.update({_id: id}, {$set: {profile: contact}});
     },
+	//Roles
 	'toRoleAdmin':function(user){
 		Roles.addUsersToRoles(user, 'admin');
 	},
 	'removeAdminRole':function(user){
 		Roles.removeUsersFromRoles(user, 'admin');
 	},
+	//Users
 	'updateEmail':function(id,email){
 		Meteor.users.update({_id:id},{$set:{'emails.0.address':email}})
 	},
     'updateUser': function (id, profile) {
       Meteor.users.update({_id: id}, {$set: {profile: profile}});
     },
+	'updatePassword': function(userId,password){
+	  Accounts.setPassword(userId, password, {logout: false});
+	},
 	//Manage tags and categories
     'insertTag': function (tagname) {
       Tags.insert({"name": tagname});
