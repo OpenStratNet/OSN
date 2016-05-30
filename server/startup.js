@@ -28,24 +28,19 @@ Meteor.startup(function () {
       {
         "authors": [{
           "lastName": "Whittington",
-          "firstName": "Richard"
-        },
-        {
-          "fullName": "Richard Whittington",
+          "firstName": "Richard",
+		  "fullName": "Richard Whittington"
+		  
         },
         {
           "lastName": "Cailluet",
-          "firstName": "Ludovic "
-        },
-        {
-          "fullName": "Ludovic Cailluet",
+          "firstName": "Ludovic ",
+		  "fullName": "Ludovic Cailluet"
         },
         {
           "lastName": "Douglas",
-          "firstName": "Basak Yakis"
-        },
-        {
-          "fullName": "Basak Yakis Douglas",
+          "firstName": "Basak Yakis",
+		  "fullName": "Basak Yakis Douglas"
         }],
         "title": "Opening strategy: Evolution of a precarious profession",
         "outlet": "Published Paper",
@@ -57,31 +52,26 @@ Meteor.startup(function () {
       {
         "authors": [{
           "lastName": "Stieger",
-          "firstName": "D."
-        },
-        {
-          "fullName": "D. Stieger",
+          "firstName": "D.",
+		  "fullName": "D. Stieger"
         },
         {
           "lastName": "Matzler",
-          "firstName": "K."
+          "firstName": "K.",
+		  "fullName": "K. Matzler"
         },
         {
           "fullName": "K. Matzler",
         },
         {
           "lastName": "Chatterjee",
-          "firstName": "S."
-        },
-        {
-          "fullName": "S. Chatterjee",
+          "firstName": "S.",
+		  "fullName": "S. Chatterjee"
         },
         {
           "lastName": "Ladstaetter-Fussenegger",
-          "firstName": "F."
-        },
-        {
-          "fullName": "F. Ladstaetter-Fussenegger",
+          "firstName": "F.",
+		  "fullName": "F. Ladstaetter-Fussenegger"
         }],
         "title": "Democratizing Strategy",
         "outlet": "Published Paper",
@@ -93,17 +83,13 @@ Meteor.startup(function () {
       {
         "authors": [{
           "lastName": "Dobusch",
-          "firstName": "Leonhard"
-        },
-        {
-          "fullName": "Leonhard Dobusch",
+          "firstName": "Leonhard",
+		  "fullName": "Leonhard Dobusch"
         },
         {
           "lastName": "Kapeller",
-          "firstName": "Jakob"
-        },
-        {
-          "fullName": "Jakob Kapeller",
+          "firstName": "Jakob",
+		  "fullName": "Jakob Kapeller"
         }],
         "title": "Open Strategy between Crowd and Community: Lessons from Wikimedia and Creative Commons",
         "outlet": "Working Paper",

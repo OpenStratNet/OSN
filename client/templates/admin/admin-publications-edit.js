@@ -191,7 +191,7 @@ Template.adminPublicationsEdit.events({
 	//Implemented solution for the AUTHORS field
 	//Create empty array for the update.
 	updatedAuthors = [];
-  updatedAuthorsFullName = [];
+    //updatedAuthorsFullName = [];
 	//Create empty array for the first name.
 	authorFN = [];
 	//Create empty array for the last name.
@@ -206,7 +206,8 @@ Template.adminPublicationsEdit.events({
 				authorLN[i] =author_lastName.value;         //Get the value of the input, prefilled, modified or created
 				updatedAuthors[i] = {"lastName" : authorLN[i], //.lastName
 				                     "firstName" : authorFN[i], //.firstName
-                              "fullName" : authorFN[i] + ' ' + authorLN[i]};
+                                     "fullName" : authorFN[i] + ' ' + authorLN[i] //Full name
+									 };
         }
         console.log('authors');
 		console.log(updatedAuthors);                        //Check the authors to add
@@ -214,7 +215,7 @@ Template.adminPublicationsEdit.events({
 	//Implemented solution for the EDITORS field
 	//Create empty array for the update.
 	updatedEditors = [];
-  updatedEditorsFullName = [];
+    //updatedEditorsFullName = [];
 	//Create empty array for the first name.
 	editorFN = [];
 	//Create empty array for the last name.
@@ -229,7 +230,8 @@ Template.adminPublicationsEdit.events({
 				editorLN[i] =editor_lastName.value;         //Get the value of the input, prefilled, modified or created
 				updatedEditors[i] = {"lastName" : editorLN[i], //.lastName
 				                     "firstName" : editorFN[i], //.firstName
-                             "fullName" : editorFN[i] + ' ' + editorLN[i]        };
+                                     "fullName" : editorFN[i] + ' ' + editorLN[i]
+									 };
         }
         console.log('editors');
 		console.log(updatedEditors);                        //Check the editors to add
@@ -239,8 +241,8 @@ Template.adminPublicationsEdit.events({
 
     temp.title = $('#title').val();
     temp.authors = updatedAuthors,
-    temp.fullNameAuthors = updatedAuthorsFullName,
-    temp.fullNameEditors = updatedEditorsFullName,
+    //temp.fullNameAuthors = updatedAuthorsFullName,
+    //temp.fullNameEditors = updatedEditorsFullName,
     temp.editors = updatedEditors,
     temp.year = $('#year').val(),
     temp.type = $('input[name=outlet-type]:checked').val(),
