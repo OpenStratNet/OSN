@@ -11,7 +11,7 @@ Template.PWforgot.events({
 		    var newPassword = Math.floor(Math.random()*900000) + 100000;
 			console.log(''+newPassword)
 		     Meteor.call('updatePassword',userID,''+newPassword);
-			 var news = '<header><img src="http://openstrategynetwork.com/img/osn_logoneu.png"></header><body style="background:#0B676E;color:#FFFFFF"><center><h1>SUCCESS IN PASSWORD RESET</h1><h3>Your new password is:  '+newPassword+'</h3><h4>If you are using Safari browser, please type the password, <b>do not copy-paste it</b></h4></center></body>';
+			 var news = '<header><img src="http://openstrategynetwork.com/img/osn_logoneu.png"></header><body style="background:#0B676E;color:#FFFFFF"><center><h1>SUCCESS IN PASSWORD RESET</h1><h3>Your new password is:  '+newPassword+'</h3><h4>Please type-in the password, <b>do not copy-paste it</b></h4></center></body>';
 	         Meteor.call('sendEmail',
 	             userEmail, //The email
                  'Open Strategy Network <violetta.splitter@business.uzh.ch>',
