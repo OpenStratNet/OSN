@@ -1,5 +1,3 @@
-var basicAuth = new HttpBasicAuth("uzh", "osn");
-basicAuth.protect();
 // Facebook OAuth configuration
 
 if (ServiceConfiguration.configurations.find({
