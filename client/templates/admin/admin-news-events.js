@@ -157,6 +157,7 @@ Template.adminNewsEvents.events({
       var temp = {};
   		temp.title = $('#title').val();
   		temp.description = $('#description').summernote('code');
+      temp.cleanDescription = $('#description').summernote('code').replace(/<\/?[^>]+(>|$)/g, "");
 
       if (template.find('#selectCategory').value !== '') {
         temp.category = template.find('#selectCategory').value;

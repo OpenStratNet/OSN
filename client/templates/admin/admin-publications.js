@@ -175,6 +175,7 @@ Template.adminPublications.events({
       link: $('#link').val(),
 			type: $('input[name=outlet-type]:checked').val(),
 			abstract: $('#abstract').summernote('code'),
+      cleanAbstract: $('#abstract').summernote('code').replace(/<\/?[^>]+(>|$)/g, ""),
       outlet: selectedOutlet,
 
 			// Published Paper (pp)

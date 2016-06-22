@@ -248,6 +248,7 @@ Template.adminPublicationsEdit.events({
     temp.type = $('input[name=outlet-type]:checked').val(),
     temp.link = $('#link').val(),
     temp.abstract = $('#abstract').summernote('code'),
+    temp.cleanAbstract = $('#abstract').summernote('code').replace(/<\/?[^>]+(>|$)/g, ""),
     temp.outlet = selectedOutlet,
 
     // Published Paper (pp)
