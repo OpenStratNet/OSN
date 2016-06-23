@@ -11,7 +11,7 @@ Router.configure({
 });
 
 AccountsTemplates.configure({
-    defaultLayout: 'myLayout',
+    defaultLayout: 'ApplicationLayout',
 });
 
 Router.route('/', {
@@ -124,6 +124,15 @@ Router.route('/news-and-events/:_id', {
   }
 });
 
+// Alternative to useraccounts package: create a manual route
+
+/* Router.route('/verify-email/:token', {
+  onAfterAction: function () {
+    Bert.alert("Email address validated. Thank you.");
+    this.redirect('/profile-settings');
+  }
+}); */
+
 // ---
 Router.map(function() {
     this.route('joinUs', {
@@ -139,11 +148,14 @@ AccountsTemplates.configureRoute('forgotPwd', {
   name: 'forgotPW',
   path: '/forgot-password',
   template: 'forgotPW',
-  layoutTemplate: 'ApplicationLayout',
 });
 AccountsTemplates.configureRoute('resetPwd');
 AccountsTemplates.configureRoute('signIn');
 AccountsTemplates.configureRoute('signUp', {
   redirect: '/profile-settings'
 });
-// AccountsTemplates.configureRoute('verifyEmail');
+AccountsTemplates.configureRoute('verifyEmail', {
+  onAfterAction: function () {
+      Bert.alert("Email address validated. Thank you.");
+    }
+});

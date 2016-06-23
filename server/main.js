@@ -61,11 +61,12 @@ Accounts.onCreateUser(function (options, user) {
     user.profile = {};
   }
 
-  if (options.email) {
+// Alternative to useraccounts package: send verfication email manually
+  /*if (options.email) {
       Meteor.setTimeout(function () {
         Accounts.sendVerificationEmail(user._id);
       }, 2 * 1000);
-    }
+    }*/
 
   //pass over api-service-values to the profile
 
