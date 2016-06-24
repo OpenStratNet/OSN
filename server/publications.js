@@ -29,6 +29,22 @@ Meteor.publish('profilePic', function () {
 Meteor.publish('users', function () {
   return Meteor.users.find();
 });
+//Allow rules
+Meteor.users.allow({
+        "update": function (userId, doc) {
+            return true; 
+        }
+    });
+Meteor.users.allow({
+        "remove": function (userId, doc) {
+            return true; 
+        }
+    });
+Meteor.users.allow({
+        "insert": function (userId, doc) {
+            return true; 
+        }
+    });
 
 //Some publications for the implemented solutions.
 Meteor.publish('allSubscribers',function(){
