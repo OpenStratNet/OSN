@@ -11,7 +11,7 @@ Router.configure({
 });
 
 AccountsTemplates.configure({
-    defaultLayout: 'ApplicationLayout',
+    defaultLayout: 'myLayout',
 });
 
 Router.route('/', {
@@ -58,6 +58,13 @@ Router.route('/admin-members-list', {
   name: 'adminMembersList'
 });
 
+Router.route('/member-edit/:_id', {
+  name: 'memberEdit',
+  data: function(){
+	  tokenUser = Meteor.users.findOne({_id: this.params._id})
+    return tokenUser;
+  }
+});
 // *** MEMBERS ROUTES ***
 
 // bibliography
@@ -124,15 +131,6 @@ Router.route('/news-and-events/:_id', {
   }
 });
 
-// Alternative to useraccounts package: create a manual route
-
-/* Router.route('/verify-email/:token', {
-  onAfterAction: function () {
-    Bert.alert("Email address validated. Thank you.");
-    this.redirect('/profile-settings');
-  }
-}); */
-
 // ---
 Router.map(function() {
     this.route('joinUs', {
@@ -148,14 +146,11 @@ AccountsTemplates.configureRoute('forgotPwd', {
   name: 'forgotPW',
   path: '/forgot-password',
   template: 'forgotPW',
+  layoutTemplate: 'ApplicationLayout',
 });
 AccountsTemplates.configureRoute('resetPwd');
 AccountsTemplates.configureRoute('signIn');
 AccountsTemplates.configureRoute('signUp', {
   redirect: '/profile-settings'
 });
-AccountsTemplates.configureRoute('verifyEmail', {
-  onAfterAction: function () {
-      Bert.alert("Email address validated. Thank you.");
-    }
-});
+// AccountsTemplates.configureRoute('verifyEmail');
