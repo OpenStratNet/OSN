@@ -58,13 +58,22 @@ Router.route('/admin-members-list', {
   name: 'adminMembersList'
 });
 
-Router.route('/member-edit/:_id', {
-  name: 'memberEdit',
-  data: function(){
+Router.route('/member-edit/:_id',{name:'memberEdit', //Edit user
+    waitOn: function(){
+        return [        
+            Meteor.subscribe('users'),
+			Meteor.subscribe('allSubscribers')
+        ]
+	},
+    data: function(){
 	  tokenUser = Meteor.users.findOne({_id: this.params._id})
     return tokenUser;
-  }
-});
+   },     
+	action : function () {
+       if (this.ready()) this.render();
+    }
+    });
+
 // *** MEMBERS ROUTES ***
 
 // bibliography
