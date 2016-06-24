@@ -203,14 +203,23 @@ Template.adminPublicationsEdit.events({
             var author_firstName = $('.author-first-n')[i]; //Get the input info for the DOM
 			var author_lastName = $('.author-last-n')[i]    //Get the input info for the DOM
 			    authorFN[i] =author_firstName.value;        //Get the value of the input, prefilled, modified or created
-				authorLN[i] =author_lastName.value;         //Get the value of the input, prefilled, modified or created
+				authorLN[i] =author_lastName.value; 				//Get the value of the input, prefilled, modified or created
 				updatedAuthors[i] = {"lastName" : authorLN[i], //.lastName
 				                     "firstName" : authorFN[i], //.firstName
                                      "fullName" : authorFN[i] + ' ' + authorLN[i] //Full name
 									 };
         }
+	//Purgue the array of empty fields
+	    for (i = 0; i < updatedAuthors.length; i++) {
+                if(updatedAuthors[i].fullName == ""){
+					updatedAuthors.splice(i,1)
+				}
+        }
         console.log('authors');
-		console.log(updatedAuthors);                        //Check the authors to add
+		//Check the authors to add
+		for (i = 0; i < updatedAuthors.length; i++) {
+               console.log(updatedAuthors[i].fullName)
+        };
 
 	//Implemented solution for the EDITORS field
 	//Create empty array for the update.
@@ -233,10 +242,18 @@ Template.adminPublicationsEdit.events({
                                      "fullName" : editorFN[i] + ' ' + editorLN[i]
 									 };
         }
+		//Purgue the array of empty fields
+	    for (i = 0; i < updatedEditors.length; i++) {
+                if(updatedEditors[i].fullName == ""){
+					updatedEditors.splice(i,1)
+				}
+        }
+		//Check the editors to add
         console.log('editors');
-		console.log(updatedEditors);                        //Check the editors to add
-
-
+		for (i = 0; i < updatedEditors.length; i++) {
+               console.log(updatedEditors[i].fullName)
+        };                        
+		
 	var temp = {};
 
     temp.title = $('#title').val();
