@@ -209,18 +209,18 @@ Template.adminPublicationsEdit.events({
                                      "fullName" : authorFN[i] + ' ' + authorLN[i] //Full name
 									 };
         }
-	//Purgue the array of empty fields
+    //Purgue the array of empty fields
+	    updatedAuthorsFixed = [];
 	    for (i = 0; i < updatedAuthors.length; i++) {
-                if(updatedAuthors[i].fullName == ""){
-					updatedAuthors.splice(i,1)
+                if(updatedAuthors[i].fullName != ' '){
+					updatedAuthorsFixed[updatedAuthorsFixed.length] = updatedAuthors[i];
 				}
         }
-        console.log('authors');
 		//Check the authors to add
-		for (i = 0; i < updatedAuthors.length; i++) {
-               console.log(updatedAuthors[i].fullName)
+        console.log('Authors');
+		for (i = 0; i < updatedAuthorsFixed.length; i++) {
+               console.log(updatedAuthorsFixed[i].fullName)
         };
-
 	//Implemented solution for the EDITORS field
 	//Create empty array for the update.
 	updatedEditors = [];
@@ -242,40 +242,40 @@ Template.adminPublicationsEdit.events({
                                      "fullName" : editorFN[i] + ' ' + editorLN[i]
 									 };
         }
-		//Purgue the array of empty fields
+    //Purgue the array of empty fields
+		updatedEditorsFixed = [];
 	    for (i = 0; i < updatedEditors.length; i++) {
-                if(updatedEditors[i].fullName == ""){
-					updatedEditors.splice(i,1)
+                if(newEditors[i].updatedEditors != ' '){
+					updatedEditorsFixed[updatedEditorsFixed.length] = updatedEditors[i];
 				}
         }
 		//Check the editors to add
         console.log('editors');
-		for (i = 0; i < updatedEditors.length; i++) {
-               console.log(updatedEditors[i].fullName)
-        };                        
-		
+		for (i = 0; i < updatedEditorsFixed.length; i++) {
+               console.log(updatedEditorsFixed[i].fullName)
+        };
 	var temp = {};
 
     temp.title = $('#title').val();
-    temp.authors = updatedAuthors,
+    temp.authors = updatedAuthorsFixed;
     //temp.fullNameAuthors = updatedAuthorsFullName,
     //temp.fullNameEditors = updatedEditorsFullName,
-    temp.editors = updatedEditors,
-    temp.year = $('#year').val(),
-    temp.type = $('input[name=outlet-type]:checked').val(),
-    temp.link = $('#link').val(),
-    temp.abstract = $('#abstract').summernote('code'),
-    temp.cleanAbstract = $('#abstract').summernote('code').replace(/<\/?[^>]+(>|$)/g, ""),
-    temp.outlet = selectedOutlet,
+    temp.editors = updatedEditorsFixed;
+    temp.year = $('#year').val();
+    temp.type = $('input[name=outlet-type]:checked').val();
+    temp.link = $('#link').val();
+    temp.abstract = $('#abstract').summernote('code');
+    temp.cleanAbstract = $('#abstract').summernote('code').replace(/<\/?[^>]+(>|$)/g, "");
+    temp.outlet = selectedOutlet;
 
     // Published Paper (pp)
-    temp.journal = $('#journal').val(),
+    temp.journal = $('#journal').val();
     // Published Paper (pp) or Book Chapter (bc)
-    temp.pages = $('#pages').val(),
+    temp.pages = $('#pages').val();
 
     // Book (bk) or Book Chapter (bc)
-    temp.publisher = $('#publisher').val(),
-    temp.location = $('#location').val(),
+    temp.publisher = $('#publisher').val();
+    temp.location = $('#location').val();
 
     // when last time modified
     temp.modifiedAt = new Date ();
