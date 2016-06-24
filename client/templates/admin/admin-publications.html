@@ -15,12 +15,12 @@
 
 				 <div class="form-group">
 	        <label for="authors" class="col-sm-2 control-label">Author(s)</label>
-	        <div class="col-sm-5">
-	            <input type="text" class="form-control" name="authors" id="firstAuName"  placeholder="Enter First Name">
-	        </div>
-           <div class="col-sm-5">
-              <input type="text" class="form-control" name="authors" id="lastAuName"  placeholder="Enter Last Name">
-          </div>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control author-first-n" name="authorsFistName"  placeholder="Enter First Name">
+                </div>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control author-last-n" name="authorsLastName" placeholder="Enter Last Name">
+                </div>
 		    </div>
 
       {{#each inputsAuthors}}
@@ -108,12 +108,12 @@
 
       <div class="form-group">
         <label for="editors" class="col-sm-2 control-label">Editor(s)</label>
-        <div class="col-sm-5">
-            <input type="text" class="form-control" name="editors" id="firstEdName"  placeholder="Enter Book Editor(s)">
-        </div>
-        <div class="col-sm-5">
-            <input type="text" class="form-control" name="editors" id="lastEdName"  placeholder="Enter Book Editor(s)">
-        </div>
+            <div class="col-sm-5">
+                <input type="text" class="form-control editors-first-n" name="editorsFirstName" placeholder="Enter First Name">
+            </div>
+            <div class="col-sm-5">
+                <input type="text" class="form-control editors-last-n" name="editorsLastName" placeholder="Enter Last Name">
+            </div>
 			</div>
 
       {{#each inputsEditors}}
@@ -164,23 +164,23 @@
 <template name="authorsInput">
 	 <div class="form-group">
         <label for="authors" class="col-sm-2 control-label">Author(s)</label>
-        <div class="col-sm-5">
-            <input type="text" class="form-control" name="firstName" value="{{valueFirst}}" id="{{uniqidFirst}}"  placeholder="Enter First Name">
-        </div>
-        <div class="col-sm-5">
-            <input type="text" class="form-control" name="lastName" value="{{valueLast}}" id="{{uniqidLast}}"  placeholder="Enter Last Name">
-        </div>
+            <div class="col-sm-5">
+                <input type="text" class="form-control author-first-n" name="authorsFistName"  placeholder="Enter First Name">
+            </div>
+            <div class="col-sm-5">
+                <input type="text" class="form-control author-last-n" name="authorsLastName" placeholder="Enter Last Name">
+            </div>
     </div>
 </template>
 
 <template name="editorsInput">
 	 <div class="form-group">
         <label for="authors" class="col-sm-2 control-label">Editor(s)</label>
-        <div class="col-sm-5">
-            <input type="text" class="form-control" name="authors" value="{{valueFirst}}" id="{{uniqidFirst}}"  placeholder="Enter First Name">
-        </div>
-        <div class="col-sm-5">
-            <input type="text" class="form-control" name="authors" value="{{valueLast}}" id="{{uniqidLast}}"  placeholder="Enter Last Name">
-        </div>
+            <div class="col-sm-5">
+                <input type="text" class="form-control editors-first-n" name="editorsFirstName" placeholder="Enter First Name">
+            </div>
+            <div class="col-sm-5">
+                <input type="text" class="form-control editors-last-n" name="editorsLastName" placeholder="Enter Last Name">
+            </div>
     </div>
 </template>
