@@ -1,6 +1,6 @@
 Template.adminPublicationsList.helpers({
   publicationsData: function () {
-    return Publications.find();
+    return Publications.find({}, {sort: {"title": 1}});
   }
   // images: function () {
   //   return Images.find(); // Where Images is an FS.Collection instance
