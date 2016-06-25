@@ -122,37 +122,75 @@ Template.adminPublications.events({
     if (attachmentIdVar.get()) {
       temp.attachmentId = attachmentIdVar.get();
     }
-
-		var newAuthors = [];
-    // make a field full name field for the easysearch package
-    var newAuthorsFullName = [];
-		inputsAuthors = Session.get('inputsAuthors');
-		_.each(inputsAuthors, function(input) {
-      newAuthors.push({firstName: $('#' + input.uniqidFirst).val(),
-                      lastName: $('#' + input.uniqidLast).val()},
-                      {fullName: $('#' + input.uniqidFirst).val() + ' ' + $('#' + input.uniqidLast).val()});
-      //newAuthorsFullName.push($('#' + input.uniqidFirst).val() + ' ' + $('#' + input.uniqidLast).val());
-		});
-
-		var newEditors = [];
-    // make a field full name field for the easysearch package
-    var newEditorsFullName = [];
-		inputsEditors = Session.get('inputsEditors');
-		_.each(inputsEditors, function(input) {
-		  newEditors.push({firstName: $('#' + input.uniqidFirst).val(),
-                      lastName: $('#' + input.uniqidLast).val()},
-                      {fullName: $('#' + input.uniqidFirst).val() + ' ' + $('#' + input.uniqidLast).val()});
-      newEditorsFullName.push($('#' + input.uniqidFirst).val() + ' ' + $('#' + input.uniqidLast).val());
-		});
-
-		// add the first (i.e, default) author to the array
-		newAuthors.unshift({firstName: $('#firstAuName').val(), lastName: $('#lastAuName').val()},
-                {fullName: $('#firstAuName').val() + ' ' + $('#lastAuName').val()});
-    newAuthorsFullName.unshift($('#firstAuName').val() + ' ' + $('#lastAuName').val());
-
-		newEditors.unshift({firstName: $('#firstEdName').val(), lastName: $('#lastEdName').val()},
-                {fullName: $('#firstEdName').val() + ' ' + $('#lastEdName').val()});
-    newEditorsFullName.unshift($('#firstEdName').val() + ' ' + $('#lastEdName').val());
+	//Authors
+    updatedAuthors = [];
+    //updatedAuthorsFullName = [];
+	//Create empty array for the first name.
+	authorFN = [];
+	//Create empty array for the last name.
+	authorLN = [];
+	//Lenght of the css class author-first-n.
+	numberOfAuthors =$('.author-first-n').length;
+	//function that construct the updatedAuthors array
+	    for (i = 0; i < numberOfAuthors; i++) {
+            var author_firstName = $('.author-first-n')[i]; //Get the input info for the DOM
+			var author_lastName = $('.author-last-n')[i]    //Get the input info for the DOM
+			    authorFN[i] =author_firstName.value;        //Get the value of the input, prefilled, modified or created
+				authorLN[i] =author_lastName.value; 				//Get the value of the input, prefilled, modified or created
+				updatedAuthors[i] = {"lastName" : authorLN[i], //.lastName
+				                     "firstName" : authorFN[i], //.firstName
+                                     "fullName" : authorFN[i] + ' ' + authorLN[i] //Full name
+									 };
+        }
+    //Purgue the array of empty fields
+	    newAuthors = [];
+		newAuthorsFullName = [];
+	    for (i = 0; i < updatedAuthors.length; i++) {
+                if(updatedAuthors[i].firstName && updatedAuthors[i].lastName){
+					newAuthors[newAuthors.length] = updatedAuthors[i];
+					newAuthorsFullName[newAuthorsFullName.length] = updatedAuthors[i].fullName;
+				}
+        }
+		//Check the authors to add
+        console.log('Authors');
+		for (i = 0; i < newAuthors.length; i++) {
+               console.log(newAuthors[i].fullName)
+        };
+	//Implemented solution for the EDITORS field
+	//Create empty array for the update.
+	updatedEditors = [];
+    //updatedEditorsFullName = [];
+	//Create empty array for the first name.
+	editorFN = [];
+	//Create empty array for the last name.
+	editorLN = [];
+	//Lenght of the css class editor-first-n.
+	numberOfEditors =$('.editors-first-n').length;
+	//function that construct the numberOfEditors array
+	    for (i = 0; i < numberOfEditors; i++) {
+            var editor_firstName = $('.editors-first-n')[i]; //Get the input info for the DOM
+			var editor_lastName = $('.editors-last-n')[i]    //Get the input info for the DOM
+			    editorFN[i] =editor_firstName.value;        //Get the value of the input, prefilled, modified or created
+				editorLN[i] =editor_lastName.value;         //Get the value of the input, prefilled, modified or created
+				updatedEditors[i] = {"lastName" : editorLN[i], //.lastName
+				                     "firstName" : editorFN[i], //.firstName
+                                     "fullName" : editorFN[i] + ' ' + editorLN[i]
+									 };
+        }
+    //Purgue the array of empty fields
+		newEditors = [];
+		newEditorsFullName = [];
+	    for (i = 0; i < updatedEditors.length; i++) {
+                if(updatedEditors[i].firstName && updatedEditors[i].firstName){
+					newEditors[newEditors.length] = updatedEditors[i];
+					newEditorsFullName[newEditorsFullName.length] = updatedEditors[i].fullName;
+				}
+        }
+		//Check the editors to add
+        console.log('editors');
+		for (i = 0; i < newEditors.length; i++) {
+               console.log(newEditors[i].fullName)
+        };
 
     Meteor.call('NewsEvents.insert', {
       title: "A New Publication Added to Bibliography",
