@@ -53,7 +53,7 @@ if (ServiceConfiguration.configurations.find({
 Accounts.onCreateUser(function (options, user) {
   if (options.profile) {
     user.profile = options.profile;
-    user.profile.name = options.profile.firstName + ' ' + options.profile.lastName;
+    user.profile.fullName = options.profile.firstName + ' ' + options.profile.lastName;
     user.profile.email = options.email;
 	Subscribers.insert({email: user.profile.email}); //Insert the email on the Subscribers collection for the first time.
 
@@ -77,7 +77,7 @@ Accounts.onCreateUser(function (options, user) {
     // });
     user.profile.firstName = user.services.facebook.first_name;
     user.profile.lastName = user.services.facebook.last_name;
-	user.profile.name = user.profile.firstName + ' ' + user.profile.lastName;
+	  user.profile.fullName = user.services.facebook.first_name + ' ' + user.services.facebook.last_name;
     user.profile.gender = user.services.facebook.gender;
     user.profile.email = user.services.facebook.email;
     user.profile.picture = "http://graph.facebook.com/" + user.services.facebook.id + "/picture/?type=large";
@@ -92,7 +92,7 @@ Accounts.onCreateUser(function (options, user) {
   if (user.services.google) {
     user.profile.firstName = user.services.google.given_name;
     user.profile.lastName = user.services.google.family_name;
-	user.profile.name = user.profile.firstName + ' ' + user.profile.lastName;
+	  user.profile.fullName = user.services.google.given_name + ' ' + user.services.google.family_name;
     user.profile.gender = user.services.google.gender;
     user.profile.email = user.services.google.email;
     user.profile.picture = user.services.google.picture;
@@ -119,7 +119,9 @@ Accounts.onCreateUser(function (options, user) {
   }
 
   if (user.services.linkedin) {
-    user.profile.name = user.services.linkedin.firstName + ' ' + user.services.linkedin.lastName;
+    user.profile.firstName = user.services.linkedin.firstName;
+    user.profile.lastName = user.services.linkedin.lastName;
+    user.profile.fullName = user.services.linkedin.firstName + ' ' + user.services.linkedin.lastName;
     user.profile.email = user.services.linkedin.emailAddress;
     user.profile.picture = user.services.linkedin.pictureUrl;
 	Subscribers.insert({email: user.profile.email}); //Insert the email on the Subscribers collection for the first time.
