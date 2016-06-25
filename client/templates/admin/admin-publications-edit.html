@@ -1,5 +1,5 @@
 <template name="adminPublicationsEdit">
-    <div class="container extra-spacing-bottom extra-spacing-top">
+    <div class="container extra-spacing-bottom extra-spacing-top" id="template">
 		<div class="putdown extra-spacing-bottom">
             <h1 class="extra-spacing-bottom">EDIT ENTRY</h1>
             <hr>
@@ -109,7 +109,7 @@
 
         {{#each inputsExistingEditors}}
          <div class="form-group">
-          <label for="authors" class="col-sm-2 control-label">Editors(s)</label>
+          <label for="authors" class="col-sm-2 control-label">Editor(s)</label>
           <div class="col-sm-5">
                 <input type="text" class="form-control editors-first-n" name="authors" id="{{uniqidFirst}}" value="{{valueFirst}}"  placeholder="Enter First Name">
           </div>
