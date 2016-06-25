@@ -11,7 +11,7 @@ Router.configure({
 });
 
 AccountsTemplates.configure({
-    defaultLayout: 'myLayout',
+    defaultLayout: 'ApplicationLayout',
 });
 
 Router.route('/', {
@@ -60,7 +60,7 @@ Router.route('/admin-members-list', {
 
 Router.route('/member-edit/:_id',{name:'memberEdit', //Edit user
     waitOn: function(){
-        return [        
+        return [
             Meteor.subscribe('users'),
 			Meteor.subscribe('allSubscribers')
         ]
@@ -68,7 +68,7 @@ Router.route('/member-edit/:_id',{name:'memberEdit', //Edit user
     data: function(){
 	  tokenUser = Meteor.users.findOne({_id: this.params._id})
     return tokenUser;
-   },     
+   },
 	action : function () {
        if (this.ready()) this.render();
     }
@@ -162,4 +162,8 @@ AccountsTemplates.configureRoute('signIn');
 AccountsTemplates.configureRoute('signUp', {
   redirect: '/profile-settings'
 });
-// AccountsTemplates.configureRoute('verifyEmail');
+AccountsTemplates.configureRoute('verifyEmail', {
+  onAfterAction: function () {
+      Bert.alert("Email address validated. Thank you.");
+    }
+});
