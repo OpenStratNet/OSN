@@ -40,7 +40,8 @@ Template.adminPublicationsEdit.onRendered(function() {
 
 Template.adminPublicationsEdit.helpers({
   pubEntry: function () {
-    pubEntryComplete = Publications.findOne({_id: this._id});
+	var pubId = window.location.href.split('/').pop();
+    pubEntryComplete = Publications.findOne({_id: pubId});
     existingAuthors = [];
     for (var i = 0; i < pubEntryComplete.authors.length; i++) {
       existingAuthors.push({uniqidFirst: Math.ceil(Math.random() * 100000), valueFirst: pubEntryComplete.authors[i].firstName, uniqidLast: Math.ceil(Math.random() * 100000), valueLast: pubEntryComplete.authors[i].lastName});
@@ -57,7 +58,7 @@ Template.adminPublicationsEdit.helpers({
     Session.set("inputsExistingAuthors", existingAuthors);
     Session.set("inputsExistingEditors", existingEditors);
     // return whole Publication in general
-    return Publications.findOne({_id: this._id});
+    return Publications.findOne({_id: pubId});
   },
   ppSelected: function () {
     if (Session.get("outletChoiceEdit") === "pp") {
@@ -90,6 +91,9 @@ Template.adminPublicationsEdit.helpers({
   },
   randomizer: function() {
     //uniqidFirstEdit = Math.floor(Math.random() * 100000); // Give a unique ID so you can pull _this_ input when you click remove
+  },
+  attachmentURL: function(){
+	  return Meteor.absoluteUrl()+'cfs/files/attachments/';
   }
 });
 
