@@ -14,6 +14,7 @@ Template.adminPublicationsEdit.onCreated(function() {
   Session.set('inputsExistingAuthors', []);
   Session.set('inputsExistingEditors', []);
   Session.setDefault("outletChoiceEdit","");
+  Session.set('template', $('#template').html()); //Set the html in a session variable
 });
 
 Template.adminPublicationsEdit.onRendered(function() {
@@ -161,35 +162,6 @@ Template.adminPublicationsEdit.events({
     else {
       selectedOutlet = "Working Paper";
     }
-
-    //var newAuthors = [];
-    //inputsAuthors = Session.get('inputsAuthors');
-
-    // each input feld mit name=authors
-    // firstName und lastName in allAuthors
-    //temp.authors = allAuthors
-
-    //_.each(inputsAuthors, function(input) {
-    //  newAuthors.push({firstName: $('#' + input.uniqidFirst).val(), lastName: $('#' + input.uniqidLast).val()});
-    //});
-
-    //var newEditors = [];
-   // inputsEditors = Session.get('inputsEditors');
-    //_.each(inputsEditors, function(input) {
-    //  newEditors.push({firstName: $('#' + input.uniqidFirst).val(), lastName: $('#' + input.uniqidLast).val()});
-    //});
-
-    // add the existing (i.e, default) authors ro an array
-
-    //*for (var i = 0; i < pubEntryComplete.authors.length; i++) {
-    //  newAuthors.unshift({firstName: existingAuthors[i]["valueFirst"], lastName: existingAuthors[i]["valueLast"]}); //
-    //};
-
-    // newAuthors.unshift({firstName: $('#firstAuName').val(), lastName: $('#lastAuName').val()});
-    //newEditors.unshift({firstName: $('#firstEdName').val(), lastName: $('#lastEdName').val()});
-
-	//Implemented solution for the AUTHORS field
-	//Create empty array for the update.
 	updatedAuthors = [];
     //updatedAuthorsFullName = [];
 	//Create empty array for the first name.
@@ -211,9 +183,11 @@ Template.adminPublicationsEdit.events({
         }
     //Purgue the array of empty fields
 	    updatedAuthorsFixed = [];
+		updatedAuthorsFullName = [];
 	    for (i = 0; i < updatedAuthors.length; i++) {
-                if(updatedAuthors[i].fullName != ' '){
+                if(updatedAuthors[i].firstName && updatedAuthors[i].lastName){
 					updatedAuthorsFixed[updatedAuthorsFixed.length] = updatedAuthors[i];
+					updatedAuthorsFullName[updatedAuthorsFullName.length] = updatedAuthors[i].fullName;
 				}
         }
 		//Check the authors to add
@@ -244,9 +218,11 @@ Template.adminPublicationsEdit.events({
         }
     //Purgue the array of empty fields
 		updatedEditorsFixed = [];
+		updatedEditorsFullName = [];
 	    for (i = 0; i < updatedEditors.length; i++) {
-                if(newEditors[i].updatedEditors != ' '){
+                if(updatedEditors[i].firstName && updatedEditors[i].firstName){
 					updatedEditorsFixed[updatedEditorsFixed.length] = updatedEditors[i];
+					updatedEditorsFullName[updatedEditorsFullName.length] = updatedEditors[i].fullName;
 				}
         }
 		//Check the editors to add
@@ -258,9 +234,9 @@ Template.adminPublicationsEdit.events({
 
     temp.title = $('#title').val();
     temp.authors = updatedAuthorsFixed;
-    //temp.fullNameAuthors = updatedAuthorsFullName,
-    //temp.fullNameEditors = updatedEditorsFullName,
+    temp.fullNameAuthors = updatedAuthorsFullName;
     temp.editors = updatedEditorsFixed;
+	temp.fullNameEditors = updatedEditorsFullName;
     temp.year = $('#year').val();
     temp.type = $('input[name=outlet-type]:checked').val();
     temp.link = $('#link').val();
@@ -285,16 +261,10 @@ Template.adminPublicationsEdit.events({
     }
     Meteor.call('Publications.update', {_id: this._id}, {$set: temp});
 
-    // $('#addPub')[0].reset();
-    // $('#abstract').summernote('code', '');
-
-    Session.set("inputsAuthors", []);
-    // $('#title').val('');
-    // $('#authors').val('');
-    // $('#year').val('');
-    // $('#abstract').val('');
-    // $("input:radio").removeAttr("checked");
-
+    Session.set("inputsAuthors", []); //Reset inputs
+	Session.set("inputsEditors", []); //Reset inputs
+    $('#template').html(Session.get('template')); //Force to re-render the template
+    //Bert alert
     Bert.alert("Changes saved");
   }
 });
