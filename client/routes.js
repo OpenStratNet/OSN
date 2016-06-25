@@ -32,9 +32,17 @@ Router.route('/admin-news-events-list/', {
 
 Router.route('/admin-news-events-edit/:_id', {
   name: 'adminNewsEventsEdit',
-  data: function(){
-    return NewsEvents.findOne({_id: this.params._id});
-  }
+    waitOn: function(){
+        return [
+            Meteor.subscribe('newsevents')
+        ]
+	},
+    data: function(){
+        return NewsEvents.findOne({_id: this.params._id});
+    },
+	action : function () {
+        if (this.ready()) this.render();
+    }
 });
 
 //admin publications
@@ -48,9 +56,17 @@ Router.route('/admin-publications-list/', {
 
 Router.route('/admin-publications-edit/:_id', {
   name: 'adminPublicationsEdit',
-  data: function(){
-    return Publications.findOne({_id: this.params._id});
-  }
+    waitOn: function(){
+        return [
+            Meteor.subscribe('publications')
+        ]
+	},
+    data: function(){
+        return Publications.findOne({_id: this.params._id});
+    },
+    action : function () {
+        if (this.ready()) this.render();
+    }
 });
 
 //admin members
