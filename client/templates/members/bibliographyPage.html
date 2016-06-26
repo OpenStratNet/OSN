@@ -19,12 +19,16 @@
 					</div>
 					<!-- Abstract -->
 					<div class="col-sm-8 col-xs-12">
-							<h3 class="text-left">{{title}}</h3>
-							<!-- Maybe add later a citation system.  -->
-							<!-- <h3 class="text-left">Citation</h3>
-							<p class="text-muted extra-spacing-bottom"> {{#each authors}} {{this.firstName}} {{this.lastName}}. {{/each}} {{title}}. {{year}}.</p>
-							<h3 class="text-left">Abstract</h3> -->
-							<p class="extra-spacing-bottom">{{{abstract}}}</p>
+							<h3 class="text-left">Information</h3>
+							<p class="text-muted extra-spacing-bottom"> {{#each authors}} {{this.firstName}} {{this.lastName}}. {{/each}}
+								{{title}}. {{year}}.
+								{{#if isWP}} Working paper. {{/if}}
+								{{#if isBK}} Published Book {{/if}} 
+								{{#if isBC}} Book Chapter {{/if}}
+								{{#if isPP}} Published paper. {{/if}}
+							</p>
+							<h3 class="text-left">Abstract</h3>
+							<p class="extra-spacing-bottom">{{abstract}}</p>
 							{{#if attachmentExists}}
 							<a class="btn btn-primary btn-icon" href="{{ attachment.url }}"><span class="glyphicon glyphicon-download"></span>DOWNLOAD</a>
 							{{/if}}
