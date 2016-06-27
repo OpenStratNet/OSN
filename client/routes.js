@@ -17,6 +17,7 @@ AccountsTemplates.configure({
 // Home route
 Router.route('/', {
     name: 'home',
+	template: 'newsEvents',
     waitOn: function(){
         return [
             Meteor.subscribe('newsevents')
