@@ -19,21 +19,25 @@ Template.navbar.events({
   'click #at-facebook': function (evt, temp) {
     Meteor.loginWithFacebook();
     $('#loginModal').modal('hide');
+    $('.navbar .navbar-toggle').click();
     showLogin.set(false);
   },
   'click #at-google': function (evt, temp) {
     Meteor.loginWithGoogle();
     $('#loginModal').modal('hide');
+    $('.navbar .navbar-toggle').click();
     showLogin.set(false);
   },
   'click #at-linkedin': function (evt, temp) {
     Meteor.loginWithLinkedin();
     $('#loginModal').modal('hide');
+    $('.navbar .navbar-toggle').click();
     showLogin.set(false);
   },
   'click #at-twitter': function (evt, temp) {
     Meteor.loginWithTwitter();
     $('#loginModal').modal('hide');
+    $('.navbar .navbar-toggle').click();
     showLogin.set(false);
   },
   'submit form': function (event, temp) {
@@ -51,6 +55,7 @@ Template.navbar.events({
         Bert.alert('Password and email do not match');
       }
     $('#loginModal').modal('hide');
+    $('.navbar .navbar-toggle').click();
     });
 
     // Delete later: idea was to show the login-div via CSS z-index
@@ -58,6 +63,7 @@ Template.navbar.events({
   },
   'click .js-logOut': function (evt, tpl) {
     AccountsTemplates.logout();
+    $('.navbar .navbar-toggle').click();
   },
   'click .js-logIn': function (evt, tpl) {
     // make a toggle event handler
