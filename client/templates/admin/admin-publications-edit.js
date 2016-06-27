@@ -18,7 +18,12 @@ Template.adminPublicationsEdit.onCreated(function() {
 });
 
 Template.adminPublicationsEdit.onRendered(function() {
-  $(document).ready(function() {
+    //On rendered code here
+});
+
+Template.adminPublicationsEdit.helpers({
+  afterLoad: function(){ //Fire the code when the page is full loaded.
+	Meteor.setTimeout(function(){ //Latency compensation 0.5sec
     $('#abstract').summernote({
       height: 200,
       toolbar: [
@@ -35,30 +40,32 @@ Template.adminPublicationsEdit.onRendered(function() {
         ['help', ['help']]
       ]
     });
-  });
-});
-
-Template.adminPublicationsEdit.helpers({
-  pubEntry: function () {
-	var pubId = window.location.href.split('/').pop();
-    pubEntryComplete = Publications.findOne({_id: pubId});
+	$('#preLoad').show(); //Display the html container when the back-end are ready.
+	return false;
+    },500);
+  },  
+  initForms: function () {
+	var pubId = window.location.href.split('/').pop(); //Get the id of the route
+    pubEntryComplete = Publications.findOne({_id: pubId}); //Create an object with the full 
+	//Create an array with authors / editors
     existingAuthors = [];
-    for (var i = 0; i < pubEntryComplete.authors.length; i++) {
-      existingAuthors.push({uniqidFirst: Math.ceil(Math.random() * 100000), valueFirst: pubEntryComplete.authors[i].firstName, uniqidLast: Math.ceil(Math.random() * 100000), valueLast: pubEntryComplete.authors[i].lastName});
+	existingEditors = []
+	//Fill the array with authors data
+    if(pubEntryComplete.authors){
+	    for (var i = 0; i < pubEntryComplete.authors.length; i++) {
+            existingAuthors.push({valueFirst: pubEntryComplete.authors[i].firstName, valueLast: pubEntryComplete.authors[i].lastName});
+        }	
+	}
+    //Fill the array with editors data
+    if (pubEntryComplete.editors) {
+        for (var i = 0; i < pubEntryComplete.editors.length; i++) {
+            existingEditors.push({valueFirst: pubEntryComplete.editors[i].firstName, valueLast: pubEntryComplete.editors[i].lastName});
+        }
     }
-
-    //editors are only relevant for book chapters
-    if (pubEntryComplete.editors.length > 0) {
-      existingEditors = []
-      for (var i = 0; i < pubEntryComplete.editors.length; i++) {
-        existingEditors.push({uniqidFirst: Math.ceil(Math.random() * 100000), valueFirst: pubEntryComplete.editors[i].firstName, uniqidLast: Math.ceil(Math.random() * 100000), valueLast: pubEntryComplete.editors[i].lastName});
-      }
-    }
-
+	//Update Session variables
     Session.set("inputsExistingAuthors", existingAuthors);
     Session.set("inputsExistingEditors", existingEditors);
-    // return whole Publication in general
-    return Publications.findOne({_id: pubId});
+    return false;
   },
   ppSelected: function () {
     if (Session.get("outletChoiceEdit") === "pp") {
@@ -89,9 +96,6 @@ Template.adminPublicationsEdit.helpers({
     console.log(Session.get('inputsExistingEditors'));
     return Session.get('inputsExistingEditors');
   },
-  randomizer: function() {
-    //uniqidFirstEdit = Math.floor(Math.random() * 100000); // Give a unique ID so you can pull _this_ input when you click remove
-  },
   attachmentURL: function(){
 	  return Meteor.absoluteUrl()+'cfs/files/attachments/';
   }
@@ -121,16 +125,12 @@ Template.adminPublicationsEdit.events({
   },
   'click #js-addAuthors': function () {
     var inputsAuthors = Session.get('inputsAuthors');
-    var uniqidFirst = Math.floor(Math.random() * 100000); // Give a unique ID so you can pull _this_ input when you click remove
-    var uniqidLast = Math.floor(Math.random() * 100000);
-    inputsAuthors.push({uniqidFirst: uniqidFirst, valueFirst: "", uniqidLast: uniqidLast, valueLast: ""});
+    inputsAuthors.push({valueFirst: "", valueLast: ""});
     Session.set('inputsAuthors', inputsAuthors);
   },
   'click #js-addEditors': function () {
     var inputsEditors = Session.get('inputsEditors');
-    var uniqidFirst = Math.ceil(Math.random() * 100000); // Give a unique ID so you can pull _this_ input when you click remove
-    var uniqidLast = Math.floor(Math.random() * 100000);
-    inputsEditors.push({uniqidFirst: uniqidFirst, valueFirst: "", uniqidLast: uniqidLast, valueLast: ""});
+    inputsEditors.push({valueFirst: "", valueLast: ""});
     Session.set('inputsEditors', inputsEditors);
   },
   'change #attachment': function(event, temp) {

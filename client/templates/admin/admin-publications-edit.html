@@ -1,9 +1,10 @@
 <template name="adminPublicationsEdit">
     <div class="container extra-spacing-bottom extra-spacing-top" id="template">
-		<div class="putdown extra-spacing-bottom">
+	{{initForms}} <!-- init the form values -->
+    <div id="preLoad" style="display:none;">
+	<div class="putdown extra-spacing-bottom">
             <h1 class="extra-spacing-bottom">EDIT ENTRY</h1>
             <hr>
-
       <form class="form-horizontal" id="addPub" role="form">
         <div class="form-group">
             <label for="title" class="col-sm-2 control-label">Title</label>
@@ -16,10 +17,10 @@
          <div class="form-group">
           <label for="authors" class="col-sm-2 control-label">Author(s)</label>
           <div class="col-sm-5">
-                <input type="text" class="form-control author-first-n" name="authors" id="{{uniqidFirst}}" value="{{valueFirst}}"  placeholder="Enter First Name">
+                <input type="text" class="form-control author-first-n" name="authors" value="{{valueFirst}}"  placeholder="Enter First Name">
           </div>
            <div class="col-sm-5">
-              <input type="text" class="form-control author-last-n" name="authors" id="{{uniqidLast}}" value="{{valueLast}}" placeholder="Enter Last Name">
+              <input type="text" class="form-control author-last-n" name="authors" value="{{valueLast}}" placeholder="Enter Last Name">
           </div>
         </div>
         {{/each}}
@@ -111,10 +112,10 @@
          <div class="form-group">
           <label for="authors" class="col-sm-2 control-label">Editor(s)</label>
           <div class="col-sm-5">
-                <input type="text" class="form-control editors-first-n" name="authors" id="{{uniqidFirst}}" value="{{valueFirst}}"  placeholder="Enter First Name">
+                <input type="text" class="form-control editors-first-n" name="authors" value="{{valueFirst}}"  placeholder="Enter First Name">
           </div>
            <div class="col-sm-5">
-              <input type="text" class="form-control editors-last-n" name="authors" id="{{uniqidLast}}" value="{{valueLast}}" placeholder="Enter Last Name">
+              <input type="text" class="form-control editors-last-n" name="authors" value="{{valueLast}}" placeholder="Enter Last Name">
           </div>
         </div>
         {{/each}}
@@ -163,7 +164,9 @@
 
 
     </div> <!-- putdown -->
+	</div> <!-- preload -->
   </div> <!-- container -->
+  {{afterLoad}} <!-- after load -->
 </template>
 
 <template name="authorsInputEdit">
