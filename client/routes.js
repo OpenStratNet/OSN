@@ -3,10 +3,6 @@ Router.configure({
   yieldTemplates: {
   navbar: {to: 'header'},
   footer: {to: 'footer'},
-  // logInWindow: {to: 'logIn'}
-  },
-  onAfterAction: function(){
-    $('.navbar-toggle').click();
   }
 });
 
@@ -182,4 +178,19 @@ AccountsTemplates.configureRoute('verifyEmail', {
   onAfterAction: function () {
       Bert.alert("Email address validated. Thank you.");
     }
+});
+
+Tracker.autorun(function () {
+	var current = Router.current();
+	Tracker.afterFlush(function () {
+		// Scroll window to top, like a real page reload.
+    window.onbeforeunload = function(){
+	     window.scrollTo(0,0);
+    }
+
+		// If the menu is currently open, collapse it.
+		if ($('.navbar .navbar-collapse.collapse.in').length > 0) {
+			$('.navbar .navbar-toggle').click();
+		}
+	});
 });
