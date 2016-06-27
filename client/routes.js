@@ -3,6 +3,10 @@ Router.configure({
   yieldTemplates: {
   navbar: {to: 'header'},
   footer: {to: 'footer'},
+  // logInWindow: {to: 'logIn'}
+  },
+  onAfterAction: function(){
+    $('.navbar-toggle').click();
   }
 });
 
@@ -10,24 +14,50 @@ AccountsTemplates.configure({
     defaultLayout: 'ApplicationLayout',
 });
 
+// Home route
 Router.route('/', {
-  name: 'home',
-  template: 'newsEvents'
+    name: 'home',
+    waitOn: function(){
+        return [
+            Meteor.subscribe('newsevents')
+        ]
+	},
+    data: function(){
+        return false
+    },
 });
 
 // *** ADMIN ROUTES ***
 
-// admin news
+// Admin news
 Router.route('/admin-news-events', {
-  name: 'adminNewsEvents'
+    name: 'adminNewsEvents',
+    waitOn: function(){
+        return [
+            Meteor.subscribe('newsevents')
+        ]
+	},
+    data: function(){
+        return false
+    },
 });
 
+// News and events admin list
 Router.route('/admin-news-events-list/', {
-  name: 'adminNewsEventsList'
+    name: 'adminNewsEventsList',
+    waitOn: function(){
+        return [
+            Meteor.subscribe('newsevents')
+        ]
+	},
+    data: function(){
+        return false
+    },
 });
 
+// Specific news and events edit
 Router.route('/admin-news-events-edit/:_id', {
-  name: 'adminNewsEventsEdit',
+    name: 'adminNewsEventsEdit',
     waitOn: function(){
         return [
             Meteor.subscribe('newsevents')
@@ -36,20 +66,35 @@ Router.route('/admin-news-events-edit/:_id', {
     data: function(){
         return NewsEvents.findOne({_id: this.params._id});
     },
-	action : function () {
-        if (this.ready()) this.render();
-    }
 });
 
-//admin publications
+// Admin publications
 Router.route('/admin-publications', {
-  name: 'adminPublications'
+    name: 'adminPublications',
+	waitOn: function(){
+        return [
+            Meteor.subscribe('publications')
+        ]
+	},
+    data: function(){
+        return false;
+    },
 });
 
+// Admin publications list
 Router.route('/admin-publications-list/', {
-  name: 'adminPublicationsList'
+    name: 'adminPublicationsList',
+    waitOn: function(){
+        return [
+            Meteor.subscribe('publications')
+        ]
+	},
+    data: function(){
+        return false;
+    },
 });
 
+// Spicific publication edit
 Router.route('/admin-publications-edit/:_id', {
   name: 'adminPublicationsEdit',
     waitOn: function(){
@@ -60,17 +105,23 @@ Router.route('/admin-publications-edit/:_id', {
     data: function(){
         return Publications.findOne({_id: this.params._id});
     },
-    action : function () {
-        if (this.ready()) this.render();
-    }
 });
 
-//admin members
+// Admin members
 Router.route('/admin-members-list', {
-  name: 'adminMembersList'
+    name: 'adminMembersList',
+    waitOn: function(){
+        return [
+            Meteor.subscribe('users')
+        ]
+    },
+    data: function(){
+        return false;
+    },  
 });
 
-Router.route('/member-edit/:_id',{name:'memberEdit', //Edit user
+// Member edit by admin
+Router.route('/member-edit/:_id',{name:'memberEdit', 
     waitOn: function(){
         return [
             Meteor.subscribe('users'),
@@ -78,56 +129,114 @@ Router.route('/member-edit/:_id',{name:'memberEdit', //Edit user
         ]
 	},
     data: function(){
-	  tokenUser = Meteor.users.findOne({_id: this.params._id})
-    return tokenUser;
-   },
-	action : function () {
-       if (this.ready()) this.render();
-    }
-    });
+	    tokenUser = Meteor.users.findOne({_id: this.params._id});
+        return tokenUser;
+    },
+});
 
 // *** MEMBERS ROUTES ***
 
-// bibliography
+// Bibliography
 Router.route('/bibliography', {
-  name: 'bibliography'
+    name: 'bibliography',
+    waitOn: function(){
+		console.log('');
+        return [
+            Meteor.subscribe('publications')
+        ]
+	},
+    data: function(){
+		   return{
+		   publications:Publications.find(),
+		   }
+	},
 });
 
-// specific publication
+// Specific publication
 Router.route('/bibliography/:_id', {
-  name: 'bibliographyPage',
-  data: function(){
-    return Publications.findOne({_id: this.params._id});
-  }
+    name: 'bibliographyPage',
+    waitOn: function(){
+		console.log('');
+        return [
+            Meteor.subscribe('publications')
+        ]
+    },
+    data: function(){
+        return Publications.findOne({_id: this.params._id});
+    },
 });
 
+// Members
 Router.route('/members', {
-  name: 'members'
+    name: 'members',
+    waitOn: function(){
+        return [
+            Meteor.subscribe('users')
+        ]
+    },
+    data: function(){
+        return false;
+    },
 });
 
+// Profile settings
 Router.route('/profile-settings', {
-  name: 'profileSettings'
+  name: 'profileSettings',
+  waitOn: function(){
+        return [
+            Meteor.subscribe('users')
+        ]
+  },
+  data: function(){
+    return false;
+  },
 });
 
+// Forget password
 Router.route('/password-forgot', {
-  name: 'PWforgot'
+  name: 'PWforgot',
+  waitOn: function(){
+        return [
+            Meteor.subscribe('users')
+        ]
+  },
+  data: function(){
+    return false;
+  },
 });
 
-// unsubscribe
+// Unsubscribe
 Router.route('/unsubscribe', {
-  name: 'unSubscribe'
+  name: 'unSubscribe',
+  waitOn: function(){
+        return [
+            Meteor.subscribe('users'),
+			Meteor.subscribe('allSubscribers')			
+        ]
+  },
+  data: function(){
+    return false;
+  },
 });
 
 // *** GUESTS ROUTES ***
 
- // all news and events
+// All news and events
 Router.route('/news-and-events', {
-  name: 'allNewsEvents'
+  name: 'allNewsEvents',
+  waitOn: function(){
+        return [
+            Meteor.subscribe('newsevents')
+        ]
+  },
+  data: function(){
+    return false;
+  },
 });
 
+// Contact information
 Router.route('/contact', {name: 'contact',
     waitOn: function(){
-		console.log('Iron router start');
         return [
             Meteor.subscribe('allusers'),
             Meteor.subscribe('alluserContact'),
@@ -140,19 +249,33 @@ Router.route('/contact', {name: 'contact',
 	},
 });
 
+// About us
 Router.route('/about-us', {
-  name: 'aboutUs'
-});
-
-// specific news and events
-Router.route('/news-and-events/:_id', {
-  name: 'newsAndEventsPage',
+  name: 'aboutUs',
+  waitOn: function(){
+        return [
+            Meteor.subscribe('newsevents')
+        ]
+  },
   data: function(){
-    return NewsEvents.findOne({_id: this.params._id});
-  }
+    return false;
+  },
 });
 
-// ---
+// Specific news and events
+Router.route('/news-and-events/:_id', {
+    name: 'newsAndEventsPage',
+    waitOn: function(){
+        return [
+            Meteor.subscribe('newsevents')
+        ]
+	},
+    data: function(){
+    return NewsEvents.findOne({_id: this.params._id});
+    },
+});
+
+// Map join us
 Router.map(function() {
     this.route('joinUs', {
         path: '/joinus',
@@ -178,19 +301,4 @@ AccountsTemplates.configureRoute('verifyEmail', {
   onAfterAction: function () {
       Bert.alert("Email address validated. Thank you.");
     }
-});
-
-Tracker.autorun(function () {
-	var current = Router.current();
-	Tracker.afterFlush(function () {
-		// Scroll window to top, like a real page reload.
-    window.onbeforeunload = function(){
-	     window.scrollTo(0,0);
-    }
-
-		// If the menu is currently open, collapse it.
-		if ($('.navbar .navbar-collapse.collapse.in').length > 0) {
-			$('.navbar .navbar-toggle').click();
-		}
-	});
 });
