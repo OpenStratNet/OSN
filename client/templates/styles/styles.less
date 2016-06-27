@@ -898,7 +898,7 @@ header .header-home .header-home-inner p {
                 padding: 0 10px 0 10px;
 		}
 
-        a {
+        a:not(.btn):link {
                 font-size: 16px;
         }
 
@@ -926,7 +926,7 @@ header .header-home .header-home-inner p {
 				font-size: 15px;
 		}
 
-        a {
+        a:not(.btn):link {
                 font-size: 15px;
         }
 
@@ -941,7 +941,7 @@ header .header-home .header-home-inner p {
 
 @media (max-width: 437px) {
 	header.home {
-		height: 420px;
+		height: 450px;
 
 		h1{
 				font-size: 20px;
@@ -951,10 +951,24 @@ header .header-home .header-home-inner p {
 
 		h2{
 				font-size: 14px;
+                margin-bottom: 15px;
 		}
 
-        a {
+        a:not(.btn):link {
                 font-size: 14px;
+        }
+
+        .btn-joinus{
+                margin: 0 10px 2px;
+        }
+
+        .some-header {
+                padding-right: 4px;
+                padding-left: 5px;
+        }
+
+        .btn-primary {
+                font-size: 13px;
         }
 
 		.header-home {
@@ -986,7 +1000,7 @@ header .header-bibliography {
 		padding-bottom: @spacing/2;
 		height: 350px;
         text-shadow: 0 0 1px #666666;
-        a {
+        a:not(.btn):link {
             text-shadow: none;
         }
         hr {
@@ -1090,7 +1104,7 @@ header {
 		padding-bottom: @spacing/2;
 		height: 350px;
         text-shadow: 0 0 1px #666666;
-        a {
+        a:not(.btn):link {
             text-shadow: none;
         }
         hr {
@@ -1163,6 +1177,10 @@ header .header-content .header-content-inner p {
                 padding-top: 25px;
 		}
 		h2{
+				font-size: 14px;
+		}
+
+        a:not(.btn):link{
 				font-size: 14px;
 		}
 
