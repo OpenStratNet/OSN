@@ -377,13 +377,13 @@ a.active {
 /*    margin-top: 30px;*/
 }
 
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .btn-primary.focus, .open > .dropdown-toggle.btn-primary {
 		background-color: darken(@brand-primary, 10%);
         color: white;
 }
 
-.btn-primary.active:hover {
-        background-color: darken(@brand-primary, 20%);
+.btn-primary:active:hover, .btn-primary.active:hover, .open > .dropdown-toggle.btn-primary:hover, .btn-primary:active:focus, .btn-primary.active:focus, .open > .dropdown-toggle.btn-primary:focus, .btn-primary.focus:active, .btn-primary.active.focus, .open > .dropdown-toggle.btn-primary.focus {
+        background-color: darken(@brand-primary, 15%);
         color: white;
 }
 
