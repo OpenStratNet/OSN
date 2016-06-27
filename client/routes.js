@@ -4,9 +4,6 @@ Router.configure({
   navbar: {to: 'header'},
   footer: {to: 'footer'},
   // logInWindow: {to: 'logIn'}
-  },
-  onAfterAction: function(){
-    $('.navbar-toggle').click();
   }
 });
 
@@ -35,7 +32,9 @@ Router.route('/admin-news-events', {
     name: 'adminNewsEvents',
     waitOn: function(){
         return [
-            Meteor.subscribe('newsevents')
+            Meteor.subscribe('newsevents'),
+			Meteor.subscribe('images'),
+			
         ]
 	},
     data: function(){
@@ -48,7 +47,8 @@ Router.route('/admin-news-events-list/', {
     name: 'adminNewsEventsList',
     waitOn: function(){
         return [
-            Meteor.subscribe('newsevents')
+            Meteor.subscribe('newsevents'),
+			Meteor.subscribe('images'),
         ]
 	},
     data: function(){
@@ -61,7 +61,8 @@ Router.route('/admin-news-events-edit/:_id', {
     name: 'adminNewsEventsEdit',
     waitOn: function(){
         return [
-            Meteor.subscribe('newsevents')
+            Meteor.subscribe('newsevents'),
+			Meteor.subscribe('images'),
         ]
 	},
     data: function(){
@@ -74,7 +75,9 @@ Router.route('/admin-publications', {
     name: 'adminPublications',
 	waitOn: function(){
         return [
-            Meteor.subscribe('publications')
+            Meteor.subscribe('publications'),
+			Meteor.subscribe('newsevents'),
+			Meteor.subscribe('images'),
         ]
 	},
     data: function(){
@@ -87,7 +90,9 @@ Router.route('/admin-publications-list/', {
     name: 'adminPublicationsList',
     waitOn: function(){
         return [
-            Meteor.subscribe('publications')
+            Meteor.subscribe('publications'),
+			Meteor.subscribe('newsevents'),
+			Meteor.subscribe('images'),
         ]
 	},
     data: function(){
@@ -100,7 +105,9 @@ Router.route('/admin-publications-edit/:_id', {
   name: 'adminPublicationsEdit',
     waitOn: function(){
         return [
-            Meteor.subscribe('publications')
+            Meteor.subscribe('publications'),
+			Meteor.subscribe('newsevents'),
+			Meteor.subscribe('images'),
         ]
 	},
     data: function(){
@@ -126,7 +133,7 @@ Router.route('/member-edit/:_id',{name:'memberEdit',
     waitOn: function(){
         return [
             Meteor.subscribe('users'),
-			Meteor.subscribe('allSubscribers')
+			Meteor.subscribe('allSubscribers'),
         ]
 	},
     data: function(){
@@ -143,7 +150,8 @@ Router.route('/bibliography', {
     waitOn: function(){
 		console.log('');
         return [
-            Meteor.subscribe('publications')
+            Meteor.subscribe('publications'),
+			Meteor.subscribe('images'),
         ]
 	},
     data: function(){
@@ -159,7 +167,9 @@ Router.route('/bibliography/:_id', {
     waitOn: function(){
 		console.log('');
         return [
-            Meteor.subscribe('publications')
+            Meteor.subscribe('publications'),
+			Meteor.subscribe('attachments'),
+			Meteor.subscribe('images'),
         ]
     },
     data: function(){
@@ -255,11 +265,14 @@ Router.route('/about-us', {
   name: 'aboutUs',
   waitOn: function(){
         return [
-            Meteor.subscribe('newsevents')
+            Meteor.subscribe('publications'),
+			Meteor.subscribe('categories'),
+			Meteor.subscribe('tags'),
+			
         ]
   },
   data: function(){
-    return false;
+    return {false};
   },
 });
 
@@ -302,4 +315,14 @@ AccountsTemplates.configureRoute('verifyEmail', {
   onAfterAction: function () {
       Bert.alert("Email address validated. Thank you.");
     }
+});
+// Tracker
+Tracker.autorun(function () {
+ var current = Router.current();
+ Tracker.afterFlush(function () {
+  // If the menu is currently open, collapse it.
+  if ($('.navbar .navbar-collapse.collapse.in').length > 0) {
+   $('.navbar .navbar-toggle').click();
+  }
+ });
 });
