@@ -17,7 +17,10 @@ Router.route('/', {
 	template: 'newsEvents',
     waitOn: function(){
         return [
-            Meteor.subscribe('newsevents')
+            Meteor.subscribe('newsevents'),
+			Meteor.subscribe('categories'),
+			Meteor.subscribe('tags'),
+			
         ]
 	},
     data: function(){
@@ -237,7 +240,9 @@ Router.route('/news-and-events', {
   name: 'allNewsEvents',
   waitOn: function(){
         return [
-            Meteor.subscribe('newsevents')
+            Meteor.subscribe('newsevents'),
+			Meteor.subscribe('images'),
+			
         ]
   },
   data: function(){
