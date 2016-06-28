@@ -11,8 +11,6 @@ Tracker.autorun(function () {
 Template.adminPublicationsEdit.onCreated(function() {
   Session.set('inputsAuthors', []); // on page load, no inputs
   Session.set('inputsEditors', []); // on page load, no inputs
-  Session.set('inputsExistingAuthors', []);
-  Session.set('inputsExistingEditors', []);
   Session.setDefault("outletChoiceEdit","");
   Session.set('template', $('#template').html()); //Set the html in a session variable
 });
@@ -44,29 +42,6 @@ Template.adminPublicationsEdit.helpers({
 	return false;
     },500);
   },  
-  initForms: function () {
-	var pubId = window.location.href.split('/').pop(); //Get the id of the route
-    pubEntryComplete = Publications.findOne({_id: pubId}); //Create an object with the full 
-	//Create an array with authors / editors
-    existingAuthors = [];
-	existingEditors = []
-	//Fill the array with authors data
-    if(pubEntryComplete.authors){
-	    for (var i = 0; i < pubEntryComplete.authors.length; i++) {
-            existingAuthors.push({valueFirst: pubEntryComplete.authors[i].firstName, valueLast: pubEntryComplete.authors[i].lastName});
-        }	
-	}
-    //Fill the array with editors data
-    if (pubEntryComplete.editors) {
-        for (var i = 0; i < pubEntryComplete.editors.length; i++) {
-            existingEditors.push({valueFirst: pubEntryComplete.editors[i].firstName, valueLast: pubEntryComplete.editors[i].lastName});
-        }
-    }
-	//Update Session variables
-    Session.set("inputsExistingAuthors", existingAuthors);
-    Session.set("inputsExistingEditors", existingEditors);
-    return false;
-  },
   ppSelected: function () {
     if (Session.get("outletChoiceEdit") === "pp") {
       return true;
