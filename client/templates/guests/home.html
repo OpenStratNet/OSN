@@ -42,7 +42,11 @@
                         <em>{{category}}</em><br>
                     </div>
                     {{/if}}
+										{{#if imageExists}}
+						        <h4>{{title}}<img alt="news thumbnail" class="news-thumbnail" src="{{ coverImage.url }}" /></h4>
+						        {{else}}
                     <h4>{{title}}</h4>
+										{{/if}}
                     {{#if keywordsExist}}
                     {{#each keywords}}<small class="tags">{{this}}</small>{{/each}}
                     {{/if}}
