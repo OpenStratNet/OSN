@@ -1,29 +1,46 @@
 Template.modalEditUser.helpers ({
 	edit:function(){
-		id=Session.get('contactId');
-		return userContact.findOne({_id:id});
+		if(Session.get('contactId')){
+			id=Session.get('contactId');
+		    return userContact.findOne({_id:id});
+		}else{
+			return false;
+		}
 	},
 	socialPic:function(){
-		id=Session.get('contactId');
-		sPic=Meteor.users.findOne({_id:id}).profile.picture;
+		if(Session.get('contactId')){
+			id=Session.get('contactId');
+		    sPic=Meteor.users.findOne({_id:id}).profile.picture;
 		    if(sPic){
-				return true;
+		    return true;
 			}
+		}else{
+			return false
+		}
 	},
 	normalPic:function(){
-		id=Session.get('contactId');
-		nPic=Meteor.users.findOne({_id:id}).profile.pictureID;
+		if(Session.get('contactId')){
+	        id=Session.get('contactId');
+		    nPic=Meteor.users.findOne({_id:id}).profile.pictureID;
 		    if(nPic){
-				return true;
+			return true;
 			}
+		}else{
+			return false
+		}
 	},
 	noPic:function(){
-		id=Session.get('contactId');
-		findPics=Meteor.users.findOne({_id:id}).profile.picture;
-		findPicn=Meteor.users.findOne({_id:id}).profile.pictureID;
-		if(findPics==undefined && findPicn==undefined || findPics==undefined && findPicn==false){
-			return true;
+		if(Session.get('contactId')){
+		    id=Session.get('contactId');
+		    findPics=Meteor.users.findOne({_id:id}).profile.picture;
+		    findPicn=Meteor.users.findOne({_id:id}).profile.pictureID;
+		    if(findPics==undefined && findPicn==undefined || findPics==undefined && findPicn==false){
+		    return true;
+		    }	
+		}else{
+			return false
 		}
+		
 		
 	}
 });
