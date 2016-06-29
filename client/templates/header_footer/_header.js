@@ -8,6 +8,9 @@ Template.navbar.helpers({
     if (showLogin.get() === true) {
       return true;
     }
+  },
+  rootUrl: function(){
+	  return Meteor.absoluteUrl();
   }
 });
 
