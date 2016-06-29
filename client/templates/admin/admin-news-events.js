@@ -157,7 +157,7 @@ Template.adminNewsEvents.events({
       var temp = {};
   		temp.title = $('#title').val();
   		temp.description = $('#description').summernote('code');
-      temp.cleanDescription = $('#description').summernote('code').replace(/<\/?[^>]+(>|$)/g, "");
+      temp.cleanDescription = $('#description').summernote('code').replace(/<\/?[^>]+(>|$)|(&nbsp;)|(&amp;)/g, "");
 
       if (template.find('#selectCategory').value !== '') {
         temp.category = template.find('#selectCategory').value;
@@ -168,9 +168,9 @@ Template.adminNewsEvents.events({
       }
 
   		temp.type = $('input[name=netype]:checked').val();
-  		temp.createdAt = moment().format('ddd, DD MMM YYYY hh:mm:ss');
+  		temp.createdAt = moment().format('ddd, DD MMM YYYY hh:mm:ss ZZ');
       // currently same as createdAt, this might change in the future
-      temp.publishedAt = moment().format('ddd, DD MMM YYYY hh:mm:ss');
+      temp.publishedAt = moment().format('ddd, DD MMM YYYY hh:mm:ss ZZ');
       temp.publishedRawFormat = new Date();
 
   		if (imageIdVar.get()) {

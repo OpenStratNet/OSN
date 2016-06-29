@@ -160,7 +160,8 @@ Template.adminNewsEventsEdit.events({
 		var temp = {};
 		temp.title = $('#title').val();
 		temp.description = $('#description').summernote('code');
-    temp.cleanDescription = $('#description').summernote('code').replace(/<\/?[^>]+(>|$)/g, "");
+    temp.cleanDescription = $('#description').summernote('code')
+        .replace(/<\/?[^>]+(>|$)|(&nbsp;)|(&amp;)/g, "");
 		temp.type = $('input[name=netype]:checked').val();
 		temp.category = $('#selectCategory')[0].value.toLowerCase(); // category are stored
     temp.keywords = $('#newsKeywords')[0].value.toLowerCase().split(','); //new keywords are stored.
