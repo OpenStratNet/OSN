@@ -99,6 +99,11 @@
         "default": "admin"
       }
     },
+    "aws": {
+      "AWSAccessKeyId" : "<AWS KEY>",
+      "AWSSecretAccessKey" : "<AWS SECRET>",
+      "AWSBucket" : "<AWS BUCKET>",
+    },
     "analyticsSettings": {
       "Google Analytics" : {"trackingId": "UA-XXXXXXXXXX"}
     }
