@@ -11,7 +11,7 @@
 										<span class="icon-bar"></span>
 										<span class="icon-bar"></span>
 								</button>
-								<a class="navbar-brand" href="{{pathFor route = 'home'}}"><img src="img/osn_logoneu.png" class="img-responsive" alt="Open Strategy Network"></a>
+								<a class="navbar-brand" href="{{pathFor 'home'}}"><img src="img/osn_logoneu.png" class="img-responsive" alt="Open Strategy Network"></a>
 						</div>
 
               <!-- Collect the nav links, forms, and other content for toggling -->
@@ -20,22 +20,22 @@
                     <li class="{{isActiveRoute name='aboutUs'}}">
                       <a href="{{pathFor route = 'aboutUs'}}">About</a>
                     </li>
-										<li class="{{isActiveRoute name='allNewsEvents'}}">
-											<a href="{{pathFor route = 'allNewsEvents'}}">News &amp; Events</a>
+										<li class="{{isActiveRoute name='allNewsEvents'}}">  
+											<a href="{{pathFor 'allNewsEvents'}}">News &amp; Events</a>
 										</li>
 										<li class="{{isActiveRoute name='bibliography'}}">
-											<a href="{{pathFor route = 'bibliography'}}">Bibliography</a>
+											<a href="{{pathFor 'bibliography'}}">Bibliography</a>
 										</li >
 										<li class="{{isActiveRoute name='members'}}">
-											<a href="{{pathFor route = 'members'}}">Members</a>
+											<a href="{{pathFor 'members'}}">Members</a>
 										</li>
                     {{#unless currentUser}}
 										<li class="{{isActiveRoute name='joinUs'}}">
-											<a href="{{pathFor route = 'joinUs'}}">Join us</a>
+											<a href="{{pathFor 'joinUs'}}">Join us</a>
 										</li>
                     {{/unless}}
 										<li class="{{isActiveRoute name='contact'}}">
-												<a href="{{pathFor route='contact'}}">Contact</a>
+												<a href="{{pathFor 'contact'}}">Contact</a>
 										</li>
                     {{#unless currentUser}}
                     <li><button id="loginButton" class="btn btn-primary btn-login-modal">LOG IN</button>
@@ -46,11 +46,11 @@
                       <ul class="dropdown-menu iconmenu">
                           <li><p class="profile-username">Hello {{currentUser.profile.firstName}}</p></li>
                           <li role="separator" class="divider"></li>
-                          <li><a class="profile-links icon settings" href="{{pathFor route = 'profileSettings'}}">Settings</a></li>
+                          <li><a class="profile-links icon settings" href="{{pathFor 'profileSettings'}}">Settings</a></li>
                           {{#if isInRole adminUserRole}}
-                          <li><a class="profile-links icon news" href="{{pathFor route = 'adminNewsEventsList'}}">News &amp; Events</a></li>
-                          <li><a class="profile-links icon publications" href="{{pathFor route = 'adminPublicationsList'}}">Publications</a></li>
-                          <li><a class="profile-links icon members" href="{{pathFor route = 'adminMembersList'}}">Members</a></li>
+                          <li><a class="profile-links icon news" href="{{pathFor 'adminNewsEventsList'}}">News &amp; Events</a></li>
+                          <li><a class="profile-links icon publications" href="{{pathFor 'adminPublicationsList'}}">Publications</a></li>
+                          <li><a class="profile-links icon members" href="{{pathFor 'adminMembersList'}}">Members</a></li>
                           {{/if}}
                           <li><a class="profile-links icon logout js-logOut" data-action="logout">Log out</a></li>
                       </ul>
