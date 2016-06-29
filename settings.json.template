@@ -102,7 +102,7 @@
     "aws": {
       "AWSAccessKeyId" : "<AWS KEY>",
       "AWSSecretAccessKey" : "<AWS SECRET>",
-      "AWSBucket" : "<AWS BUCKET>",
+      "AWSBucket" : "<AWS BUCKET>"
     },
     "analyticsSettings": {
       "Google Analytics" : {"trackingId": "UA-XXXXXXXXXX"}
