@@ -1,7 +1,5 @@
 Template.joinUs.onRendered(function () {
-  // if scrolling is necessary $("html, body").animate({ scrollTop: 0 });
-  window.scrollTo(0, 0);
-  // SCRIPT
+ // SCRIPT
     setInterval(function(){
         if(window.location.href.split('/').pop()=='joinus'){
 	        var pswVal = $("[name='at-field-password']")[0].value;
@@ -19,6 +17,14 @@ Template.joinUs.onRendered(function () {
 			}
         }	
     }, 10);
+});
+Template.joinUs.helpers({
+	afterLoad: function(){ //Fire the code when the page is full loaded.
+	    Meteor.setTimeout(function(){ //Latency compensation 0.5sec
+	    $('#preLoad').hide().show(5); //Display the html container when the back-end are ready.
+	    return false;
+    },10);
+  },  
 });
 
 Template.joinUs.events({

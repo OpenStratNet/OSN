@@ -20,7 +20,6 @@ Router.route('/', {
             Meteor.subscribe('newsevents'),
 			Meteor.subscribe('categories'),
 			Meteor.subscribe('tags'),
-			
         ]
 	},
     data: function(){
@@ -282,18 +281,20 @@ Router.route('/contact', {name: 'contact',
 
 // About us
 Router.route('/about-us', {
-  name: 'aboutUs',
-  waitOn: function(){
+    name: 'aboutUs',
+    waitOn: function(){
         return [
             Meteor.subscribe('alluserContact'),
 			Meteor.subscribe('categories'),
 			Meteor.subscribe('tags'),
-			
         ]
-  },
-  data: function(){
-    return {false};
-  },
+    },
+    data: function(){
+        return {false};
+    },
+    action:function(){
+	   if(this.ready){this.render();}
+    }
 });
 
 // Specific news and events
@@ -319,7 +320,7 @@ Router.map(function() {
 		waitOn: function() {
            return [
             Meteor.subscribe('allusers'),
-			Meteor.subscribe('allSubscribers')			
+			Meteor.subscribe('allSubscribers'),			
             ]
        },
     });

@@ -1,0 +1,10 @@
+<template name="applicationLayout">
+    <div class="sticky-wrapper">
+	{{> yield region = "header"}}
+	{{> yield}}
+    <div class="push"></div>
+    </div>
+    <div class="footer">
+    {{> yield region = "footer"}}
+    </div>
+</template>
