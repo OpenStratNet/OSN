@@ -4,3 +4,7 @@ settings.json
 ## IntelliJ IDEA files
 .idea
 *.iml
+
+## Meteor Up X (mupx) config file
+## https://github.com/arunoda/meteor-up/tree/mupx
+mup.json
