@@ -20,7 +20,8 @@
 							<!-- Info -->
 							<div class="col-sm-8 col-xs-12">
 								{{#if imageExists}}
-								<h3 class="text-left extra-spacing-bottom">{{title}}<img alt="news thumbnail" class="news-thumbnail" src="{{ coverImage.url }}" /></h3>
+                                <h3 class="text-left extra-spacing-bottom">{{title}}</h3>
+                                <img alt="news thumbnail" class="news-thumbnail-article" src="{{ coverImage.url }}" />
 								{{else}}
 								<h3 class="text-left extra-spacing-bottom">{{title}}</h3>
 								{{/if}}
