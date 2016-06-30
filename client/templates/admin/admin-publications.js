@@ -195,6 +195,7 @@ Template.adminPublications.events({
     Meteor.call('NewsEvents.insert', {
       title: "A New Publication Added to Bibliography",
       description: "The publication \"" + $('#title').val() + "\" was added to the bibliography. ",
+      cleanDescription: "The publication \"" + $('#title').val() + "\" was added to the bibliography. ",
       type: "news",
       createdAt: moment().format('ddd, DD MMM YYYY hh:mm:ss'),
       publishedAt: moment().format('ddd, DD MMM YYYY hh:mm:ss'),
