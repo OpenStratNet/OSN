@@ -15,7 +15,7 @@ Template.joinUs.onRendered(function () {
 				$('.form-group:eq(15) .glyphicon.glyphicon-remove.form-control-feedback').removeClass('glyphicon-ok').css("color","");
 	            $('.form-group:eq(15) .help-block').removeClass('hide');
 			}
-        }	
+        }
     }, 10);
 });
 Template.joinUs.helpers({
@@ -24,14 +24,15 @@ Template.joinUs.helpers({
 	    $('#preLoad').hide().show(5); //Display the html container when the back-end are ready.
 	    return false;
     },10);
-  },  
+  },
 });
 
-Template.joinUs.events({
-  'click .js-scrollToForm': function (evt, tpl) {
-    evt.preventDefault();
-    $('html, body').animate({
-        scrollTop: $('#js-scrollStop').offset().top - 35
-    }, 2000);
-  }
-});
+// buggy joinus button deactivated
+// Template.joinUs.events({
+//   'click .js-scrollToForm': function (evt, tpl) {
+//     evt.preventDefault();
+//     $('html, body').animate({
+//         scrollTop: $('#js-scrollStop').offset().top - 35
+//     }, 2000);
+//   }
+// });
