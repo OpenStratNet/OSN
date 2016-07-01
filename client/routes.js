@@ -1,5 +1,6 @@
 Router.configure({
   layoutTemplate: 'ApplicationLayout',
+  loadingTemplate: 'loading',
   yieldTemplates: {
   navbar: {to: 'header'},
   footer: {to: 'footer'},
@@ -36,7 +37,7 @@ Router.route('/admin-news-events', {
         return [
             Meteor.subscribe('newsevents'),
 			Meteor.subscribe('images'),
-			
+
         ]
 	},
     data: function(){
@@ -64,7 +65,7 @@ Router.route('/admin-news-events-edit/:_id', {
         return [
             Meteor.subscribe('newsevents'),
 			Meteor.subscribe('images'),
-			Meteor.subscribe('attachments'),			
+			Meteor.subscribe('attachments'),
         ]
 	},
     data: function(){
@@ -114,7 +115,7 @@ Router.route('/admin-publications-edit/:_id', {
     },
 	action : function () {
      if (this.ready()) this.render();
-	     pubEntryComplete = Publications.findOne({_id: this.params._id}); //Create an object with the full 
+	     pubEntryComplete = Publications.findOne({_id: this.params._id}); //Create an object with the full
 	    //Create an array with authors / editors
         existingAuthors = [];
 	    existingEditors = []
@@ -122,7 +123,7 @@ Router.route('/admin-publications-edit/:_id', {
         if(pubEntryComplete.authors){
 	        for (var i = 0; i < pubEntryComplete.authors.length; i++) {
                 existingAuthors.push({valueFirst: pubEntryComplete.authors[i].firstName, valueLast: pubEntryComplete.authors[i].lastName});
-            }	
+            }
 	    }
         //Fill the array with editors data
         if (pubEntryComplete.editors) {
@@ -146,11 +147,11 @@ Router.route('/admin-members-list', {
     },
     data: function(){
         return false;
-    },  
+    },
 });
 
 // Member edit by admin
-Router.route('/member-edit/:_id',{name:'memberEdit', 
+Router.route('/member-edit/:_id',{name:'memberEdit',
     waitOn: function(){
         return [
             Meteor.subscribe('users'),
@@ -239,7 +240,7 @@ Router.route('/unsubscribe', {
   waitOn: function(){
         return [
             Meteor.subscribe('users'),
-			Meteor.subscribe('allSubscribers')			
+			Meteor.subscribe('allSubscribers')
         ]
   },
   data: function(){
@@ -256,7 +257,7 @@ Router.route('/news-and-events', {
         return [
             Meteor.subscribe('newsevents'),
 			Meteor.subscribe('images'),
-			
+
         ]
   },
   data: function(){
@@ -320,7 +321,7 @@ Router.map(function() {
 		waitOn: function() {
            return [
             Meteor.subscribe('allusers'),
-			Meteor.subscribe('allSubscribers'),			
+			Meteor.subscribe('allSubscribers'),
             ]
        },
     });
