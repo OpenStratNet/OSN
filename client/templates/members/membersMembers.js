@@ -1,4 +1,5 @@
-seeMore = new ReactiveVar("no");
+// set see more to yes, change later to no (when more is uplaoded)
+seeMore = new ReactiveVar("yes");
 
 Template.membersMembers.events({
   'click .js-seeMoreMem': function (evt, tmo) {

@@ -1,5 +1,6 @@
 Session.setDefault('newsEventsViewMain', [ "news", "event" ]);
-Session.setDefault('newsEventsSeeMore', "no");
+// set see more to yes, change later to no (when more is uplaoded)
+Session.setDefault('newsEventsSeeMore', "yes");
 
 Template.newsblock.helpers({
   newsEventsData: function () {
