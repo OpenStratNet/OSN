@@ -16,7 +16,9 @@ body {
 // }
 
 .sticky-wrapper {
+    min-height: 100%;
     height: auto !important;
+    height: 100%;
     margin: 0 auto -209px;
 }
 
@@ -1858,14 +1860,6 @@ section.layer-login {
     padding: 0 0 0 0;
 }
 
-form#at-pwd-form div {
-    -webkit-transform: translateZ( 0 );
-}
-
-.at-oauth div {
-    -webkit-transform: translateZ( 0 );
-}
-
 .at-form {
     margin: 0 0 0 0;
     padding: 0 0 0 0;
@@ -2215,4 +2209,16 @@ hover-wasabi-content{
 .at-form {
     margin: -20px 0 0 0;
 }
+
+
+// bug fix joinus form (not complete)
+
+form#at-pwd-form div {
+    -webkit-transform: translateZ( 0 );
+}
+
+.at-oauth div {
+    -webkit-transform: translateZ( 0 );
+}
+
 //end
