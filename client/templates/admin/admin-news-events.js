@@ -83,27 +83,6 @@ Template.adminNewsEvents.helpers({
 });
 
 Template.adminNewsEvents.events({
-	'change #coverImage': function(event, temp) {
-    /* FS.Utility.eachFile(event, function(file) {
-      Images.insert(file, function (err, fileObj) {
-        // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
-        if (err) throw err;
-      });
-    }); */
-
-		var image = event.target.files[0];
-		// Insert the image into the database
-		// getting the image ID for use in the news object
-		var imageObject = Images.insert(image);
-
-		// The image id is stored in the image object
-		var imageId = imageObject._id;
-
-		// Create a reactive var to be used when the news is added
-		if (imageId) {
-			imageIdVar = new ReactiveVar(imageId);
-		}
-	},
   'change #coverImage': function(event, temp) {
     /* FS.Utility.eachFile(event, function(file) {
       Images.insert(file, function (err, fileObj) {
