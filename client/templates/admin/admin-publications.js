@@ -250,5 +250,7 @@ Template.adminPublications.events({
 		// $("input:radio").removeAttr("checked");
 
 		Bert.alert("Publication added to bibliography.");
+    // set reactive vars back to false otherwise static files might be overwritten
+    attachmentIdVar.set(false);
 	}
 });

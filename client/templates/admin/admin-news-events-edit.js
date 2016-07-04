@@ -176,9 +176,13 @@ Template.adminNewsEventsEdit.events({
 			temp.attachmentId = attachmentIdVarEdit.get();
 		}
 
-		Meteor.call('NewsEvents.update', this._id,temp);
+		//Meteor.call('NewsEvents.update', this._id,temp);
 		//Just for testing.
 		Meteor.call('NewsEvents.update', {_id: this._id}, {$set: temp});
     Bert.alert("Changes saved");
+
+    // set reactive vars back to false otherwise static files might be overwritten
+    imageIdVarEdit.set(false);
+    attachmentIdVarEdit.set(false);
 	}
 });

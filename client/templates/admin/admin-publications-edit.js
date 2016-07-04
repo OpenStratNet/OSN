@@ -9,9 +9,12 @@ Tracker.autorun(function () {
 });
 
 Template.adminPublicationsEdit.onCreated(function() {
+  Session.setDefault("outletChoiceEdit", "");
+  // get the pubType from the DB to set while editing the entry
+  var pubType = pubEntryComplete.type;
   Session.set('inputsAuthors', []); // on page load, no inputs
   Session.set('inputsEditors', []); // on page load, no inputs
-  Session.setDefault("outletChoiceEdit","");
+  Session.set("outletChoiceEdit", pubType);
   Session.set('template', $('#template').html()); //Set the html in a session variable
 });
 
@@ -41,7 +44,7 @@ Template.adminPublicationsEdit.helpers({
 	$('#preLoad').show(); //Display the html container when the back-end are ready.
 	return false;
     },500);
-  },  
+  },
   ppSelected: function () {
     if (Session.get("outletChoiceEdit") === "pp") {
       return true;
@@ -245,5 +248,7 @@ Template.adminPublicationsEdit.events({
     $('#template').html(Session.get('template')); //Force to re-render the template
     //Bert alert
     Bert.alert("Changes saved");
+    // set reactive vars back to false otherwise static files might be overwritten
+    attachmentIdVar.set(false);
   }
 });
