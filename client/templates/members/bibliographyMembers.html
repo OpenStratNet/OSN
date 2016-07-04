@@ -65,11 +65,10 @@
 
 						</td>
 						<td><a class="tbody-link" href="{{pathFor route = 'bibliographyPage'}}">{{title}}</a></td>
-						{{#if outlet}}
-						<td>{{outlet}}</td>
-						{{else}}
-						<td>Working Paper</td>
-						{{/if}}
+						{{#if isPP}}<td>{{journal}}</td>{{/if}}
+						{{#if isBK}}<td>{{outlet}}</td>{{/if}}
+						{{#if isBC}}<td>{{outlet}}</td>{{/if}}
+						{{#if isWP}}<td>Working Paper</td>{{/if}}
 						<td>
 						{{#if attachmentExists}}
 							<a  class="button-download btn btn-primary btn-sm" href="{{ attachment.url }}"><span class="glyphicon glyphicon-download"></span> </a>
@@ -120,11 +119,10 @@
 
 								</td>
 								<td><a class="tbody-link" href="{{pathFor route = 'bibliographyPage'}}">{{title}}</a></td>
-								{{#if outlet}}
-								<td>{{outlet}}</td>
-								{{else}}
-								<td>Working Paper</td>
-								{{/if}}
+								{{#if isPP}}<td>{{journal}}</td>{{/if}}
+								{{#if isBK}}<td>{{outlet}}</td>{{/if}}
+								{{#if isBC}}<td>{{outlet}}</td>{{/if}}
+								{{#if isWP}}<td>Working Paper</td>{{/if}}
 								<td>
 								{{#if attachmentExists}}
 									<a  class="button-download btn btn-primary btn-sm" href="{{ attachment.url }}"><span class="glyphicon glyphicon-download"></span> </a>
