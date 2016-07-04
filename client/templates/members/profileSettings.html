@@ -25,6 +25,7 @@
                   <div class="btn-group btn-group-md extra-spacing-top" role="group">
                     <a type="button" id="js-seePersonal" class="btn btn-primary active">PERSONAL</a>
                     <a type="button" id="js-seeSocial" class="btn btn-primary">SOCIAL</a>
+                      {{#if currentUser.services.password}}<a type="button" id="js-seeSecurity" class="btn btn-primary">SECURITY</a>{{/if}}
                   </div>
               </div>
           </div>
@@ -33,69 +34,13 @@
 
   {{#if setPersonal}}
 	{{ > personal }}
-  {{else}}
-  {{ > social }}
   {{/if}}
-
-	{{#if currentUser.services.password}}
-	<!-- Security -->
-	<section id="Settings">
-			<div class="container">
-					<div class="row">
-							<div class="col-lg-12 text-center">
-									<h3>SECURITY</h3>
-									<p class="text-muted">Change your password or recover your current one.</p>
-							</div>
-					</div>
-
-					<form>
-
-						<div class="row">
-								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-										<div class="form-group">
-												<label for="current-password">Current Password*</label>
-												<input type="password" class="form-control" id="current-password" placeholder="Current Password">
-										</div>
-								</div>
-						</div>
-
-						<div class="row">
-								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-										<div class="form-group">
-												<a href="/password-forgot">Forgot your Password?</a>
-										</div>
-								</div>
-						</div>
-
-						<div class="row">
-								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-										<div class="form-group">
-												<label for="new-password">New Password*</label>
-												<input type="password" class="form-control" id="new-password" placeholder="New Password">
-										</div>
-								</div>
-						</div>
-
-						<div class="row">
-								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-										<div class="form-group">
-												<label for="confirm-password">Confirm new Password*</label>
-												<input type="password" class="form-control" id="confirm-password" placeholder="Confirm new Password">
-										</div>
-								</div>
-						</div>
-
-						<div class="row">
-								<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-										<div class="form-group">
-												<button type="submit" id="security" class="btn btn-primary extra-spacing-bottom">SAVE CHANGES</button>
-										</div>
-								</div>
-						</div>
-					</form>
-			</div>
-	</section> <!-- ./Security -->
-	{{/if}}
+  {{#if setSocial}}
+	{{ > social }}
+  {{/if}}
+  {{#if setSecurity}}
+	{{ > security }}
+  {{/if}}
 </template>
 
 
@@ -319,4 +264,66 @@
           {{/with}}
       </div>
   </section> <!-- ./Social -->
+</template>
+
+<template name="security">
+  {{#if currentUser.services.password}}
+  <!-- Security -->
+  <section id="Settings">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12 text-center">
+                  <h3>SECURITY</h3>
+                  <p class="text-muted">Change your password or recover your current one.</p>
+              </div>
+          </div>
+
+          <form>
+
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <div class="form-group">
+                        <label for="current-password">Current Password*</label>
+                        <input type="password" class="form-control" id="current-password" placeholder="Current Password">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <div class="form-group">
+                        <a href="/password-forgot">Forgot your Password?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <div class="form-group">
+                        <label for="new-password">New Password*</label>
+                        <input type="password" class="form-control" id="new-password" placeholder="New Password">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm new Password*</label>
+                        <input type="password" class="form-control" id="confirm-password" placeholder="Confirm new Password">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <div class="form-group">
+                        <button type="submit" id="security" class="btn btn-primary extra-spacing-bottom">SAVE CHANGES</button>
+                    </div>
+                </div>
+            </div>
+          </form>
+      </div>
+  </section> <!-- ./Security -->
+  {{/if}}
 </template>

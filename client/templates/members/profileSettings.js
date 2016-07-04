@@ -48,7 +48,16 @@ Template.profileSettings.helpers({
     if (settingsTab.get() === "personal") {
       return true;
     }
-    ;
+  },
+  setSocial: function () {
+    if (settingsTab.get() === "social") {
+      return true;
+    }
+  },
+  setSecurity: function () {
+    if (settingsTab.get() === "security") {
+      return true;
+    }
   }
 });
 
@@ -57,11 +66,19 @@ Template.profileSettings.events({
     settingsTab.set("personal");
     $('#js-seePersonal').addClass("active");
     $('#js-seeSocial').removeClass("active");
+    $('#js-seeSecurity').removeClass("active");
   },
   'click #js-seeSocial': function () {
     settingsTab.set("social");
     $('#js-seeSocial').addClass("active");
     $('#js-seePersonal').removeClass("active");
+    $('#js-seeSecurity').removeClass("active");
+  },
+  'click #js-seeSecurity': function () {
+    settingsTab.set("security");
+    $('#js-seeSecurity').addClass("active");
+    $('#js-seePersonal').removeClass("active");
+    $('#js-seeSocial').removeClass("active");
   },
   'change .js-Profile': function (e, temp) {
     var image = new FS.File(e.target.files[0]);
