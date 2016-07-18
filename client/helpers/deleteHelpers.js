@@ -27,10 +27,26 @@ Template.applicationLayout.events({
     var deleteConfirmation = confirm('Really delete this member?');
     if (deleteConfirmation) {
       var toBeDeletedUser = Meteor.users.findOne({_id: this._id});
-      var currentEmail = toBeDeletedUser.profile.email;
-      console.log(currentEmail);
-      if (Subscribers.find({email: currentEmail}).count() > 0 ) {
-        Meteor.call('Subscribers.remove', {_id: Subscribers.findOne({email: currentEmail})._id});
+
+      var toBeDeletedEmail = toBeDeletedUser.profile.email;
+      if (Subscribers.find({email: toBeDeletedEmail}).count() > 0 ) {
+        Meteor.call('Subscribers.remove', {_id: Subscribers.findOne({email: toBeDeletedEmail})._id});
+      }
+
+      var toBeDeletedProfilePicURL = toBeDeletedUser.profile.pictureID;
+      console.log(toBeDeletedProfilePicURL);
+      if (typeof toBeDeletedProfilePicURL !== 'undefined') {
+        console.log("ID here");
+        if (Meteor.users.find({"profile.pictureID": toBeDeletedProfilePicURL}).count() > 0 ) {
+          var toBeDeletedProfilePic = toBeDeletedProfilePicURL.substring(toBeDeletedProfilePicURL.lastIndexOf("/")+1);
+          Meteor.call('ProfilePic.remove', {_id: toBeDeletedProfilePic});
+          console.log(toBeDeletedProfilePic);
+          console.log("good");
+        } else {
+          console.log("nothing");
+        }
+      } else {
+        console.log("undefined");
       }
       Meteor.users.remove({_id: this._id});
     }
