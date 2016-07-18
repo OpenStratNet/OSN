@@ -9,7 +9,17 @@ Template.adminNewsEventsList.events({
     evt.preventDefault();
     var deleteConfirmation = confirm('Really delete this entry?');
     if (deleteConfirmation) {
-      Meteor.call('Images.remove', {_id: this.coverImageId});
+      var toBeDeletedEntry = NewsEvents.findOne({_id: this._id});
+      var toBeDeletedImageId = toBeDeletedEntry.coverImageId;
+      var toBeDeletedAttachmentId = toBeDeletedEntry.attachmentId;
+      if (Images.find({_id: toBeDeletedImageId}).count() > 0 ) {
+        Meteor.call('Images.remove', {_id: toBeDeletedImageId});
+      }
+
+      if (Attachments.find({_id: toBeDeletedAttachmentId}).count() > 0 ) {
+        Meteor.call('Attachments.remove', {_id: toBeDeletedAttachmentId});
+      }
+
       Meteor.call('NewsEvents.remove', this._id)
     }
   }
