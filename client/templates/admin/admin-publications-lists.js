@@ -12,7 +12,6 @@ Template.adminPublicationsList.events({
       var toBeDeletedEntry = Publications.findOne({_id: this._id});
       var toBeDeletedAttachmentId = toBeDeletedEntry.attachmentId;
       if (Attachments.find({_id: toBeDeletedAttachmentId}).count() > 0 ) {
-        //Meteor.call('Subscribers.remove', {_id: Subscribers.findOne({email: currentEmail})._id});
         Meteor.call('Attachments.remove', {_id: toBeDeletedAttachmentId});
       }
 
