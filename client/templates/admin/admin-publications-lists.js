@@ -2,17 +2,20 @@ Template.adminPublicationsList.helpers({
   publicationsData: function () {
     return Publications.find({}, {sort: {"title": 1}});
   }
-  // images: function () {
-  //   return Images.find(); // Where Images is an FS.Collection instance
-  // }
 });
 
 Template.adminPublicationsList.events({
-  'click #js-delete-ne': function (evt, template) {
+  'click .js-delete-pub': function (evt, template) {
     evt.preventDefault();
     var deleteConfirmation = confirm('Really delete this entry?');
     if (deleteConfirmation) {
-      //Images.remove({_id: this.coverImageId});
+      var toBeDeletedEntry = Publications.findOne({_id: this._id});
+      var toBeDeletedAttachmentId = toBeDeletedEntry.attachmentId;
+      if (Attachments.find({_id: toBeDeletedAttachmentId}).count() > 0 ) {
+        //Meteor.call('Subscribers.remove', {_id: Subscribers.findOne({email: currentEmail})._id});
+        Meteor.call('Attachments.remove', {_id: toBeDeletedAttachmentId});
+      }
+
       Meteor.call('Publications.remove', this._id);
     }
   }
