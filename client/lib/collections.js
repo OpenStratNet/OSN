@@ -19,11 +19,15 @@ Meteor.methods({
 
 // NewsEvents Methods
 Meteor.methods({
+  /* return "doc" won't reach callback in admin-news-events.js
+  moved to lib folder
+
   'NewsEvents.insert': function (doc) {
-    if (this.userId) {
-      NewsEvents.insert(doc);
+      if (this.userId) {
+      return NewsEvents.insert(doc);
     }
   },
+  */
   'NewsEvents.remove': function (id) {
     if (this.userId) {
       NewsEvents.remove(id);
