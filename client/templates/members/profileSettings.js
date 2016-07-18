@@ -205,7 +205,7 @@ Template.profileSettings.events({
     if (Subscribers.find({email: currentEmail}).count() > 0
       && Subscribers.findOne({email: currentEmail}).email != $('#email').val()) {
       Meteor.call('Subscribers.insert', {email: $('#email').val()});
-      Meteor.call('Subscribers.remove', {_id: Subscribers.findOne({email: currentEmail})._id})
+      Meteor.call('Subscribers.remove', {_id: Subscribers.findOne({email: currentEmail})._id});
     }
 
     // TODO: merge with above update to mongoDB
