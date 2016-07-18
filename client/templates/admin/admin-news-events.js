@@ -160,19 +160,26 @@ Template.adminNewsEvents.events({
   			temp.attachmentId = attachmentIdVar.get();
   		}
 
-      Meteor.call('NewsEvents.insert', temp);
-      Bert.alert("New entry added.");
+      Meteor.call('NewsEvents.insert', temp, function (err, result) {
+        if(!err) {
+          // assuming that `result` will be the _id of the inserted object!!
+          var link = result;
+          //Fire the email to all Subscribers
+          var news = '<a style:"text-decoration: none !important;" href='+Meteor.absoluteUrl()+'news-and-events/'+link+'><header><img src="http://openstrategynetwork.com/img/osn_logoneu.png"></header><body style="background:#0B676E;color:#FFFFFF"><center>' +'<h1>New entry in our platform</h1>'+ '<h2>'+temp.title+'</h2>' + '<h3>'+temp.cleanDescription+'</h3></center></body></a>';
+          for (i = 0; i < Subscribers.find().count(); i++) {
+            var email_ = Subscribers.find().fetch()[i].email;
+            Meteor.call('sendEmail',
+            email_, //To
+            'Open Strategy Network <violetta.splitter@business.uzh.ch>', //from
+            'Open Strategy Network News and Events', //subject
+             news +
+             '<footer style="background:#CCCCCC;color:black;"><center><h4>To see all news go to <a href='+Meteor.absoluteUrl()+'news-and-events'+'>http://openstrategynetwork.com/news-and-events</a></h4><center><center><h4>To unsubscribe to our notifications go to <a href='+Meteor.absoluteUrl()+'unsubscribe?='+email_+'>http://openstrategynetwork.com/unsubscribe</a></h4><center></footer>');
+             Bert.alert("New entry added.");
+          }
+        } else {
+          Bert.alert(err);
+        }
+      });
     }
-
-  	//Fire the email to all Subscribers
-  	var news = '<header><img src="http://openstrategynetwork.com/img/osn_logoneu.png"></header><body style="background:#0B676E;color:#FFFFFF"><center>' +'<h1>New entry in our platform</h1>'+ '<h2>'+temp.title+'</h2>' + '<h3>'+temp.description+'</h3></center></body>';
-    for (i = 0; i < Subscribers.find().count(); i++) {
-    var email_ = Subscribers.find().fetch()[i].email;
-      Meteor.call('sendEmail',
-      email_, //To
-      'Open Strategy Network <violetta.splitter@business.uzh.ch>', //from
-      'Open Strategy Network news', //subject
-       news+'<footer style="background:#CCCCCC;color:black;"><center><h4>To unsubscribe to our notifications go to <a href='+Meteor.absoluteUrl()+'unsubscribe?='+email_+'>http://openstrategynetwork.com/unsubscribe</a></h4><center></footer>');
-    }
-  }
+   }
 });
