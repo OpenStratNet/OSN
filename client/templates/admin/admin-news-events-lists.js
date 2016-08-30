@@ -1,6 +1,6 @@
 Template.adminNewsEventsList.helpers({
   newsEventsData: function () {
-    return NewsEvents.find();
+    return NewsEvents.find({}, {sort: {publishedRawFormat: -1}});
   }
 });
 
