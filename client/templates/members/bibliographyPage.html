@@ -19,28 +19,31 @@
 					</div>
 					<!-- Abstract -->
 					<div class="col-sm-8 col-xs-12">
-							<h3 class="text-left">{{outlet}}</h3>
+							<h3 class="text-left">{{title}}</h3>
 							<p class="text-muted extra-spacing-bottom"> {{#each authors}} {{this.firstName}} {{this.lastName}}. {{/each}} </p>
-							<p class="text-muted extra-spacing-bottom"> {{title}}. {{year}}. </p>
+							<!-- <p class="text-muted extra-spacing-bottom"> {{title}}. {{year}}. </p> -->
 
-								{{#if isBK}}
-								<p class="text-muted extra-spacing-bottom"> {{location}}: {{publisher}}</p>
-								{{/if}}
+							{{#if isBK}}
+							<p class="text-muted extra-spacing-bottom"> {{location}}: {{publisher}}, {{year}}</p>
+							{{/if}}
 
-								{{#if isBC}}
-								<p class="text-muted extra-spacing-bottom"> {{location}}: {{publisher}}</p>
-								{{/if}}
+							{{#if isBC}}
+							<p class="text-muted extra-spacing-bottom"> {{location}}: {{publisher}}, {{year}}</p>
+							{{/if}}
 
-								{{#if isPP}}
-								<p class="text-muted extra-spacing-bottom"> {{journal}} </p>
-								{{/if}}
-								
+							{{#if isPP}}
+							<p class="text-muted extra-spacing-bottom"> {{journal}}, {{year}} </p>
+							{{/if}}
+
+							{{#if isWP}}
+							<p class="text-muted extra-spacing-bottom"> Working paper, {{year}} </p>
+							{{/if}}
+
 							<h3 class="text-left">Abstract</h3>
 							<p class="extra-spacing-bottom">{{{abstract}}}</p>
 							{{#if linkExists}}
 							<h3 class="text-left">Link</h3>
 							<a href="{{link}}">{{link}}</a>
-							<p class="extra-spacing-bottom">{{link}}</p>
 							{{/if}}
 							{{#if attachmentExists}}
 							<a class="btn btn-primary btn-icon" href="{{ attachment.url }}"><span class="glyphicon glyphicon-download"></span>DOWNLOAD</a>
