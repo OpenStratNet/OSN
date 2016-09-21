@@ -10,12 +10,21 @@ Template.adminNewsEvents.helpers({
   afterLoad: function(){ //Fire the code when the page is full loaded.
 	Meteor.setTimeout(function(){ //Latency compensation 0.5sec
     $('#description').summernote({
+      callbacks: {
+        onPaste: function (e) {
+            var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+            e.preventDefault();
+            document.execCommand('insertText', false, bufferText);
+            console.log("pasted!");
+        }
+      },
     	height: 200,
     	toolbar: [
   	   // [groupName, [list of button]]
     	['style', ['style']],
        	['font', ['bold', 'italic', 'underline', 'clear']],
-       	['fontname', ['fontname']],
+       	//['fontname', ['fontname']],
+        ['fontsize', ['fontsize']],
        	['color', ['color']],
        	['para', ['ul', 'ol', 'paragraph']],
        	['height', ['height']],
