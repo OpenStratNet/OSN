@@ -31,6 +31,8 @@ Meteor.methods({
 
 // NewsEvents Methods
 Meteor.methods({
+  /* callback function in client won't work if method is defined on the server
+
   'NewsEvents.insert': function (doc) {
     if (this.userId) {
       if (Roles.userIsInRole(this.userId, Meteor.settings.allow.NewsEvents.insert)) {
@@ -40,6 +42,7 @@ Meteor.methods({
       }
     }
   },
+  */
   'NewsEvents.remove': function (id) {
     if (this.userId) {
       if (Roles.userIsInRole(this.userId, Meteor.settings.allow.NewsEvents.remove)) {
