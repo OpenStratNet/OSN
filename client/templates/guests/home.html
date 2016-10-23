@@ -37,14 +37,14 @@
             	{{#each newsEventsData}}
                 <div class="col-sm-4">
                     <div class="caption">
-                    {{#if category}}
+                    <!-- {{#if category}}
                     <div class="category">
                         <em>{{category}}</em><br>
-                    </div>
-                    {{/if}}
-										{{#if imageExists}}
-						        <h4>{{title}}<img alt="news thumbnail" class="news-thumbnail" src="{{ coverImage.url }}" /></h4>
-						        {{else}}
+                    </div> -->
+                    <!-- {{/if}} -->
+					{{#if imageExists}}
+			        <h4>{{title}}<img alt="news thumbnail" class="news-thumbnail" src="{{ coverImage.url }}" /></h4>
+			        {{else}}
                     <h4>{{title}}</h4>
 										{{/if}}
                     {{#if keywordsExist}}
