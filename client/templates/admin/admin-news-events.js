@@ -174,7 +174,7 @@ Template.adminNewsEvents.events({
           // assuming that `result` will be the _id of the inserted object!!
           var link = result;
           //Fire the email to all Subscribers
-          var news = '<a style:"text-decoration: none !important;" href='+Meteor.absoluteUrl()+'news-and-events/'+link+'><header><img src="http://openstrategynetwork.com/img/osn_logoneu.png"></header><body style="background:#0B676E;color:#FFFFFF"><center>' +'<h1>New entry in our platform</h1>'+ '<h2>'+temp.title+'</h2>' + '<h3>'+temp.cleanDescription+'</h3></center></body></a>';
+          var news = '<header><img src="http://openstrategynetwork.com/img/osn_logoneu.png"></header><body style="background:#0B676E;color:#FFFFFF"><center>' +'<a style:"text-decoration: none !important;" href='+Meteor.absoluteUrl()+'news-and-events/'+link+'><h1>New entry in our platform</h1></a>'+ '<h2>'+temp.title+'</h2>' + '<h3>'+temp.cleanDescription+'</h3></center></body>';
           for (i = 0; i < Subscribers.find().count(); i++) {
             var email_ = Subscribers.find().fetch()[i].email;
             Meteor.call('sendEmail',

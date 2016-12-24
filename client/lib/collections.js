@@ -1,10 +1,10 @@
 // Publications Methods
 Meteor.methods({
-  'Publications.insert': function (doc) {
-    if (this.userId) {
-      Publications.insert(doc);
-    }
-  },
+  // 'Publications.insert': function (doc) {
+  //   if (this.userId) {
+  //     Publications.insert(doc);
+  //   }
+  // },
   'Publications.remove': function (id) {
     if (this.userId) {
       Publications.remove(id);

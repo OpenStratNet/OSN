@@ -1,14 +1,14 @@
 // Publications Methods
 Meteor.methods({
-  'Publications.insert': function (doc) {
-    if (this.userId) {
-      if (Roles.userIsInRole(this.userId, Meteor.settings.allow.Publications.insert)) {
-        Publications.insert(doc);
-      } else {
-        console.log('Publications.insert: access denied.');
-      }
-    }
-  },
+  // 'Publications.insert': function (doc) {
+  //   if (this.userId) {
+  //     if (Roles.userIsInRole(this.userId, Meteor.settings.allow.Publications.insert)) {
+  //       Publications.insert(doc);
+  //     } else {
+  //       console.log('Publications.insert: access denied.');
+  //     }
+  //   }
+  // },
   'Publications.remove': function (id) {
     if (this.userId) {
       if (Roles.userIsInRole(this.userId, Meteor.settings.allow.Publications.remove)) {

@@ -184,13 +184,57 @@ Template.adminPublications.events({
                 if(updatedEditors[i].firstName && updatedEditors[i].firstName){
 					newEditors[newEditors.length] = updatedEditors[i];
 					newEditorsFullName[newEditorsFullName.length] = updatedEditors[i].fullName;
-				}
+			    }
         }
 		//Check the editors to add
         console.log('editors');
 		for (i = 0; i < newEditors.length; i++) {
                console.log(newEditors[i].fullName)
         };
+
+        // vars for callback function (newsletter)
+        var pubTitle = $('#title').val();
+        var pubAbstract = $('#abstract').summernote('code');
+		Meteor.call('Publications.insert', {
+  			title: $('#title').val(),
+  			//authors: [$('#authors').val()],
+        fullNameAuthors: newAuthorsFullName,
+  			authors: newAuthors,
+        fullNameEditors: newEditorsFullName,
+  			editors: newEditors,
+  			year: $('#year').val(),
+        link: $('#link').val(),
+  			type: $('input[name=outlet-type]:checked').val(),
+  			abstract: $('#abstract').summernote('code'),
+        cleanAbstract: $('#abstract').summernote('code').replace(/<\/?[^>]+(>|$)/g, ""),
+        outlet: selectedOutlet,
+
+  			// Published Paper (pp)
+  			journal: $('#journal').val(),
+  			// Published Paper (pp) or Book Chapter (bc)
+  			pages: $('#pages').val(),
+
+  			// Book (bk) or Book Chapter (bc)
+  			publisher: $('#publisher').val(),
+  			location: $('#location').val(),
+
+        attachmentId: temp.attachmentId,
+  			createdAt: new Date ()
+  		},
+      function (err, result) {
+        var link = result;
+        //Fire the email to all subscriptors
+    		var publication = '<header><img src="http://openstrategynetwork.com/img/osn_logoneu.png"></header><body style="background:#0B676E;color:#FFFFFF"><center>' +'<h1>New publication uploaded to our platform!</h1>'+ '<a href='+Meteor.absoluteUrl()+'bibliography/'+link+'><h2>Title: '+pubTitle+'</h2></a>' + '<h2>Abstract:</h2>'+'<h3>'+pubAbstract+'</h3></center></body>';
+          for (i = 0; i < Subscribers.find().count(); i++) {
+          var email_ = Subscribers.find().fetch()[i].email;
+            Meteor.call('sendEmail',
+             email_, //To
+              'Open Strategy Network <violetta.splitter@business.uzh.ch>', //from
+              'New publication in Open Strategy Network', //subject
+               publication+'<footer style="background:#CCCCCC;color:black;"><center><h4>To unsubscribe to our notifications go to <a href='+Meteor.absoluteUrl()+'unsubscribe?='+email_+'>http://openstrategynetwork.com/unsubscribe</a></h4><center></footer>');
+          }
+      }
+    );
 
     Meteor.call('NewsEvents.insert', {
       title: "A New Publication Added to Bibliography",
@@ -203,43 +247,6 @@ Template.adminPublications.events({
       publishedRawFormat: new Date(),
       keywords: ["publication"]
     });
-
-		Meteor.call('Publications.insert', {
-			title: $('#title').val(),
-			//authors: [$('#authors').val()],
-      fullNameAuthors: newAuthorsFullName,
-			authors: newAuthors,
-      fullNameEditors: newEditorsFullName,
-			editors: newEditors,
-			year: $('#year').val(),
-      link: $('#link').val(),
-			type: $('input[name=outlet-type]:checked').val(),
-			abstract: $('#abstract').summernote('code'),
-      cleanAbstract: $('#abstract').summernote('code').replace(/<\/?[^>]+(>|$)/g, ""),
-      outlet: selectedOutlet,
-
-			// Published Paper (pp)
-			journal: $('#journal').val(),
-			// Published Paper (pp) or Book Chapter (bc)
-			pages: $('#pages').val(),
-
-			// Book (bk) or Book Chapter (bc)
-			publisher: $('#publisher').val(),
-			location: $('#location').val(),
-
-      attachmentId: temp.attachmentId,
-			createdAt: new Date ()
-		});
-        //Fire the email to all subscriptors
-		var publication = '<header><img src="http://openstrategynetwork.com/img/osn_logoneu.png"></header><body style="background:#0B676E;color:#FFFFFF"><center>' +'<h1>New publication uploaded to our platform!</h1>'+ '<h2>Title: '+$('#title').val()+'</h2>' + '<h2>Abstract:</h2>'+'<h3>'+$('#abstract').summernote('code')+'</h3></center></body>';
-            for (i = 0; i < Subscribers.find().count(); i++) {
-            var email_ = Subscribers.find().fetch()[i].email;
-	            Meteor.call('sendEmail',
-	                         email_, //To
-                            'Open Strategy Network <violetta.splitter@business.uzh.ch>', //from
-                            'New publication in Open Strategy Network', //subject
-                             publication+'<footer style="background:#CCCCCC;color:black;"><center><h4>To unsubscribe to our notifications go to <a href='+Meteor.absoluteUrl()+'unsubscribe?='+email_+'>http://openstrategynetwork.com/unsubscribe</a></h4><center></footer>');
-            }
 
 		$('#addPub')[0].reset();
 		$('#abstract').summernote('code', '');
