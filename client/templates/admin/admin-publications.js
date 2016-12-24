@@ -245,6 +245,7 @@ Template.adminPublications.events({
       createdAt: moment().format('ddd, DD MMM YYYY hh:mm:ss'),
       publishedAt: moment().format('ddd, DD MMM YYYY hh:mm:ss'),
       publishedRawFormat: new Date(),
+      coverImageId: "Wt5cB8cuHu7BWSh7h",
       keywords: ["publication"]
     });
 
