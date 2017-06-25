@@ -20,8 +20,8 @@
                     <li class="{{isActiveRoute name='aboutUs'}}">
                       <a href="{{pathFor route = 'aboutUs'}}">About</a>
                     </li>
-										<li class="{{isActiveRoute name='allNewsEvents'}}">  
-											<a href="{{pathFor 'allNewsEvents'}}">News &amp; Events</a>
+										<li class="{{isActiveRoute name='allNewsEvents'}}">
+											<a href="{{pathFor 'allNewsEvents'}}">News</a>
 										</li>
 										<li class="{{isActiveRoute name='bibliography'}}">
 											<a href="{{pathFor 'bibliography'}}">Bibliography</a>
@@ -48,7 +48,7 @@
                           <li role="separator" class="divider"></li>
                           <li><a class="profile-links icon settings" href="{{pathFor 'profileSettings'}}">Settings</a></li>
                           {{#if isInRole adminUserRole}}
-                          <li><a class="profile-links icon news" href="{{pathFor 'adminNewsEventsList'}}">News &amp; Events</a></li>
+                          <li><a class="profile-links icon news" href="{{pathFor 'adminNewsEventsList'}}">News</a></li>
                           <li><a class="profile-links icon publications" href="{{pathFor 'adminPublicationsList'}}">Publications</a></li>
                           <li><a class="profile-links icon members" href="{{pathFor 'adminMembersList'}}">Members</a></li>
                           {{/if}}
