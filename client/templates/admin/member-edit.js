@@ -209,6 +209,7 @@ Template.memberEdit.events({
         //from social settings
         "profile.website": $('#website').val(),
         "profile.blog": $('#blog').val(),
+        "profile.scholar": $('#scholar').val(),
         "profile.twitter": $('#twitter').val(),
         "profile.linkedin": $('#linkedin').val(),
         "profile.facebook": $('#facebook').val()

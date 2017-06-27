@@ -86,7 +86,11 @@
                             {{#if profile.blog}}
                             <a class="follow-blog" href="{{profile.blog}}" target="_blank" alt="Go to Blog"><i class="fa some-members fa-book"></i></a>
 														{{/if}}
-                            <!-- LinkedIn-->
+														<!-- Goolge Scholar Button -->
+														{{#if profile.scholar}}
+														<a class="follow-scholar" href="{{profile.scholar}}" target="_blank" alt="Go to Google Scholar"><i class="ai ai-google-scholar-square"></i></a>
+														{{/if}}
+                            <!-- LinkedIn Share Button-->
                             {{#if profile.linkedin}}
                             <a class="fbtn follow-linkedin" href="{{profile.linkedin}}" target="_blank" alt="Go to LinkedIn"><i class="fa some-members fa-linkedin"></i></a>
 														{{/if}}
