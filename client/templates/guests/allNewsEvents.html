@@ -89,6 +89,7 @@
         {{#if keywordsExist}}
           {{#each keywords}}<small class="tags">{{this}} </small>{{/each}}
         {{/if}}
+        <h2>{{publishedAt}}</h2>
         <p class="text-muted"> {{shortIt this.cleanDescription 150}} <a href="{{pathFor route = 'newsAndEventsPage'}}" class="textlink">read more </a></p>
     </div>
   </div>
