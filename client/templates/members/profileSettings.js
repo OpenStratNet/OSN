@@ -223,6 +223,7 @@ Template.profileSettings.events({
         //from social settings
         "profile.website": $('#website').val(),
         "profile.blog": $('#blog').val(),
+        "profile.scholar": $('#scholar').val(),
         "profile.twitter": $('#twitter').val(),
         "profile.linkedin": $('#linkedin').val(),
         "profile.facebook": $('#facebook').val()
@@ -230,6 +231,7 @@ Template.profileSettings.events({
     });
 
     Bert.alert("Changes saved.");
+    Router.go('/');
     // Meteor.users.update({_id: this._id}, {$set: temp} );
   },
   'click #unsubscribe': function () {
@@ -265,6 +267,7 @@ Template.profileSettings.events({
           Bert.alert(error);
         } else {
           Bert.alert("Password changed.");
+          Router.go('/');
         }
       })
 
