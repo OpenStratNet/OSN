@@ -1,3 +1,4 @@
+imageIdVar = new ReactiveVar(false);
 attachmentIdVar = new ReactiveVar(false);
 
 Tracker.autorun(function () {
@@ -84,6 +85,20 @@ Template.adminPublications.events({
     inputsEditors.push({uniqidFirst: uniqidFirst, valueFirst: "", uniqidLast: uniqidLast, valueLast: ""});
     Session.set('inputsEditors', inputsEditors);
 	},
+  'change #coverImage': function(event, temp) {
+    var image = event.target.files[0];
+    // Insert the image into the database
+    // getting the image ID for use in the news object
+    var imageObject = Images.insert(image);
+
+    // The image id is stored in the image object
+    var imageId = imageObject._id;
+
+    // Create a reactive var to be used when the news is added
+    if (imageId) {
+      imageIdVar = new ReactiveVar(imageId);
+    }
+  },
   'change #attachment': function(event, temp) {
     var attachment = event.target.files[0];
 
@@ -119,6 +134,18 @@ Template.adminPublications.events({
 
     // temp necessary for attachments
     var temp = {};
+    if (imageIdVar.get()) {
+      temp.coverImageId = imageIdVar.get();
+    } else {
+      if (Session.get("outletChoice") === "pp") {
+  			temp.coverImageId = "Wt5cB8cuHu7BWSh7h";
+  		} else if (Session.get("outletChoice") === "wp") {
+  		  temp.coverImageId = "ImageWP";
+  		} else {
+        // online version id?
+  		  temp.coverImageId = "GJTtSPxb9gQPXoY98";
+  		}
+    }
     if (attachmentIdVar.get()) {
       temp.attachmentId = attachmentIdVar.get();
     }
@@ -132,27 +159,27 @@ Template.adminPublications.events({
 	//Lenght of the css class author-first-n.
 	numberOfAuthors =$('.author-first-n').length;
 	//function that construct the updatedAuthors array
-	    for (i = 0; i < numberOfAuthors; i++) {
-            var author_firstName = $('.author-first-n')[i]; //Get the input info for the DOM
-			var author_lastName = $('.author-last-n')[i]    //Get the input info for the DOM
-			    authorFN[i] =author_firstName.value;        //Get the value of the input, prefilled, modified or created
-				authorLN[i] =author_lastName.value; 				//Get the value of the input, prefilled, modified or created
-				updatedAuthors[i] = {"lastName" : authorLN[i], //.lastName
-				                     "firstName" : authorFN[i], //.firstName
-                                     "fullName" : authorFN[i] + ' ' + authorLN[i] //Full name
-									 };
-        }
+  for (i = 0; i < numberOfAuthors; i++) {
+    var author_firstName = $('.author-first-n')[i]; //Get the input info for the DOM
+    var author_lastName = $('.author-last-n')[i]    //Get the input info for the DOM
+    authorFN[i] =author_firstName.value;        //Get the value of the input, prefilled, modified or created
+    authorLN[i] =author_lastName.value; 				//Get the value of the input, prefilled, modified or created
+    updatedAuthors[i] = {"lastName" : authorLN[i], //.lastName
+                          "firstName" : authorFN[i], //.firstName
+                          "fullName" : authorFN[i] + ' ' + authorLN[i] //Full name
+		                    };
+    }
     //Purgue the array of empty fields
-	    newAuthors = [];
+    newAuthors = [];
 		newAuthorsFullName = [];
-	    for (i = 0; i < updatedAuthors.length; i++) {
-                if(updatedAuthors[i].firstName && updatedAuthors[i].lastName){
-					newAuthors[newAuthors.length] = updatedAuthors[i];
-					newAuthorsFullName[newAuthorsFullName.length] = updatedAuthors[i].fullName;
-				}
-        }
+    for (i = 0; i < updatedAuthors.length; i++) {
+              if(updatedAuthors[i].firstName && updatedAuthors[i].lastName){
+				newAuthors[newAuthors.length] = updatedAuthors[i];
+				newAuthorsFullName[newAuthorsFullName.length] = updatedAuthors[i].fullName;
+			}
+    }
 		//Check the authors to add
-        console.log('Authors');
+    console.log('Authors');
 		for (i = 0; i < newAuthors.length; i++) {
                console.log(newAuthors[i].fullName)
         };
@@ -174,7 +201,7 @@ Template.adminPublications.events({
 				editorLN[i] =editor_lastName.value;         //Get the value of the input, prefilled, modified or created
 				updatedEditors[i] = {"lastName" : editorLN[i], //.lastName
 				                     "firstName" : editorFN[i], //.firstName
-                                     "fullName" : editorFN[i] + ' ' + editorLN[i]
+                             "fullName" : editorFN[i] + ' ' + editorLN[i]
 									 };
         }
     //Purgue the array of empty fields
@@ -195,6 +222,8 @@ Template.adminPublications.events({
         // vars for callback function (newsletter)
         var pubTitle = $('#title').val();
         var pubAbstract = $('#abstract').summernote('code');
+
+
 		Meteor.call('Publications.insert', {
   			title: $('#title').val(),
   			//authors: [$('#authors').val()],
@@ -219,6 +248,7 @@ Template.adminPublications.events({
   			location: $('#location').val(),
 
         attachmentId: temp.attachmentId,
+        coverImageId: temp.coverImageId,
   			createdAt: new Date ()
   		},
       function (err, result) {
@@ -245,7 +275,7 @@ Template.adminPublications.events({
       createdAt: moment().format('ddd, DD MMM YYYY hh:mm:ss'),
       publishedAt: moment().format('ddd, DD MMM YYYY hh:mm:ss'),
       publishedRawFormat: new Date(),
-      coverImageId: "Wt5cB8cuHu7BWSh7h",
+      coverImageId: temp.coverImageId,
       keywords: ["publication"]
     });
 
